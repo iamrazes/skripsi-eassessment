@@ -22,12 +22,12 @@
                     <label for="" class="text-xs mt-2">Student/Teacher ID:</label>
                     <div class="flex bg-[#F2F2F2] rounded-lg">
                         <img src="{{asset('icons/ic_id.svg')}}" class="px-4" alt="">
-                        <input class="bg-[#F2F2F2] rounded-r-lg min-w-max px-4 py-3 text-xs w-60">
+                        <input name="user_id" type="text" class="bg-[#F2F2F2] rounded-r-lg min-w-max px-4 py-3 text-xs w-60 border-0">
                     </div>
                     <label for="" class="text-xs mt-2">Password:</label>
                     <div class="flex bg-[#F2F2F2] rounded-lg">
                         <img src="{{asset('icons/ic_password.svg')}}" class="px-4" alt="">
-                        <input class="bg-[#F2F2F2] rounded-r-lg min-w-max px-4 py-3 text-xs w-60">
+                        <input name="password" type="password" class="bg-[#F2F2F2] rounded-r-lg min-w-max px-4 py-3 text-xs w-60 border-0">
                     </div>
                 </div>
                 <a href="{{route('dashboard')}}" class="uppercase text-center bg-accent-2 min-w-full text-white font-semibold rounded-full py-3 my-8">Sign In</a>
@@ -48,8 +48,4 @@
         <div class="absolute bottom-0 right-0 transform translate-x-1/2 translate-y-2 w-24 h-24 bg-white rounded-full z-0"></div>
     </div>
 </body>
-
-
-
-
 </html>
