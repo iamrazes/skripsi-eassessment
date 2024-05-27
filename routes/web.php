@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardStudentController;
+use App\Http\Controllers\DashboardTeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,15 @@ Route::middleware(['auth', 'verified'])->prefix('students')->name('students.')->
     Route::get('/assessments', [DashboardStudentController::class, 'assessments'])->name('assessments');
     Route::get('/results', [DashboardStudentController::class, 'results'])->name('results');
 });
+
+Route::middleware(['auth', 'verified'])->prefix('teacher')->name('teacher.')->group(function () {
+
+    Route::get('/create-assessment', [DashboardTeacherController::class, 'create'])->name('create-assessment');
+    Route::get('/examine-assessment', [DashboardTeacherController::class, 'examine'])->name('examine-assessment');
+    Route::get('/review-assessment', [DashboardTeacherController::class, 'review'])->name('review-assessment');
+});
+
+
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
 //     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

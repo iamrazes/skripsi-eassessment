@@ -36,19 +36,19 @@
         </a>
 
         <div class="font-bold pt-3">TEACHER SECTION</div>
-        <a href="create-assessments.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_teacher_create.svg')}}">
+        <a href="{{route('teacher.create-assessment')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('teacher.create-assessment') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_teacher_create.svg')}}" class="{{ request()->routeIs('teacher.create-assessment') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Create Assessment</span>
         </a>
-        <a href="examine-assessments.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_teacher_examine.svg')}}">
+        <a href="{{route('teacher.examine-assessment')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('teacher.examine-assessment') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_teacher_examine.svg')}}" class="{{ request()->routeIs('teacher.examine-assessment') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Examine Assessment</span>
         </a>
-        <a href="review-assessments.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_teacher_review.svg')}}">
+        <a href="{{route('teacher.review-assessment')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('teacher.review-assessment') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_teacher_review.svg')}}" class="{{ request()->routeIs('teacher.review-assessment') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Review Assessment</span>
         </a>
 
