@@ -12,26 +12,26 @@
     <!-- Items -->
     <div class="py-3 px-5 space-y-5">
         <!-- Main -->
-        <a href="dashboard.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group text-white bg-gradient-to-r from-accent-1 to-accent-2">
-            <img src="{{asset('icons/ic_dashboard.svg')}}" class="filter-white">
+        <a href="{{route('dashboard')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('dashboard') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_dashboard.svg')}}" class="{{ request()->routeIs('dashboard') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Dashboard</span>
         </a>
-        <a href="profile.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_profile.svg')}}">
+        <a href="{{route('profile')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('profile') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_profile.svg')}}" class="{{ request()->routeIs('profile') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">My Profile</span>
         </a>
 
         <div class="font-bold pt-3">STUDENT SECTION</div>
-        <a href="assessment.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_student_assessment.svg')}}">
+        <a href="{{route('students.assessments')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('students.assessments') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_student_assessment.svg')}}" class="{{ request()->routeIs('students.assessments') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Assesments</span>
         </a>
-        <a href="results.html"
-            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out">
-            <img src="{{asset('icons/ic_student_results.svg')}}">
+        <a href="{{route('students.results')}}"
+            class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('students.results') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
+            <img src="{{asset('icons/ic_student_results.svg')}}" class="{{ request()->routeIs('students.results') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Results</span>
         </a>
 
