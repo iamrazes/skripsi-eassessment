@@ -1,8 +1,7 @@
-
 <nav class="flex justify-between">
     <nav class="flex ">
         <button class="block lg:hidden" id="sidebarButton" s>
-            <img src="{{asset('icons/ic_bars.svg')}}" alt="">
+            <img src="{{ asset('icons/ic_bars.svg') }}" alt="">
         </button>
         <!-- breadcrumb -->
         <div class="ml-6 lg:ml-0">
@@ -22,13 +21,18 @@
     <nav class="flex gap-x-6">
         <!-- close buttton -->
         <button id="closeSidebar" class="hidden lg:hidden">
-            <img src="{{asset('icons/ic_bars.svg')}}" alt="Close Sidebar">
+            <img src="{{ asset('icons/ic_bars.svg') }}" alt="Close Sidebar">
         </button>
-        <a href="#">
-            <img src="{{asset('icons/ic_notification.svg')}}" alt="">
+        <a>
+            <img src="{{ asset('icons/ic_notification.svg') }}" alt="">
         </a>
-        <a href="#">
-            <img src="{{asset('icons/ic_exit.svg')}}" alt="">
-        </a>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+            this.closest('form').submit();">
+                <img src="{{ asset('icons/ic_exit.svg') }}" alt="Logout" class="transition duration-300 ease-in-out transform hover:scale-110">
+            </a>
+        </form>
     </nav>
 </nav>
