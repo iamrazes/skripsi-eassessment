@@ -56,8 +56,8 @@
         <div class="relative">
             <button id="accordionButton"
                 class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group bg-white">
-                <div class="flex space-x-4"><img src="{{asset('icons/ic_profile.svg')}}">
-                    <span class="-mr-1 font-semibold">Admin Panel</span>
+                <div class="flex space-x-4"><img src="{{asset('icons/ic_database.svg')}}">
+                    <span class="-mr-1 font-semibold">Database</span>
                 </div>
                 <img src="{{asset('icons/ic_down.svg')}}" alt="" >
             </button>

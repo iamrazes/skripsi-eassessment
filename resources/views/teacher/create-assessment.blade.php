@@ -24,9 +24,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -52,9 +59,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -80,9 +94,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -108,9 +129,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -136,9 +164,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -164,9 +199,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -192,9 +234,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -220,9 +269,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                     </div>
                     <ul
                         class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                        <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                        <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                     </ul>
                     <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                         <!-- Add your dropdown div icon or text here -->
@@ -251,9 +307,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                         </div>
                         <ul
                             class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                         </ul>
                         <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                             <!-- Add your dropdown div icon or text here -->
@@ -279,9 +342,16 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
                         </div>
                         <ul
                             class="options hidden absolute top-full left-0 bg-white border rounded-lg shadow-button mt-1 w-full">
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">1</li>
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">2</li>
-                            <li class="option py-2 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">1</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">2</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">3</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">4</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">5</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">6</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">7</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">8</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">9</li>
+                            <li class="option py-4 px-4 cursor-pointer hover:bg-accent-3">10</li>
                         </ul>
                         <div class="absolute inset-y-0 right-0 px-4 flex items-center">
                             <!-- Add your dropdown div icon or text here -->
@@ -300,7 +370,7 @@ class="flex mt-8 bg-gradient-to-r from-accent-1 to-accent-2 shadow-button py-4 p
         <div class="flex flex-col gap-y-2">
             <span>Input:</span>
             <textarea type="text"
-                class="shadow-button border rounded-lg h-40 bg-white px-3 py-1"></textarea>
+                class="shadow-button border-gray-300 rounded-lg h-40 bg-white px-3 py-1"></textarea>
             <span class="-mt-1 text-sm text-gray-400">Lorem ipsum dolor sit amet.</span>
         </div>
     </div>

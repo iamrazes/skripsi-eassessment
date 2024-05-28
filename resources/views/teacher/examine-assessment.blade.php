@@ -35,7 +35,7 @@
                 <tbody class="bg-white divide-gray-200">
                     <tr class="bg-white divide-gray-200">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <img src="{{asset('icons/ic_stars.svg"')}} class="h-5 w-5 inline-block mr-2" alt="">
+                            <img src="{{asset('icons/ic_stars.svg')}}" class="h-5 w-5 inline-block mr-2" alt="">
                             Title
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">Subject</td>
@@ -46,7 +46,7 @@
                     </tr>
                     <tr class="bg-white divide-gray-200">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <img src="{{asset('icons/ic_stars.svg"')}} class="h-5 w-5 inline-block mr-2" alt="">
+                            <img src="{{asset('icons/ic_stars.svg')}}" class="h-5 w-5 inline-block mr-2" alt="">
                             Title
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">Subject</td>
@@ -57,7 +57,7 @@
                     </tr>
                     <tr class="bg-white divide-gray-200">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <img src="{{asset('icons/ic_stars.svg"')}} class="h-5 w-5 inline-block mr-2" alt="">
+                            <img src="{{asset('icons/ic_stars.svg')}}" class="h-5 w-5 inline-block mr-2" alt="">
                             Title
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">Subject</td>
@@ -68,7 +68,7 @@
                     </tr>
                     <tr class="bg-white divide-gray-200">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <img src="{{asset('icons/ic_stars.svg"')}} class="h-5 w-5 inline-block mr-2" alt="">
+                            <img src="{{asset('icons/ic_stars.svg')}}" class="h-5 w-5 inline-block mr-2" alt="">
                             Title
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">Subject</td>
@@ -79,7 +79,7 @@
                     </tr>
                     <tr class="bg-white divide-gray-200">
                         <td class="px-6 py-4 whitespace-nowrap">
-                            <img src="{{asset('icons/ic_stars.svg"')}} class="h-5 w-5 inline-block mr-2" alt="">
+                            <img src="{{asset('icons/ic_stars.svg')}}" class="h-5 w-5 inline-block mr-2" alt="">
                             Title
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap">Subject</td>
