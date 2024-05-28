@@ -30,7 +30,7 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
-            this.closest('form').submit();">
+            this.closest('form').submit();" class="">
                 <img src="{{ asset('icons/ic_exit.svg') }}" alt="Logout" class="transition duration-300 ease-in-out transform hover:scale-110">
             </a>
         </form>

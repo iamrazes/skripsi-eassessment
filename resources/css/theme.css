@@ -8,9 +8,8 @@
 }
 
 .filter-blue {
-    filter: invert(50%) sepia(54%) saturate(575%) hue-rotate(161deg) brightness(95%) contrast(101%);
+    filter: blue;
 }
-
 .filter-gray {
     filter: invert(197%) sepia(17%) saturate(253%) hue-rotate(174deg) brightness(100%) contrast(100%);
 }
