@@ -23,13 +23,16 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="flex flex-col gap-y-1 ">
-
-                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
-                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                        @error('user_id')
+                            <span class="text-sm text-red-500">{{ $message }}</span>
+                        @enderror
+                        @error('password')
+                            <span class="text-sm text-red-500">{{ $message }}</span>
+                        @enderror
                         <label for="" class="text-xs mt-2">Student/Teacher ID:</label>
                         <div class="flex bg-[#F2F2F2] rounded-lg">
                             <img src="{{ asset('icons/ic_id.svg') }}" class="px-4" alt="">
-                            <input name="email" type="text"
+                            <input name="user_id" type="text"
                                 class="bg-[#F2F2F2] rounded-r-lg min-w-max px-4 py-3 text-xs w-60 border-0">
                         </div>
                         <label for="" class="text-xs mt-2">Password:</label>

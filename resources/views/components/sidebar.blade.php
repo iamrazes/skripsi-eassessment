@@ -68,7 +68,7 @@
                 <button id="accordionButton1" data-target="accordionMenu1"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group bg-white">
                     <div class="flex space-x-4">
-                        <img src="{{ asset('icons/ic_database.svg') }}">
+                        <img src="{{ asset('icons/ic_database2.svg') }}">
                         <span class="-mr-1 font-semibold">Database</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}" alt="">
@@ -96,7 +96,7 @@
                 <button id="accordionButton2" data-target="accordionMenu2"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group bg-white">
                     <div class="flex space-x-4">
-                        <img src="{{ asset('icons/ic_gear2.svg') }}">
+                        <img src="{{ asset('icons/ic_gear.svg') }}">
                         <span class="-mr-1 font-semibold">System</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}" alt="">
@@ -104,15 +104,15 @@
                 <div id="accordionMenu2" class="hidden flex flex-col mt-4 space-y-4 bg-white w-full">
                     <a href="admin.html"
                         class="flex space-x-4 px-4 py-3 items-center hover:bg-[#ecf7ff] transition ease-in-out bg-white rounded-lg shadow-button  ">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}">
+                        <img src="{{ asset('icons/ic_users.svg') }}">
                         <span class="-mr-1 font-semibold">Users</span></a>
                     <a href="admin.html"
                         class="flex space-x-4 px-4 py-3 items-center hover:bg-[#ecf7ff] transition ease-in-out bg-white rounded-lg shadow-button  ">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}">
+                        <img src="{{ asset('icons/ic_user-gear.svg') }}">
                         <span class="-mr-1 font-semibold">Roles</span></a>
                     <a href="admin.html"
                         class="flex space-x-4 px-4 py-3 items-center hover:bg-[#ecf7ff] transition ease-in-out bg-white rounded-lg shadow-button  ">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}">
+                        <img src="{{ asset('icons/ic_user-lock.svg') }}">
                         <span class="-mr-1 font-semibold">Permission</span></a>
                 </div>
             </div>
