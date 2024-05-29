@@ -28,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('js', function ($path) {
             return "<script src=\"{{ asset($path) }}\"></script>";
         });
+
+
     }
 }

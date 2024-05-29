@@ -30,7 +30,7 @@
     </main>
 
     @js('js/sidebar.js')
-    @js('js/expand.js')
+    @js('js/sidebar-expand.js')
     @yield('script')
 </body>
 
