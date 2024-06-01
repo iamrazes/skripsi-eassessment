@@ -7,7 +7,7 @@
 @section('content')
 <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4">
     <div class="flex flex-col">
-        <h1 class="font-semibold px-6 pb-4 text-lg">Database - Users</h1>
+        <h1 class="font-semibold px-6 pb-4 text-lg">System - Users</h1>
         <div class="overflow-x-auto">
             <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
                 <thead class="bg-white">
@@ -23,7 +23,7 @@
 
                     @foreach($users as $index => $user)
                     <tr class="bg-white divide-gray-200">
-                        <td class="pl-6 py-4 whitespace-nowrap">{{ $index + 1 }}</td>
+                        <td class="pl-6 py-4 whitespace-nowrap numbering-cell"></td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->user_id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
@@ -46,7 +46,6 @@
 @endsection
 
 @section('script')
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const itemsPerPage = 10;

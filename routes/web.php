@@ -3,6 +3,8 @@
 use App\Http\Controllers\DashboardStudentController;
 use App\Http\Controllers\DashboardTeacherController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +46,8 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('permissions', PermissionController::class)->only(['index']);
 });
 
 // Route::middleware('auth')->group(function () {

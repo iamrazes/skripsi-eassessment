@@ -96,26 +96,32 @@
                 <button id="accordionButton2" data-target="accordionMenu2"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group {{ request()->is('admin/*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
-                        <img src="{{ asset('icons/ic_gear.svg') }}" class="{{ request()->is('admin/*') ? 'filter-white' : '' }}">
+                        <img src="{{ asset('icons/ic_gear.svg') }}"
+                            class="{{ request()->is('admin/*') ? 'filter-white' : '' }}">
                         <span class="-mr-1 font-semibold">System</span>
                     </div>
-                    <img src="{{ asset('icons/ic_down.svg') }}" class="{{ request()->is('admin/*') ? 'filter-white' : '' }}">
+                    <img src="{{ asset('icons/ic_down.svg') }}"
+                        class="{{ request()->is('admin/*') ? 'filter-white' : '' }}">
                 </button>
                 <div id="accordionMenu2"
-                    class="{{ request()->is('admin/users*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+                    class="{{ request()->is('admin/*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
                     <a href="{{ route('admin.users.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/users*') ? ' bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff]  transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_users.svg') }}" class="{{ request()->is('admin/users*') ? 'filter-white' : '' }} pl-8 ">
+                        <img src="{{ asset('icons/ic_users.svg') }}"
+                            class="{{ request()->is('admin/users*') ? 'filter-white' : '' }} pl-8 ">
                         <span class="-mr-1 font-semibold">Users</span>
                     </a>
-                    <a href="admin.html"
-                        class="flex space-x-4 px-4 py-3 items-center hover:bg-[#ecf7ff] transition ease-in-out bg-white rounded-lg shadow-button  ">
-                        <img src="{{ asset('icons/ic_user-gear.svg') }}" class="pl-8 ">
+                    <a href="{{ route('admin.roles.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/roles*') ? ' bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff]  transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_user-gear.svg') }}"
+                            class="{{ request()->is('admin/roles*') ? 'filter-white' : '' }} pl-8 ">
                         <span class="-mr-1 font-semibold">Roles</span></a>
-                    <a href="admin.html"
-                        class="flex space-x-4 px-4 py-3 items-center hover:bg-[#ecf7ff] transition ease-in-out bg-white rounded-lg shadow-button  ">
-                        <img src="{{ asset('icons/ic_user-lock.svg') }}" class="pl-8 ">
-                        <span class="-mr-1 font-semibold">Permission</span></a>
+                    <a href="{{ route('admin.permissions.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/permissions*') ? ' bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_user-lock.svg') }}"
+                            class="{{ request()->is('admin/permissions*') ? 'filter-white' : '' }} pl-8 ">
+                        <span class="-mr-1 font-semibold">Permissions</span>
+                    </a>
                 </div>
             </div>
         @endif
