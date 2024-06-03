@@ -82,9 +82,15 @@
                     class="{{ request()->is('admin/data-admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
                     <a href="{{ route('admin.data-admins.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-admins*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}"
+                        <img src="{{ asset('icons/ic_admin.svg') }}"
                             class="{{ request()->is('admin/data-admins*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Admin</span>
+                    </a>
+                    <a href="{{ route('admin.data-admins.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-admins*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_teacher.svg') }}"
+                            class="{{ request()->is('admin/data-admins*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Teacher</span>
                     </a>
                     {{-- <a href="{{ route('admin.teachers.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/teacher*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">

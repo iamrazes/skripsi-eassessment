@@ -5,10 +5,17 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
     <div class="mt-8">
         <a href="{{ route('admin.data-admins.create') }}"
-            class="flex max-w-max justify-center align-middle bg-green-500 text-center hover:bg-green-700 py-3 px-4 rounded-lg transition ease-linear shadow gap-x-3"><img
-                src="{{ asset('icons/ic_create-assessment.svg') }}" alt=""><span class="text-xl text-white font-semibold ">New Admin</span></a>
+            class="flex max-w-max justify-center align-middle bg-green-500 text-center hover:bg-green-700 py-3 px-4 rounded-lg transition ease-linear shadow gap-x-2"><img
+                src="{{ asset('icons/ic_create-assessment.svg') }}" alt="" class="w-6 h-6"><span
+                class="text-white font-semibold ">New Admin</span></a>
     </div>
     <div class="mt-4 bg-white shadow-button rounded-lg pb-8 pt-4">
         <div class="flex flex-col">
@@ -81,7 +88,7 @@
                     if (index >= start && index < end) {
                         row.style.display = '';
                         numberingCell.textContent = (index + 1) +
-                        "."; // Add a period at the end of the number
+                            "."; // Add a period at the end of the number
                     } else {
                         row.style.display = 'none';
                     }

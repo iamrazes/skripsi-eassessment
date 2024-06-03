@@ -69,7 +69,7 @@ class DataAdminController extends Controller
             'nip' => $request->nip,
         ]);
 
-        return redirect()->route('admin.data-admins.index')->with('success', 'User and Data Admin created successfully.');
+        return redirect()->route('admin.data-admins.index')->with('success', 'Admin created successfully.');
     }
 
 

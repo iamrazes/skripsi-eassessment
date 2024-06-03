@@ -18,7 +18,7 @@ class PermissionSeeder extends Seeder
         Permission::create(['name' => 'student-access']);
 
         $actions = ['create', 'read', 'update', 'delete'];
-        $entities = ['permissions', 'roles', 'users'];
+        $entities = ['permissions', 'roles', 'users', 'admins'];
 
         foreach ($entities as $entity) {
             foreach ($actions as $action) {
