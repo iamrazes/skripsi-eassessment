@@ -13,26 +13,24 @@
                 <thead class="bg-white">
                     <tr>
                         <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">User ID</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Name</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Username</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Email</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Role</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-
                     @foreach($users as $index => $user)
                     <tr class="bg-white divide-gray-200">
                         <td class="pl-6 py-4 whitespace-nowrap numbering-cell"></td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $user->user_id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap">{{ $user->username }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{ $user->roles->pluck('name')->implode(', ') }}
                         </td>
                     </tr>
                     @endforeach
-
 
                 </tbody>
             </table>

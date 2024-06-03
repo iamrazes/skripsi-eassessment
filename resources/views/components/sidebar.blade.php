@@ -65,28 +65,28 @@
 
         @if (auth()->user()->hasPermissionTo('admin-access'))
             <div class="font-bold pt-3">ADMIN SECTION</div>
-            {{-- <div class="relative">
+            <div class="relative">
                 <button id="accordionButton1" data-target="accordionMenu1"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
-                {{ request()->is('admin/admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                {{ request()->is('admin/data-admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_database2.svg') }}"
-                            class="{{ request()->is('admin/admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'filter-white' : '' }}"
+                            class="{{ request()->is('admin/data-admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
                         <span class="-mr-1 font-semibold">Database</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
-                        class="{{ request()->is('admin/admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'filter-white' : '' }}">
+                        class="{{ request()->is('admin/data-admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'filter-white' : '' }}">
                 </button>
                 <div id="accordionMenu1"
-                    class="{{ request()->is('admin/admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
-                    <a href="{{ route('admin.admins.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/admin*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                    class="{{ request()->is('admin/data-admins*') || request()->is('admin/teachers*') || request()->is('admin/students*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+                    <a href="{{ route('admin.data-admins.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-admins*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                            class="{{ request()->is('admin/admin*') ? 'filter-white' : '' }} pl-8">
+                            class="{{ request()->is('admin/data-admins*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Admin</span>
                     </a>
-                    <a href="{{ route('admin.teachers.index') }}"
+                    {{-- <a href="{{ route('admin.teachers.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/teacher*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_dashboard.svg') }}"
                             class="{{ request()->is('admin/teacher*') ? 'filter-white' : '' }} pl-8">
@@ -109,9 +109,9 @@
                         <img src="{{ asset('icons/ic_dashboard.svg') }}"
                             class="{{ request()->is('admin/classrooms*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Classroom</span>
-                    </a>
+                    </a> --}}
                 </div>
-            </div> --}}
+            </div>
             <div class="relative">
                 <button id="accordionButton2" data-target="accordionMenu2"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
