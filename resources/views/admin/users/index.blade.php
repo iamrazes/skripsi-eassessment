@@ -45,6 +45,7 @@
 </div>
 @endsection
 
+
 @section('script')
 <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -62,7 +63,7 @@
                 const numberingCell = row.querySelector('.numbering-cell');
                 if (index >= start && index < end) {
                     row.style.display = '';
-                    numberingCell.textContent = index + 1; // Correct the row number
+                    numberingCell.textContent = (index + 1) + "."; // Add a period at the end of the number
                 } else {
                     row.style.display = 'none';
                 }

@@ -13,7 +13,6 @@
                 <thead class="bg-white">
                     <tr>
                         <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Permission ID</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Name</th>
                     </tr>
                 </thead>
@@ -21,7 +20,6 @@
                     @foreach($permissions as $index => $permission)
                     <tr class="bg-white divide-gray-200">
                         <td class="pl-6 py-4 whitespace-nowrap numbering-cell"></td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $permission->id }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $permission->name }}</td>
                     </tr>
                     @endforeach
@@ -35,6 +33,7 @@
     </div>
 </div>
 @endsection
+
 
 @section('script')
 <script>
@@ -53,7 +52,7 @@
                 const numberingCell = row.querySelector('.numbering-cell');
                 if (index >= start && index < end) {
                     row.style.display = '';
-                    numberingCell.textContent = index + 1; // Correct the row number
+                    numberingCell.textContent = (index + 1) + "."; // Add a period at the end of the number
                 } else {
                     row.style.display = 'none';
                 }

@@ -363,5 +363,64 @@
     @endif
 @endsection
 
+
 @section('script')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const itemsPerPage = 10;
+        let currentPage = 1;
+
+        const table = document.getElementById('resultsTable');
+        const rows = Array.from(table.querySelectorAll('tbody tr'));
+        const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+        function renderTable(page) {
+            const start = (page - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            rows.forEach((row, index) => {
+                const numberingCell = row.querySelector('.numbering-cell');
+                if (index >= start && index < end) {
+                    row.style.display = '';
+                    numberingCell.textContent = (index + 1) + "."; // Add a period at the end of the number
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        function renderPaginationButtons() {
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = '';
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement('button');
+                button.className = `pagination-button ${i === currentPage ? 'bg-accent-1' : 'bg-accent-3'} w-8 h-8 rounded text-white font-semibold`;
+                button.innerText = i;
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    renderTable(currentPage);
+                    updatePaginationButtons();
+                });
+                paginationContainer.appendChild(button);
+            }
+        }
+
+        function updatePaginationButtons() {
+            const paginationButtons = document.querySelectorAll('.pagination-button');
+            paginationButtons.forEach(button => {
+                if (parseInt(button.innerText) === currentPage) {
+                    button.classList.remove('bg-accent-3');
+                    button.classList.add('bg-accent-1');
+                } else {
+                    button.classList.remove('bg-accent-1');
+                    button.classList.add('bg-accent-3');
+                }
+            });
+        }
+
+        renderTable(currentPage);
+        renderPaginationButtons();
+    });
+
+</script>
 @endsection
