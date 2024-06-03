@@ -9,10 +9,22 @@ use App\Models\User;
 
 class DataAdmin extends Model
 {
-    protected $fillable = ['contact', 'address', 'nuptk', 'nip'];
+
+    protected $fillable = [
+        'user_id', 'contact', 'address', 'nuptk', 'nip'
+    ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($dataAdmin) {
+            $dataAdmin->user()->delete();
+        });
     }
 }

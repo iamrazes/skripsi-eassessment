@@ -10,7 +10,7 @@
             class="flex max-w-max justify-center align-middle bg-green-500 text-center hover:bg-green-700 py-3 px-4 rounded-lg transition ease-linear shadow gap-x-3"><img
                 src="{{ asset('icons/ic_create-assessment.svg') }}" alt=""><span class="text-xl text-white font-semibold ">New Admin</span></a>
     </div>
-    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4">
+    <div class="mt-4 bg-white shadow-button rounded-lg pb-8 pt-4">
         <div class="flex flex-col">
             <h1 class="font-semibold px-6 pb-4 text-lg">Database - Data Admins</h1>
             <div class="overflow-auto">
@@ -23,7 +23,6 @@
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Username</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Contact</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">NUPTK</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">NIP</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -37,8 +36,9 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->user->username }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->contact }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->nuptk }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->nip }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
+                                    <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
+                                        class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded">Preview</a>
                                     <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Edit</a>
                                     <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
