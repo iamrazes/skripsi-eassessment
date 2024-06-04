@@ -103,36 +103,40 @@ class DataAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $dataAdmin = DataAdmin::findOrFail($id);
-        $user = $dataAdmin->user;
+    $dataAdmin = DataAdmin::findOrFail($id);
+    $user = $dataAdmin->user;
 
-        $validatedData = $request->validate([
-            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
-            'contact' => 'required|string|max:255',
-            'address' => 'nullable|string|max:255',
-            'nuptk' => 'required|string|max:255',
-            'nip' => 'required|string|max:255',
-        ]);
+    $validatedData = $request->validate([
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'password' => 'nullable|string|min:8|confirmed',
+        'contact' => 'required|string|max:255',
+        'address' => 'nullable|string|max:255',
+        'nuptk' => 'required|string|max:255',
+        'nip' => 'required|string|max:255',
+    ]);
 
-        // Update the user
-        $user->update([
-            'username' => $validatedData['username'],
-            'name' => $validatedData['name'],
-            'email' => $validatedData['email'],
-        ]);
+    // Update the user
+    $user->update([
+        'username' => $validatedData['username'],
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+    ]);
 
-        // Update the DataAdmin
-        $dataAdmin->update([
-            'contact' => $validatedData['contact'],
-            'address' => $validatedData['address'],
-            'nuptk' => $validatedData['nuptk'],
-            'nip' => $validatedData['nip'],
-        ]);
+    if ($request->filled('password')) {
+        $user->update(['password' => Hash::make($validatedData['password'])]);
+    }
 
-        return redirect()->route('admin.data-admins.index')->with('success', 'Admin updated successfully.');
+    // Update the DataAdmin
+    $dataAdmin->update([
+        'contact' => $validatedData['contact'],
+        'address' => $validatedData['address'],
+        'nuptk' => $validatedData['nuptk'],
+        'nip' => $validatedData['nip'],
+    ]);
 
+    return redirect()->route('admin.data-admins.index')->with('success', 'Admin updated successfully.');
     }
 
     /**

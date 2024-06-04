@@ -47,6 +47,19 @@
             </div>
 
             <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <div class="relative">
+                    <input type="password" name="password" id="password" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+                    <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 px-3 py-2 focus:outline-none">Show</button>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input type="password" name="password_confirmation" id="password_confirmation" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
+            </div>
+
+            <div class="mb-4">
                 <label for="contact" class="block text-sm font-medium text-gray-700">Contact</label>
                 <input type="text" name="contact" id="contact" value="{{ old('contact', $dataAdmin->contact) }}" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm">
             </div>
@@ -77,4 +90,13 @@
 @endsection
 
 @section('script')
+
+<script>
+    document.getElementById('togglePassword').addEventListener('click', function (e) {
+        const passwordInput = document.getElementById('password');
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.textContent = type === 'password' ? 'Show' : 'Hide';
+    });
+</script>
 @endsection
