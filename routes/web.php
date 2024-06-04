@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\DataAdminController;
+use App\Http\Controllers\DataTeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,7 @@ Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')
     Route::resource('roles', RoleController::class);
     Route::resource('permissions', PermissionController::class)->only(['index']);
     Route::resource('data-admins', DataAdminController::class);
+    Route::resource('data-teachers', DataTeacherController::class);
 });
 
 // Route::middleware('auth')->group(function () {
