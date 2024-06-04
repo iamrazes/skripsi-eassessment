@@ -89,17 +89,50 @@ class DataAdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataAdmin $dataAdmin)
+
+    public function edit($id)
     {
-        //
+        $dataAdmin = DataAdmin::findOrFail($id);
+        $user = $dataAdmin->user;
+
+        return view('admin.data-admins.edit', compact('dataAdmin', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataAdmin $dataAdmin)
+    public function update(Request $request, $id)
     {
-        //
+        $dataAdmin = DataAdmin::findOrFail($id);
+        $user = $dataAdmin->user;
+
+        $validatedData = $request->validate([
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'contact' => 'required|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'nuptk' => 'required|string|max:255',
+            'nip' => 'required|string|max:255',
+        ]);
+
+        // Update the user
+        $user->update([
+            'username' => $validatedData['username'],
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+        ]);
+
+        // Update the DataAdmin
+        $dataAdmin->update([
+            'contact' => $validatedData['contact'],
+            'address' => $validatedData['address'],
+            'nuptk' => $validatedData['nuptk'],
+            'nip' => $validatedData['nip'],
+        ]);
+
+        return redirect()->route('admin.data-admins.index')->with('success', 'Admin updated successfully.');
+
     }
 
     /**
