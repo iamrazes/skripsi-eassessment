@@ -33,12 +33,8 @@
                             <td class="px-6 py-2 whitespace-nowrap">{{ $admin->address }}</td>
                         </tr>
                         <tr class="flex justify-between">
-                            <td class="px-6 py-2 whitespace-nowrap font-medium">NUPTK</td>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $admin->nuptk }}</td>
-                        </tr>
-                        <tr class="flex justify-between">
-                            <td class="px-6 py-2 whitespace-nowrap font-medium">NIP</td>
-                            <td class="px-6 py-2 whitespace-nowrap">{{ $admin->nip }}</td>
+                            <td class="px-6 py-2 whitespace-nowrap font-medium">Teacher ID</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $admin->teacher_id }}</td>
                         </tr>
                     </tbody>
                 </table>

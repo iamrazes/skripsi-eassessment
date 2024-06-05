@@ -41,8 +41,7 @@ class DataAdminController extends Controller
             'password' => 'required|string|min:8|confirmed',
             'contact' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
-            'nuptk' => 'nullable|string|max:255',
-            'nip' => 'nullable|string|max:255',
+            'teacher_id' => 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -65,8 +64,7 @@ class DataAdminController extends Controller
             'user_id' => $user->id,
             'contact' => $request->contact,
             'address' => $request->address,
-            'nuptk' => $request->nuptk,
-            'nip' => $request->nip,
+            'teacher_id' => $request->teacher_id,
         ]);
 
         return redirect()->route('admin.data-admins.index')->with('success', 'Admin created successfully.');
@@ -113,8 +111,7 @@ class DataAdminController extends Controller
         'password' => 'nullable|string|min:8|confirmed',
         'contact' => 'required|string|max:255',
         'address' => 'nullable|string|max:255',
-        'nuptk' => 'required|string|max:255',
-        'nip' => 'required|string|max:255',
+        'teacher_id' => 'required|string|max:255',
     ]);
 
     // Update the user
@@ -132,8 +129,7 @@ class DataAdminController extends Controller
     $dataAdmin->update([
         'contact' => $validatedData['contact'],
         'address' => $validatedData['address'],
-        'nuptk' => $validatedData['nuptk'],
-        'nip' => $validatedData['nip'],
+        'teacher_id' => $validatedData['teacher_id'],
     ]);
 
     return redirect()->route('admin.data-admins.index')->with('success', 'Admin updated successfully.');

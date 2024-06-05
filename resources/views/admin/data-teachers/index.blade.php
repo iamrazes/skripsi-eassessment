@@ -28,8 +28,7 @@
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Name</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Email</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Username</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Contact</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">NUPTK</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Teacher ID</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -41,8 +40,7 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->user->name }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->user->email }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->user->username }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->contact }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->nuptk }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataTeacher->teacher_id }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <a href="{{ route('admin.data-teachers.show', $dataTeacher->id) }}"
                                         class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded">Preview</a>

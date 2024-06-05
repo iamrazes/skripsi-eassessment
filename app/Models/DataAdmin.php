@@ -3,15 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
 class DataAdmin extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
-        'user_id', 'contact', 'address', 'nuptk', 'nip'
+        'user_id', 'contact', 'address', 'teacher_id'
     ];
 
     public function user()
