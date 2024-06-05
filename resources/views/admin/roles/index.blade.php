@@ -22,7 +22,7 @@
                     @foreach($roles as $index => $role)
                     <tr class="bg-white divide-gray-200">
                         <td class="pl-6 py-4 whitespace-nowrap numbering-cell"></td>
-                        <td class="px-6 py-4 whitespace-nowrap">{{ $role->name }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap capitalize">{{ $role->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{ $role->permissions->pluck('name')->implode(', ') }}
                         </td>

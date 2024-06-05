@@ -26,7 +26,7 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->username }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $user->email }}</td>
-                        <td class="px-6 py-4 whitespace-nowrap">
+                        <td class="px-6 py-4 whitespace-nowrap capitalize">
                             {{ $user->roles->pluck('name')->implode(', ') }}
                         </td>
                     </tr>

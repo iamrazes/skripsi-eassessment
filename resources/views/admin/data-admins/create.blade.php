@@ -77,8 +77,8 @@
                 <div class="flex flex-col w-full ">
 
                     <div class="mb-4">
-                        <label for="teacher_id" class="block text-sm font-medium text-gray-700">Teacher ID</label>
-                        <input type="text" name="teacher_id" id="teacher_id" value="{{ old('teacher_id') }}"
+                        <label for="admin_id" class="block text-sm font-medium text-gray-700">Admin ID</label>
+                        <input type="text" name="admin_id" id="admin_id" value="{{ old('admin_id') }}"
                             class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
 

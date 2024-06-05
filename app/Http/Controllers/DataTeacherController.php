@@ -44,7 +44,7 @@ class DataTeacherController extends Controller
         'password' => 'required|string|confirmed',
         'contact' => 'nullable|string',
         'address' => 'nullable|string',
-        'teacher_id' => 'nullable|string',
+        'nuptk' => 'nullable|string',
         'nip' => 'nullable|string',
     ]);
 
@@ -64,7 +64,7 @@ class DataTeacherController extends Controller
         'user_id' => $user->id,
         'contact' => $request->contact,
         'address' => $request->address,
-        'teacher_id' => $request->teacher_id,
+        'nuptk' => $request->nuptk,
         'nip' => $request->nip,
     ]);
 
@@ -91,25 +91,68 @@ class DataTeacherController extends Controller
 
     public function edit($id)
     {
-        $dataAdmin = DataAdmin::findOrFail($id);
-        $user = $dataAdmin->user;
+        $dataTeacher = DataTeacher::findOrFail($id);
+        $user = $dataTeacher->user;
 
-        return view('admin.data-admins.edit', compact('dataAdmin', 'user'));
+        return view('admin.data-teachers.edit', compact('dataTeacher', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+    $dataTeacher = DataTeacher::findOrFail($id);
+    $user = $dataTeacher->user;
+
+    $validatedData = $request->validate([
+        'username' => 'required|string|max:255|unique:users,username,' . $user->id,
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'password' => 'nullable|string|min:8|confirmed',
+        'contact' => 'nullable|string|max:255',
+        'address' => 'nullable|string|max:255',
+        'teacher_id' => 'nullable|string|max:255',
+    ]);
+
+    // Update the user
+    $user->update([
+        'username' => $validatedData['username'],
+        'name' => $validatedData['name'],
+        'email' => $validatedData['email'],
+    ]);
+
+    if ($request->filled('password')) {
+        $user->update(['password' => Hash::make($validatedData['password'])]);
+    }
+
+    // Update the dataTeacher
+    $dataTeacher->update([
+        'contact' => $validatedData['contact'],
+        'address' => $validatedData['address'],
+        'teacher_id' => $validatedData['teacher_id'],
+    ]);
+
+    return redirect()->route('admin.data-teachers.index')->with('success', 'Teacher updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+
+     public function destroy($id)
+     {
+         $teacher = DataTeacher::findOrFail($id);
+
+         // Optionally, delete the associated user
+         $user = User::find($teacher->user_id);
+         if ($user) {
+             $user->delete();
+         }
+
+         // Delete the teacher record
+         $teacher->delete();
+
+         return redirect()->route('admin.data-teachers.index')->with('success', 'Teacher deleted successfully.');
+     }
 }

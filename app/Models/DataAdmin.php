@@ -11,7 +11,7 @@ class DataAdmin extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'contact', 'address', 'teacher_id'
+        'user_id', 'contact', 'address', 'admin_id'
     ];
 
     public function user()
