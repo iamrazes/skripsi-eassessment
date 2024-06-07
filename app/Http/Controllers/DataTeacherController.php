@@ -40,7 +40,7 @@ class DataTeacherController extends Controller
     $request->validate([
         'username' => 'required|string|unique:users',
         'name' => 'required|string',
-        'email' => 'required|string|email|unique:users',
+        'email' => 'nullable|string|email|unique:users',
         'password' => 'required|string|confirmed',
         'contact' => 'nullable|string',
         'address' => 'nullable|string',
@@ -108,7 +108,7 @@ class DataTeacherController extends Controller
     $validatedData = $request->validate([
         'username' => 'required|string|max:255|unique:users,username,' . $user->id,
         'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
         'password' => 'nullable|string|min:8|confirmed',
         'contact' => 'nullable|string|max:255',
         'address' => 'nullable|string|max:255',

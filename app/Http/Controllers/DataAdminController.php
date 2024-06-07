@@ -37,7 +37,7 @@ class DataAdminController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:255|unique:users',
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'contact' => 'nullable|string|max:255',
             'address' => 'nullable|string|max:255',
@@ -107,7 +107,7 @@ class DataAdminController extends Controller
     $validatedData = $request->validate([
         'username' => 'required|string|max:255|unique:users,username,' . $user->id,
         'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+        'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
         'password' => 'nullable|string|min:8|confirmed',
         'contact' => 'nullable|string|max:255',
         'address' => 'nullable|string|max:255',

@@ -19,47 +19,45 @@
     </div>
     <div class="mt-4 bg-white shadow-button rounded-lg pb-8 pt-4">
         <div class="flex flex-col">
-            <h1 class="font-semibold px-6 pb-4 text-lg">Database - Data Admins</h1>
-            <div class="overflow-auto">
-                <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
-                    <thead class="bg-white">
-                        <tr>
-                            <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Name</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Email</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Username</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Admin ID</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Actions</th>
+            <h1 class="font-semibold px-6 pb-4 text-lg">Data Admins</h1>
+            <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
+                <thead class="bg-white">
+                    <tr>
+                        <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Email</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Admin ID</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+
+                    @foreach ($dataAdmins as $index => $dataAdmin)
+                        <tr class="bg-white divide-gray-200">
+                            <td class="pl-6 py-4 numbering-cell"></td>
+                            <td class="px-6 py-4">{{ $dataAdmin->user->name }}</td>
+                            <td class="px-6 py-4">{{ $dataAdmin->user->email }}</td>
+                            <td class="px-6 py-4">{{ $dataAdmin->user->username }}</td>
+                            <td class="px-6 py-4">{{ $dataAdmin->admin_id }}</td>
+                            <td class="px-6 py-4">
+                                <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
+                                    class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded">Preview</a>
+                                <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
+                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Edit</a>
+                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Delete</button>
+                                </form>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    @endforeach
 
-                        @foreach ($dataAdmins as $index => $dataAdmin)
-                            <tr class="bg-white divide-gray-200">
-                                <td class="pl-6 py-4 whitespace-nowrap numbering-cell"></td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->user->name }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->user->email }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->user->username }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">{{ $dataAdmin->admin_id }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap">
-                                    <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
-                                        class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded">Preview</a>
-                                    <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Edit</a>
-                                    <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
-                                        class="inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
+                </tbody>
+            </table>
             <!-- Pagination buttons -->
             <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1 text-textColor">
             </div>

@@ -298,6 +298,7 @@
             </div>
         </div>
     @endif
+
     @if (auth()->user()->hasPermissionTo('teacher-access'))
         <!-- Admin Dashboard -->
         <div class="grid grid-cols-2 lg:grid-cols-4 mt-8 gap-4 lg:gap-x-8">
