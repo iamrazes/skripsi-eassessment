@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardStudentController;
 use App\Http\Controllers\DashboardTeacherController;
 use App\Http\Controllers\UserController;
@@ -30,9 +31,9 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware(['auth'])->name('profile');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+});
 
 
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {

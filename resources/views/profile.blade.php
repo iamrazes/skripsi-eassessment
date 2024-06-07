@@ -12,7 +12,7 @@
             </div>
             <div class="flex items-start -mt-24 gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
                 <div class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0">
-                    <img src="{{ asset('images/img_dashboard_maleStudent.png') }}" class="w-full h-full" alt="">
+                    <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-full h-full" alt="Student Image">
                 </div>
                 <div class="flex flex-col text-white pt-3">
                     <h1 class="text-3xl font-semibold line-clamp-1 text-start overflow-clip uppercase">{{ auth()->user()->name }}</h1>

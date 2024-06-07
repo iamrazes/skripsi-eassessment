@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataStudent;
 use App\Models\User;
+use App\Models\DataStudent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class DataStudentController extends Controller
 {
@@ -39,6 +40,8 @@ class DataStudentController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        $user->assignRole('student');
 
         DataStudent::create([
             'user_id' => $user->id,
