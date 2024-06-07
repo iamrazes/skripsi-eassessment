@@ -20,6 +20,10 @@
                             <td class="px-6 py-2 whitespace-nowrap">{{ $student->user->name }}</td>
                         </tr>
                         <tr class="flex justify-between">
+                            <td class="px-6 py-2 whitespace-nowrap font-medium">Classroom</td>
+                            <td class="px-6 py-2 whitespace-nowrap">{{ $student->classroom->name }}</td>
+                        </tr>
+                        <tr class="flex justify-between">
                             <td class="px-6 py-2 whitespace-nowrap font-medium">Email</td>
                             <td class="px-6 py-2 whitespace-nowrap">{{ $student->user->email }}</td>
                         </tr>
