@@ -42,15 +42,14 @@
                             <td class="px-6 py-4">{{ $dataAdmin->admin_id }}</td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
-                                    class="bg-slate-500 hover:bg-slate-700 text-white font-bold py-1 px-2 rounded">Preview</a>
+                                    class="text-gray-500 hover:text-gray-600">Preview</a>
                                 <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
-                                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded">Edit</a>
-                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
-                                    class="inline">
+                                    class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
+                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}"
+                                    method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit"
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">Delete</button>
+                                    <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
                                 </form>
                             </td>
                         </tr>

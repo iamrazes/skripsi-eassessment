@@ -36,12 +36,12 @@
                         <td class="px-6 py-4">{{ $dataStudent->user->username }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->user->name }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->user->email }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->gender }}</td>
+                        <td class="px-6 py-4 capitalize">{{ $dataStudent->gender }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->birthdate }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->student_id }}</td>
                         <td class="px-6 py-4">
                             <a href="{{ route('admin.data-students.show', $dataStudent->id) }}"
-                                class="text-gray-400 hover:text-gray-600">Preview</a>
+                                class="text-gray-500 hover:text-gray-600">Preview</a>
                             <a href="{{ route('admin.data-students.edit', $dataStudent->id) }}"
                                 class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
                             <form action="{{ route('admin.data-students.destroy', $dataStudent->id) }}" method="POST"

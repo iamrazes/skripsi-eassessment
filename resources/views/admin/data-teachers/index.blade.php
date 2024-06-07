@@ -42,7 +42,7 @@
                             <td class="px-6 py-4">{{ $dataTeacher->teacher_id }}</td>
                             <td class="px-6 py-4">
                                 <a href="{{ route('admin.data-teachers.show', $dataTeacher->id) }}"
-                                    class="text-gray-400 hover:text-gray-600">Preview</a>
+                                    class="text-gray-500 hover:text-gray-600">Preview</a>
                                 <a href="{{ route('admin.data-teachers.edit', $dataTeacher->id) }}"
                                     class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
                                 <form action="{{ route('admin.data-teachers.destroy', $dataTeacher->id) }}"
