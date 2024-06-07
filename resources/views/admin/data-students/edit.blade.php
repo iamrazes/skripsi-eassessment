@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('title')
+    <title>Student Database - {{ config('app.name') }}</title>
+@endsection
+
 @section('content')
     @if ($errors->any())
         <div class="mt-8 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">

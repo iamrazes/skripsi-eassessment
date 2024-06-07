@@ -98,6 +98,12 @@
                             class="{{ request()->is('admin/data-students*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Student</span>
                     </a>
+                    <a href="{{ route('admin.classrooms.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/classrooms*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_student.svg') }}"
+                            class="{{ request()->is('admin/classrooms*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Classroom</span>
+                    </a>
                     {{-- <a href="{{ route('admin.teachers.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/teacher*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_dashboard.svg') }}"

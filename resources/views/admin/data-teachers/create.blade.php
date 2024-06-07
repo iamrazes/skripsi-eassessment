@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
+    <title>Teacher Database - {{ config('app.name') }}</title>
 @endsection
 
 @section('content')

@@ -1,58 +1,46 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    <title>Student Database - {{ config('app.name') }}</title>
+    <title>Classrooms - {{ config('app.name') }}</title>
 @endsection
 
 @section('content')
-    @if (session('success'))
-        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
+
+
+<div class="mt-8 shadow-button bg-white px-6 rounded-lg pt-4 pb-6">
+    <label for="name" class="block text-md font-medium text-gray-700">Classroom Name</label>
+    <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
+        @csrf
+        <div class="flex-1">
+            <input type="text" name="name" id="name" value="{{ old('name') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
         </div>
-    @endif
-    <div class="mt-8">
-        <a href="{{ route('admin.data-students.create') }}"
-            class="flex max-w-max justify-center align-middle bg-green-500 text-center hover:bg-green-700 py-3 px-4 rounded-lg transition ease-linear shadow gap-x-2"><img
-                src="{{ asset('icons/ic_create-assessment.svg') }}" alt="" class="w-6 h-6"><span
-                class="text-white font-semibold ">New Student</span></a>
-    </div>
-    <div class="mt-4 bg-white shadow-button rounded-lg pb-8 pt-4">
-        <h1 class="font-semibold px-6 pb-4 text-lg">Data Students</h1>
+        <div class="flex-shrink-0">
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create Classroom</button>
+        </div>
+    </form>
+</div>
+
+    <div class="mt-6 bg-white shadow-button rounded-lg pb-8 pt-4">
+        <h1 class="font-semibold px-6 pb-4 text-lg">Classrooms</h1>
 
         <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="resultsTable">
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Email</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Gender</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Birthdate</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Student ID</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Actions</th>
+                    <th scope="col" class="px-6 py-3 text-right font-medium">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($dataStudents as $index => $dataStudent)
+                @foreach ($classrooms as $index => $classroom)
                     <tr>
                         <td class="pl-6 py-4 numbering-cell"></td>
-                        <td class="px-6 py-4">{{ $dataStudent->user->username }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->user->name }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->user->email }}</td>
-                        <td class="px-6 py-4 capitalize">{{ $dataStudent->gender }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->birthdate }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->student_id }}</td>
-                        <td class="px-6 py-4">
-                            <a href="{{ route('admin.data-students.show', $dataStudent->id) }}"
-                                class="text-gray-500 hover:text-gray-600">Preview</a>
-                            <a href="{{ route('admin.data-students.edit', $dataStudent->id) }}"
-                                class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
-                            <form action="{{ route('admin.data-students.destroy', $dataStudent->id) }}" method="POST"
-                                class="inline">
+                        <td class="px-6 py-4">{{ $classroom->name }}</td>
+                        <td class="px-6 py-4 text-right">
+                            <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                <button type="submit" class="filter-red"><img src="{{asset('icons/ic_trashbin.svg')}}" class="filter-red"></button>
                             </form>
                         </td>
                     </tr>
@@ -82,8 +70,7 @@
                     const numberingCell = row.querySelector('.numbering-cell');
                     if (index >= start && index < end) {
                         row.style.display = '';
-                        numberingCell.textContent = (index + 1) +
-                            "."; // Add a period at the end of the number
+                        numberingCell.textContent = (index + 1) + "."; // Add a period at the end of the number
                     } else {
                         row.style.display = 'none';
                     }
