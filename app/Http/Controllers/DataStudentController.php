@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\DataStudent;
+use App\Models\Classroom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -19,7 +20,8 @@ class DataStudentController extends Controller
 
     public function create()
     {
-        return view('admin.data-students.create');
+        $classrooms = Classroom::all(); // Fetch all classrooms
+        return view('admin.data-students.create', compact('classrooms'));
     }
 
     public function store(Request $request)
@@ -32,6 +34,7 @@ class DataStudentController extends Controller
             'gender' => 'required|string|in:male,female',
             'birthdate' => 'required|date',
             'student_id' => 'required|string|unique:data_students,student_id',
+            'classroom_id' => 'nullable|exists:classrooms,id',
         ]);
 
         $user = User::create([
@@ -48,6 +51,7 @@ class DataStudentController extends Controller
             'gender' => $request->gender,
             'birthdate' => $request->birthdate,
             'student_id' => $request->student_id,
+            'classroom_id' => $request->classroom_id,
         ]);
 
         return redirect()->route('admin.data-students.index')->with('success', 'Student created successfully.');
@@ -56,7 +60,8 @@ class DataStudentController extends Controller
     public function edit(DataStudent $dataStudent)
     {
         $user = $dataStudent->user;
-        return view('admin.data-students.edit', compact('dataStudent', 'user'));
+        $classrooms = Classroom::all();
+        return view('admin.data-students.edit', compact('dataStudent', 'user', 'classrooms'));
     }
 
     public function update(Request $request, DataStudent $dataStudent)
@@ -69,6 +74,7 @@ class DataStudentController extends Controller
             'gender' => 'required|string|in:male,female',
             'birthdate' => 'required|date',
             'student_id' => 'required|string|unique:data_students,student_id,' . $dataStudent->id,
+            'classroom_id' => 'nullable|exists:classrooms,id',
         ]);
 
         $user = $dataStudent->user;
@@ -83,6 +89,7 @@ class DataStudentController extends Controller
             'gender' => $request->gender,
             'birthdate' => $request->birthdate,
             'student_id' => $request->student_id,
+            'classroom_id' => $request->classroom_id,
         ]);
 
         return redirect()->route('admin.data-students.index')->with('success', 'Student updated successfully.');
@@ -97,7 +104,6 @@ class DataStudentController extends Controller
     public function show($id)
     {
         $student = DataStudent::findOrFail($id);
-
         return view('admin.data-students.show', compact('student'));
     }
 }

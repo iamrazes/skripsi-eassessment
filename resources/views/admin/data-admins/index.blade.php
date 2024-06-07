@@ -21,7 +21,7 @@
         <div class="flex flex-col">
             <h1 class="font-semibold px-6 pb-4 text-lg">Data Admins</h1>
             <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
-                <thead class="bg-white">
+                <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>

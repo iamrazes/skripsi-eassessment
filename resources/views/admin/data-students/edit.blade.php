@@ -83,6 +83,17 @@
                             value="{{ old('birthdate', $dataStudent->birthdate) }}"
                             class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
                     </div>
+                    <div>
+                        <label for="classroom_id" class="block text-sm font-medium text-gray-700">Classroom</label>
+                        <select name="classroom_id" id="classroom_id" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                            <option value="">Select a classroom:</option>
+                            @foreach($classrooms as $classroom)
+                                <option value="{{ $classroom->id }}" {{ (old('classroom_id') ?? $dataStudent->classroom_id) == $classroom->id ? 'selected' : '' }}>
+                                    {{ $classroom->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="flex flex-col w-full">
 

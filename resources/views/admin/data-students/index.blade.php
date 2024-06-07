@@ -26,7 +26,7 @@
                     <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Email</th>
+                    <th scope="col" class="px-6 py-3 text-left font-medium">Classroom</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Gender</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Birthdate</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Student ID</th>
@@ -39,7 +39,7 @@
                         <td class="pl-6 py-4 numbering-cell"></td>
                         <td class="px-6 py-4">{{ $dataStudent->user->username }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->user->name }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->user->email }}</td>
+                        <td class="px-6 py-4">{{ $dataStudent->classroom->name ?? 'N/A' }}</td>
                         <td class="px-6 py-4 capitalize">{{ $dataStudent->gender }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->birthdate }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->student_id }}</td>
