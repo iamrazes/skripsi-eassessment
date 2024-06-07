@@ -57,7 +57,7 @@ Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')
     Route::resource('data-admins', DataAdminController::class);
     Route::resource('data-teachers', DataTeacherController::class);
     Route::resource('data-students', DataStudentController::class);
-    Route::resource('classrooms', ClassroomController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('classrooms', ClassroomController::class)->only(['index', 'store', 'destroy', 'show']);
 });
 
 // Route::middleware('auth')->group(function () {

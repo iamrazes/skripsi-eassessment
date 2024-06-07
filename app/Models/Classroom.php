@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\DataStudent;
 
 class Classroom extends Model
 {
@@ -12,4 +13,9 @@ class Classroom extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function students()
+    {
+        return $this->hasMany(DataStudent::class);
+    }
 }

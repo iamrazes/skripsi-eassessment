@@ -28,4 +28,11 @@ class ClassroomController extends Controller
         $classroom->delete();
         return redirect()->route('admin.classrooms.index')->with('success', 'Classroom deleted successfully.');
     }
+
+    public function show(Classroom $classroom)
+    {
+        $classroom->load('students.user'); // Load students and their associated users
+
+        return view('admin.classrooms.show', compact('classroom'));
+    }
 }

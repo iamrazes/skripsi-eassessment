@@ -5,20 +5,20 @@
 @endsection
 
 @section('content')
-
-
-<div class="mt-8 shadow-button bg-white px-6 rounded-lg pt-4 pb-6">
-    <label for="name" class="block text-md font-medium text-gray-700">Classroom Name</label>
-    <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
-        @csrf
-        <div class="flex-1">
-            <input type="text" name="name" id="name" value="{{ old('name') }}" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
-        </div>
-        <div class="flex-shrink-0">
-            <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create Classroom</button>
-        </div>
-    </form>
-</div>
+    <div class="mt-8 shadow-button bg-white px-6 rounded-lg pt-4 pb-6">
+        <label for="name" class="block font-semibold text-gray-700">Classroom Name</label>
+        <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
+            @csrf
+            <div class="flex-1">
+                <input type="text" name="name" id="name" value="{{ old('name') }}"
+                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
+            </div>
+            <div class="flex-shrink-0">
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create
+                    Classroom</button>
+            </div>
+        </form>
+    </div>
 
     <div class="mt-6 bg-white shadow-button rounded-lg pb-8 pt-4">
         <h1 class="font-semibold px-6 pb-4 text-lg">Classrooms</h1>
@@ -28,6 +28,7 @@
                 <tr>
                     <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                    <th scope="col" class="px-6 py-3 text-right font-medium"></th>
                     <th scope="col" class="px-6 py-3 text-right font-medium">Actions</th>
                 </tr>
             </thead>
@@ -37,10 +38,16 @@
                         <td class="pl-6 py-4 numbering-cell"></td>
                         <td class="px-6 py-4">{{ $classroom->name }}</td>
                         <td class="px-6 py-4 text-right">
-                            <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST" class="inline">
+                            <a href="{{ route('admin.classrooms.show', $classroom->id) }}"
+                                class="text-blue-600 hover:text-blue-900">View Class Member</a>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST"
+                                class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="filter-red"><img src="{{asset('icons/ic_trashbin.svg')}}" class="filter-red"></button>
+                                <button type="submit" class="filter-red"><img src="{{ asset('icons/ic_trashbin.svg') }}"
+                                        class="filter-red"></button>
                             </form>
                         </td>
                     </tr>
@@ -70,7 +77,8 @@
                     const numberingCell = row.querySelector('.numbering-cell');
                     if (index >= start && index < end) {
                         row.style.display = '';
-                        numberingCell.textContent = (index + 1) + "."; // Add a period at the end of the number
+                        numberingCell.textContent = (index + 1) +
+                        "."; // Add a period at the end of the number
                     } else {
                         row.style.display = 'none';
                     }
