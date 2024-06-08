@@ -9,7 +9,7 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $classrooms = Classroom::orderBy('name', 'desc')->get();
+        $classrooms = Classroom::orderBy('name')->get();
         return view('admin.classrooms.index', compact('classrooms'));
     }
 
@@ -20,13 +20,13 @@ class ClassroomController extends Controller
         ]);
 
         Classroom::create($request->all());
-        return redirect()->route('classrooms.index')->with('success', 'Classroom created successfully.');
+        return redirect()->route('admin.classrooms.index')->with('success', 'Classroom created successfully.');
     }
 
     public function destroy(Classroom $classroom)
     {
         $classroom->delete();
-        return redirect()->route('classrooms.index')->with('success', 'Classroom deleted successfully.');
+        return redirect()->route('admin.classrooms.index')->with('success', 'Classroom deleted successfully.');
     }
 
     public function show(Classroom $classroom)

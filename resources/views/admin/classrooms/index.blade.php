@@ -11,59 +11,61 @@
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="mt-8 shadow-button bg-white px-6 rounded-lg pt-4 pb-6">
-        <label for="name" class="block font-semibold text-gray-700">Classroom Name</label>
-        <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
-            @csrf
-            <div class="flex-1">
-                <input type="text" name="name" id="name" value="{{ old('name') }}"
-                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
-            </div>
-            <div class="flex-shrink-0">
-                <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create
-                    Classroom</button>
-            </div>
-        </form>
-    </div>
+    <div class="flex bg-white flex-col rounded-lg shadow-button mt-8">
 
-    <div class="mt-6 bg-white shadow-button rounded-lg pb-8 pt-4">
-        <h1 class="font-semibold px-6 pb-4 text-lg">Classrooms</h1>
+        <h1 class="font-semibold px-6 pt-4 text-lg">Classrooms</h1>
+        <div class=" px-6 rounded-lg pt-4 ">
+            <label for="name" class="block font-semibold text-gray-700">Classroom Name</label>
+            <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
+                @csrf
+                <div class="flex-1">
+                    <input type="text" name="name" id="name" value="{{ old('name') }}"
+                        class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
+                </div>
+                <div class="flex-shrink-0">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create
+                        Classroom</button>
+                </div>
+            </form>
+        </div>
 
-        <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="resultsTable">
-            <thead class="bg-gray-50">
-                <tr>
-                    <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
-                    <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200">
-                @foreach ($classrooms as $index => $classroom)
+        <div class="mt-4 rounded-lg pb-8 pt-4">
+            <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="resultsTable">
+                <thead class="bg-gray-50">
                     <tr>
-                        <td class="pl-6 py-4 numbering-cell"></td>
-                        <td class="px-6 py-4">{{ $classroom->name }}</td>
-                        <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
-                            <a href="{{ route('admin.classrooms.show', $classroom->id) }}"
-                                class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
-                                    src="{{ asset('icons/ic_views.svg') }}"></a>
-                            <a href="{{ route('admin.classrooms.edit', $classroom->id) }}"
-                                class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
-                                    src="{{ asset('icons/ic_edit.svg') }}"></a>
-                            <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST"
-                                class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                    class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img
-                                        src="{{ asset('icons/ic_delete.svg') }}"></button>
-                            </form>
-                        </td>
+                        <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
+                        <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                        <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <!-- Pagination buttons -->
-        <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1 text-textColor">
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($classrooms as $index => $classroom)
+                        <tr>
+                            <td class="pl-6 py-4 numbering-cell"></td>
+                            <td class="px-6 py-4">{{ $classroom->name }}</td>
+                            <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
+                                <a href="{{ route('admin.classrooms.show', $classroom->id) }}"
+                                    class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                        src="{{ asset('icons/ic_views.svg') }}"></a>
+                                <a href="{{ route('admin.classrooms.edit', $classroom->id) }}"
+                                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                        src="{{ asset('icons/ic_edit.svg') }}"></a>
+                                <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img
+                                            src="{{ asset('icons/ic_delete.svg') }}"></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <!-- Pagination buttons -->
+            <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1 text-textColor">
+            </div>
         </div>
     </div>
 @endsection
@@ -100,7 +102,7 @@
                 for (let i = 1; i <= totalPages; i++) {
                     const button = document.createElement('button');
                     button.className =
-                        `pagination-button ${i === currentPage ? 'bg-accent-1' : 'bg-accent-3'} w-8 h-8 rounded text-white font-semibold`;
+                        `pagination-button ${i === currentPage ? 'bg-accent-1' : 'bg-accent-3'} w-8 h-8 hover:bg-accent-1 transition rounded text-white font-semibold`;
                     button.innerText = i;
                     button.addEventListener('click', () => {
                         currentPage = i;

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    <title>Admin Database - {{ config('app.name') }}</title>
+    <title>Type of Exams - {{ config('app.name') }}</title>
 @endsection
 
 @section('content')
@@ -11,53 +11,45 @@
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="mt-8">
-        <a href="{{ route('admin.data-admins.create') }}"
-            class="flex max-w-max justify-center align-middle bg-green-500 text-center hover:bg-green-700 py-3 px-4 rounded-lg transition ease-linear shadow gap-x-2"><img
-                src="{{ asset('icons/ic_create-assessment.svg') }}" alt="" class="w-6 h-6"><span
-                class="text-white font-semibold ">New Admin</span></a>
-    </div>
-    <div class="mt-4 bg-white shadow-button rounded-lg pb-8 pt-4">
-        <div class="flex flex-col">
-            <h1 class="font-semibold px-6 pb-4 text-lg">Data Admins</h1>
-            <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
+    <div class="flex bg-white flex-col rounded-lg shadow-button mt-8">
+
+        <h1 class="font-semibold px-6 pt-4 text-lg">Type of Exams</h1>
+        <div class=" px-6 rounded-lg pt-4 ">
+            <label for="name" class="block font-semibold text-gray-700">Exam Type Name</label>
+            <form action="{{ route('admin.exam-types.store') }}" method="POST" class="flex items-center gap-4">
+                @csrf
+                <div class="flex-1">
+                    <input type="text" name="name" id="name" value="{{ old('name') }}"
+                        class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md h-10">
+                </div>
+                <div class="flex-shrink-0">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 mt-1 rounded-md h-10">Create
+                        Exam Type</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="mt-4 rounded-lg pb-8 pt-4">
+            <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="resultsTable">
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium">Email</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium">Admin ID</th>
-                        <th scope="col" class="px-6 py-3 text-end font-medium w-42">Actions</th>
+                        <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-
-                    @foreach ($dataAdmins as $index => $dataAdmin)
-                        <tr class="bg-white divide-gray-200">
+                    @foreach ($examTypes as $index => $examType)
+                        <tr>
                             <td class="pl-6 py-4 numbering-cell"></td>
-                            <td class="px-6 py-4">{{ $dataAdmin->user->name }}</td>
-                            <td class="px-6 py-4">{{ $dataAdmin->user->email }}</td>
-                            <td class="px-6 py-4">{{ $dataAdmin->user->username }}</td>
-                            <td class="px-6 py-4">{{ $dataAdmin->admin_id }}</td>
-                            <td class="px-6 py-4 flex justify-end gap-x-2">
-                                <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
-                                    class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
-                                        src="{{ asset('icons/ic_views.svg') }}"></a>
-                                <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
+                            <td class="px-6 py-4">{{ $examType->name }}</td>
+                            <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
+                                <a href="{{ route('admin.exam-types.edit', $examType->id) }}"
                                     class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
                                         src="{{ asset('icons/ic_edit.svg') }}"></a>
-
-                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
-                                    class="inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img src="{{ asset('icons/ic_delete.svg') }}"></button>
-                                </form>
                             </td>
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
             <!-- Pagination buttons -->
@@ -66,7 +58,6 @@
         </div>
     </div>
 @endsection
-
 
 @section('script')
     <script>

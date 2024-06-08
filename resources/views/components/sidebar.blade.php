@@ -68,17 +68,52 @@
             <div class="relative">
                 <button id="accordionButton1" data-target="accordionMenu1"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
+                {{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                    <div class="flex space-x-4">
+                        <img src="{{ asset('icons/ic_gear.svg') }}"
+                            class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'filter-white' : '' }}"
+                            style="width: 21px; height: 21px;">
+                        <span class="-mr-1 font-semibold">System Control</span>
+                    </div>
+                    <img src="{{ asset('icons/ic_down.svg') }}"
+                        class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'filter-white' : '' }}">
+                </button>
+                <div id="accordionMenu1"
+                    class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+                    <a href="{{ route('admin.users.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/users*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_users.svg') }}"
+                            class="{{ request()->is('admin/users*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Users</span>
+                    </a>
+                    <a href="{{ route('admin.roles.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/roles*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_user-gear.svg') }}"
+                            class="{{ request()->is('admin/roles*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Roles</span>
+                    </a>
+                    <a href="{{ route('admin.permissions.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/permissions*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_user-lock.svg') }}"
+                            class="{{ request()->is('admin/permissions*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Permissions</span>
+                    </a>
+                </div>
+            </div>
+            <div class="relative">
+                <button id="accordionButton2" data-target="accordionMenu2"
+                    class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
                 {{ request()->is('admin/data-admins*') || request()->is('admin/data-teachers*') || request()->is('admin/data-students*') || request()->is('admin/classrooms*')  ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_database2.svg') }}"
                             class="{{ request()->is('admin/data-admins*') || request()->is('admin/data-teachers*') || request()->is('admin/data-students*') || request()->is('admin/classrooms*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
-                        <span class="-mr-1 font-semibold">Database</span>
+                        <span class="-mr-1 font-semibold">Database Control</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
                         class="{{ request()->is('admin/data-admins*') || request()->is('admin/data-teachers*') || request()->is('admin/data-students*') || request()->is('admin/classrooms*') ? 'filter-white' : '' }}">
                 </button>
-                <div id="accordionMenu1"
+                <div id="accordionMenu2"
                     class="{{ request()->is('admin/data-admins*') || request()->is('admin/data-teachers*') || request()->is('admin/data-students*') || request()->is('admin/classrooms*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
                     <a href="{{ route('admin.data-admins.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-admins*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
@@ -104,64 +139,29 @@
                             class="{{ request()->is('admin/classrooms*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Classroom</span>
                     </a>
-                    {{-- <a href="{{ route('admin.teachers.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/teacher*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                            class="{{ request()->is('admin/teacher*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Teacher</span>
-                    </a>
-                    <a href="{{ route('admin.students.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/student*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                            class="{{ request()->is('admin/student*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Student Database</span>
-                    </a>
-                    <a href="{{ route('admin.subjects.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/subjects*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                            class="{{ request()->is('admin/subjects*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Subjects</span>
-                    </a>
-                    <a href="{{ route('admin.classrooms.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/classrooms*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                            class="{{ request()->is('admin/classrooms*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Classroom</span>
-                    </a> --}}
                 </div>
             </div>
             <div class="relative">
-                <button id="accordionButton2" data-target="accordionMenu2"
+                <button id="accordionButton3" data-target="accordionMenu3"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
-                {{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                {{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_gear.svg') }}"
-                            class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'filter-white' : '' }}"
+                            class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
-                        <span class="-mr-1 font-semibold">System</span>
+                        <span class="-mr-1 font-semibold">Assessment Control</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
-                        class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'filter-white' : '' }}">
+                        class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'filter-white' : '' }}">
                 </button>
-                <div id="accordionMenu2"
-                    class="{{ request()->is('admin/users*') || request()->is('admin/roles*') || request()->is('admin/permissions*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
-                    <a href="{{ route('admin.users.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/users*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_users.svg') }}"
-                            class="{{ request()->is('admin/users*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Users</span>
-                    </a>
-                    <a href="{{ route('admin.roles.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/roles*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_user-gear.svg') }}"
-                            class="{{ request()->is('admin/roles*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Roles</span>
-                    </a>
-                    <a href="{{ route('admin.permissions.index') }}"
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/permissions*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_user-lock.svg') }}"
-                            class="{{ request()->is('admin/permissions*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Permissions</span>
+                <div id="accordionMenu3"
+                    class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+
+                    <a href="{{ route('admin.exam-types.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/exam-types*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_classroom.svg') }}"
+                            class="{{ request()->is('admin/exam-types*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Type of Exam</span>
                     </a>
                 </div>
             </div>
