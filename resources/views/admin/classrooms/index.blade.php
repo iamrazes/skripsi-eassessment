@@ -5,6 +5,12 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
     <div class="mt-8 shadow-button bg-white px-6 rounded-lg pt-4 pb-6">
         <label for="name" class="block font-semibold text-gray-700">Classroom Name</label>
         <form action="{{ route('admin.classrooms.store') }}" method="POST" class="flex items-center gap-4">
@@ -38,13 +44,18 @@
                         <td class="px-6 py-4">{{ $classroom->name }}</td>
                         <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
                             <a href="{{ route('admin.classrooms.show', $classroom->id) }}"
-                                class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img src="{{ asset('icons/ic_views.svg') }}"
-                                    ></a>
+                                class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                    src="{{ asset('icons/ic_views.svg') }}"></a>
+                            <a href="{{ route('admin.classrooms.edit', $classroom->id) }}"
+                                class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                    src="{{ asset('icons/ic_edit.svg') }}"></a>
                             <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST"
                                 class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img src="{{ asset('icons/ic_delete.svg') }}"></button>
+                                <button type="submit"
+                                    class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img
+                                        src="{{ asset('icons/ic_delete.svg') }}"></button>
                             </form>
                         </td>
                     </tr>

@@ -103,7 +103,7 @@ class DataStudentController extends Controller
 
     public function show($id)
     {
-        $student = DataStudent::findOrFail($id);
+        $student = DataStudent::with(['user', 'classroom'])->findOrFail($id);
         return view('admin.data-students.show', compact('student'));
     }
 }

@@ -53,11 +53,11 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('roles', RoleController::class);
-    Route::resource('permissions', PermissionController::class)->only(['index']);
+    Route::resource('permissions', PermissionController::class);
     Route::resource('data-admins', DataAdminController::class);
     Route::resource('data-teachers', DataTeacherController::class);
     Route::resource('data-students', DataStudentController::class);
-    Route::resource('classrooms', ClassroomController::class)->only(['index', 'store', 'destroy', 'show']);
+    Route::resource('classrooms', ClassroomController::class);
 });
 
 // Route::middleware('auth')->group(function () {
