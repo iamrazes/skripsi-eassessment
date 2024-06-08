@@ -28,8 +28,7 @@
                 <tr>
                     <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
-                    <th scope="col" class="px-6 py-3 text-right font-medium"></th>
-                    <th scope="col" class="px-6 py-3 text-right font-medium">Actions</th>
+                    <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -37,17 +36,15 @@
                     <tr>
                         <td class="pl-6 py-4 numbering-cell"></td>
                         <td class="px-6 py-4">{{ $classroom->name }}</td>
-                        <td class="px-6 py-4 text-right">
+                        <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
                             <a href="{{ route('admin.classrooms.show', $classroom->id) }}"
-                                class="text-blue-600 hover:text-blue-900">View Class Member</a>
-                        </td>
-                        <td class="px-6 py-4 text-right">
+                                class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img src="{{ asset('icons/ic_views.svg') }}"
+                                    ></a>
                             <form action="{{ route('admin.classrooms.destroy', $classroom->id) }}" method="POST"
                                 class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="filter-red"><img src="{{ asset('icons/ic_trashbin.svg') }}"
-                                        class="filter-red"></button>
+                                <button type="submit" class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img src="{{ asset('icons/ic_delete.svg') }}"></button>
                             </form>
                         </td>
                     </tr>
@@ -78,7 +75,7 @@
                     if (index >= start && index < end) {
                         row.style.display = '';
                         numberingCell.textContent = (index + 1) +
-                        "."; // Add a period at the end of the number
+                            "."; // Add a period at the end of the number
                     } else {
                         row.style.display = 'none';
                     }

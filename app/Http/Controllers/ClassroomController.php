@@ -9,7 +9,7 @@ class ClassroomController extends Controller
 {
     public function index()
     {
-        $classrooms = Classroom::orderBy('created_at', 'desc')->get();
+        $classrooms = Classroom::orderBy('name', 'desc')->get();
         return view('admin.classrooms.index', compact('classrooms'));
     }
 

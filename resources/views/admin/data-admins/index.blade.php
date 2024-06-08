@@ -28,7 +28,7 @@
                         <th scope="col" class="px-6 py-3 text-left font-medium">Email</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium">Admin ID</th>
-                        <th scope="col" class="px-6 py-3 text-left font-medium">Actions</th>
+                        <th scope="col" class="px-6 py-3 text-end font-medium w-42">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -40,16 +40,19 @@
                             <td class="px-6 py-4">{{ $dataAdmin->user->email }}</td>
                             <td class="px-6 py-4">{{ $dataAdmin->user->username }}</td>
                             <td class="px-6 py-4">{{ $dataAdmin->admin_id }}</td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 flex justify-end gap-x-2">
                                 <a href="{{ route('admin.data-admins.show', $dataAdmin->id) }}"
-                                    class="text-gray-500 hover:text-gray-600">Preview</a>
+                                    class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                        src="{{ asset('icons/ic_views.svg') }}"></a>
                                 <a href="{{ route('admin.data-admins.edit', $dataAdmin->id) }}"
-                                    class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
-                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}"
-                                    method="POST" class="inline">
+                                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                        src="{{ asset('icons/ic_edit.svg') }}"></a>
+
+                                <form action="{{ route('admin.data-admins.destroy', $dataAdmin->id) }}" method="POST"
+                                    class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                    <button type="submit" class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img src="{{ asset('icons/ic_delete.svg') }}"></button>
                                 </form>
                             </td>
                         </tr>

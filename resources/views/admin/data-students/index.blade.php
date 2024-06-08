@@ -28,9 +28,8 @@
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Classroom</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Gender</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Birthdate</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Student ID</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Actions</th>
+                    <th scope="col" class="px-6 py-3 text-end font-medium w-42">Actions</th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -41,18 +40,20 @@
                         <td class="px-6 py-4">{{ $dataStudent->user->name }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->classroom->name ?? 'N/A' }}</td>
                         <td class="px-6 py-4 capitalize">{{ $dataStudent->gender }}</td>
-                        <td class="px-6 py-4">{{ $dataStudent->birthdate }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->student_id }}</td>
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 flex justify-end gap-x-2">
                             <a href="{{ route('admin.data-students.show', $dataStudent->id) }}"
-                                class="text-gray-500 hover:text-gray-600">Preview</a>
+                                class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                    src="{{ asset('icons/ic_views.svg') }}"></a>
                             <a href="{{ route('admin.data-students.edit', $dataStudent->id) }}"
-                                class="text-blue-600 hover:text-blue-900 ml-2">Edit</a>
+                                class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                    src="{{ asset('icons/ic_edit.svg') }}"></a>
+
                             <form action="{{ route('admin.data-students.destroy', $dataStudent->id) }}" method="POST"
                                 class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="text-red-600 hover:text-red-900 ml-2">Delete</button>
+                                <button type="submit" class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img src="{{ asset('icons/ic_delete.svg') }}"></button>
                             </form>
                         </td>
                     </tr>
