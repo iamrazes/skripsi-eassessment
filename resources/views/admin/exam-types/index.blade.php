@@ -47,6 +47,14 @@
                                 <a href="{{ route('admin.exam-types.edit', $examType->id) }}"
                                     class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
                                         src="{{ asset('icons/ic_edit.svg') }}"></a>
+                                <form action="{{ route('admin.exam-types.destroy', $examType->id) }}" method="POST"
+                                    class="inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"
+                                        class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img
+                                            src="{{ asset('icons/ic_delete.svg') }}"></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
