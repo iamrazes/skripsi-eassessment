@@ -144,24 +144,30 @@
             <div class="relative">
                 <button id="accordionButton3" data-target="accordionMenu3"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
-                {{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                {{ request()->is('admin/exam-types*') || request()->is('admin/subjects*') || request()->is('admin/exam*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_gear.svg') }}"
-                            class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'filter-white' : '' }}"
+                            class="{{ request()->is('admin/exam-types*') || request()->is('admin/subjects*') || request()->is('admin/exam*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
                         <span class="-mr-1 font-semibold">Assessment Control</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
-                        class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'filter-white' : '' }}">
+                        class="{{ request()->is('admin/exam-types*') || request()->is('admin/subjects*') || request()->is('admin/exam*') ? 'filter-white' : '' }}">
                 </button>
                 <div id="accordionMenu3"
-                    class="{{ request()->is('admin/exam-types*') || request()->is('admin/exam-types*') || request()->is('admin/exam-types*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+                    class="{{ request()->is('admin/exam-types*') || request()->is('admin/subjects*') || request()->is('admin/exam-*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
 
                     <a href="{{ route('admin.exam-types.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/exam-types*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                        <img src="{{ asset('icons/ic_classroom.svg') }}"
+                        <img src="{{ asset('icons/ic_typeofexam.svg') }}"
                             class="{{ request()->is('admin/exam-types*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Type of Exam</span>
+                    </a>
+                    <a href="{{ route('admin.subjects.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/subjects*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_subjects.svg') }}"
+                            class="{{ request()->is('admin/subjects*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Subjects</span>
                     </a>
                 </div>
             </div>

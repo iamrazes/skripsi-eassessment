@@ -12,6 +12,7 @@ use App\Http\Controllers\DataTeacherController;
 use App\Http\Controllers\DataStudentController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamTypeController;
+use App\Http\Controllers\SubjectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,8 +60,8 @@ Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')
     Route::resource('data-teachers', DataTeacherController::class);
     Route::resource('data-students', DataStudentController::class);
     Route::resource('classrooms', ClassroomController::class);
-    Route::resource('exam-types', ExamTypeController::class)->only(['index', 'store', 'edit', 'update', 'destroy']);
-
+    Route::resource('exam-types', ExamTypeController::class);
+    Route::resource('subjects', SubjectController::class);
 });
 
 // Route::middleware('auth')->group(function () {
