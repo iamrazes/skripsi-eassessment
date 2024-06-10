@@ -1,19 +1,23 @@
 
 .filter-white {
     filter: brightness(0) invert(1);
-  }
-
-  .filter-black {
+}
+.filter-black {
     filter: brightness(0) invert(1);
+}
+.filter-gray {
+    filter: invert(85%) sepia(19%) saturate(192%) hue-rotate(177deg) brightness(86%) contrast(89%);
+}
+.filter-red {
+    filter: invert(38%) sepia(100%) saturate(3301%) hue-rotate(338deg) brightness(90%) contrast(91%);
 }
 
 
 .shadow-button {
     filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
-  }
+}
 
-
-  .select-container {
+.select-container {
     position: relative;
 }
 
@@ -30,10 +34,9 @@
     padding: 0;
     margin: 0;
     overflow-y: auto;
-    max-height: 10rem;
+    max-height: 20rem;
     min-width: 100%;
     z-index: 10;
-    /* Adjust as needed */
 }
 
 .option {
@@ -41,7 +44,6 @@
     cursor: pointer;
 }
 
-/* Show options when select is focused */
 .select-container:focus-within .options {
     display: block;
 }
