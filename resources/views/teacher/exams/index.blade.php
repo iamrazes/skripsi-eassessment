@@ -183,7 +183,7 @@
                 <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
+                            <th scope="col" class="pl-6 py-3 text-left font-medium w-8">No.</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Title</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Type of Exam</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Date</th>
@@ -193,7 +193,7 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -201,7 +201,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -209,7 +209,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -217,7 +217,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -225,7 +225,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -233,7 +233,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -241,7 +241,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -249,7 +249,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -257,7 +257,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -265,7 +265,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -273,7 +273,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -281,7 +281,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -289,7 +289,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -297,7 +297,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -305,7 +305,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -313,7 +313,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -321,7 +321,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -329,7 +329,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -337,7 +337,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -345,7 +345,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -353,7 +353,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -361,7 +361,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -369,7 +369,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -377,7 +377,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
@@ -385,7 +385,7 @@
                             <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
                         </tr>
                         <tr>
-                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-8 numbering-cell"></td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
                             <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
