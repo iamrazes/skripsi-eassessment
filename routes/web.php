@@ -42,8 +42,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
 
-    // Route::get('/assessments', [DashboardStudentController::class, 'assessments'])->name('assessments');
-    // Route::get('/results', [DashboardStudentController::class, 'results'])->name('results');
+    Route::get('/assessments', [DashboardStudentController::class, 'assessments'])->name('assessments');
+    Route::get('/results', [DashboardStudentController::class, 'results'])->name('results');
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {

@@ -10,11 +10,12 @@
         <h1 class="font-semibold px-6 pb-4 text-lg">System - Roles</h1>
         <div class="overflow-x-auto">
             <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
-                <thead class="bg-white">
+                <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Name</th>
                         <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Permissions</th>
+                        <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Action</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
@@ -25,6 +26,9 @@
                         <td class="px-6 py-4 whitespace-nowrap capitalize">{{ $role->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
                             {{ $role->permissions->pluck('name')->implode(', ') }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap capitalize">
+
                         </td>
                     </tr>
                     @endforeach

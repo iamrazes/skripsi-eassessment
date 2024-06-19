@@ -27,7 +27,7 @@
 
         @if (auth()->user()->hasPermissionTo('student-access'))
             <div class="font-bold pt-3">STUDENT SECTION</div>
-            {{-- <a href="{{ route('students.assessments') }}"
+            <a href="{{ route('students.assessments') }}"
                 class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('students.assessments') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
                 <img src="{{ asset('icons/ic_student_assessment.svg') }}"
                     class="{{ request()->routeIs('students.assessments') ? 'filter-white' : '' }}">
@@ -38,7 +38,7 @@
                 <img src="{{ asset('icons/ic_student_results.svg') }}"
                     class="{{ request()->routeIs('students.results') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Results</span>
-            </a> --}}
+            </a>
         @endif
 
         @if (auth()->user()->hasPermissionTo('teacher-access'))

@@ -12,7 +12,7 @@
             </div>
             <div class="flex items-start -mt-24 gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
                 <div class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0">
-                    <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-full h-full" alt="Student Image">
+                    <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-full h-full" alt="Student Image">
                 </div>
                 <div class="flex flex-col text-white pt-3">
                     <h1 class="text-3xl font-semibold line-clamp-1 text-start overflow-clip uppercase">{{ auth()->user()->name }}</h1>
@@ -28,25 +28,31 @@
                 <div class="flex flex-col gap-y-1">
                     <span class="font-semibold">Full Name:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
-                        <span>{{ auth()->user()->name }}</span>
+                        <span>{{ ($dataStudent->user->name) }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">NIS:</span>
+                    <span class="font-semibold">Student ID:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
-                        <span>78324456200332001</span>
+                        <span>{{ ($dataStudent->student_id) }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">NISN:</span>
+                    <span class="font-semibold">Email:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
-                        <span>19040290013</span>
+                        <span>{{ ($dataStudent->user->email) }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">Grade:</span>
+                    <span class="font-semibold">Gender:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
-                        <span>12 A</span>
+                        <span>{{ ucfirst($dataStudent->gender) }}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Classroom:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
                     </div>
                 </div>
             </div>
@@ -71,28 +77,28 @@
             </div>
         </div>
         <div class="flex flex-col lg:flex-row gap-8 mt-8 pb-8">
-            <div class="rounded-2xl shadow-button bg-white lg:w-1/3 p-4 flex-shrink-0 overflow-clip">
-                <div class="flex flex-col p-4 gap-y-4">
-                    <h1 class="text-xl font-semibold mb-4">Profile Information</h1>
-                    <div class="flex justify-between">
+            <div class="rounded-2xl shadow-button bg-white lg:w-1/3 py-4 flex-shrink-0 overflow-clip">
+                <div class="flex flex-col py-4 gap-y-4">
+                    <h1 class="text-xl font-semibold pb-4 border-b"><span class="px-8">Profile Information</span></h1>
+                    <div class="flex justify-between px-8">
                         <span class="font-semibold">Full Name:</span>
-                        <span>{{ auth()->user()->name }}</span>
+                        <span>{{ ($dataTeacher->user->name) }}</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="font-semibold">Contact:</span>
-                        <span>(62) 899 7788 3322</span>
-                    </div>
-                    <div class="flex justify-between">
+                    <div class="flex justify-between px-8">
                         <span class="font-semibold">Email:</span>
-                        <span>adminemailaddress@gmail.com</span>
+                        <span>{{ ($dataTeacher->user->email) }}</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="font-semibold">Subject:</span>
-                        <span>Subject</span>
+                    <div class="flex justify-between px-8">
+                        <span class="font-semibold">Contact:</span>
+                        <span>{{ ($dataTeacher->contact) }}</span>
                     </div>
-                    <div class="flex justify-between">
-                        <span class="font-semibold">NUPTK:</span>
-                        <span>73278234879897</span>
+                    <div class="flex justify-between px-8">
+                        <span class="font-semibold">Address:</span>
+                        <span>{{ ($dataTeacher->address) }}</span>
+                    </div>
+                    <div class="flex justify-between px-8">
+                        <span class="font-semibold">Teacher ID:</span>
+                        <span>{{ ($dataTeacher->teacher_id) }}</span>
                     </div>
                 </div>
             </div>
@@ -332,33 +338,40 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col lg:flex-row gap-8 mt-8 pb-8">
-            <div class="rounded-2xl shadow-button bg-white lg:w-full flex-shrink-0 overflow-clip">
-                <div class="flex flex-col divide-y">
-                    <h1 class="text-xl font-semibold py-4 px-6">Profile Information</h1>
-                    <div class="flex justify-between py-3 px-6">
-                        <span class="font-medium">Full Name:</span>
-                        <span>{{ auth()->user()->name }}</span>
+        <div class="bg-white rounded-lg shadow-button pt-6 pb-16 my-8">
+            <div class="font-semibold text-lg pb-6 border-b"><span class="px-6">Profile Information</span></div>
+            <div class="flex flex-col py-6 gap-y-4 px-6">
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Full Name:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ ($dataAdmin->user->name) }}</span>
                     </div>
-                    <div class="flex justify-between py-3 px-6">
-                        <span class="font-medium">Contact:</span>
-                        <span>(62) 899 7788 3322</span>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Admin ID:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ ($dataAdmin->admin_id) }}</span>
                     </div>
-                    <div class="flex justify-between py-3 px-6">
-                        <span class="font-medium">Email:</span>
-                        <span>adminemailaddress@gmail.com</span>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Email:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ ($dataAdmin->user->email) }}</span>
                     </div>
-                    <div class="flex justify-between py-3 px-6">
-                        <span class="font-medium">Subject:</span>
-                        <span>Subject</span>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Contact:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ ($dataAdmin->contact) }}</span>
                     </div>
-                    <div class="flex justify-between py-3 px-6">
-                        <span class="font-medium">NUPTK:</span>
-                        <span>73278234879897</span>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Address:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ ($dataAdmin->address) }}</span>
                     </div>
                 </div>
             </div>
-
         </div>
     @endif
 @endsection
