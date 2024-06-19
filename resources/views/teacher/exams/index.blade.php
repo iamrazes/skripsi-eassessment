@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('title')
+    <title>Exams - {{ config('app.name') }}</title>
 @endsection
 
 @section('content')
@@ -15,7 +16,7 @@
             </div>
 
             <div class="flex flex-col">
-                <a href=""
+                <a href="{{ route('teacher.exams.create') }}"
                     class="bg-accent-1 rounded-lg py-2 px-4 gap-x-3 w-56 text-start font-medium text-white flex hover:bg-gradient-to-r from-accent-1 to-accent-2"><img
                         src="{{ asset('icons/ic_assessment.svg') }}" class="filter-white">Create New Exam</a>
             </div>
@@ -34,16 +35,16 @@
                         <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
                         <div class="flex gap-x-3 text-sm">
                             <div class="flex flex-col">
-                                <span>Subject:</span>
-                                <span>Classroom:</span>
-                                <span>Date Assigned:</span>
-                                <span>Status:</span>
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
                             </div>
                             <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>12 A, 12</span>
-                                <span>DD/MM/YYYY</span>
-                                <span>In Progress</span>
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: In Progress</span>
                             </div>
                         </div>
                         <a href=""
@@ -55,16 +56,16 @@
                         <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
                         <div class="flex gap-x-3 text-sm">
                             <div class="flex flex-col">
-                                <span>Subject:</span>
-                                <span>Classroom:</span>
-                                <span>Date Assigned:</span>
-                                <span>Status:</span>
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
                             </div>
                             <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>12 A, 12</span>
-                                <span>DD/MM/YYYY</span>
-                                <span>In Progress</span>
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: In Progress</span>
                             </div>
                         </div>
                         <a href=""
@@ -76,16 +77,16 @@
                         <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
                         <div class="flex gap-x-3 text-sm">
                             <div class="flex flex-col">
-                                <span>Subject:</span>
-                                <span>Classroom:</span>
-                                <span>Date Assigned:</span>
-                                <span>Status:</span>
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
                             </div>
                             <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>12 A, 12</span>
-                                <span>DD/MM/YYYY</span>
-                                <span>In Progress</span>
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: In Progress</span>
                             </div>
                         </div>
                         <a href=""
@@ -96,38 +97,308 @@
         </div>
     </div>
 
+    <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
+        <div class="flex flex-col">
+            <h1 class="font-semibold text-xl">Exams Ready To Test</h1>
+            <p class="text-sm mt-1 w-1/2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis excepturi
+                quis vero accusantium ipsam distinctio id similique facere ullam sed ab, harum tempore. Incidunt, similique.
+                Nobis ipsam dolorum velit ut.</p>
+            <div class="grid grid-cols-3 gap-4 mt-4">
+                <div class="bg-gray-100 rounded-lg p-4">
+                    <div class="flex flex-col gap-y-2">
+                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
+                        <div class="flex gap-x-3 text-sm">
+                            <div class="flex flex-col">
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: Ready To Test</span>
+                            </div>
+                        </div>
+                        <a href=""
+                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4">
+                    <div class="flex flex-col gap-y-2">
+                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
+                        <div class="flex gap-x-3 text-sm">
+                            <div class="flex flex-col">
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: Ready To Test</span>
+                            </div>
+                        </div>
+                        <a href=""
+                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
+                    </div>
+                </div>
+                <div class="bg-gray-100 rounded-lg p-4">
+                    <div class="flex flex-col gap-y-2">
+                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
+                        <div class="flex gap-x-3 text-sm">
+                            <div class="flex flex-col">
+                                <span>Subject</span>
+                                <span>Classroom</span>
+                                <span>Date Assigned</span>
+                                <span>Status</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span>: Subject</span>
+                                <span>: 12 A, 12</span>
+                                <span>: DD/MM/YYYY</span>
+                                <span>: Ready To Test</span>
+                            </div>
+                        </div>
+                        <a href=""
+                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="mt-8 bg-white shadow-button rounded-lg  py-6">
         <div class="flex flex-col ">
             <h1 class="font-semibold text-xl px-8">Exams History</h1>
-            <p class="text-sm mt-1 w-1/2 px-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis excepturi
+            <p class="text-sm mt-1 w-1/2 px-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
+                excepturi
                 quis vero accusantium ipsam distinctio id similique facere ullam sed ab, harum tempore. Incidunt, similique.
                 Nobis ipsam dolorum velit ut.</p>
 
-            <div class="mt-4 rounded-lg">
-                <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="resultsTable">
+            <div class="mt-4">
+                <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Title</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Type of Exam</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Date</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Assigned To</th>
                             <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                            <tr>
-                                <td scope="col" class="px-6 py-3 text-left font-medium w-6">1</td>
-                                <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
-                                <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
-                                <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
-                                <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
-                            </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
+                        <tr>
+                            <td scope="col" class="px-6 py-3 text-left font-medium w-6 numbering-cell"></td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-left font-medium ">1</td>
+                            <td scope="col" class="px-6 py-3 text-end font-medium ">1</td>
+                        </tr>
                     </tbody>
                 </table>
                 <!-- Pagination buttons -->
                 <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1 text-textColor">
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
@@ -138,7 +409,7 @@
             const itemsPerPage = 10;
             let currentPage = 1;
 
-            const table = document.getElementById('resultsTable');
+            const table = document.getElementById('customTable');
             const rows = Array.from(table.querySelectorAll('tbody tr'));
             const totalPages = Math.ceil(rows.length / itemsPerPage);
 
@@ -149,7 +420,8 @@
                     const numberingCell = row.querySelector('.numbering-cell');
                     if (index >= start && index < end) {
                         row.style.display = '';
-                        numberingCell.textContent = (index + 1) + ".";
+                        numberingCell.textContent = (index + 1) +
+                            "."; // Add a period at the end of the number
                     } else {
                         row.style.display = 'none';
                     }

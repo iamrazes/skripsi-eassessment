@@ -21,7 +21,7 @@ class ExamController extends Controller
      */
     public function create()
     {
-        //
+        return view('teacher.exams.create');
     }
 
     /**
