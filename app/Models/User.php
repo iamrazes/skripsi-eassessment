@@ -34,4 +34,14 @@ class User extends Authenticatable
     {
         return $this->hasOne(DataAdmin::class);
     }
+
+    public function dataStudent()
+    {
+        return $this->hasOne(DataStudent::class);
+    }
+
+    public function dataTeacher()
+    {
+        return $this->hasOne(DataTeacher::class);
+    }
 }

@@ -14,7 +14,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Total Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -30,7 +30,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Male Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -46,7 +46,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Female Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -62,12 +62,13 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Total Teachers</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
+                            class="line-clamp-1">Report
                             a
                             problem</span></a>
                 </div>
@@ -313,7 +314,8 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
+                            class="line-clamp-1">Report
                             a
                             problem</span></a>
                 </div>
@@ -329,7 +331,8 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
+                            class="line-clamp-1">Report
                             a
                             problem</span></a>
                 </div>
@@ -345,7 +348,8 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
+                            class="line-clamp-1">Report
                             a
                             problem</span></a>
                 </div>
@@ -361,7 +365,8 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
+                            class="line-clamp-1">Report
                             a
                             problem</span></a>
                 </div>
@@ -409,7 +414,8 @@
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-white">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
                                     Name
                                 </th>
                                 <th scope="col"
@@ -612,7 +618,8 @@
                         school and teacher. See if you have any assessment available
                         for you by clicking link above.</span>
                 </div>
-                <a href="{{route('students.assessments')}}" class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
+                <a href="{{ route('students.assessments') }}"
+                    class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
             <div class="bg-white rounded-md shadow-button p-8 flex flex-col justify-between">
