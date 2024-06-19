@@ -27,7 +27,7 @@
 
         @if (auth()->user()->hasPermissionTo('student-access'))
             <div class="font-bold pt-3">STUDENT SECTION</div>
-            <a href="{{ route('students.assessments') }}"
+            {{-- <a href="{{ route('students.assessments') }}"
                 class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('students.assessments') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
                 <img src="{{ asset('icons/ic_student_assessment.svg') }}"
                     class="{{ request()->routeIs('students.assessments') ? 'filter-white' : '' }}">
@@ -38,12 +38,46 @@
                 <img src="{{ asset('icons/ic_student_results.svg') }}"
                     class="{{ request()->routeIs('students.results') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Results</span>
-            </a>
+            </a> --}}
         @endif
 
         @if (auth()->user()->hasPermissionTo('teacher-access'))
             <div class="font-bold pt-3">TEACHER SECTION</div>
-            <a href="{{ route('teacher.create-assessment') }}"
+
+            <div class="relative">
+                <button id="accordionButton4" data-target="accordionMenu4"
+                    class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
+                {{ request()->is('teacher/assessments/exams*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                    <div class="flex space-x-4">
+                        <img src="{{ asset('icons/ic_eassessment-admin.svg') }}"
+                            class="{{ request()->is('teacher/assessments/exams*') ? 'filter-white' : '' }}"
+                            style="width: 21px; height: 21px;">
+                        <span class="-mr-1 font-semibold">Assessments</span>
+                    </div>
+                    <img src="{{ asset('icons/ic_down.svg') }}"
+                        class="{{ request()->is('teacher/assessments/exams*') ? 'filter-white' : '' }}">
+                </button>
+                <div id="accordionMenu4"
+                    class="{{ request()->is('teacher/assessments/exams*') ? 'flex' : 'hidden' }} flex-col mt-4 space-y-4 bg-white w-full">
+                    <a href="{{ route('teacher.exams.index') }}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/assessments/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_assessment.svg') }}"
+                            class="{{ request()->is('teacher/assessments/exams*') ? 'filter-white' : '' }} pl-8">
+                        <span class="-mr-1 font-semibold">Exams</span>
+                    </a>
+                    <a class="flex space-x-4 px-4 py-3 items-center bg-gray-100 transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_ongoing.svg') }}"
+                            class="pl-8 filter-gray">
+                        <span class="-mr-1 font-semibold filter-gray">Quizzes</span>
+                    </a>
+                    <a class="flex space-x-4 px-4 py-3 items-center bg-gray-100 transition ease-in-out rounded-lg shadow-button">
+                        <img src="{{ asset('icons/ic_ongoing.svg') }}"
+                            class="pl-8 filter-gray">
+                        <span class="-mr-1 font-semibold filter-gray">Tasks</span>
+                    </a>
+                </div>
+            </div>
+            {{-- <a href="{{ route('teacher.create-assessment') }}"
                 class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('teacher.create-assessment') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
                 <img src="{{ asset('icons/ic_teacher_create.svg') }}"
                     class="{{ request()->routeIs('teacher.create-assessment') ? 'filter-white' : '' }}">
@@ -60,7 +94,7 @@
                 <img src="{{ asset('icons/ic_teacher_review.svg') }}"
                     class="{{ request()->routeIs('teacher.review-assessment') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Review Assessment</span>
-            </a>
+            </a> --}}
         @endif
 
         @if (auth()->user()->hasPermissionTo('admin-access'))
