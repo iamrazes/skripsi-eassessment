@@ -18,4 +18,9 @@ class Classroom extends Model
     {
         return $this->hasMany(DataStudent::class);
     }
+
+    public function exams(): BelongsToMany
+    {
+        return $this->belongsToMany(Exam::class)->withTimestamps();
+    }
 }

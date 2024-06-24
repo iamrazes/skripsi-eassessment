@@ -42,18 +42,13 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
 
-    Route::get('/assessments', [DashboardStudentController::class, 'assessments'])->name('assessments');
-    Route::get('/results', [DashboardStudentController::class, 'results'])->name('results');
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
-
-    Route::resource('/assessments/exams', ExamController::class);
-
-    // Route::get('/create-assessment', [DashboardTeacherController::class, 'create'])->name('create-assessment');
-    // Route::get('/examine-assessment', [DashboardTeacherController::class, 'examine'])->name('examine-assessment');
-    // Route::get('/review-assessment', [DashboardTeacherController::class, 'review'])->name('review-assessment');
+    Route::resource('exams', ExamController::class);
+    Route::get('/exams/{exam}/questions', [ExamController::class, 'questionsIndex'])->name('exams.questions.index');
 });
+
 
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
