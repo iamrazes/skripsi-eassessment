@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('title')
-    <title>Exams - {{ config('app.name') }}</title>
+    <title>
+        Exams - {{ config('app.name') }}</title>
 @endsection
 
 @section('content')
@@ -171,6 +172,12 @@
         </div>
     </div> --}}
 
+    @if (session('success'))
+        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
     <div class="mt-8 bg-white shadow-button rounded-lg  py-6">
         <div class="flex flex-col ">
             <h1 class="font-semibold text-xl px-8">Exams History</h1>
@@ -203,15 +210,23 @@
                                 <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->date }}</td>
                                 <td scope="col" class="px-6 py-3 text-left ">
                                     @foreach ($exam->classrooms as $classroom)
-                                        {{ $classroom->name }} @if (!$loop->last), @endif
-                                    @endforeach</td>
-                                <td>
-                                    <a href="{{ route('teacher.exams.show', $exam->id) }}" class="btn btn-info">View</a>
-                                    <a href="{{ route('teacher.exams.edit', $exam->id) }}" class="btn btn-warning">Edit</a>
-                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" style="display:inline-block;">
+                                        {{ $classroom->name }} @if (!$loop->last)
+                                            ,
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4 flex justify-end gap-x-2">
+                                    <a href="{{ route('teacher.exams.show', $exam->id) }}" class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                            src="{{ asset('icons/ic_views.svg') }}"></a>
+                                    <a href="{{ route('teacher.exams.edit', $exam->id) }}" class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                            src="{{ asset('icons/ic_edit.svg') }}"></a>
+
+                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                                        <button type="submit"
+                                            class="items-center bg-red-200 hover:bg-red-300 p-1 rounded-lg flex"><img
+                                                src="{{ asset('icons/ic_delete.svg') }}"></button>
                                     </form>
                                 </td>
                             </tr>
