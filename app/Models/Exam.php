@@ -16,6 +16,10 @@ class Exam extends Model
 
     protected $dates = ['date', 'start_time'];
 
+    protected $casts = [
+        'date' => 'date',
+    ];
+
     public function examType(): BelongsTo
     {
         return $this->belongsTo(ExamType::class);
@@ -33,6 +37,10 @@ class Exam extends Model
 
     public function classrooms(): BelongsToMany
     {
-        return $this->belongsToMany(Classroom::class)->withTimestamps();
+        return $this->belongsToMany(Classroom::class);
+    }
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 }

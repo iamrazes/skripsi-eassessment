@@ -10,9 +10,7 @@
         <div class="flex justify-between">
             <div class="flex flex-col w-1/2">
                 <h1 class="font-semibold text-2xl">Assessments</h1>
-                <p class="text-sm mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nobis voluptates
-                    laboriosam ullam magnam
-                    necessitatibus aut minus omnis asperiores nam eveniet, natus eaque ipsa error accusamus fugiat beatae.
+                <p class="text-sm mt-1">This is your assessment dashboard for exams. Manage all of your exams including drafts, published or completed one. Create new exam using the following button.
                 </p>
             </div>
 
@@ -24,81 +22,50 @@
         </div>
     </div>
 
-    {{-- <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
+
+
+    <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
-            <h1 class="font-semibold text-xl">Exams In Progress</h1>
-            <p class="text-sm mt-1 w-1/2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis excepturi
-                quis vero accusantium ipsam distinctio id similique facere ullam sed ab, harum tempore. Incidunt, similique.
-                Nobis ipsam dolorum velit ut.</p>
+            <h1 class="font-semibold text-xl">Exams Drafts</h1>
+            <p class="text-sm mt-1 w-1/2">These are your exams currently in draft status. Click continue to proceed to the
+                questions view.</p>
             <div class="grid grid-cols-3 gap-4 mt-4">
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
+                @foreach ($draftExams as $exam)
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <div class="flex flex-col gap-y-2">
+                            <h1 class="line-clamp-2 text-lg font-medium">{{ $exam->title }}</h1>
+                            <div class="flex gap-x-3 text-sm">
+                                <div class="flex flex-col">
+                                    <span>Subject</span>
+                                    <span>Classroom</span>
+                                    <span>Date Assigned</span>
+                                    <span>Status</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span>: {{ $exam->subject->name }}</span>
+                                    <span>:
+                                        @foreach ($exam->classrooms as $classroom)
+                                            {{ $classroom->name }}@if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </span>
+                                    <span>: {{ $exam->date->format('d/m/Y') }}</span>
+                                    <span>: {{ ucfirst($exam->status) }}</span>
+                                </div>
                             </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: In Progress</span>
-                            </div>
+                            <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                                class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
+                                Continue
+                            </a>
                         </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Continue</a>
                     </div>
-                </div>
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: In Progress</span>
-                            </div>
-                        </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Continue</a>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: In Progress</span>
-                            </div>
-                        </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Continue</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
 
-    <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
+    {{-- <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl">Exams Ready To Test</h1>
             <p class="text-sm mt-1 w-1/2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis excepturi
@@ -181,10 +148,7 @@
     <div class="mt-8 bg-white shadow-button rounded-lg  py-6">
         <div class="flex flex-col ">
             <h1 class="font-semibold text-xl px-8">Exams History</h1>
-            <p class="text-sm mt-1 w-1/2 px-8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
-                excepturi
-                quis vero accusantium ipsam distinctio id similique facere ullam sed ab, harum tempore. Incidunt, similique.
-                Nobis ipsam dolorum velit ut.</p>
+            <p class="text-sm mt-1 w-1/2 px-8">These are your exams history including drafts, published and completed. Click view button to see the details.</p>
 
             <div class="mt-4">
                 <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
@@ -196,6 +160,7 @@
                             <th scope="col" class="px-6 py-3 text-left font-medium">Subject</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Date</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Assigned To</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Status</th>
                             <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
                         </tr>
                     </thead>
@@ -207,7 +172,7 @@
                                 <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->title }}</td>
                                 <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->examType->name }}</td>
                                 <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->subject->name }}</td>
-                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->date }}</td>
+                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->date->format('Y-m-d') }}</td>
                                 <td scope="col" class="px-6 py-3 text-left ">
                                     @foreach ($exam->classrooms as $classroom)
                                         {{ $classroom->name }} @if (!$loop->last)
@@ -215,13 +180,17 @@
                                         @endif
                                     @endforeach
                                 </td>
+                                <td scope="col" class="pl-6 py-3 text-left capitalize">{{ $exam->status }}</td>
                                 <td class="px-6 py-4 flex justify-end gap-x-2">
-                                    <a href="{{ route('teacher.exams.show', $exam->id) }}" class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
+                                    <a href="{{ route('teacher.exams.show', $exam->id) }}"
+                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center"><img
                                             src="{{ asset('icons/ic_views.svg') }}"></a>
-                                    <a href="{{ route('teacher.exams.edit', $exam->id) }}" class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                                    <a href="{{ route('teacher.exams.edit', $exam->id) }}"
+                                        class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
                                             src="{{ asset('icons/ic_edit.svg') }}"></a>
 
-                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" class="inline">
+                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST"
+                                        class="inline">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit"

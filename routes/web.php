@@ -46,7 +46,12 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::resource('exams', ExamController::class);
-    Route::get('/exams/{exam}/questions', [ExamController::class, 'questionsIndex'])->name('exams.questions.index');
+    Route::get('exams/{exam}/questions', [ExamController::class, 'questionsIndex'])->name('exams.questions.index');
+    Route::get('exams/{exam}/questions/create', [ExamController::class, 'questionsCreate'])->name('exams.questions.create');
+    Route::post('exams/{exam}/questions', [ExamController::class, 'questionsStore'])->name('exams.questions.store');
+    Route::get('exams/{exam}/questions/{question}/edit', [ExamController::class, 'questionsEdit'])->name('exams.questions.edit');
+    Route::put('exams/{exam}/questions/{question}', [ExamController::class, 'questionsUpdate'])->name('exams.questions.update');
+    Route::delete('exams/{exam}/questions/{question}', [ExamController::class, 'questionsDestroy'])->name('exams.questions.destroy');
 });
 
 
