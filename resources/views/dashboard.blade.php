@@ -309,7 +309,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Total Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -326,7 +326,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Male Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -343,7 +343,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Female Students</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -360,7 +360,7 @@
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
                         <span class="text-xs">Total Teachers</span>
-                        <h1 class="font-bold text-2xl">446</h1>
+                        <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
@@ -603,10 +603,10 @@
         <!-- Student Dashboard -->
         <div class="rounded-xl border-2 border-accent-1 p-5 bg-white mt-8 shadow-button">
             <div class="flex flex-col items-center justify-center text-center gap-y-2.5">
-                <img src="{{ asset('images/img_dashboard_maleStudent.png') }}" class="w-28 h-28 mt-1" alt="">
+                <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-28 h-28 mt-1" alt="">
                 <h1 class="font-bold text-accent-1 uppercase text-2xl">{{ auth()->user()->name }}</h1>
-                <span>STUDENT'S SCHOOL ID</span>
-                <span>STUDENT'S CLASS</span>
+                <span>{{ ($dataStudent->student_id) }}</span>
+                <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
             </div>
         </div>
         <div class="grid lg:grid-cols-2 gap-y-8 my-8 gap-x-8">
@@ -618,7 +618,7 @@
                         school and teacher. See if you have any assessment available
                         for you by clicking link above.</span>
                 </div>
-                <a href="{{ route('students.assessments') }}"
+                <a href=""
                     class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>

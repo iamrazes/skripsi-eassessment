@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\DataTeacher;
+use App\Models\DataAdmin;
+use App\Models\DataStudent;
+use App\Models\Classroom;
 use Spatie\Permission\Models\Role;
 
 class DashboardController extends Controller
@@ -11,15 +16,17 @@ class DashboardController extends Controller
 
     public function index()
     {
+        $user = Auth::user();
 
         // Get statistics
         $totalStudents = $this->getTotalStudents();
         $maleStudents = $this->getGenderCount('Male');
         $femaleStudents = $this->getGenderCount('Female');
         $totalTeachers = $this->getTotalTeachers();
+        $dataStudent = DataStudent::where('user_id', $user->id)->first();
 
         // Return dashboard view with statistics data
-        return view('dashboard', compact('totalStudents', 'maleStudents', 'femaleStudents', 'totalTeachers'));
+        return view('dashboard', compact('totalStudents', 'maleStudents', 'femaleStudents', 'totalTeachers', 'dataStudent'));
     }
     private function getTotalStudents()
     {
