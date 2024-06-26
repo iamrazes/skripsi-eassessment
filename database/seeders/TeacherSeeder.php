@@ -15,8 +15,6 @@ class TeacherSeeder extends Seeder
      */
     public function run(): void
     {
-        //
-
         DataTeacher::create([
             'user_id' => 2,
             'contact' => '0895635903620',

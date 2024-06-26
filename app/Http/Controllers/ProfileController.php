@@ -22,7 +22,11 @@ class ProfileController extends Controller
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
         $dataTeacher = DataTeacher::where('user_id', $user->id)->first();
         $dataAdmin = DataAdmin::where('user_id', $user->id)->first();
-        $exams = Exam::with('examType', 'subject', 'teacher')->get();
+
+        $teacherId = auth()->id(); // Get the authenticated teacher's ID
+        $exams = Exam::with('examType', 'subject', 'teacher')
+                    ->where('teacher_id', $teacherId)
+                    ->get();
 
         return view('profile', compact('user', 'dataStudent', 'dataAdmin', 'dataTeacher', 'exams'));
     }

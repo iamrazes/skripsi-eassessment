@@ -18,18 +18,18 @@ class StudentSeeder extends Seeder
 
         DataStudent::create([
             'user_id' => 4,
-            'gender' => 'Male',  // Replace with actual gender data
-            'birthdate' => '2000-01-01',  // Replace with actual birthdate data
-            'student_id' => 'S12345',  // Replace with actual student ID data
-            'classroom_id' => 1,  // Uncomment and replace with actual classroom ID if needed
+            'gender' => 'Male',
+            'birthdate' => '2000-01-01',
+            'student_id' => 'S12345',
+            'classroom_id' => 1,
         ]);
 
         DataStudent::create([
             'user_id' => 5,
-            'gender' => 'Female',  // Replace with actual gender data
-            'birthdate' => '2000-01-01',  // Replace with actual birthdate data
-            'student_id' => 'S12346',  // Replace with actual student ID data
-            'classroom_id' => 1,  // Uncomment and replace with actual classroom ID if needed
+            'gender' => 'Female',
+            'birthdate' => '2000-01-01',
+            'student_id' => 'S12346',
+            'classroom_id' => 1,
         ]);
     }
 }

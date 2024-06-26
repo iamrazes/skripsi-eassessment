@@ -18,8 +18,15 @@ class ExamController extends Controller
      */
     public function index()
     {
-        $exams = Exam::with('examType', 'subject', 'teacher')->get();
-        $draftExams = Exam::where('status', 'draft')->get();
+        $teacherId = auth()->id(); // Get the authenticated teacher's ID
+
+        $exams = Exam::with('examType', 'subject', 'teacher')
+                    ->where('teacher_id', $teacherId)
+                    ->get();
+
+        $draftExams = Exam::where('status', 'draft')
+                         ->where('teacher_id', $teacherId)
+                         ->get();
 
         return view('teacher.exams.index', compact('exams', 'draftExams'));
     }
