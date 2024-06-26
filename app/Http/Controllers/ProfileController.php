@@ -8,6 +8,9 @@ use App\Models\DataStudent;
 use App\Models\DataTeacher;
 use App\Models\DataAdmin;
 use App\Models\Classroom;
+use App\Models\Exam;
+use App\Models\ExamType;
+use App\Models\Subject;
 
 class ProfileController extends Controller
 {
@@ -19,6 +22,8 @@ class ProfileController extends Controller
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
         $dataTeacher = DataTeacher::where('user_id', $user->id)->first();
         $dataAdmin = DataAdmin::where('user_id', $user->id)->first();
-        return view('profile', compact('user', 'dataStudent', 'dataAdmin', 'dataTeacher'));
+        $exams = Exam::with('examType', 'subject', 'teacher')->get();
+
+        return view('profile', compact('user', 'dataStudent', 'dataAdmin', 'dataTeacher', 'exams'));
     }
 }

@@ -23,4 +23,13 @@ class DataStudent extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($dataStudent) {
+            $dataStudent->user()->delete();
+        });
+    }
 }

@@ -23,8 +23,8 @@ class DataTeacher extends Model
     {
         parent::boot();
 
-        static::deleting(function ($dataAdmin) {
-            $dataAdmin->user()->delete();
+        static::deleting(function ($dataTeacher) {
+            $dataTeacher->user()->delete();
         });
     }
 }
