@@ -7,6 +7,7 @@ use App\Models\Classroom;
 use App\Models\Exam;
 use App\Models\ExamType;
 use App\Models\Question;
+use App\Models\Choice;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -62,6 +63,15 @@ class ExamController extends Controller
         // Retrieve the ExamType and Subject models
         $examType = ExamType::findOrFail($validatedData['exam_type_id']);
         $subject = Subject::findOrFail($validatedData['subject_id']);
+        function generateRandomNumericString($length = 8) {
+            $randomNumberString = '';
+
+            for ($i = 0; $i < $length; $i++) {
+                $randomNumberString .= random_int(0, 9);
+            }
+
+            return $randomNumberString;
+        }
 
         // Generate the title
         $title = sprintf(
@@ -69,7 +79,7 @@ class ExamController extends Controller
             $examType->name,
             $subject->name,
             now()->format('Y'),
-            Str::random(8)
+            generateRandomNumericString(8)
         );
 
         // Create the exam using Eloquent ORM
@@ -88,12 +98,22 @@ class ExamController extends Controller
         // Attach classrooms to the exam using sync method
         $exam->classrooms()->sync($validatedData['classrooms']);
 
-        // Generate empty questions for the exam
+
+        // Generate empty questions and choices for the exam
         for ($i = 1; $i <= $exam->total_questions; $i++) {
             $question = new Question();
             $question->exam_id = $exam->id;
             $question->question_text = ''; // You can leave this empty for the teacher to fill later
             $question->save();
+
+            // Generate 5 blank choices for each question
+            for ($j = 1; $j <= 5; $j++) {
+                $choice = new Choice();
+                $choice->question_id = $question->id;
+                $choice->choice_text = ''; // Blank choice text
+                $choice->is_correct = false; // Initially, no choice is marked as correct
+                $choice->save();
+            }
         }
 
         return redirect()->route('teacher.exams.questions.create', ['exam' => $exam->id])->with('success', 'Exam created successfully.');
@@ -141,34 +161,35 @@ class ExamController extends Controller
 
     public function questionsCreate(Exam $exam)
     {
-        $exam->load('questions.choices'); // Eager-load the questions and their choices
+        $exam->load('questions.choices');
         return view('teacher.exams.questions.create', compact('exam'));
     }
 
     public function questionsStore(Request $request, Exam $exam)
     {
         $validatedData = $request->validate([
-            'questions' => 'required|array|min:1',
             'questions.*.text' => 'required|string',
-            'questions.*.choices' => 'required|array|min:1',
-            'questions.*.choices.*.text' => 'required|string',
-            'questions.*.choices.*.is_correct' => 'required|boolean',
+            'choices.*.text' => 'required|string',
+            'questions.*.correct_choice' => 'required|exists:choices,id',
         ]);
 
-        foreach ($validatedData['questions'] as $questionData) {
-            $question = new Question();
-            $question->exam_id = $exam->id;
-            $question->text = $questionData['text'];
-            $question->save();
+        foreach ($validatedData['questions'] as $questionId => $questionData) {
+            $question = Question::findOrFail($questionId);
+            $question->update(['text' => $questionData['text']]);
 
-            foreach ($questionData['choices'] as $choiceData) {
-                $question->choices()->create([
-                    'text' => $choiceData['text'],
-                    'is_correct' => $choiceData['is_correct'],
+            if (isset($questionData['image'])) {
+                $imagePath = $questionData['image']->store('images', 'public');
+                $question->update(['image' => $imagePath]);
+            }
+
+            foreach ($question->choices as $choice) {
+                $choice->update([
+                    'text' => $validatedData['choices'][$choice->id]['text'],
+                    'is_correct' => $choice->id == $questionData['correct_choice'],
                 ]);
             }
         }
 
-        return redirect()->route('teacher.exams.questions.index', $exam->id)->with('success', 'Questions added successfully.');
+        return redirect()->route('teacher.exams.questions.index', $exam->id)->with('success', 'Questions updated successfully.');
     }
 }
