@@ -52,6 +52,8 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
     Route::get('exams/{exam}/questions/{question}/edit', [ExamController::class, 'questionsEdit'])->name('exams.questions.edit');
     Route::put('exams/{exam}/questions/{question}', [ExamController::class, 'questionsUpdate'])->name('exams.questions.update');
     Route::delete('exams/{exam}/questions/{question}', [ExamController::class, 'questionsDestroy'])->name('exams.questions.destroy');
+    Route::post('exams/{exam}/questions/save-progress', [ExamController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
+
 });
 
 

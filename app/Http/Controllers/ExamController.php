@@ -124,7 +124,7 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        // Code for showing a single exam (not provided in original)
+        return view('teacher.exams.show', compact('exam'));
     }
 
     /**
@@ -165,31 +165,54 @@ class ExamController extends Controller
         return view('teacher.exams.questions.create', compact('exam'));
     }
 
-    public function questionsStore(Request $request, Exam $exam)
+        public function questionsStore(Request $request, Exam $exam)
     {
         $validatedData = $request->validate([
             'questions.*.text' => 'required|string',
-            'choices.*.text' => 'required|string',
             'questions.*.correct_choice' => 'required|exists:choices,id',
+            'questions.*.choices.*.text' => 'required|string',
         ]);
 
         foreach ($validatedData['questions'] as $questionId => $questionData) {
-            $question = Question::findOrFail($questionId);
-            $question->update(['text' => $questionData['text']]);
+            $question = Question::find($questionId);
+            $question->question_text = $questionData['text'];
+            $question->save();
 
-            if (isset($questionData['image'])) {
-                $imagePath = $questionData['image']->store('images', 'public');
-                $question->update(['image' => $imagePath]);
-            }
-
-            foreach ($question->choices as $choice) {
-                $choice->update([
-                    'text' => $validatedData['choices'][$choice->id]['text'],
-                    'is_correct' => $choice->id == $questionData['correct_choice'],
-                ]);
+            // Ensure the choices key exists
+            if (isset($questionData['choices'])) {
+                foreach ($questionData['choices'] as $choiceId => $choiceData) {
+                    $choice = Choice::find($choiceId);
+                    $choice->choice_text = $choiceData['text'];
+                    $choice->is_correct = ($choiceId == $questionData['correct_choice']);
+                    $choice->save();
+                }
             }
         }
 
-        return redirect()->route('teacher.exams.questions.index', $exam->id)->with('success', 'Questions updated successfully.');
+        return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');
     }
+
+
+    public function saveProgress(Request $request, Exam $exam)
+    {
+        $questions = $request->input('questions', []);
+
+        foreach ($questions as $questionId => $questionData) {
+            $question = Question::findOrFail($questionId);
+            $question->question_text = $questionData['question_text'] ?? '';
+            $question->save();
+
+            if (isset($questionData['choices'])) {
+                foreach ($questionData['choices'] as $choiceId => $choiceData) {
+                    $choice = Choice::findOrFail($choiceId);
+                    $choice->choice_text = $choiceData['choice_text'] ?? '';
+                    $choice->is_correct = isset($questionData['correct_choice']) && $questionData['correct_choice'] == $choiceId;
+                    $choice->save();
+                }
+            }
+        }
+
+        return response()->json(['success' => true]);
+    }
+
 }
