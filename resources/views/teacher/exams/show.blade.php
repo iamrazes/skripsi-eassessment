@@ -17,20 +17,21 @@
             <div class="flex-grow">
                 <h5 class="mb-2">{{ $exam->title }}</h5>
                 <div class="grid lg:grid-cols-3 row-span-4">
-                    <p class="card-text">Type: {{ $exam->examType->name }}</p>
-                    <p class="card-text">Subject: {{ $exam->subject->name }}</p>
-                    <p class="card-text">Date: {{ $exam->date }}</p>
-                    <p class="card-text">Start Time: {{ $exam->start_time }}</p>
-                    <p class="card-text">Duration: {{ $exam->duration }} minutes</p>
-                    <p class="card-text">Total Questions: {{ $exam->total_questions }}</p>
-                    <p class="card-text">Classrooms:
+                    <p class=""><strong>Exam Type</strong> : {{ $exam->examType->name }}</p>
+                    <p class=""><strong>Subject</strong> : {{ $exam->subject->name }}</p>
+                    <p class=""><strong>Date</strong> : {{ $exam->date->format('Y-m-d')  }}</p>
+                    <p class=""><strong>Start Time</strong> : {{ $exam->start_time }}</p>
+                    <p class=""><strong>Duration</strong> : {{ $exam->duration }} minutes</p>
+                    <p class=""><strong>Total Questions</strong> : {{ $exam->total_questions }}</p>
+                    <p class=""><strong>Classrooms</strong> :
                         @foreach ($exam->classrooms as $classroom)
                             {{ $classroom->name }}@if (!$loop->last)
                                 ,
                             @endif
                         @endforeach
                     </p>
-                    <p class="card-text">Description: {{ $exam->description }}</p>
+                    <p class="capitalize"><strong>Status</strong> : {{ $exam->status }}</p>
+                    <p class=""><strong>Description</strong> : {{ $exam->description }}</p>
                 </div>
             </div>
         </div>

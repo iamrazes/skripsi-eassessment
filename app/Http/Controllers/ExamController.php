@@ -131,17 +131,51 @@ class ExamController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Exam $exam)
+    public function edit($id)
     {
-        // Code for editing an exam (not provided in original)
+        $exam = Exam::with('classrooms')->findOrFail($id);
+        $examTypes = ExamType::all();
+        $subjects = Subject::all();
+        $classrooms = Classroom::all();
+        return view('teacher.exams.edit', compact('exam', 'examTypes', 'subjects', 'classrooms'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Exam $exam)
+    public function update(Request $request, $id)
     {
-        // Code for updating an exam (not provided in original)
+        // Validate and retrieve data from the request
+        $validatedData = $request->validate([
+            'exam_type_id' => 'required|exists:exam_types,id',
+            'subject_id' => 'required|exists:subjects,id',
+            'date' => 'required|date|after_or_equal:today',
+            'start_time' => 'required',
+            'duration' => 'required|integer|min:1',
+            'total_questions' => 'required|integer|min:1|max:100',
+            'classrooms' => 'required|array|min:1',
+            'description' => 'nullable|string',
+        ]);
+
+        // Retrieve the exam model
+        $exam = Exam::findOrFail($id);
+
+        // Update the exam details
+        $exam->exam_type_id = $validatedData['exam_type_id'];
+        $exam->subject_id = $validatedData['subject_id'];
+        $exam->date = $validatedData['date'];
+        $exam->start_time = $validatedData['start_time'];
+        $exam->duration = $validatedData['duration'];
+        $exam->total_questions = $validatedData['total_questions'];
+        $exam->description = $validatedData['description'];
+
+        // Save the updated exam
+        $exam->save();
+
+        // Sync classrooms with the exam
+        $exam->classrooms()->sync($validatedData['classrooms']);
+
+        return redirect()->route('teacher.exams.index')->with('success', 'Exam updated successfully.');
     }
 
     /**
