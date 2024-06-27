@@ -20,7 +20,7 @@
     <x-sidebar />
 
 
-    <main class="flex-grow flex flex-col min-h-screen my-4 mx-8 lg:mx-0 lg:mr-8 lg:my-8 ">
+    <main class="flex-grow flex flex-col min-h-screen my-4 mx-8 lg:mx-0 lg:mr-8 lg:my-8 pr-6 lg:pr-0">
 
         <x-navbar />
 

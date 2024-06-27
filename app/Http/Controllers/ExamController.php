@@ -23,6 +23,7 @@ class ExamController extends Controller
 
         $exams = Exam::with('examType', 'subject', 'teacher')
                     ->where('teacher_id', $teacherId)
+                    ->orderBy('created_at', 'desc') // Sort by creation date, descending
                     ->get();
 
         $draftExams = Exam::where('status', 'draft')

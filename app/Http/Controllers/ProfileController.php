@@ -26,6 +26,7 @@ class ProfileController extends Controller
         $teacherId = auth()->id(); // Get the authenticated teacher's ID
         $exams = Exam::with('examType', 'subject', 'teacher')
                     ->where('teacher_id', $teacherId)
+                    ->orderBy('created_at', 'desc') // Sort by creation date, descending
                     ->get();
 
         return view('profile', compact('user', 'dataStudent', 'dataAdmin', 'dataTeacher', 'exams'));

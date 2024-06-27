@@ -377,7 +377,7 @@
                 class="flex  flex-col gap-y-2 bg-gradient-to-r from-accent-1 to-accent-2 p-6 rounded-lg shadow-button text-white">
                 <img src="{{ asset('icons/ic_docs.svg') }}" class="w-24" alt="">
                 <h1 class="font-semibold text-2xl">Documentations</h1>
-                <span>Learn properly on how to use e-assessment website, step-by-step, <br>
+                <span class="text-xs lg:text-sm">Learn properly on how to use e-assessment website, step-by-step, <br>
                     and tips. Understand the basics to implemented on your assessment <br>and classes. </span>
 
                 <a href="" class="flex gap-x-1 mt-1 items-center text-end font-semibold">
@@ -451,102 +451,14 @@
                                     <span class="text-sm">asdasd</span>
                                 </td>
                             </tr>
-                            <tr class="bg-white">
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-4 h-4 mr-2"
-                                            alt="">
-                                        <span class="text-sm">Teacher's Name</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-4 h-4 mr-2"
-                                            alt="">
-                                        <span class="text-sm">Teacher's Name</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-4 h-4 mr-2"
-                                            alt="">
-                                        <span class="text-sm">Teacher's Name</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-4 h-4 mr-2"
-                                            alt="">
-                                        <span class="text-sm">Teacher's Name</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                            </tr>
-                            <tr class="bg-white">
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <div class="flex items-center">
-                                        <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-4 h-4 mr-2"
-                                            alt="">
-                                        <span class="text-sm">Teacher's Name</span>
-                                    </div>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                                <td class="px-6 py-2 whitespace-nowrap">
-                                    <span class="text-sm">asdasd</span>
-                                </td>
-                            </tr>
+
                             <!-- Add more rows as needed -->
                         </tbody>
                     </table>
                 </div>
 
             </div>
+
             <div class="flex flex-col bg-white rounded-lg shadow-button flex-grow">
                 <div class="pb-6 pt-6 px-6">
                     <h1 class="font-bold">Recently Added Test</h1>
@@ -596,6 +508,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     @endif
 

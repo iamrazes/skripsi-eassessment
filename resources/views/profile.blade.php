@@ -67,7 +67,7 @@
             <div class="rounded-xl shadow-button bg-gradient-to-r from-accent-1 to-accent-2 mt-8 py-28 lg:py-36">
             </div>
             <div class="flex items-start -mt-24 gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
-                <div class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0">
+                <div class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0 -ml-20 lg:-ml-0">
                     <img src="{{ asset('images/img_dashboard_admin.png') }}" class="w-full h-full" alt="">
                 </div>
                 <div class="flex flex-col text-white pt-3">
@@ -143,7 +143,7 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($exams as $exam)
                                     <tr>
-                                        <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->created_at }}</td>
+                                        <td scope="col" class="pl-6 py-3 text-left line-clamp-1">{{ $exam->created_at }}</td>
                                         <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->examType->name }}</td>
                                         <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->subject->name }}</td>
                                         <td scope="col" class="pl-6 py-3 text-left capitalize">{{ $exam->status }}</td>
