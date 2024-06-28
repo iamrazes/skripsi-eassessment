@@ -26,7 +26,7 @@
 
     <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
-            <h1 class="font-semibold text-xl">Exams Drafts</h1>
+            <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{asset('icons/ic_assessment-draft.svg')}}" alt="">Exams Drafts</h1>
             <p class="text-sm mt-1 w-1/2">These are your exams currently in draft. Click continue to proceed filling up the questions and answer choices. </p>
             <div class="grid lg:grid-cols-3 gap-4 mt-4">
                 @foreach ($draftExams as $exam)
@@ -67,7 +67,7 @@
 
     <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
-            <h1 class="font-semibold text-xl">Published Exams</h1>
+            <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{asset('icons/ic_assessment-published.svg')}}" alt="">Published Exams</h1>
             <p class="text-sm mt-1 w-1/2">These are your published exams, waiting for the assignment from your students.</p>
             <div class="grid lg:grid-cols-3 gap-4 mt-4">
                 @foreach ($publishedExams as $exam)
@@ -113,7 +113,7 @@
     @endif
     <div class="mt-8 bg-white shadow-button rounded-lg  py-6">
         <div class="flex flex-col ">
-            <h1 class="font-semibold text-xl px-8">Exams History</h1>
+            <h1 class="font-semibold text-xl px-8 flex gap-x-2"><img src="{{asset('icons/ic_assessment-history.svg')}}" alt="">Exams History</h1>
             <p class="text-sm mt-1 w-1/2 px-8">These are your exams history including drafts, published and completed. Click view button to see the details.</p>
 
             <div class="mt-4">
