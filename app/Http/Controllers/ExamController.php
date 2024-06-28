@@ -27,10 +27,14 @@ class ExamController extends Controller
                     ->get();
 
         $draftExams = Exam::where('status', 'draft')
-                         ->where('teacher_id', $teacherId)
-                         ->get();
+                    ->where('teacher_id', $teacherId)
+                    ->get();
 
-        return view('teacher.exams.index', compact('exams', 'draftExams'));
+        $publishedExams = Exam::where('status', 'published')
+                    ->where('teacher_id', $teacherId)
+                    ->get();
+
+        return view('teacher.exams.index', compact('exams', 'draftExams', 'publishedExams'));
     }
 
     /**
@@ -223,6 +227,10 @@ class ExamController extends Controller
                 }
             }
         }
+
+        // Change the exam status to 'published'
+        $exam->status = 'published';
+        $exam->save();
 
         return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');
     }

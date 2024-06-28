@@ -27,7 +27,7 @@
 
             <div id="singlePageView" class="flex flex-col gap-y-8 pt-4">
                 @if ($exam->questions && $exam->questions->isNotEmpty())
-                    <form action="{{ route('teacher.exams.questions.store', $exam->id) }}" method="POST" enctype="multipart/form-data">
+                    <form id="questionnaireForm" action="{{ route('teacher.exams.questions.store', $exam->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @foreach ($exam->questions as $index => $question)
                             <div class="flex pb-6 border-b mx-8 mb-6">
@@ -70,12 +70,24 @@
                             </div>
                         @endforeach
                         <div class="flex mx-8 mt-4">
-                            <button type="submit" class="bg-accent-1 transition hover:bg-accent-2 w-full font-medium text-white rounded-lg px-6 py-3">Submit All</button>
+                            <button id="submitButton" type="submit" class="bg-accent-1 transition hover:bg-accent-2 w-full font-medium text-white rounded-lg px-6 py-3">Submit All</button>
                         </div>
                     </form>
                 @else
                     <p class="mx-8">No questions available.</p>
                 @endif
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmationModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-gray-800 bg-opacity-75">
+        <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-xl font-bold mb-4">Confirmation</h2>
+            <p>Are you sure you want to submit the questionnaire? Please ensure all questions and answers are filled.</p>
+            <div class="mt-4 flex justify-end">
+                <button id="confirmYes" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2">Yes</button>
+                <button id="confirmNo" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">No</button>
             </div>
         </div>
     </div>
@@ -123,5 +135,52 @@ document.querySelectorAll('.popOutZoom').forEach(image => {
 document.getElementById('closeModal').addEventListener('click', function () {
     document.getElementById('imagePreviewModal').style.display = 'none';
 });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const submitButton = document.getElementById('submitButton');
+        const confirmationModal = document.getElementById('confirmationModal');
+        const confirmYes = document.getElementById('confirmYes');
+        const confirmNo = document.getElementById('confirmNo');
+
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault();
+
+            // Validate that all questions and answer choices are filled
+            const isFormValid = validateForm();
+            if (isFormValid) {
+                confirmationModal.classList.remove('hidden');
+            } else {
+                alert('Please fill all questions and answer choices before submitting.');
+            }
+        });
+
+        confirmYes.addEventListener('click', function() {
+            confirmationModal.classList.add('hidden');
+            document.getElementById('questionnaireForm').submit();
+        });
+
+        confirmNo.addEventListener('click', function() {
+            confirmationModal.classList.add('hidden');
+        });
+
+        function validateForm() {
+            // Implement your validation logic here
+            // Ensure all questions and answer choices are filled
+            // Return true if the form is valid, otherwise return false
+
+            // Example:
+            let isValid = true;
+            const questions = document.querySelectorAll('.question');
+            questions.forEach(question => {
+                const answer = question.querySelector('input[name="answer"]:checked');
+                if (!answer) {
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+    });
 </script>
 @endsection

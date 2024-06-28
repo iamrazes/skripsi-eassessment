@@ -27,9 +27,8 @@
     <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl">Exams Drafts</h1>
-            <p class="text-sm mt-1 w-1/2">These are your exams currently in draft status. Click continue to proceed to the
-                questions view.</p>
-            <div class="grid grid-cols-3 gap-4 mt-4">
+            <p class="text-sm mt-1 w-1/2">These are your exams currently in draft. Click continue to proceed filling up the questions and answer choices. </p>
+            <div class="grid lg:grid-cols-3 gap-4 mt-4">
                 @foreach ($draftExams as $exam)
                     <div class="bg-gray-100 rounded-lg p-4">
                         <div class="flex flex-col gap-y-2">
@@ -65,79 +64,46 @@
         </div>
     </div>
 
-    {{-- <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
+
+    <div class="mt-8 bg-white shadow-button rounded-lg px-8 py-6">
         <div class="flex flex-col">
-            <h1 class="font-semibold text-xl">Exams Ready To Test</h1>
-            <p class="text-sm mt-1 w-1/2">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis excepturi
-                quis vero accusantium ipsam distinctio id similique facere ullam sed ab, harum tempore. Incidunt, similique.
-                Nobis ipsam dolorum velit ut.</p>
-            <div class="grid grid-cols-3 gap-4 mt-4">
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
+            <h1 class="font-semibold text-xl">Published Exams</h1>
+            <p class="text-sm mt-1 w-1/2">These are your published exams, waiting for the assignment from your students.</p>
+            <div class="grid lg:grid-cols-3 gap-4 mt-4">
+                @foreach ($publishedExams as $exam)
+                    <div class="bg-gray-100 rounded-lg p-4">
+                        <div class="flex flex-col gap-y-2">
+                            <h1 class="line-clamp-2 text-lg font-medium">{{ $exam->title }}</h1>
+                            <div class="flex gap-x-3 text-sm">
+                                <div class="flex flex-col">
+                                    <span>Subject</span>
+                                    <span>Classroom</span>
+                                    <span>Date Assigned</span>
+                                    <span>Start Time</span>
+                                </div>
+                                <div class="flex flex-col">
+                                    <span>: {{ $exam->subject->name }}</span>
+                                    <span>:
+                                        @foreach ($exam->classrooms as $classroom)
+                                            {{ $classroom->name }}@if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </span>
+                                    <span>: {{ $exam->date->format('d/m/Y') }}</span>
+                                    <span>: {{ ($exam->start_time) }} ( {{$exam->duration}} minutes ) </span>
+                                </div>
                             </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: Ready To Test</span>
-                            </div>
+                            <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                                class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
+                                Continue
+                            </a>
                         </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
                     </div>
-                </div>
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: Ready To Test</span>
-                            </div>
-                        </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
-                    </div>
-                </div>
-                <div class="bg-gray-100 rounded-lg p-4">
-                    <div class="flex flex-col gap-y-2">
-                        <h1 class="line-clamp-2 text-lg font-medium">E-Assessment - Type of Exam - Subject - DD/MM/YYYY</h1>
-                        <div class="flex gap-x-3 text-sm">
-                            <div class="flex flex-col">
-                                <span>Subject</span>
-                                <span>Classroom</span>
-                                <span>Date Assigned</span>
-                                <span>Status</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span>: Subject</span>
-                                <span>: 12 A, 12</span>
-                                <span>: DD/MM/YYYY</span>
-                                <span>: Ready To Test</span>
-                            </div>
-                        </div>
-                        <a href=""
-                            class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">Preview</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div> --}}
+    </div>
 
     @if (session('success'))
         <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
@@ -154,7 +120,7 @@
                 <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th scope="col" class="pl-6 py-3 text-left font-medium w-8">No.</th>
+                            <th scope="col" class="pl-6 py-3 text-left font-medium lg:w-8">No.</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Title</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Type of Exam</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Subject</th>

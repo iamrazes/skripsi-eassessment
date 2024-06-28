@@ -19,7 +19,7 @@
                 <div class="grid lg:grid-cols-3 row-span-4">
                     <p class=""><strong>Exam Type</strong> : {{ $exam->examType->name }}</p>
                     <p class=""><strong>Subject</strong> : {{ $exam->subject->name }}</p>
-                    <p class=""><strong>Date</strong> : {{ $exam->date->format('Y-m-d')  }}</p>
+                    <p class=""><strong>Date</strong> : {{ $exam->date->format('Y-m-d') }}</p>
                     <p class=""><strong>Start Time</strong> : {{ $exam->start_time }}</p>
                     <p class=""><strong>Duration</strong> : {{ $exam->duration }} minutes</p>
                     <p class=""><strong>Total Questions</strong> : {{ $exam->total_questions }}</p>
@@ -38,13 +38,17 @@
     </div>
     <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4">
         <div class="flex flex-col">
-            <h1 class="font-semibold px-6 pb-4 text-lg">Questionnaire</h1>
+            <div class="flex justify-between px-6 pb-4 ">
+                <h1 class="font-semibold text-lg">Questionnaire</h1>
+                <a href="{{route('teacher.exams.questions.create', $exam->id) }}" class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
+            </div>
             <div class="overflow-x-auto">
                 <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider flex-grow">Questions</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider flex-grow">Questions
+                            </th>
                             <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Answer</th>
                             <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Options</th>
                         </tr>
@@ -53,7 +57,8 @@
                         @foreach ($exam->questions as $index => $question)
                             <tr class="bg-white divide-gray-200">
                                 <td class="pl-6 py-1 whitespace-nowrap numbering-cell"></td>
-                                <td class="px-6 py-1 whitespace-nowrap max-w-80 overflow-hidden">{{ $question->question_text }}</td>
+                                <td class="px-6 py-1 whitespace-nowrap max-w-80 overflow-hidden">
+                                    {{ $question->question_text }}</td>
                                 <td class="px-6 py-1 whitespace-nowrap w-60 overflow-hidden">
                                     @if ($question->choices->contains('is_correct', true))
                                         @php
@@ -68,8 +73,9 @@
                                         N/A
                                     @endif
                                 </td>
-                                <td class="px-6 py-1 whitespace-nowrap text-end capitalize text-accent-1 font-medium">
-                                    <a href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}">edit</a>
+                                <td class="px-6 py-1 whitespace-nowrap text-end capitalize text-accent-1 hover:text-blue-700 font-medium">
+                                    <a
+                                        href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}">edit</a>
                                 </td>
                             </tr>
                         @endforeach
