@@ -5,7 +5,10 @@
 @endsection
 
 @section('content')
-    <div class="mt-8 bg-white rounded-lg py-4 shadow-button ">
+    <div class="mt-8">
+        <a href="{{route('teacher.exams.index')}}" class="text-accent-1 hover:text-blue-600">Go Back</a>
+    </div>
+    <div class="mt-4 bg-white rounded-lg py-4 shadow-button ">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium  ">Exam Details</h1>
 
@@ -59,7 +62,7 @@
                                 <td class="pl-6 py-1 whitespace-nowrap numbering-cell"></td>
                                 <td class="px-6 py-1 whitespace-nowrap max-w-80 overflow-hidden">
                                     {{ $question->question_text }}</td>
-                                <td class="px-6 py-1 whitespace-nowrap w-60 overflow-hidden">
+                                <td class="px-6 py-1 whitespace-nowrap max-w-40 overflow-hidden">
                                     @if ($question->choices->contains('is_correct', true))
                                         @php
                                             $alphabet = ['a', 'b', 'c', 'd', 'e'];
@@ -73,7 +76,7 @@
                                         N/A
                                     @endif
                                 </td>
-                                <td class="px-6 py-1 whitespace-nowrap text-end capitalize text-accent-1 hover:text-blue-700 font-medium">
+                                <td class="px-6 py-1 whitespace-nowrap text-end capitalize text-accent-1 hover:text-blue-700 font-medium w-10">
                                     <a
                                         href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}">edit</a>
                                 </td>

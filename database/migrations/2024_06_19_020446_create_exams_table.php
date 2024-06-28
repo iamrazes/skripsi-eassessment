@@ -22,7 +22,7 @@ return new class extends Migration
             $table->integer('total_questions');
             $table->text('description')->nullable();
             $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
-            $table->enum('status', ['draft', 'published', 'closed'])->default('draft');
+            $table->enum('status', ['draft', 'published', 'closed', 'completed'])->default('draft');
             $table->timestamps();
         });
     }
