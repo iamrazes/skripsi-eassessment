@@ -204,20 +204,34 @@ class ExamController extends Controller
         return view('teacher.exams.questions.create', compact('exam'));
     }
 
-        public function questionsStore(Request $request, Exam $exam)
+    public function questionsStore(Request $request, Exam $exam)
     {
         $validatedData = $request->validate([
             'questions.*.text' => 'required|string',
             'questions.*.correct_choice' => 'required|exists:choices,id',
             'questions.*.choices.*.text' => 'required|string',
+            'questions.*.image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
         foreach ($validatedData['questions'] as $questionId => $questionData) {
             $question = Question::find($questionId);
             $question->question_text = $questionData['text'];
+
+            if (isset($questionData['image'])) {
+                // Delete the previous image if it exists
+                if ($question->image_path) {
+                    Storage::disk('public')->delete($question->image_path);
+                }
+
+                // Store the new image
+                $image = $questionData['image'];
+                $folderPath = 'examImages/' . $exam->title . '/' . $questionId;
+                $imagePath = $image->storeAs($folderPath, $questionId . '.' . $image->extension(), 'public');
+                $question->image_path = $imagePath;
+            }
+
             $question->save();
 
-            // Ensure the choices key exists
             if (isset($questionData['choices'])) {
                 foreach ($questionData['choices'] as $choiceId => $choiceData) {
                     $choice = Choice::find($choiceId);
@@ -228,13 +242,11 @@ class ExamController extends Controller
             }
         }
 
-        // Change the exam status to 'published'
         $exam->status = 'published';
         $exam->save();
 
         return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');
     }
-
 
     public function saveProgress(Request $request, Exam $exam)
     {
