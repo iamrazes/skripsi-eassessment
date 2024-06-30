@@ -270,9 +270,7 @@
                                         <button type="button"
                                             class="clear-btn bg-gray-100 rounded-lg border border-gray-400 hover:bg-gray-200 px-4 py-2"
                                             data-question-id="{{ $question->id }}">Clear</button>
-                                        <button type="button"
-                                            class="save-progress-btn bg-gray-100 rounded-lg border border-gray-400 hover:bg-gray-200 px-4 py-2"
-                                            data-question-id="{{ $question->id }}">Save Progress</button>
+
                                     </div>
                                 </div>
                             </div>
