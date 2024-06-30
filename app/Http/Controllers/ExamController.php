@@ -267,26 +267,44 @@ class ExamController extends Controller
         return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');
     }
 
-    public function saveProgress(Request $request, Exam $exam)
-    {
-        $questions = $request->input('questions', []);
+    public function saveProgress(Request $request, $questionId)
+{
+    $validatedData = $request->validate([
+        'questions.*.text' => 'required|string',
+        'questions.*.correct_choice' => 'required|exists:choices,id',
+        'questions.*.choices.*.text' => 'required|string',
+        'questions.*.image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+    ]);
 
-        foreach ($questions as $questionId => $questionData) {
-            $question = Question::findOrFail($questionId);
-            $question->question_text = $questionData['question_text'] ?? '';
-            $question->save();
+    foreach ($validatedData['questions'] as $questionId => $questionData) {
+        $question = Question::find($questionId);
+        $question->question_text = $questionData['text'];
 
-            if (isset($questionData['choices'])) {
-                foreach ($questionData['choices'] as $choiceId => $choiceData) {
-                    $choice = Choice::findOrFail($choiceId);
-                    $choice->choice_text = $choiceData['choice_text'] ?? '';
-                    $choice->is_correct = isset($questionData['correct_choice']) && $questionData['correct_choice'] == $choiceId;
-                    $choice->save();
-                }
+        if (isset($questionData['image'])) {
+            if ($question->image_path) {
+                Storage::disk('public')->delete($question->image_path);
             }
+
+            // Store the new image
+            $image = $questionData['image'];
+            $folderPath = 'examImages/' . $question->exam->title . '/' . $questionId;
+            $imagePath = $image->storeAs($folderPath, $questionId . '.' . $image->extension(), 'public');
+            $question->image_path = $imagePath;
         }
 
-        return response()->json(['success' => true]);
+        $question->save();
+
+        if (isset($questionData['choices'])) {
+            foreach ($questionData['choices'] as $choiceId => $choiceData) {
+                $choice = Choice::find($choiceId);
+                $choice->choice_text = $choiceData['text'];
+                $choice->is_correct = ($choiceId == $questionData['correct_choice']);
+                $choice->save();
+            }
+        }
     }
+
+    return response()->json(['success' => true]);
+}
 
 }
