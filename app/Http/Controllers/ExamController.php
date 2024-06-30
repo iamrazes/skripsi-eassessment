@@ -11,6 +11,7 @@ use App\Models\Choice;
 use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class ExamController extends Controller
 {
@@ -185,9 +186,27 @@ class ExamController extends Controller
     /**
      * Remove the specified resource from storage.
      */
+
     public function destroy(Exam $exam)
     {
+        // Load the related questions
+        $exam->load('questions');
+        $exam->load('questions');
+
+        // Iterate over each question and delete associated images
+        foreach ($exam->questions as $question) {
+            if ($question->image_path) {
+                Storage::disk('public')->delete($question->image_path);
+            }
+        }
+
+        // Delete the directory where question images are stored
+        $directoryPath = 'examImages/' . $exam->title;
+        Storage::disk('public')->deleteDirectory($directoryPath);
+
+        // Delete the exam and associated questions
         $exam->delete();
+
         return redirect()->route('teacher.exams.index')->with('success', 'Exam deleted successfully.');
     }
 
