@@ -1,5 +1,5 @@
 <aside id="sidebar"
-    class="lg:block hidden bg-white w-80 lg:h-auto h-full rounded-xl shadow-md pb-8 lg:my-8 lg:mx-8 flex-shrink-0">
+    class="lg:block hidden bg-white w-80 lg:h-auto h-full lg:rounded-xl shadow-md lg:m-8 flex-shrink-0">
     <!-- Title -->
     <div class="px-4 pt-6 text-accent-1">
         <h1 class="flex justify-center gap-x-2">

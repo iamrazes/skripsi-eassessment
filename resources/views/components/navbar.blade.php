@@ -1,4 +1,4 @@
-<nav class="flex justify-between">
+<nav class="flex justify-between m-4 lg:m-0 grow-0 shrink-0">
     <nav class="flex ">
         <button class="block lg:hidden" id="sidebarButton" s>
             <img src="{{ asset('icons/ic_bars.svg') }}" alt="">
@@ -14,13 +14,13 @@
                         aria-current="page">Dashboard</li>
                 </ol>
             </div>
-            <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+            <h6 class="mb-0 font-bold capitalize hidden lg:block">Dashboard</h6>
         </div>
     </nav>
 
     <nav class="flex gap-x-6">
 
-        <a href="{{route('profile')}}" class="font-bold text-accent-1 hover:text-accent-2 transition ease-in-out uppercase">{{ auth()->user()->name }}</a>
+        <a href="{{route('profile')}}" class="font-bold text-accent-1 line-clamp-1 hover:text-accent-2 transition ease-in-out uppercase">{{ auth()->user()->name }}</a>
 
         {{-- <a>
             <img src="{{ asset('icons/ic_notification.svg') }}" class="filter-gray" alt="">
