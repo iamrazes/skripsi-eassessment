@@ -7,24 +7,27 @@
 @section('content')
     @if (auth()->user()->hasPermissionTo('student-access'))
         <!-- Student Profile -->
-        <div class="flex flex-col">
-            <div class="rounded-xl shadow-button bg-gradient-to-r from-accent-1 to-accent-2 mt-8 py-28 lg:py-36">
-            </div>
-            <div class="flex items-start -mt-24 gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
-                <div class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0">
-                    <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
-                        class="w-full h-full" alt="Student Image">
-                </div>
-                <div class="flex flex-col text-white pt-3">
-                    <h1 class="text-3xl font-semibold line-clamp-1 text-start overflow-clip uppercase">
-                        {{ auth()->user()->name }}</h1>
-                    <span class="text-lg mt-1 font-semibold capitalize">
-                        {{ auth()->user()->roles->pluck('name')->implode(', ') }}
-                    </span>
+        <div class="flex flex-col mx-4 lg:mx-0">
+            <div class="rounded-xl shadow-button bg-gradient-to-r from-accent-1 to-accent-2 mt-4 lg:mt-8 py-4 lg:py-8">
+                <div
+                    class="flex flex-col items-center lg:flex-row lg:items-start gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
+                    <div
+                        class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0 lg:-ml-0">
+                        <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+                            class="w-full h-full" alt="Student Image">
+                    </div>
+                    <div class="flex flex-col text-white pt-3 lg:items-start items-center">
+                        <h1 class="text-3xl font-semibold line-clamp-1 text-start overflow-clip uppercase">
+                            {{ auth()->user()->name }}</h1>
+                        <span class="text-lg mt-1 font-semibold capitalize">
+                            {{ auth()->user()->roles->pluck('name')->implode(', ') }}
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="bg-white rounded-lg shadow-button pt-6 pb-16 my-8">
+
+        <div class="bg-white rounded-lg shadow-button pt-6 pb-16 my-8 mx-4 lg:mx-0">
             <div class="font-semibold text-lg pb-6 border-b"><span class="px-6">Profile Information</span></div>
             <div class="flex flex-col py-6 gap-y-4 px-6">
                 <div class="flex flex-col gap-y-1">
@@ -74,7 +77,7 @@
                     <div class="flex flex-col text-white pt-3 lg:items-start items-center">
                         <h1
                             class="xl:text-3xl text-lg lg:mt-0 mt-2 font-semibold lg:text-start text-center overflow-clip uppercase">
-                            {{ auth()->user()->name }} asdasdsadas dasdasdsasdsadasda asdasd</h1>
+                            {{ auth()->user()->name }}</h1>
                         <span class="lg:text-lg mt-1 lg:font-semibold capitalize">
                             {{ auth()->user()->roles->pluck('name')->implode(', ') }}
                         </span>
@@ -120,7 +123,7 @@
                     </div>
                     <div class="overflow-x-auto ">
                         <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
-                            <thead class="">
+                            <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">

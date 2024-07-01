@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-    <div class="mt-8 bg-white rounded-lg shadow-button p-4 lg:px-8 lg:py-6">
+    <div class="mt-8 bg-white rounded-lg shadow-button p-4 lg:px-8 lg:py-6 mx-4 lg:mx-0">
         <div class="flex lg:flex-row flex-col justify-between">
             <div class="flex flex-col lg:w-1/2">
                 <h1 class="font-semibold text-2xl">Assessments</h1>
@@ -22,7 +22,7 @@
         </div>
     </div>
 
-    <div class="mt-8 bg-white shadow-button rounded-lg p-4 lg:px-8 lg:py-6">
+    <div class="mt-8 bg-white shadow-button rounded-lg p-4 lg:px-8 lg:py-6 mx-4 lg:mx-0">
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-draft.svg') }}"
                     alt="">Exams Drafts</h1>
@@ -68,9 +68,7 @@
         </div>
     </div>
 
-
-
-    <div class="mt-8 bg-white shadow-button rounded-lg p-4 lg:px-8 lg:py-6">
+    <div class="mt-8 bg-white shadow-button rounded-lg p-4 lg:px-8 lg:py-6 mx-4 lg:mx-0">
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-published.svg') }}"
                     alt="">Published Exams</h1>
@@ -116,53 +114,56 @@
         </div>
     </div>
 
-    {{-- @if (session('success'))
+    @if (session('success'))
         <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Success!</strong>
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="mt-8 bg-white shadow-button rounded-lg  py-6">
-        <div class="flex flex-col ">
-            <h1 class="font-semibold text-xl px-8 flex gap-x-2"><img src="{{ asset('icons/ic_assessment-history.svg') }}"
-                    alt="">Exams History</h1>
-            <p class="text-md mt-1 w-1/2 px-8">These are your exams history including drafts, published and completed. Click
-                view button to see the details.</p>
+    <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0 hidden lg:block">
+        <div class="flex flex-col">
+            <div class="flex flex-col p-4 lg:py-6 lg:px-8">
 
-            <div class="mt-4">
+                <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-history.svg') }}"
+                        alt="">Exams History</h1>
+                <p class="text-xs lg:text-md mt-1 lg:w-1/2">These are your exams history including drafts, published and completed. Click
+                    view button to see the details.</p>
+            </div>
+
+            <div class="lg:mt-4">
                 <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
-                    <thead class="bg-gray-50">
+                    <thead class="bg-gray-50 ">
                         <tr>
-                            <th scope="col" class="pl-6 py-3 text-left font-medium lg:w-8">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Title</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Type of Exam</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Subject</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Date</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Assigned To</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Status</th>
-                            <th scope="col" class="px-6 py-3 text-right font-medium w-42">Actions</th>
+                            <th class="px-3 lg:py-3 text-left font-medium lg:w-8">No.</th>
+                            <th class=" lg:py-3 text-left font-medium ">Title</th>
+                            <th class=" lg:py-3 text-left font-medium line-clamp-1">Type of Exam</th>
+                            <th class=" lg:py-3 text-left font-medium">Subject</th>
+                            <th class=" lg:py-3 text-left font-medium ">Date</th>
+                            <th class=" lg:py-3 text-left font-medium line-clamp-1">Assigned To</th>
+                            <th class=" lg:py-3 text-left font-medium">Status</th>
+                            <th class="pr-3 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         @foreach ($exams as $exam)
                             <tr>
-                                <td scope="col" class="px-6 py-3 text-left w-8 numbering-cell"></td>
-                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->title }}</td>
-                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->examType->name }}</td>
-                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->subject->name }}</td>
-                                <td scope="col" class="pl-6 py-3 text-left ">{{ $exam->date->format('Y-m-d') }}</td>
-                                <td scope="col" class="px-6 py-3 text-left ">
+                                <td class=" px-3 text-left lg:w-8 numbering-cell"></td>
+                                <td class=" text-left ">{{ $exam->title }}</td>
+                                <td class=" text-left ">{{ $exam->examType->name }}</td>
+                                <td class=" text-left ">{{ $exam->subject->name }}</td>
+                                <td class=" text-left ">{{ $exam->date->format('Y-m-d') }}</td>
+                                <td class="  text-left ">
                                     @foreach ($exam->classrooms as $classroom)
                                         {{ $classroom->name }} @if (!$loop->last)
                                             ,
                                         @endif
                                     @endforeach
                                 </td>
-                                <td scope="col" class="pl-6 py-3 text-left capitalize">{{ $exam->status }}</td>
-                                <td class="px-6 py-4 flex justify-end lg:gap-x-2 gap-x-1">
+                                <td class=" text-left capitalize">{{ $exam->status }}</td>
+                                <td class="pr-3 py-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
                                     <a href="{{ route('teacher.exams.show', $exam->id) }}"
-                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0"><img
+                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0"><img
                                             src="{{ asset('icons/ic_views.svg') }}"></a>
                                     <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST"
                                         class="shrink-0">
@@ -173,7 +174,7 @@
                                                 src="{{ asset('icons/ic_delete.svg') }}"></button>
                                     </form>
                                     <a href="{{ route('teacher.exams.edit', $exam->id) }}"
-                                        class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0"><img
+                                        class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0"><img
                                             src="{{ asset('icons/ic_edit.svg') }}"></a>
 
                                 </td>
@@ -182,12 +183,12 @@
                     </tbody>
                 </table>
                 <!-- Pagination buttons -->
-                <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1 text-textColor">
+                <div id="pagination" class="flex items-center my-4 justify-center gap-x-1 text-textColor">
                 </div>
             </div>
 
         </div>
-    </div> --}}
+    </div>
 @endsection
 
 @section('script')
