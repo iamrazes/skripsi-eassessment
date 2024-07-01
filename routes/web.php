@@ -14,6 +14,7 @@ use App\Http\Controllers\ExamTypeController;
 use App\Http\Controllers\SubjectController;
 
 use App\Http\Controllers\ExamTeacherController;
+use App\Http\Controllers\ExamStudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -41,7 +42,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
-
+    Route::resource('exams', ExamStudentController::class);
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {

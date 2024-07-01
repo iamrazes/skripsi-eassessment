@@ -10,13 +10,13 @@
         <div class="flex flex-col mx-4 lg:mx-0">
             <div class="rounded-xl shadow-button bg-gradient-to-r from-accent-1 to-accent-2 mt-4 lg:mt-8 py-4 lg:py-8">
                 <div
-                    class="flex flex-col items-center lg:flex-row lg:items-start gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
+                    class="flex flex-col items-center gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
                     <div
                         class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0 lg:-ml-0">
                         <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
                             class="w-full h-full" alt="Student Image">
                     </div>
-                    <div class="flex flex-col text-white pt-3 lg:items-start items-center">
+                    <div class="flex flex-col text-white pt-3 items-center">
                         <h1 class="text-3xl font-semibold line-clamp-1 text-start overflow-clip uppercase">
                             {{ auth()->user()->name }}</h1>
                         <span class="text-lg mt-1 font-semibold capitalize">

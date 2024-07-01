@@ -16,8 +16,8 @@
             $profileIcon = 'icons/ic_profile.svg';
 
             if (Auth::user()->hasRole('teacher') || Auth::user()->hasRole('student')) {
-                $dashboardIcon = 'icons/ic_dashboard2.svg';
-                $profileIcon = 'icons/ic_profile2.svg';
+                $dashboardIcon = 'icons/ic_dashboard.svg';
+                $profileIcon = 'icons/ic_profile.svg';
             }
         @endphp
 
@@ -35,17 +35,17 @@
 
         @if (auth()->user()->hasPermissionTo('student-access'))
             <div class="font-bold pt-3">STUDENT SECTION</div>
-            <a href=""
-                class="flex space-x-4 px-4 py-3 items-center {{ request()->is('student/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+            <a href="{{route('students.exams.index')}}"
+                class="flex space-x-4 px-4 py-3 items-center {{ request()->is('students/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_assessment3.svg') }}"
-                    class="{{ request()->is('student/exams*') ? 'filter-white' : '' }}">
+                    class="{{ request()->is('students/exams*') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Exams</span>
             </a>
             <a href=""
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('student/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_assessment4.svg') }}"
                     class="{{ request()->is('student/exams*') ? 'filter-white' : '' }}">
-                <span class="-mr-1 font-semibold">Results</span>
+                <span class="-mr-1 font-semibold">Reports</span>
             </a>
         @endif
 

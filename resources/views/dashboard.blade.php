@@ -389,7 +389,7 @@
             <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
                     <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                        <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
                             alt="">
                         <h1 class="text-accent-1 text-3xl font-semibold">Exams</h1>
                     </div>
@@ -403,9 +403,9 @@
             <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
                     <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_results.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                        <img src="{{ asset('icons/ic_big_results.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
                             alt="">
-                        <h1 class="text-accent-1 text-3xl font-semibold">Results</h1>
+                        <h1 class="text-accent-1 text-3xl font-semibold">Reports</h1>
                     </div>
                     <span class="text-sm lg:text-lg lg:w-3/4">All of your assessment are recorded within our
                         database. You can check, review, or learn your old test with the given right answers.
@@ -417,7 +417,7 @@
             <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
                     <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_profile.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                        <img src="{{ asset('icons/ic_big_profile.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
                             alt="">
                         <h1 class="text-accent-1 text-3xl font-semibold">My Profile</h1>
                     </div>
@@ -431,7 +431,7 @@
                 class="bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
                     <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_docs.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                        <img src="{{ asset('icons/ic_big_docs.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
                             alt="">
                         <h1 class="text-white  text-3xl font-semibold">Documentations</h1>
                     </div>
