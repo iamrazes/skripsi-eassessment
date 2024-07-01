@@ -55,12 +55,6 @@
                     <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
                         min="1" value="{{ old('duration', $exam->duration) }}">
                 </div>
-                <div class="flex flex-col my-3">
-                    <label for="total_questions">Total Questions</label>
-                    <input type="number" name="total_questions" id="total_questions"
-                        class="rounded-lg border-gray-400 mt-1" min="1" max="100"
-                        value="{{ old('total_questions', $exam->total_questions) }}">
-                </div>
 
                 <div class="flex flex-col my-3">
                     <label for="classrooms">Classrooms</label>

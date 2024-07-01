@@ -13,7 +13,7 @@ use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamTypeController;
 use App\Http\Controllers\SubjectController;
 
-use App\Http\Controllers\ExamController;
+use App\Http\Controllers\ExamTeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,14 +45,14 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
-    Route::resource('exams', ExamController::class);
-    Route::get('exams/{exam}/questions', [ExamController::class, 'questionsIndex'])->name('exams.questions.index');
-    Route::get('exams/{exam}/questions/create', [ExamController::class, 'questionsCreate'])->name('exams.questions.create');
-    Route::post('exams/{exam}/questions', [ExamController::class, 'questionsStore'])->name('exams.questions.store');
-    Route::get('exams/{exam}/questions/{question}/edit', [ExamController::class, 'questionsEdit'])->name('exams.questions.edit');
-    Route::put('exams/{exam}/questions/{question}', [ExamController::class, 'questionsUpdate'])->name('exams.questions.update');
-    Route::delete('exams/{exam}/questions/{question}', [ExamController::class, 'questionsDestroy'])->name('exams.questions.destroy');
-    Route::post('exams/{exam}/questions/save-progress', [ExamController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
+    Route::resource('exams', ExamTeacherController::class);
+    Route::get('exams/{exam}/questions', [ExamTeacherController::class, 'questionsIndex'])->name('exams.questions.index');
+    Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
+    Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
+    Route::get('exams/{exam}/questions/{question}/edit', [ExamTeacherController::class, 'questionsEdit'])->name('exams.questions.edit');
+    Route::put('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsUpdate'])->name('exams.questions.update');
+    Route::delete('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsDestroy'])->name('exams.questions.destroy');
+    Route::post('exams/{exam}/questions/save-progress', [ExamTeacherController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
 
 });
 

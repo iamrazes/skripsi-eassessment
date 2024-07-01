@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
-class ExamController extends Controller
+class ExamTeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -157,7 +157,6 @@ class ExamController extends Controller
             'date' => 'required|date|after_or_equal:today',
             'start_time' => 'required',
             'duration' => 'required|integer|min:1',
-            'total_questions' => 'required|integer|min:1|max:100',
             'classrooms' => 'required|array|min:1',
             'description' => 'nullable|string',
         ]);
@@ -171,7 +170,6 @@ class ExamController extends Controller
         $exam->date = $validatedData['date'];
         $exam->start_time = $validatedData['start_time'];
         $exam->duration = $validatedData['duration'];
-        $exam->total_questions = $validatedData['total_questions'];
         $exam->description = $validatedData['description'];
 
         // Save the updated exam

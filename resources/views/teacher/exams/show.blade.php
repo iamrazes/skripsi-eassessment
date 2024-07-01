@@ -5,9 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="mt-8">
-        <a href="{{route('teacher.exams.index')}}" class="text-accent-1 hover:text-blue-600">Go Back</a>
-    </div>
+
     <div class="mt-4 bg-white rounded-lg py-4 shadow-button ">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium  ">Exam Details</h1>

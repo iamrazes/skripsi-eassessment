@@ -104,7 +104,7 @@
                                 </div>
                                 <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
                                     class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
-                                    Continue
+                                    Preview
                                 </a>
                             </div>
                         </div>
@@ -162,10 +162,7 @@
                                 </td>
                                 <td class=" text-left capitalize">{{ $exam->status }}</td>
                                 <td class="pr-3 py-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
-                                    <a href="{{ route('teacher.exams.show', $exam->id) }}"
-                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0"><img
-                                            src="{{ asset('icons/ic_views.svg') }}"></a>
-                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST"
+                                    <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" id="deleteExam"
                                         class="shrink-0">
                                         @csrf
                                         @method('DELETE')
@@ -173,6 +170,9 @@
                                             class=" bg-red-200 hover:bg-red-300 rounded-lg p-1 items-center"><img
                                                 src="{{ asset('icons/ic_delete.svg') }}"></button>
                                     </form>
+                                    <a href="{{ route('teacher.exams.show', $exam->id) }}"
+                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0"><img
+                                            src="{{ asset('icons/ic_views.svg') }}"></a>
                                     <a href="{{ route('teacher.exams.edit', $exam->id) }}"
                                         class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0"><img
                                             src="{{ asset('icons/ic_edit.svg') }}"></a>
