@@ -302,13 +302,13 @@
 
     @if (auth()->user()->hasPermissionTo('teacher-access'))
         <!-- Admin Dashboard -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 mt-8 gap-4 lg:gap-x-8">
+        <div class="grid grid-cols-2 lg:grid-cols-4 mx-4 mt-4 lg:mx-0 lg:mt-8 gap-4 lg:gap-x-8">
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6">
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Students</span>
+                        <span class="text-md">Total Students</span>
                         <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
@@ -325,7 +325,7 @@
                     <img src="{{ asset('icons/ic_male_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Male Students</span>
+                        <span class="text-md">Male Students</span>
                         <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
@@ -342,7 +342,7 @@
                     <img src="{{ asset('icons/ic_female_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Female Students</span>
+                        <span class="text-md">Female Students</span>
                         <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
@@ -359,7 +359,7 @@
                     <img src="{{ asset('icons/ic_total_teachers.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Teachers</span>
+                        <span class="text-md">Total Teachers</span>
                         <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
@@ -372,63 +372,73 @@
                 </div>
             </div>
         </div>
-
-
     @endif
 
     @if (auth()->user()->hasPermissionTo('student-access'))
         <!-- Student Dashboard -->
-        <div class="rounded-xl border-2 border-accent-1 p-5 bg-white mt-8 shadow-button">
+        <div class="rounded-xl border-2 border-accent-1 p-5 bg-white mt-8 shadow-button mx-4 lg:mx-0">
             <div class="flex flex-col items-center justify-center text-center gap-y-2.5">
-                <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-28 h-28 mt-1" alt="">
+                <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+                    class="w-28 h-28 mt-1" alt="">
                 <h1 class="font-bold text-accent-1 uppercase text-2xl">{{ auth()->user()->name }}</h1>
-                <span>{{ ($dataStudent->student_id) }}</span>
+                <span>{{ $dataStudent->student_id }}</span>
                 <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
             </div>
         </div>
-        <div class="grid lg:grid-cols-2 gap-y-8 my-8 gap-x-8">
-            <div class="bg-white rounded-md shadow-button p-8 flex flex-col justify-between">
+        <div class="grid lg:grid-cols-2 gap-y-4 lg:gap-y-8 my-8 gap-x-8 mx-4 lg:mx-0">
+            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
-                    <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="w-28 h-28" alt="">
-                    <h1 class="text-accent-1 text-3xl font-semibold">Assessments</h1>
-                    <span style="width: 80%;" class="text-sm lg:text-lg">Online Assessment curated and created by your
+                    <div class="flex lg:flex-col gap-x-3">
+                        <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                            alt="">
+                        <h1 class="text-accent-1 text-3xl font-semibold">Exam</h1>
+                    </div>
+                    <span class="text-sm lg:text-lg lg:w-3/4">Online Assessment curated and created by your
                         school and teacher. See if you have any assessment available
                         for you by clicking link above.</span>
                 </div>
-                <a href=""
-                    class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
+                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
-            <div class="bg-white rounded-md shadow-button p-8 flex flex-col justify-between">
+            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
-                    <img src="{{ asset('icons/ic_big_results.svg') }}" class="w-28 h-28" alt="">
-                    <h1 class="text-accent-1 text-3xl font-semibold">My Results</h1>
-                    <span style="width: 80%;" class="text-sm lg:text-lg">All of your assessment are recorded within our
+                    <div class="flex lg:flex-col gap-x-3">
+                        <img src="{{ asset('icons/ic_big_results.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                            alt="">
+                        <h1 class="text-accent-1 text-3xl font-semibold">Results</h1>
+                    </div>
+                    <span class="text-sm lg:text-lg lg:w-3/4">All of your assessment are recorded within our
                         database. You can check, review, or learn your old test with the given right answers.
                     </span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
+                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
-            <div class="bg-white rounded-md shadow-button p-8 flex flex-col justify-between">
+            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
-                    <img src="{{ asset('icons/ic_big_profile.svg') }}" class="w-28 h-28" alt="">
-                    <h1 class="text-accent-1 text-3xl font-semibold">My Profile</h1>
-                    <span style="width: 80%;" class="text-sm lg:text-lg">Check your identifications, all of your data
+                    <div class="flex lg:flex-col gap-x-3">
+                        <img src="{{ asset('icons/ic_big_profile.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                            alt="">
+                        <h1 class="text-accent-1 text-3xl font-semibold">My Profile</h1>
+                    </div>
+                    <span class="text-sm lg:text-lg lg:w-3/4">Check your identifications, all of your data
                         stored private and secure in school database.</span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold"><img
+                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
             <div
-                class="bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-md shadow-button p-8 flex flex-col justify-between">
+                class="bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
                 <div class="flex flex-col gap-y-2">
-                    <img src="{{ asset('icons/ic_big_docs.svg') }}" class="w-28 h-28" alt="">
-                    <h1 class="text-white  text-3xl font-semibold">Documentations</h1>
-                    <span style="width: 80%;" class="text-sm lg:text-lg">Learn properly on how to use e-assessment
+                    <div class="flex lg:flex-col gap-x-3">
+                        <img src="{{ asset('icons/ic_big_docs.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
+                            alt="">
+                        <h1 class="text-white  text-3xl font-semibold">Documentations</h1>
+                    </div>
+                    <span class="text-sm lg:text-lg lg:w-3/4">Learn properly on how to use e-assessment
                         website, the basics and rules. Understand it to avoid mistake and error.</span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-white font-semibold"><img
+                <a href="" class="flex gap-x-1 place-content-end text-white font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more.svg') }}" alt=""> Click Here</a>
             </div>
             <!-- Repeat the same structure for other cards -->
