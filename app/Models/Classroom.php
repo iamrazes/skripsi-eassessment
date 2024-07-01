@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\DataStudent;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Classroom extends Model
 {
@@ -21,6 +22,6 @@ class Classroom extends Model
 
     public function exams(): BelongsToMany
     {
-        return $this->belongsToMany(Exam::class)->withTimestamps();
+        return $this->belongsToMany(Exam::class);
     }
 }
