@@ -1,5 +1,4 @@
-<aside id="sidebar"
-    class="lg:block hidden bg-white w-80 lg:h-auto h-full lg:rounded-xl shadow-md lg:m-8 flex-shrink-0">
+<aside id="sidebar" class="lg:block hidden bg-white w-80 lg:h-auto h-full lg:rounded-xl shadow-md lg:m-8 flex-shrink-0">
     <!-- Title -->
     <div class="px-4 pt-6 text-accent-1">
         <h1 class="flex justify-center gap-x-2">
@@ -12,26 +11,41 @@
     <!-- Items -->
     <div class="py-3 px-5 space-y-5">
         <!-- Main -->
+        @php
+            $dashboardIcon = 'icons/ic_dashboard.svg';
+            $profileIcon = 'icons/ic_profile.svg';
+
+            if (Auth::user()->hasRole('teacher') || Auth::user()->hasRole('student')) {
+                $dashboardIcon = 'icons/ic_dashboard2.svg';
+                $profileIcon = 'icons/ic_profile2.svg';
+            }
+        @endphp
+
         <a href="{{ route('dashboard') }}"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('dashboard') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
-            <img src="{{ asset('icons/ic_dashboard.svg') }}"
-                class="{{ request()->routeIs('dashboard') ? 'filter-white' : '' }}">
+            <img src="{{ asset($dashboardIcon) }}" class="{{ request()->routeIs('dashboard') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">Dashboard</span>
         </a>
         <a href="{{ route('profile') }}"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('profile') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
-            <img src="{{ asset('icons/ic_profile.svg') }}"
-                class="{{ request()->routeIs('profile') ? 'filter-white' : '' }}">
+            <img src="{{ asset($profileIcon) }}" class="{{ request()->routeIs('profile') ? 'filter-white' : '' }}">
             <span class="-mr-1 font-semibold">My Profile</span>
         </a>
+
 
         @if (auth()->user()->hasPermissionTo('student-access'))
             <div class="font-bold pt-3">STUDENT SECTION</div>
             <a href=""
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('student/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                <img src="{{ asset('icons/ic_assessment4.svg') }}"
+                <img src="{{ asset('icons/ic_assessment3.svg') }}"
                     class="{{ request()->is('student/exams*') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Exams</span>
+            </a>
+            <a href=""
+                class="flex space-x-4 px-4 py-3 items-center {{ request()->is('student/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                <img src="{{ asset('icons/ic_assessment4.svg') }}"
+                    class="{{ request()->is('student/exams*') ? 'filter-white' : '' }}">
+                <span class="-mr-1 font-semibold">Results</span>
             </a>
         @endif
 

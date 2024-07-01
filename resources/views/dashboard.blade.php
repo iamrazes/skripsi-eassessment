@@ -391,7 +391,7 @@
                     <div class="flex lg:flex-col gap-x-3">
                         <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-28 lg:h-28 w-10 h-10"
                             alt="">
-                        <h1 class="text-accent-1 text-3xl font-semibold">Exam</h1>
+                        <h1 class="text-accent-1 text-3xl font-semibold">Exams</h1>
                     </div>
                     <span class="text-sm lg:text-lg lg:w-3/4">Online Assessment curated and created by your
                         school and teacher. See if you have any assessment available
