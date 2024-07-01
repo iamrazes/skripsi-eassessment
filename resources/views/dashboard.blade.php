@@ -308,7 +308,7 @@
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Students</span>
+                        <span class="text-md">Total Students</span>
                         <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
@@ -325,7 +325,7 @@
                     <img src="{{ asset('icons/ic_male_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Male Students</span>
+                        <span class="text-md">Male Students</span>
                         <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
@@ -342,7 +342,7 @@
                     <img src="{{ asset('icons/ic_female_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Female Students</span>
+                        <span class="text-md">Female Students</span>
                         <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
@@ -359,7 +359,7 @@
                     <img src="{{ asset('icons/ic_total_teachers.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Teachers</span>
+                        <span class="text-md">Total Teachers</span>
                         <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>

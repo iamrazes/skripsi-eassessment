@@ -19,16 +19,12 @@
     </nav>
 
     <nav class="flex gap-x-6">
-        <!-- close buttton -->
-        <button id="closeSidebar" class="hidden lg:hidden">
-            <img src="{{ asset('icons/ic_bars.svg') }}" alt="Close Sidebar">
-        </button>
 
         <a href="{{route('profile')}}" class="font-bold text-accent-1 hover:text-accent-2 transition ease-in-out uppercase">{{ auth()->user()->name }}</a>
 
-        <a>
+        {{-- <a>
             <img src="{{ asset('icons/ic_notification.svg') }}" class="filter-gray" alt="">
-        </a>
+        </a> --}}
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
@@ -37,5 +33,9 @@
                 <img src="{{ asset('icons/ic_exit.svg') }}" alt="Logout" class="transition duration-300 ease-in-out  transform hover:scale-110">
             </a>
         </form>
+        <!-- close buttton -->
+        <button id="closeSidebar" class="hidden lg:hidden">
+            <img src="{{ asset('icons/ic_bars.svg') }}" alt="Close Sidebar">
+        </button>
     </nav>
 </nav>
