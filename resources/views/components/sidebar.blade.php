@@ -43,7 +43,7 @@
             </a>
             <a href=""
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('student/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
-                <img src="{{ asset('icons/ic_assessment4.svg') }}"
+                <img src="{{ asset('icons/ic_assessment-history.svg') }}"
                     class="{{ request()->is('student/exams*') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Reports</span>
             </a>
