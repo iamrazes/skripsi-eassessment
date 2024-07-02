@@ -43,6 +43,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
     Route::resource('exams', ExamStudentController::class);
+
+    // Additional route for starting the exam
+    Route::get('exams/{exam}/start', [ExamStudentController::class, 'start'])->name('exams.start');
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {

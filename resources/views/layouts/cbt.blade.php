@@ -13,9 +13,10 @@
 
     <link rel="icon" href="{{ asset('icons/logo.svg') }}">
     @yield('head')
+
 </head>
 
-<body class="bg-[#F5F7F8] text-textColor antialiased flex">
+<body class="bg-[#F5F7F8] text-textColor antialiased flex flex-col">
 
 
     @yield('alert')

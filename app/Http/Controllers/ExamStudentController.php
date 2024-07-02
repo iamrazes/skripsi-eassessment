@@ -52,4 +52,14 @@ class ExamStudentController extends Controller
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
 
+    public function start($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        // Additional logic for starting the exam can go here, if necessary
+
+        return view('student.exams.start', compact('exam'));
+    }
+
+
 }
