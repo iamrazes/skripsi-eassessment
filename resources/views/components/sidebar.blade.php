@@ -16,8 +16,8 @@
             $profileIcon = 'icons/ic_profile.svg';
 
             if (Auth::user()->hasRole('teacher') || Auth::user()->hasRole('student')) {
-                $dashboardIcon = 'icons/ic_dashboard.svg';
-                $profileIcon = 'icons/ic_profile.svg';
+                $dashboardIcon = 'icons/ic_dashboard2.svg';
+                $profileIcon = 'icons/ic_profile2.svg';
             }
         @endphp
 
