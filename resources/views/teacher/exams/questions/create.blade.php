@@ -1,4 +1,4 @@
-{{-- @extends('layouts.dashboard')
+{{-- @extends('layouts.app')
 
 @section('title')
     <title>Manage Questions - {{ $exam->title }}</title>
@@ -182,7 +182,7 @@
     </script>
 @endsection --}}
 
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('title')
     <title>Manage Questions - {{ $exam->title }}</title>

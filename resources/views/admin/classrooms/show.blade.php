@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('title')
     <title>Classroom Details - {{ $classroom->name }} - {{ config('app.name') }}</title>
