@@ -9,8 +9,8 @@
     <div class="mt-8 bg-white rounded-lg shadow-button p-4 lg:px-8 lg:py-6 mx-4 lg:mx-0">
         <div class="flex lg:flex-row flex-col justify-between">
             <div class="flex flex-col lg:w-1/2">
-                <h1 class="font-semibold text-2xl">Assessments</h1>
-                <p class="lg:text-md text-xs mt-1">This is your assessment dashboard for exams. Manage all of your exams including
+                <h1 class="font-semibold text-2xl">Assessments - Exams</h1>
+                <p class="lg:text-sm text-xs mt-1">This is your assessment dashboard for exams. Manage all of your exams including
                     drafts, published or completed one. Create new exam using the following button.
                 </p>
             </div>
@@ -25,11 +25,11 @@
     <div class="mt-8 bg-white shadow-button rounded-lg p-4 lg:px-8 lg:py-6 mx-4 lg:mx-0">
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-draft.svg') }}"
-                    alt="">Exams Drafts</h1>
-            <p class="text-xs lg:text-md mt-1 lg:w-1/2">These are your exams currently in draft. Click continue to proceed filling up the
+                    alt="">Drafts Exams</h1>
+            <p class="text-xs lg:text-sm mt-1 lg:w-1/2">These are your exams currently in draft. Click continue to proceed filling up the
                 questions and answer choices.</p>
             @if ($draftExams->isEmpty())
-                <p class="mt-1 text-center py-10 text-lg text-gray-400">You have no drafts at the moment.</p>
+                <p class="mt-1 text-center py-10 text-sm text-gray-400">You have no drafts at the moment.</p>
             @else
                 <div class="grid lg:grid-cols-3 gap-4 mt-4">
                     @foreach ($draftExams as $exam)
@@ -72,10 +72,10 @@
         <div class="flex flex-col">
             <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-published.svg') }}"
                     alt="">Published Exams</h1>
-            <p class="text-xs lg:text-md mt-1 lg:w-1/2">These are your published exams, waiting for the assignment from your students.</p>
+            <p class="text-xs lg:text-sm mt-1 lg:w-1/2">These are your published exams, waiting for the assignment from your students.</p>
 
             @if ($publishedExams->isEmpty())
-                <p class="mt-1 text-center py-10 text-lg text-gray-400">You have no published exams at the moment.</p>
+                <p class="mt-1 text-center py-10 text-sm text-gray-400">You have no published exams at the moment.</p>
             @else
                 <div class="grid lg:grid-cols-3 gap-4 mt-4">
                     @foreach ($publishedExams as $exam)
@@ -102,7 +102,7 @@
                                         <span>: {{ $exam->start_time }} ( {{ $exam->duration }} minutes ) </span>
                                     </div>
                                 </div>
-                                <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                                <a href="{{ route('teacher.exams.show', $exam->id) }}"
                                     class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
                                     Preview
                                 </a>
@@ -126,30 +126,30 @@
 
                 <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-history.svg') }}"
                         alt="">Exams History</h1>
-                <p class="text-xs lg:text-md mt-1 lg:w-1/2">These are your exams history including drafts, published and completed. Click
+                <p class="text-xs lg:text-sm mt-1 lg:w-1/2">These are your exams history including drafts, published and completed. Click
                     view button to see the details.</p>
             </div>
 
-            <div class="lg:mt-4">
+            <div class="">
                 <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200" id="customTable">
                     <thead class="bg-gray-50 ">
                         <tr>
-                            <th class="px-3 lg:py-3 text-left font-medium lg:w-8">No.</th>
-                            <th class=" lg:py-3 text-left font-medium ">Title</th>
+                            <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
+                            <th class=" lg:py-3 pl-3 text-left font-medium ">Title</th>
                             <th class=" lg:py-3 text-left font-medium line-clamp-1">Type of Exam</th>
                             <th class=" lg:py-3 text-left font-medium">Subject</th>
                             <th class=" lg:py-3 text-left font-medium ">Date</th>
                             <th class=" lg:py-3 text-left font-medium line-clamp-1">Assigned To</th>
                             <th class=" lg:py-3 text-left font-medium">Status</th>
-                            <th class="pr-3 lg:py-3 text-right font-medium w-42">Actions</th>
+                            <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
 
                         @foreach ($exams as $exam)
                             <tr>
-                                <td class=" px-3 text-left lg:w-8 numbering-cell"></td>
-                                <td class=" text-left ">{{ $exam->title }}</td>
+                                <td class=" pl-6 text-left w-6 numbering-cell"></td>
+                                <td class=" pl-3 text-left ">{{ $exam->title }}</td>
                                 <td class=" text-left ">{{ $exam->examType->name }}</td>
                                 <td class=" text-left ">{{ $exam->subject->name }}</td>
                                 <td class=" text-left ">{{ $exam->date->format('Y-m-d') }}</td>
@@ -161,7 +161,7 @@
                                     @endforeach
                                 </td>
                                 <td class=" text-left capitalize">{{ $exam->status }}</td>
-                                <td class="pr-3 py-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
+                                <td class="pr-6 py-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
                                     <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" id="deleteExam"
                                         class="shrink-0">
                                         @csrf

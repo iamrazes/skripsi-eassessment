@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     <div class="mt-4 bg-white rounded-lg py-4 shadow-button ">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium  ">Exam Details</h1>
@@ -41,7 +40,8 @@
         <div class="flex flex-col">
             <div class="flex justify-between px-6 pb-4 ">
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
-                <a href="{{route('teacher.exams.questions.create', $exam->id) }}" class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
+                <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                    class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
             </div>
             <div class="overflow-x-auto">
                 <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
@@ -74,9 +74,13 @@
                                         N/A
                                     @endif
                                 </td>
-                                <td class="px-6 py-1 whitespace-nowrap text-end capitalize text-accent-1 hover:text-blue-700 font-medium w-10">
-                                    <a
-                                        href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}">edit</a>
+                                <td class="pr-6 py-2 flex flex-auto justify-end ">
+
+                                    <a href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}"
+                                        class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0"><img
+                                            src="{{ asset('icons/ic_edit.svg') }}">
+                                    </a>
+
                                 </td>
                             </tr>
                         @endforeach
