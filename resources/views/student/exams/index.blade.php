@@ -42,10 +42,10 @@
                                         <label class="flex justify-between">Total Question:
                                             <span>{{ $exam->total_questions }} Items</span></label>
                                         <label class="flex justify-between">Total Duration:
-                                            <span>{{ $exam->total_questions }} Minutes</span></label>
+                                            <span>{{ $exam->duration }} Minutes</span></label>
                                         <label class="flex justify-between">Date:
                                             <span class="text-end">{{ $exam->date->format('d/m/Y') }}<br>
-                                                ({{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }})
+                                                ( {{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }} )
                                             </span></label>
                                     </div>
                                     <a href="{{ route('students.exams.show', $exam->id) }}"

@@ -20,16 +20,17 @@
                 <p class="flex justify-between"><span>Duration:</span> {{ $exam->duration }} minutes</p>
             </div>
             <div class="text-center mt-3 flex flex-col lg:w-1/2 lg:mx-auto">
-                {{-- when the time is off --}}
-                {{-- <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Start the Exam</a>
-                <p class="text-sm lg:text-base">*The link will be available when the time is down</p> --}}
-                {{-- when the time is on --}}
-                <a href="" class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">Start the Exam</a>
-                <p class="text-sm lg:text-base">*The exam is available, click the button to continue</p>
+                @if ($isExamAvailable)
+                    <a href="" class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">Start the Exam</a>
+                    <p class="text-sm lg:text-base">*The exam is available, click the button to continue</p>
+                @else
+                    <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Start the Exam</a>
+                    <p class="text-sm lg:text-base">*The link will be available when the time is down</p>
+                @endif
             </div>
         </div>
         <div class="flex mx-4 ">
-            <a href="{{route('students.exams.index')}}" class="text-accent-1 hover:text-accent-2 flex gapx-2"><img src="{{asset('icons/ic_left2.svg')}}" alt="">Go Back</a>
+            <a href="{{ route('students.exams.index') }}" class="text-accent-1 hover:text-accent-2 flex gapx-2"><img src="{{ asset('icons/ic_left2.svg') }}" alt="">Go Back</a>
         </div>
     </div>
 @endsection
