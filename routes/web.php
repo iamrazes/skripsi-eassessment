@@ -44,19 +44,20 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
     Route::resource('exams', ExamStudentController::class);
 
-    // Additional route for starting the exam
     Route::get('exams/{exam}/start', [ExamStudentController::class, 'start'])->name('exams.start');
 });
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::resource('exams', ExamTeacherController::class);
+
     Route::get('exams/{exam}/questions', [ExamTeacherController::class, 'questionsIndex'])->name('exams.questions.index');
     Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
     Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
-    Route::get('exams/{exam}/questions/{question}/edit', [ExamTeacherController::class, 'questionsEdit'])->name('exams.questions.edit');
-    Route::put('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsUpdate'])->name('exams.questions.update');
-    Route::delete('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsDestroy'])->name('exams.questions.destroy');
-    Route::post('exams/{exam}/questions/save-progress', [ExamTeacherController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
+
+    // Route::get('exams/{exam}/questions/{question}/edit', [ExamTeacherController::class, 'questionsEdit'])->name('exams.questions.edit');
+    // Route::put('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsUpdate'])->name('exams.questions.update');
+    // Route::delete('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsDestroy'])->name('exams.questions.destroy');
+    // Route::post('exams/{exam}/questions/save-progress', [ExamTeacherController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
 
 });
 

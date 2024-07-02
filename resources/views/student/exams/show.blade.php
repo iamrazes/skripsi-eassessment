@@ -24,7 +24,7 @@
                     <a href="{{ route('students.exams.start', $exam->id) }}" class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">Start the Exam</a>
                     <p class="text-sm lg:text-base">*The exam is available, click the button to continue</p>
                 @else
-                    <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Start the Exam</a>
+                    <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Unavailable</a>
                     <p class="text-sm lg:text-base">*The link will be available when the time is down</p>
                 @endif
             </div>
