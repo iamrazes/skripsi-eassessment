@@ -44,7 +44,7 @@
         <div>
             <h1 class="font-bold lg:text-2xl uppercase">ULANGAN TENGAH SEMESTER</h1>
             <h2>Subject: {{$exam->subject->name}}</h2>
-            <h3></h3>
+            <h3>Duration: {{$exam->duration}} minutes</h3>
         </div>
         <div class="flex flex-col text-end">
             <span class="flex items-center place-content-end gap-x-2">
@@ -57,7 +57,7 @@
 
     <main class="flex flex-col lg:flex-row gap-x-8 -mt-14 lg:px-16 mb-8 ">
         {{-- main content / questions --}}
-        <div class="flex flex-col gap-y-8 flex-grow">
+        <div class="flex flex-col gap-y-4 lg:gap-y-8 flex-grow">
             <div class="flex flex-col gap-y-4 bg-white shadow-button rounded-lg p-3 lg:p-6">
                 <div class="flex items-center gap-x-4">
                     <div class="flex items-center justify-center rounded-full border border-accent-2 h-10 w-10">
@@ -76,7 +76,7 @@
                     <img src="/public/images/images.jpg" class="max-h-72 max-w-fit my-4 " alt="">
                 </div>
                 <span class="text-gray-400 text-sm">Select your answer on the options below:</span>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 pb-4">
                     {{-- up to 5 choices, alphabetick a-e --}}
                     <div class="flex align-middle items-center">
                         <label class="choice-button">
@@ -118,12 +118,10 @@
                         </label>
                         <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
                     </div>
-
                 </div>
 
-
             </div>
-            <div class="flex flex-col gap-y-4 lg:gap-y-8">
+            <div class="flex flex-col gap-y-4 lg:gap-y-8 mx-4 lg:mx-0">
                 <div class="grid grid-cols-3 justify-between shadow-button">
                     <button class="bg-white hover:bg-gray-100 rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Clear</button>
                     <button class="bg-white hover:bg-gray-100 border-x-2 lg:px-6 lg:py-4 py-2 px-2 flex-grow">Mark</button>
@@ -142,9 +140,9 @@
             <div class="border-b">
                 <div class="flex py-6 px-8 gap-x-4">
 
-                    <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="w-32 h-32" alt="">
-                    <div class="flex flex-col py-2 overflow-x-hidden">
-                        <span class="font-semibold lg:max-w-28 uppercase">{{ auth()->user()->name }} ASDSADSAD ASDAD ASDSADASDASDASD </span>
+                    <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}" class="lg:w-20 lg:h-20 w-32 h-32" alt="">
+                    <div class="flex flex-col py-2 overflow-x-hidden flex-grow">
+                        <span class="font-semibold lg:max-w-52 uppercase">{{ auth()->user()->name }} as asasas ASDS ADSAD ASDAD ASDSADA SDASDASD </span>
                         <span>{{ $dataStudent->student_id }}</span>
                         <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
                     </div>
@@ -152,11 +150,11 @@
             </div>
             {{-- number navigation --}}
             <div class="grid grid-cols-5 justify-items-center p-4 lg:py-4 lg:px-4 gap-4 lg:gap-4">
-                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-accent-1">1</button>
-                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border-4 border-accent-1">2</button>
-                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-orange-300">3</button>
-                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-accent-2">4</button>
-                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border">5</button>
+                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-accent-1">1</button> <!-- Answered -->
+                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border-4 border-accent-1">2</button> <!-- Selected -->
+                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-orange-300">3</button> <!-- Mark Not Answered -->
+                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-accent-2">4</button> <!-- Mark Answered -->
+                <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border">5</button> <!-- Unanswered -->
                 <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border">6</button>
                 <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border">7</button>
                 <button class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border">8</button>
@@ -175,6 +173,7 @@
             </div>
             <div class="flex-grow">
             </div>
+            {{-- legend for indications on the navigations button number --}}
             <div class="flex flex-col gap-y-2 place-content-end border-t py-4 align-middle">
                 <span class="flex gap-x-2 px-4">
                     <div class="w-5 h-5 rounded-md bg-white border shadow"></div>Not Answered
