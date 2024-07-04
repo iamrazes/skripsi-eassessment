@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Classroom;
 use App\Models\Exam;
+use App\Models\User;
+use App\Models\DataStudent;
 use Carbon\Carbon;
 
 class ExamStudentController extends Controller
@@ -55,10 +58,12 @@ class ExamStudentController extends Controller
     public function start($id)
     {
         $exam = Exam::findOrFail($id);
+        $user = Auth::user();
+        $dataStudent = DataStudent::where('user_id', $user->id)->first();
 
         // Additional logic for starting the exam can go here, if necessary
 
-        return view('student.exams.start', compact('exam'));
+        return view('student.exams.start', compact('exam', 'dataStudent'));
     }
 
 
