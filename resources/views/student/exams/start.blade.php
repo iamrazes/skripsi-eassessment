@@ -1,4 +1,4 @@
-@extends('layouts.cbt')
+@extends('layouts.test')
 
 @section('head')
     <style>
@@ -185,6 +185,42 @@
 @endsection
 
 @section('script')
+    <script>
+        // Set the duration in minutes
+        var duration = 60; // example duration, change as needed
+        var timer = duration * 60; // Convert to seconds
+
+        // Update the timer every second
+        var countdownInterval = setInterval(function() {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+
+            // Display the timer
+            document.getElementById('timer').textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            // Check if the timer has run out
+            if (timer <= 0) {
+                clearInterval(countdownInterval);
+                showTimeoutModal();
+            }
+
+            timer--;
+        }, 1000);
+
+        // Function to show the timeout modal
+        function showTimeoutModal() {
+            document.getElementById('timeoutModal').classList.remove('hidden');
+        }
+
+        // Function to handle modal confirmation
+        function handleModalConfirmation() {
+            // Save progress and exit the exam
+            // Implement the logic to save progress and redirect the user
+            // For example:
+            alert('Time is up! Saving your progress...');
+            window.location.href = '/path/to/save-and-exit'; // Change to the actual save and exit route
+        }
+    </script>
     <script>
         // JavaScript to allow only one checkbox to be selected at a time
         document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(checkbox => {

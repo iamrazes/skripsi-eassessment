@@ -21,9 +21,12 @@ class UpdateExamStatus extends Command
     {
         $now = Carbon::now();
 
+        // Log the current time
+        Log::info('Current time:', ['time' => $now->toDateTimeString()]);
+
         // Fetch exams to be updated
         $examsToUpdate = Exam::where('status', 'published')
-            ->where('date', '<', $now->subMinute()) // Change to subDay() for production
+            ->where('date', '<', $now->subDay()) // Ensure this is correct for your use case
             ->get();
 
         // Log the exams that will be updated

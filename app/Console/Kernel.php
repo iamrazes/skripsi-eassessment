@@ -19,7 +19,7 @@ class Kernel extends ConsoleKernel
     /**
      * Define the application's command schedule.
      */
-    protected function schedule(Schedule $schedule): void
+    protected function schedule(Schedule $schedule)
     {
         // Schedule the exam status update command to run every minute.
         $schedule->command('exam:update-status')->daily();
