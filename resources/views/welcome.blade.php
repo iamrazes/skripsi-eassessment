@@ -30,7 +30,7 @@
                             <span class="text-center">Welcome back, <span class="font-semibold text-accent-1">{{ auth()->user()->name }}</span></span>
                     </div>
                     <a href="{{ route('dashboard') }}"
-                        class="uppercase text-center bg-accent-2 hover:transition hover:scale-125 min-w-full text-white font-semibold rounded-full py-3 px-24 my-8 ">
+                        class="uppercase text-center bg-accent-2 hover:transition hover:scale-110 min-w-full text-white font-semibold rounded-full py-3 px-24 my-8 ">
                         Dashboard
                     </a>
                 </div>

@@ -1,9 +1,10 @@
 <aside id="sidebar" class="lg:block hidden bg-white w-80 lg:h-auto h-full lg:rounded-xl shadow-md lg:m-8 flex-shrink-0">
     <!-- Title -->
     <div class="px-4 pt-6 text-accent-1">
-        <h1 class="flex justify-center gap-x-2">
+        <h1 class="flex justify-center gap-x-2 scale-105">
             <img src="{{ asset('icons/ic_sidebar_logo.svg') }}" alt="">
-            <span>E-Assessment</span>
+            <span class="bg-gradient-to-r from-accent-1 to-accent-2 bg-clip-text text-transparent">
+                E-Assessment</span>
         </h1>
         <div class="mt-4 h-[1px] bg-gradient-to-r from-white via-accent-1 to-white">
         </div>
