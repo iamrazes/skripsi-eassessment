@@ -1,7 +1,7 @@
 @extends('layouts.test')
 
 @section('title')
-    <title>{{ $exam->title}} - {{ config('app.name') }}</title>
+    <title>{{ $exam->title }} - {{ config('app.name') }}</title>
 @endsection
 
 @section('head')
@@ -75,76 +75,45 @@
     <div class="flex flex-col lg:flex-row gap-x-8 -mt-14 lg:px-16 mb-8 ">
         {{-- main content / questions --}}
         <div class="flex flex-col gap-y-4 lg:gap-y-8 flex-grow">
-            <div class="flex flex-col gap-y-4 bg-white shadow-button rounded-lg p-3 lg:p-6">
-                <div class="flex items-center gap-x-4">
-                    <div class="flex items-center justify-center rounded-full border border-accent-2 h-10 w-10">
-                        <span class="font-semibold">1</span>
-                    </div>
-                    {{-- dont edit this below --}}
-                    <span>Multiple Choices</span>
-                </div>
-                <div class="flex flex-col bg-slate-100 min-h-96 rounded-lg p-4 items-center overflow-hidden">
 
-                    <!-- question--->
-                    <p class="whitespace-pre-line w-full lg:text-lg ">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non enim in lorem facilisis finibus ut in nisl. Nulla facilisi. Phasellus placeratjusto ac feugiat congue. Donec in laoreet dolor, vel pulvinar nulla. Morbi vel lectus eros. Nunc consequat interdum odio, sit amet laoreet velit condimentum ac. Fusce sodales mi in dui ultrices lobortis. Nulla in varius leo, non commodo quam. Vivamus et tristique est. Aenean
-
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non enim in lorem facilisis finibus ut in nisl. Nulla facilisi. Phasellus placeratjusto ac feugiat congue. Donec in laoreet dolor, vel pulvinar nulla. Morbi vel lectus eros. Nunc consequat interdum odio, sit amet laoreet velit condimentum ac. Fusce sodales mi in dui ultrices lobortis. Nulla in varius leo, non commodo quam. Vivamus et tristique est. Aenean
-                    </p>
-                    <!-- if theres image available show this --->
-                    <img src="/public/images/images.jpg" class="max-h-72 max-w-fit my-4 " alt="">
-                </div>
-                <span class="text-gray-400 text-sm">Select your answer on the options below:</span>
-                <div class="flex flex-col gap-4 pb-4">
-                    {{-- up to 5 choices, alphabetick a-e --}}
-                    <div class="flex align-middle items-center">
-                        <label class="choice-button">
-                            <input type="checkbox" value="1">
-                            <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">a.</span>
-                        </label>
-                        <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
+            @foreach ($exam->questions as $index => $question)
+                <div class="flex flex-col gap-y-4 bg-white shadow-button rounded-lg p-3 lg:p-6">
+                    <div class="flex items-center gap-x-4">
+                        <div class="flex items-center justify-center rounded-full border border-accent-2 h-10 w-10">
+                            <span class="font-semibold">{{ $index + 1 }}</span>
+                        </div>
+                        <span>Multiple Choices</span>
                     </div>
-                    <div class="flex align-middle items-center">
-                        <label class="choice-button">
-                            <input type="checkbox" value="1">
-                            <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">b.</span>
-                        </label>
-                        <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
+                    <div class="flex flex-col bg-slate-100 min-h-96 rounded-lg p-4 items-center overflow-hidden">
+                        <p class="whitespace-pre-line w-full lg:text-lg">{{ $question->question_text }}</p>
+                        @if ($question->image_path)
+                            <img src="{{ Storage::url($question->image_path) }}" class="max-h-72 max-w-fit my-4"
+                                alt="">
+                        @endif
                     </div>
-                    <div class="flex align-middle items-center">
-                        <label class="choice-button">
-                            <input type="checkbox" value="1">
-                            <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">c.</span>
-                        </label>
-                        <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
-                    </div>
-                    <div class="flex align-middle items-center">
-                        <label class="choice-button">
-                            <input type="checkbox" value="1">
-                            <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">d.</span>
-                        </label>
-                        <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
-                    </div>
-                    <div class="flex align-middle items-center">
-                        <label class="choice-button">
-                            <input type="checkbox" value="1">
-                            <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">e.</span>
-                        </label>
-                        <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
+                    <span class="text-gray-400 text-sm">Select your answer on the options below:</span>
+                    <div class="flex flex-col gap-4 pb-4">
+                        @foreach ($question->choices as $choiceIndex => $choice)
+                            <div class="flex align-middle items-center">
+                                <label class="choice-button">
+                                    <input type="checkbox" name="answers[{{ $question->id }}]"
+                                        value="{{ $choice->id }}">
+                                    <span class="custom-checkbox"></span>
+                                    <span class="line-clamp-1">{{ chr(97 + $choiceIndex) }}.</span>
+                                </label>
+                                <span class="ml-3">{{ $choice->choice_text }}</span>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
+            @endforeach
 
-            </div>
             <div class="flex flex-col gap-y-4 lg:gap-y-8 mx-4 lg:mx-0">
                 <div class="grid grid-cols-3 justify-between shadow-button">
                     {{-- clear button to clear selection --}}
                     <button
                         class="bg-white hover:bg-gray-100 rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Clear</button>
-                        {{-- mark button --}}
+                    {{-- mark button --}}
                     <button class="bg-white hover:bg-gray-100 border-x-2 lg:px-6 lg:py-4 py-2 px-2 flex-grow">Mark</button>
                     {{-- save button to save answer --}}
                     <button
@@ -179,6 +148,10 @@
             </div>
             {{-- number navigation --}}
             <div class="grid grid-cols-5 justify-items-center p-4 lg:py-4 lg:px-4 gap-4 lg:gap-4">
+                @foreach ($exam->questions as $index => $question)
+                    <button
+                        class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">{{ $index + 1 }}</button>
+                @endforeach
                 <button
                     class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl text-white bg-accent-1">1</button>
                 <!-- Answered -->
@@ -194,36 +167,7 @@
                 <button
                     class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">5</button>
                 <!-- Unanswered -->
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">6</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">7</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">8</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">9</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">10</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">11</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">12</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">13</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">14</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">15</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">16</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">17</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">18</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">19</button>
-                <button
-                    class="shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100">20</button>
+
             </div>
             <div class="flex-grow">
             </div>
@@ -250,77 +194,75 @@
 @endsection
 
 @section('script')
-{{-- option choices --}}
-<script>
-    // JavaScript to allow only one checkbox to be selected at a time
-    document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('click', function() {
-            if (this.checked) {
-                document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(
-                    otherCheckbox => {
-                        if (otherCheckbox !== this) {
-                            otherCheckbox.checked = false;
-                            otherCheckbox.nextElementSibling.style.backgroundColor =
-                                ''; // Reset other checkboxes' styles
-                        }
-                    });
-                this.nextElementSibling.style.backgroundColor = '#000'; // Style the selected checkbox
-            } else {
-                this.nextElementSibling.style.backgroundColor = ''; // Reset the style if unchecked
-            }
+    <script>
+        // JavaScript to allow only one checkbox to be selected at a time
+        document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('click', function() {
+                if (this.checked) {
+                    document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(
+                        otherCheckbox => {
+                            if (otherCheckbox !== this) {
+                                otherCheckbox.checked = false;
+                                otherCheckbox.nextElementSibling.style.backgroundColor =
+                                    ''; // Reset other checkboxes' styles
+                            }
+                        });
+                    this.nextElementSibling.style.backgroundColor = '#000'; // Style the selected checkbox
+                } else {
+                    this.nextElementSibling.style.backgroundColor = ''; // Reset the style if unchecked
+                }
+            });
         });
-    });
-</script>
-{{-- timer for exam --}}
-<script>
-    // Function to format duration in HH:MM:SS format
-    function formatDuration(durationInMinutes) {
-        var hours = Math.floor(durationInMinutes / 60);
-        var minutes = durationInMinutes % 60;
-        var seconds = 0; // Assuming initial seconds are 0 for display
+    </script>
 
-        return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-    }
+    <script>
+        // Function to format duration in HH:MM:SS format
+        function formatDuration(durationInMinutes) {
+            var hours = Math.floor(durationInMinutes / 60);
+            var minutes = durationInMinutes % 60;
+            var seconds = 0; // Assuming initial seconds are 0 for display
 
-    // Function to pad single digit numbers with leading zero
-    function pad(num) {
-        return (num < 10 ? '0' : '') + num;
-    }
+            return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+        }
 
-    // Function to start the countdown timer
-    function startTimer(durationSeconds, display) {
-        var timer = durationSeconds,
-            hours, minutes, seconds;
-        setInterval(function() {
-            hours = parseInt(timer / 3600, 10);
-            minutes = parseInt((timer % 3600) / 60, 10);
-            seconds = timer % 60;
+        // Function to pad single digit numbers with leading zero
+        function pad(num) {
+            return (num < 10 ? '0' : '') + num;
+        }
 
-            hours = pad(hours);
-            minutes = pad(minutes);
-            seconds = pad(seconds);
+        // Function to start the countdown timer
+        function startTimer(durationSeconds, display) {
+            var timer = durationSeconds,
+                hours, minutes, seconds;
+            setInterval(function() {
+                hours = parseInt(timer / 3600, 10);
+                minutes = parseInt((timer % 3600) / 60, 10);
+                seconds = timer % 60;
 
-            display.textContent = `${hours}:${minutes}:${seconds}`;
+                hours = pad(hours);
+                minutes = pad(minutes);
+                seconds = pad(seconds);
 
-            if (--timer < 0) {
-                timer = durationSeconds;
-                // Optionally, you can redirect or handle timer expiration here
-            }
-        }, 1000);
-    }
+                display.textContent = `${hours}:${minutes}:${seconds}`;
 
-    // Calculate remaining time in seconds
-    var startTime = new Date("{{ $exam->date->format('Y-m-d') }} {{ $exam->start_time }}").getTime();
-    var durationMinutes = {{ $exam->duration }};
-    var durationSeconds = durationMinutes * 60;
-    var now = new Date().getTime();
-    var remainingTime = durationSeconds - Math.floor((now - startTime) / 1000);
+                if (--timer < 0) {
+                    timer = durationSeconds;
+                    // Optionally, you can redirect or handle timer expiration here
+                }
+            }, 1000);
+        }
 
-    // Start the timer when the page loads
-    document.addEventListener('DOMContentLoaded', function() {
-        var display = document.querySelector('#countdown');
-        startTimer(remainingTime, display);
-    });
-</script>
+        // Calculate remaining time in seconds
+        var startTime = new Date("{{ $exam->date->format('Y-m-d') }} {{ $exam->start_time }}").getTime();
+        var durationMinutes = {{ $exam->duration }};
+        var durationSeconds = durationMinutes * 60;
+        var now = new Date().getTime();
+        var remainingTime = durationSeconds - Math.floor((now - startTime) / 1000);
 
+        // Start the timer when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            var display = document.querySelector('#countdown');
+            startTimer(remainingTime, display);
+        });
+    </script>
 @endsection
