@@ -50,10 +50,10 @@ class ExamStudentController extends Controller
         $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
 
         // Log the times for debugging
-        \Log::info('Exam Start Time: ' . $examStartTime);
-        \Log::info('Exam End Time: ' . $examEndTime);
-        \Log::info('Current Time: ' . $currentTime);
-        \Log::info('Is Exam Available: ' . $isExamAvailable);
+        // \Log::info('Exam Start Time: ' . $examStartTime);
+        // \Log::info('Exam End Time: ' . $examEndTime);
+        // \Log::info('Current Time: ' . $currentTime);
+        // \Log::info('Is Exam Available: ' . $isExamAvailable);
 
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
