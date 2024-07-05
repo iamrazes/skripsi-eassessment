@@ -208,17 +208,19 @@ class ExamTeacherController extends Controller
         return redirect()->route('teacher.exams.index')->with('success', 'Exam deleted successfully.');
     }
 
-    public function questionsIndex(Exam $exam)
-    {
-        $questions = $exam->questions;
+    // public function questionsIndex(Exam $exam)
+    // {
+    //     $questions = $exam->questions;
 
-        return view('teacher.exams.questions.index', compact('exam', 'questions'));
-    }
+    //     return view('teacher.exams.questions.index', compact('exam', 'questions'));
+    // }
 
     public function questionsCreate(Exam $exam)
     {
         $exam->load('questions.choices');
-        return view('teacher.exams.questions.create', compact('exam'));
+        $questions = $exam->questions;
+
+        return view('teacher.exams.questions.create', compact('exam', 'questions'));
     }
 
     public function questionsStore(Request $request, Exam $exam)

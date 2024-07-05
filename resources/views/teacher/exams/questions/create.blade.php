@@ -189,21 +189,21 @@
 @endsection
 
 @section('content')
-@if ($errors->any())
-    <div class="mt-8 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-        <strong class="font-bold">Whoops!</strong>
-        <span class="block sm:inline">There were some problems with your input:</span>
-        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
-            @foreach ($errors->all() as $error)
-                @php
-                    // Extract the error part after the last dot (.) and before the first space
-                    $errorText = preg_replace('/\bchoices\.\d+\b/', 'choices', $error);
-                @endphp
-                <li>{{ ucfirst(str_replace('.', ' ', $errorText)) }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+    @if ($errors->any())
+        <div class="mt-8 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Whoops!</strong>
+            <span class="block sm:inline">There were some problems with your input:</span>
+            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                @foreach ($errors->all() as $error)
+                    @php
+                        // Extract the error part after the last dot (.) and before the first space
+                        $errorText = preg_replace('/\bchoices\.\d+\b/', 'choices', $error);
+                    @endphp
+                    <li>{{ ucfirst(str_replace('.', ' ', $errorText)) }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div class="mt-8 bg-white rounded-lg shadow-button py-6">
         <div class="flex flex-col">
@@ -234,21 +234,27 @@
                                         <div class="image-preview flex justify-end gap-x-4"
                                             data-question-id="{{ $question->id }}">
                                             @if ($question->image_path)
-                                                <img src="{{ Storage::url($question->image_path) }}"
-                                                    class="h-8 preview-image cursor-pointer" alt="Preview"
-                                                    data-image-src="{{ Storage::url($question->image_path) }}">
+                                                <div class="flex items-center">
+                                                    <span
+                                                        class="text-xs mr-2 preview-image cursor-pointer hover:text-accent-1"
+                                                        data-image-src="{{ Storage::url($question->image_path) }}">Click to
+                                                        Preview</span>
+                                                    <img src="{{ Storage::url($question->image_path) }}"
+                                                        class="h-8 preview-image cursor-pointer" alt="Preview"
+                                                        data-image-src="{{ Storage::url($question->image_path) }}">
+                                                </div>
                                             @endif
                                         </div>
                                     </div>
 
                                     <div class="mt-0">
                                         <div class="flex flex-col">
-                                            <span class="text-xs mb-2 text-gray-400">Select the correct answer & Fill the
-                                                answer option</span>
+                                            <span class="text-xs mb-2 text-gray-400">Select the correct answer & Fill the answer option</span>
                                             <div class="flex flex-col gap-y-2">
                                                 @if ($question->choices && $question->choices->isNotEmpty())
-                                                    @foreach ($question->choices as $choice)
+                                                    @foreach ($question->choices as $index => $choice)
                                                         <div class="flex items-center">
+                                                            <span class="mr-3 lowercase">{{ chr(65 + $index) }}.</span>
                                                             <input type="radio"
                                                                 name="questions[{{ $question->id }}][correct_choice]"
                                                                 value="{{ $choice->id }}"
@@ -266,6 +272,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="flex justify-end gap-x-2 mt-4">
                                         <button type="button"
                                             class="clear-btn bg-gray-100 rounded-lg border border-gray-400 hover:bg-gray-200 px-4 py-2"
@@ -291,7 +298,8 @@
     <!-- Image Preview Modal -->
     <div id="imagePreviewModal" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
         <div class="bg-white p-4 rounded-lg my-12 flex flex-col">
-            <span class="close-preview text-red-500 cursor-pointer text-end">Close</span>
+            <div class="close-preview text-red-500 cursor-pointer text-end mb-2 flex items-center justify-end">Close <img
+                    src="{{ asset('icons/ic_incorrect.svg') }}" alt=""></div>
             <img id="modalImagePreview" src="" alt="Image Preview" class="max-h-[512px]">
         </div>
     </div>

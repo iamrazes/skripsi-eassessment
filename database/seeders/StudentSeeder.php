@@ -29,7 +29,7 @@ class StudentSeeder extends Seeder
             'gender' => 'Female',
             'birthdate' => '2000-01-01',
             'student_id' => 'S12346',
-            'classroom_id' => 1,
+            'classroom_id' => 4,
         ]);
     }
 }

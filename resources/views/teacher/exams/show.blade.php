@@ -44,7 +44,7 @@
                     class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
             </div>
             <div class="overflow-x-auto">
-                <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
+                <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200 ">
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
@@ -58,9 +58,9 @@
                         @foreach ($exam->questions as $index => $question)
                             <tr class="bg-white divide-gray-200">
                                 <td class="pl-6 py-1 whitespace-nowrap numbering-cell"></td>
-                                <td class="px-6 py-1 whitespace-nowrap max-w-80 overflow-hidden">
+                                <td class="px-6 py-1 whitespace-nowrap max-w-screen-sm overflow-hidden">
                                     {{ $question->question_text }}</td>
-                                <td class="px-6 py-1 whitespace-nowrap max-w-40 overflow-hidden">
+                                <td class="px-6 py-1 whitespace-nowrap max-w-screen-sm overflow-hidden">
                                     @if ($question->choices->contains('is_correct', true))
                                         @php
                                             $alphabet = ['a', 'b', 'c', 'd', 'e'];
