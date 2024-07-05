@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <main class="flex flex-col lg:flex-row gap-x-8 -mt-14 lg:px-16 mb-8 ">
+    <div class="flex flex-col lg:flex-row gap-x-8 -mt-14 lg:px-16 mb-8 ">
         {{-- main content / questions --}}
         <div class="flex flex-col gap-y-4 lg:gap-y-8 flex-grow">
             <div class="flex flex-col gap-y-4 bg-white shadow-button rounded-lg p-3 lg:p-6">
@@ -108,7 +108,7 @@
                         <label class="choice-button">
                             <input type="checkbox" value="1">
                             <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">a.</span>
+                            <span class="line-clamp-1">b.</span>
                         </label>
                         <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
                     </div>
@@ -116,7 +116,7 @@
                         <label class="choice-button">
                             <input type="checkbox" value="1">
                             <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">a.</span>
+                            <span class="line-clamp-1">c.</span>
                         </label>
                         <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
                     </div>
@@ -124,7 +124,7 @@
                         <label class="choice-button">
                             <input type="checkbox" value="1">
                             <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">a.</span>
+                            <span class="line-clamp-1">d.</span>
                         </label>
                         <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
                     </div>
@@ -132,7 +132,7 @@
                         <label class="choice-button">
                             <input type="checkbox" value="1">
                             <span class="custom-checkbox"></span>
-                            <span class="line-clamp-1">a.</span>
+                            <span class="line-clamp-1">e.</span>
                         </label>
                         <span class="ml-3">Lorem ipsum dolor sit amet, consectetur asdasdas adipiscing elit.</span>
                     </div>
@@ -141,17 +141,20 @@
             </div>
             <div class="flex flex-col gap-y-4 lg:gap-y-8 mx-4 lg:mx-0">
                 <div class="grid grid-cols-3 justify-between shadow-button">
+                    {{-- clear button to clear selection --}}
                     <button
                         class="bg-white hover:bg-gray-100 rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Clear</button>
+                        {{-- mark button --}}
                     <button class="bg-white hover:bg-gray-100 border-x-2 lg:px-6 lg:py-4 py-2 px-2 flex-grow">Mark</button>
+                    {{-- save button to save answer --}}
                     <button
                         class="bg-white hover:bg-gray-100 rounded-r-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Save</button>
                 </div>
                 <div class="flex justify-start shadow-button">
-                    <a href="/src/assessment.html"
+                    <a href=""
                         class="bg-white hover:bg-gray-100 text-center rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow"><img
                             src="{{ asset('icons/ic_left.svg') }}" alt="">Previous</a>
-                    <a href="/src/cbt-2.html"
+                    <a href=""
                         class="bg-white hover:bg-gray-100 text-center rounded-r-xl border-l-2 lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow">Save
                         & Next<img src="{{ asset('icons/ic_right.svg') }}" alt=""></a>
                 </div>
@@ -243,7 +246,7 @@
                 </span>
             </div>
         </div>
-    </main>
+    </div>
 @endsection
 
 @section('script')
