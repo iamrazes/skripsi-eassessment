@@ -1,7 +1,11 @@
 @extends('layouts.test')
 
+@section('title')
+    <title>{{ $exam->title}} - {{ config('app.name') }}</title>
+@endsection
+
 @section('alert')
-    <div class="container justify-center items-center mx-auto mt-20">
+    <div class="container justify-center items-center mx-auto mt-8 lg:mt-20">
         <div class="bg-white rounded-3xl border-2 border-accent-1 shadow-button mx-4 my-4 p-4 pt-10 pb-20">
             <div class="justify-center flex filter-red">
                 <img src="{{ asset('icons/ic_alert.svg') }}" class="lg:w-40 lg:h-40 w-20 h-20">
@@ -9,7 +13,7 @@
             <div class="items-center flex flex-col text-center overflow-hidden">
                 <h1 class="lg:text-4xl text-xl filter-red">Attentions!</h1>
                 <p class="mt-2 text-sm lg:text-base">You are going to attend exam "<strong>{{ $exam->title }}</strong>"</p>
-                <p class="text-sm lg:text-base lg:w-1/2 whitespace-wrap my-2">
+                <p class="text-xs sm:text-sm lg:text-base lg:w-1/2 whitespace-wrap my-2">
                     Before you start your exam, please make sure you have read all instructions carefully. Ensure you have a stable internet connection and a quiet environment to focus. This exam is timed, and once you begin, the timer cannot be paused. Make sure to save your answers periodically. If you encounter any issues during the exam, contact your instructor immediately. Good luck!
                 </p>
 

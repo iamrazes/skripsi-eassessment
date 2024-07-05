@@ -40,7 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 });
 
-
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
     Route::resource('exams', ExamStudentController::class);
 
