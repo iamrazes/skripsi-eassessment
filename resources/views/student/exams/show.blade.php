@@ -14,8 +14,6 @@
 </head>
 
 <body class="bg-[#F5F7F8] text-textColor antialiased flex flex-col">
-
-
     <div class="container justify-center items-center mx-auto mt-8 lg:mt-20">
         <div class="bg-white rounded-3xl border-2 border-accent-1 shadow-button mx-4 my-4 p-4 pt-10 pb-20">
             <div class="justify-center flex filter-red">
