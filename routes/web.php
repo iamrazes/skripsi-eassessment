@@ -52,12 +52,6 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
     Route::get('exams/{exam}/questions', [ExamTeacherController::class, 'questionsIndex'])->name('exams.questions.index');
     Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
     Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
-
-    // Route::get('exams/{exam}/questions/{question}/edit', [ExamTeacherController::class, 'questionsEdit'])->name('exams.questions.edit');
-    // Route::put('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsUpdate'])->name('exams.questions.update');
-    // Route::delete('exams/{exam}/questions/{question}', [ExamTeacherController::class, 'questionsDestroy'])->name('exams.questions.destroy');
-    // Route::post('exams/{exam}/questions/save-progress', [ExamTeacherController::class, 'saveProgress'])->name('teacher.exams.questions.save-progress');
-
 });
 
 
@@ -72,11 +66,5 @@ Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')
     Route::resource('exam-types', ExamTypeController::class);
     Route::resource('subjects', SubjectController::class);
 });
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';
