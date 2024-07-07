@@ -180,7 +180,6 @@
     </div>
 
     <!-- JavaScript scripts -->
-
     <script>
         // JavaScript to handle checkbox selection
         document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(checkbox => {
