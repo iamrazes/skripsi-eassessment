@@ -15,8 +15,6 @@ use Carbon\Carbon;
 
 class ExamStudentController extends Controller
 {
-    //
-
     public function index() {
 
         // Get the authenticated user
@@ -64,8 +62,6 @@ class ExamStudentController extends Controller
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
         $questions = $exam->questions;
-
-        // Additional logic for starting the exam can go here, if necessary
 
         return view('student.exams.start', compact('exam', 'dataStudent', 'questions'));
     }

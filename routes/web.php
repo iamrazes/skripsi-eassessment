@@ -49,7 +49,6 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::resource('exams', ExamTeacherController::class);
 
-    Route::get('exams/{exam}/questions', [ExamTeacherController::class, 'questionsIndex'])->name('exams.questions.index');
     Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
     Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
 });

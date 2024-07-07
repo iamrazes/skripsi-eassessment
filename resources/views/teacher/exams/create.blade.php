@@ -63,7 +63,6 @@
 
                 <div class="flex flex-col my-3">
                     <label for="classrooms">Classrooms</label>
-                    <div id="selectedItems" class="flex flex-wrap gap-2"></div>
                     <div class="relative">
                         <div id="dropdownButton"
                             class="block w-full px-4 py-2 bg-white border border-gray-400 rounded-lg cursor-pointer mt-1">
@@ -81,6 +80,7 @@
                             </ul>
                         </div>
                     </div>
+                    <div id="selectedItems" class="flex flex-wrap gap-2 mt-4"></div>
                 </div>
 
                 <div class="flex flex-col my-3">
@@ -148,6 +148,12 @@
         });
     }
 
+    // Prevent dropdown from closing when clicking inside
+    dropdown.addEventListener('click', function(e) {
+        dropdown.classList.add('hidden');
+
+    });
+
     // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
         if (!dropdownButton.contains(e.target) && !dropdown.contains(e.target)) {
@@ -155,10 +161,6 @@
         }
     });
 
-    // Prevent dropdown from closing when clicking inside
-    dropdown.addEventListener('click', function(e) {
-        e.stopPropagation();
-    });
 });
 
     </script>
