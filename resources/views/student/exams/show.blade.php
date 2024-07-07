@@ -1,10 +1,21 @@
-@extends('layouts.test')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>{{ $exam->title}} - {{ config('app.name') }}</title>
-@endsection
 
-@section('alert')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="icon" href="{{ asset('icons/logo.svg') }}">
+</head>
+
+<body class="bg-[#F5F7F8] text-textColor antialiased flex flex-col">
+
+
     <div class="container justify-center items-center mx-auto mt-8 lg:mt-20">
         <div class="bg-white rounded-3xl border-2 border-accent-1 shadow-button mx-4 my-4 p-4 pt-10 pb-20">
             <div class="justify-center flex filter-red">
@@ -45,4 +56,6 @@
                     src="{{ asset('icons/ic_left2.svg') }}" alt="">Go Back</a>
         </div>
     </div>
-@endsection
+</body>
+
+</html>
