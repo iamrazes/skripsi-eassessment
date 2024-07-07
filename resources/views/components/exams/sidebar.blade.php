@@ -15,7 +15,7 @@ class="flex flex-col bg-white shadow-button rounded-lg min-h-screen flex-grow lg
 <div class="grid grid-cols-5 justify-items-center p-4 lg:py-4 lg:px-4 gap-4 lg:gap-4">
     @foreach ($exam->questions as $index => $question)
         <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $question->id]) }}"
-            class="question-nav shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 font-semibold text-2xl lg:text-xl border hover:bg-gray-100
+            class="question-nav shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 flex justify-center items-center font-semibold text-2xl lg:text-xl border hover:bg-gray-100
 @if ($currentQuestionIndex === $index) bg-white border-4 border-accent-1 @endif">
             {{ $index + 1 }}
         </a>
