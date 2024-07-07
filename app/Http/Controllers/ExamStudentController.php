@@ -56,15 +56,26 @@ class ExamStudentController extends Controller
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
 
-    public function start($id)
+
+
+    public function showQuestion($examId, $questionId)
     {
-        $exam = Exam::findOrFail($id);
+        // Fetch the exam by ID
+        $exam = Exam::findOrFail($examId);
+
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
-        $questions = $exam->questions;
 
-        return view('student.exams.start', compact('exam', 'dataStudent', 'questions'));
+        // Fetch the question by ID and ensure it belongs to the exam
+        $question = Question::where('exam_id', $examId)
+                            ->where('id', $questionId)
+                            ->firstOrFail();
+
+        // Determine $currentQuestionIndex based on the question ID or any other criteria
+        $currentQuestionIndex = $exam->questions->pluck('id')->search($questionId);
+
+        // Pass the exam and question to the view
+        return view('student.exams.questions.show', compact('exam','dataStudent', 'question', 'currentQuestionIndex'));
     }
-
 
 }

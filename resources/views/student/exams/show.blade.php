@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>{{ $exam->title}} - {{ config('app.name') }}</title>
+    <title>{{ $exam->title }} - {{ config('app.name') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -21,9 +21,13 @@
             </div>
             <div class="items-center flex flex-col text-center overflow-hidden">
                 <h1 class="lg:text-4xl text-xl filter-red">Attentions!</h1>
-                <p class="mt-2 text-sm lg:text-base">You are going to attend exam "<strong>{{ $exam->title }}</strong>"</p>
+                <p class="mt-2 text-sm lg:text-base">You are going to attend exam "<strong>{{ $exam->title }}</strong>"
+                </p>
                 <p class="text-xs sm:text-sm lg:text-base lg:w-1/2 whitespace-wrap my-2">
-                    Before you start your exam, please make sure you have read all instructions carefully. Ensure you have a stable internet connection and a quiet environment to focus. This exam is timed, and once you begin, the timer cannot be paused. Make sure to save your answers periodically. If you encounter any issues during the exam, contact your instructor immediately. Good luck!
+                    Before you start your exam, please make sure you have read all instructions carefully. Ensure you
+                    have a stable internet connection and a quiet environment to focus. This exam is timed, and once you
+                    begin, the timer cannot be paused. Make sure to save your answers periodically. If you encounter any
+                    issues during the exam, contact your instructor immediately. Good luck!
                 </p>
 
             </div>
@@ -39,9 +43,10 @@
             </div>
             <div class="text-center mt-3 flex flex-col lg:w-1/2 lg:mx-auto">
                 @if ($isExamAvailable)
-                    <a href="{{ route('students.exams.start', $exam->id) }}"
-                        class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">Start
-                        the Exam</a>
+                    <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => 1]) }}"
+                        class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">
+                        Start the Exam
+                    </a>
                     <p class="text-sm lg:text-base">*The exam is available, click the button to continue</p>
                 @else
                     <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Unavailable</a>
