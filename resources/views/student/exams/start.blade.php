@@ -1,10 +1,16 @@
-@extends('layouts.test')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>{{ $exam->title }} - {{ config('app.name') }}</title>
-@endsection
 
-@section('head')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+    <link rel="icon" href="{{ asset('icons/logo.svg') }}">
     <style>
         /* Hide the default checkbox */
         input[type="checkbox"] {
@@ -50,9 +56,11 @@
             /* Change background color when checked */
         }
     </style>
-@endsection
+</head>
 
-@section('content')
+<body class="bg-[#F5F7F8] text-textColor antialiased flex flex-col">
+
+
     <div
         class="flex justify-between bg-gradient-to-r from-accent-1 to-accent-2 lg:pt-8 pb-20 pt-5 px-3 lg:px-16 flex-grow text-white">
         <div>
@@ -172,9 +180,6 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const questions = document.querySelectorAll('.question-container');
@@ -289,4 +294,6 @@
             startTimer(remainingTime, display);
         });
     </script>
-@endsection
+</body>
+
+</html>
