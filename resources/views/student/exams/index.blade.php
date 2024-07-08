@@ -51,7 +51,8 @@
                                     <a href="{{ route('students.exams.show', $exam->id) }}"
                                         class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 rounded-3xl text-white font-semibold text-center mt-1 lg:mt-3 py-2 mx-2 lg:mx-2 ">Proceed</a>
                                 </div>
-                            </div @endforeach>
+                            </div >
+                            @endforeach
                         @endif
                     </div>
             </div>

@@ -35,7 +35,7 @@
                     @foreach ($draftExams as $exam)
                         <div class="bg-gray-100 rounded-lg p-4">
                             <div class="flex flex-col gap-y-2">
-                                <h1 class="line-clamp-2 text-lg font-medium">{{ $exam->title }}</h1>
+                                <h1 class="line-clamp-2 text-lg font-medium h-14">{{ $exam->title }}</h1>
                                 <div class="flex gap-x-3 text-sm">
                                     <div class="flex flex-col">
                                         <span>Subject</span>
@@ -58,7 +58,7 @@
                                 </div>
                                 <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
                                     class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
-                                    Review
+                                    Manage Question
                                 </a>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                     @foreach ($publishedExams as $exam)
                         <div class="bg-gray-100 rounded-lg p-4">
                             <div class="flex flex-col gap-y-2">
-                                <h1 class="line-clamp-2 text-lg font-medium">{{ $exam->title }}</h1>
+                                <h1 class="line-clamp-2 text-lg font-medium h-14" >{{ $exam->title }}</h1>
                                 <div class="flex gap-x-3 text-sm">
                                     <div class="flex flex-col">
                                         <span>Subject</span>
@@ -103,7 +103,7 @@
                                     </div>
                                 </div>
                                 <a href="{{ route('teacher.exams.show', $exam->id) }}"
-                                    class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
+                                    class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2 ">
                                     Preview
                                 </a>
                             </div>

@@ -27,12 +27,21 @@
                         <h1 class="text-xl mt-2 bg-gradient-to-r from-accent-1 to-accent-2 bg-clip-text text-transparent">
                             E-Assessment</h1>
 
-                            <span class="text-center">Welcome back, <span class="font-semibold text-accent-1">{{ auth()->user()->name }}</span></span>
+                        <span class="text-center">Welcome back, <span
+                                class="font-semibold text-accent-1">{{ auth()->user()->name }}</span></span>
                     </div>
-                    <a href="{{ route('dashboard') }}"
-                        class="uppercase text-center bg-accent-2 hover:transition hover:scale-110 min-w-full text-white font-semibold rounded-full py-3 px-24 my-8 ">
-                        Dashboard
-                    </a>
+                    <div class="flex flex-col gap-y-3 my-8">
+
+                        <a href="{{ route('dashboard') }}"
+                            class="uppercase text-center bg-accent-2 hover:transition hover:scale-110 min-w-full text-white font-semibold rounded-full py-3 px-24">
+                            Dashboard
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}" class="flex">
+                            @csrf
+                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); this.closest('form').submit();"
+                                class="uppercase text-center bg-red-500 hover:transition hover:scale-110 min-w-full text-white font-semibold rounded-full py-3 px-24  ">Logout</a>
+                        </form>
+                    </div>
                 </div>
             @else
                 <!-- section 1 -->
