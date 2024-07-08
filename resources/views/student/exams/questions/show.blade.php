@@ -13,7 +13,7 @@
             <p class="whitespace-pre-line w-full lg:text-lg">{{ $exam->questions[$currentQuestionIndex]->question_text }}</p>
             @if ($exam->questions[$currentQuestionIndex]->image_path)
                 <img src="{{ Storage::url($exam->questions[$currentQuestionIndex]->image_path) }}"
-                    class="max-h-72 max-w-fit my-4" alt="">
+                    class="max-h-96 max-w-fit my-4" alt="">
             @endif
         </div>
         {{-- Exam choices --}}
@@ -36,30 +36,37 @@
     <!-- Navigation buttons -->
     <div class="flex flex-col gap-y-4 lg:gap-y-8 mx-4 lg:mx-0">
         <div class="grid grid-cols-3 justify-between shadow-button">
-            {{-- clear selection --}}
+            {{-- Clear selection --}}
             <button class="bg-white hover:bg-gray-100 rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Clear</button>
-            {{-- mark the number = giving different color on navigation sidebar  --}}
+            {{-- Mark the number = giving different color on navigation sidebar --}}
             <button class="bg-white hover:bg-gray-100 border-x-2 lg:px-6 lg:py-4 py-2 px-2 flex-grow">Mark</button>
-            {{-- save answer, still in the same page --}}
+            {{-- Save answer, still on the same page --}}
             <button class="bg-white hover:bg-gray-100 rounded-r-xl lg:px-6 lg:py-4 py-2 px-2 flex-grow">Save</button>
         </div>
+
         <div class="flex justify-start shadow-button">
-            {{-- go back if theres any --}}
+            {{-- Go back if there's any previous question --}}
             @if ($currentQuestionIndex > 0)
                 <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $currentQuestionIndex]) }}"
-                    class="bg-white hover:bg-gray-100 text-center rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow"><img
-                        src="{{ asset('icons/ic_left.svg') }}" alt="">Previous</a>
+                    class="bg-white hover:bg-gray-100 text-center rounded-l-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow">
+                    <img src="{{ asset('icons/ic_left.svg') }}" alt="">Previous
+                </a>
             @endif
-            {{-- go next question --}}
+            {{-- Go to the next question --}}
             @if ($currentQuestionIndex < count($exam->questions) - 1)
-                <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $currentQuestionIndex + 1]) }}"
-                    class="bg-white hover:bg-gray-100 text-center rounded-r-xl border-l-2 lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow">Save
-                    & Next<img src="{{ asset('icons/ic_right.svg') }}" alt=""></a>
+                <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $currentQuestionIndex + 2]) }}"
+                    class="bg-white hover:bg-gray-100 text-center rounded-r-xl border-l-2 lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center flex-grow">
+                    Save & Next<img src="{{ asset('icons/ic_right.svg') }}" alt="">
+                </a>
             @endif
         </div>
-        {{-- submit all the answer only appear at the last question or all question answered --}}
-        {{-- <a href="{{ route('students.exams.index') }}"
-            class="bg-orange-400 text-white font-semibold hover:bg-orange-300 text-center rounded-xl lg:px-6 lg:py-4 py-2 px-2 shadow-button flex justify-center items-center flex-grow">Finish
-            & Submit</a> --}}
+
+
+        {{-- Submit all answers (commented out for now) --}}
+        {{-- <a href="{{ route('students.exams.finish', ['exam' => $exam->id]) }}"
+        class="bg-orange-400 text-white font-semibold hover:bg-orange-300 text-center rounded-xl lg:px-6 lg:py-4 py-2 px-2 shadow-button flex justify-center items-center flex-grow">
+        Finish & Submit
+    </a> --}}
+
     </div>
 @endsection

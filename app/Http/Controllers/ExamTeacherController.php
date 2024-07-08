@@ -69,6 +69,7 @@ class ExamTeacherController extends Controller
         // Retrieve the ExamType and Subject models
         $examType = ExamType::findOrFail($validatedData['exam_type_id']);
         $subject = Subject::findOrFail($validatedData['subject_id']);
+
         function generateRandomNumericString($length = 8) {
             $randomNumberString = '';
 
@@ -104,12 +105,12 @@ class ExamTeacherController extends Controller
         // Attach classrooms to the exam using sync method
         $exam->classrooms()->sync($validatedData['classrooms']);
 
-
         // Generate empty questions and choices for the exam
         for ($i = 1; $i <= $exam->total_questions; $i++) {
             $question = new Question();
             $question->exam_id = $exam->id;
             $question->question_text = ''; // You can leave this empty for the teacher to fill later
+            $question->question_number = $i; // Assign question number
             $question->save();
 
             // Generate 5 blank choices for each question

@@ -67,7 +67,8 @@
         </div>
 
         <!-- Sidebar navigation -->
-        <x-exams.sidebar :exam="$exam" :data-student="$dataStudent" :currentQuestionIndex="$currentQuestionIndex" />
+        <x-exams.sidebar :exam="$exam" :data-student="$dataStudent" :current-question-index="$currentQuestionIndex" />
+
 
     </div>
 

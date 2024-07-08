@@ -48,17 +48,16 @@ class ExamStudentController extends Controller
         $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
 
         // Log the times for debugging
-        // \Log::info('Exam Start Time: ' . $examStartTime);
-        // \Log::info('Exam End Time: ' . $examEndTime);
-        // \Log::info('Current Time: ' . $currentTime);
-        // \Log::info('Is Exam Available: ' . $isExamAvailable);
+        \Log::info('Exam Start Time: ' . $examStartTime);
+        \Log::info('Exam End Time: ' . $examEndTime);
+        \Log::info('Current Time: ' . $currentTime);
+        \Log::info('Is Exam Available: ' . $isExamAvailable);
 
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
 
 
-
-    public function showQuestion($examId, $questionId)
+    public function showQuestion($examId, $questionNumber)
     {
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
@@ -66,16 +65,16 @@ class ExamStudentController extends Controller
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
 
-        // Fetch the question by ID and ensure it belongs to the exam
+        // Fetch the question by exam ID and question number
         $question = Question::where('exam_id', $examId)
-                            ->where('id', $questionId)
+                            ->where('question_number', $questionNumber)
                             ->firstOrFail();
 
-        // Determine $currentQuestionIndex based on the question ID or any other criteria
-        $currentQuestionIndex = $exam->questions->pluck('id')->search($questionId);
+        // Determine $currentQuestionIndex based on the question number or any other criteria
+        $currentQuestionIndex = $questionNumber - 1; // Adjust if necessary based on your indexing logic
 
         // Pass the exam and question to the view
-        return view('student.exams.questions.show', compact('exam','dataStudent', 'question', 'currentQuestionIndex'));
+        return view('student.exams.questions.show', compact('exam', 'dataStudent', 'question', 'currentQuestionIndex'));
     }
 
 }
