@@ -62,6 +62,7 @@ class ExamStudentController extends Controller
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
 
+        // Fetch the logged-in user's data
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
 
@@ -73,18 +74,41 @@ class ExamStudentController extends Controller
         // Determine $currentQuestionIndex based on the question number or any other criteria
         $currentQuestionIndex = $questionNumber - 1; // Adjust if necessary based on your indexing logic
 
-        // Pass the exam and question to the view
-        return view('student.exams.questions.show', compact('exam', 'dataStudent', 'question', 'currentQuestionIndex'));
+        // Fetch or initialize the student's answer for this question
+        $studentAnswer = ExamStudentAnswer::where([
+            'exam_id' => $examId,
+            'student_id' => auth()->id(),
+            'question_id' => $question->id
+        ])->first();
+
+        // Initialize an empty array for selected choices
+        $selectedChoices = [];
+
+        // If student has answered, explode the selected_choices string into an array
+        if ($studentAnswer && $studentAnswer->selected_choices) {
+            $selectedChoices = explode(',', $studentAnswer->selected_choices);
+        }
+
+        // Pass the exam, question, current question index, student data, and selected choices to the view
+        return view('student.exams.questions.show', compact('exam', 'question', 'currentQuestionIndex', 'dataStudent', 'selectedChoices'));
     }
 
     public function saveAnswer(Request $request, $examId, $questionNumber)
     {
-        $question = Question::where('exam_id', $examId)->where('question_number', $questionNumber)->firstOrFail();
+        // Fetch the question by exam ID and question number
+        $question = Question::where('exam_id', $examId)
+                            ->where('question_number', $questionNumber)
+                            ->firstOrFail();
 
+        // Validate the request data
         $validatedData = $request->validate([
             'selected_choices' => 'required|array',
         ]);
 
+        // Convert array of choices to comma-separated string
+        $selectedChoices = implode(',', $validatedData['selected_choices']);
+
+        // Update or create the student's answer for this question
         $answer = ExamStudentAnswer::updateOrCreate(
             [
                 'exam_id' => $examId,
@@ -92,12 +116,12 @@ class ExamStudentController extends Controller
                 'question_id' => $question->id
             ],
             [
-                'selected_choices' => json_encode($validatedData['selected_choices'])
+                'selected_choices' => $selectedChoices
             ]
         );
 
+        // Redirect back with a success message
         return back()->with('success', 'Answer saved successfully.');
     }
-
 
 }

@@ -8,6 +8,51 @@
     <title>{{ $exam->title }} - {{ config('app.name') }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="icon" href="{{ asset('icons/logo.svg') }}">
+    <style>
+        /* Hide the default checkbox */
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        /* Style the label as a button */
+        .choice-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            /* Prevent shrinking */
+        }
+
+        /* Style the custom checkbox */
+        .custom-checkbox {
+            width: 20px;
+            /* Adjust the width as needed */
+            height: 20px;
+            /* Adjust the height as needed */
+            border-radius: 50%;
+            /* Make it circular */
+            border: 1px solid #000;
+            /* Add a border */
+            margin-right: 10px;
+            /* Add margin between the checkbox and text */
+            flex-shrink: 0;
+            /* Prevent shrinking */
+        }
+
+        /* Style the checkbox label */
+        .choice-button span {
+            vertical-align: middle;
+            /* Align text vertically */
+            flex-shrink: 0;
+            /* Prevent shrinking */
+        }
+
+        /* Style the custom checkbox when checked */
+        input[type="checkbox"]:checked+.custom-checkbox {
+            background-color: #000;
+            /* Change background color when checked */
+        }
+    </style>
 
 </head>
 
@@ -29,6 +74,36 @@
     </div>
 
     @yield('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedChoices = @json($studentAnswer->selected_choices ?? []);
+
+            // Loop through each checkbox and set its checked state
+            document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(checkbox => {
+                var choiceId = parseInt(checkbox.value); // Assuming checkbox value is numeric ID
+
+                if (selectedChoices.includes(choiceId)) {
+                    checkbox.checked = true;
+                    checkbox.nextElementSibling.style.backgroundColor = '#000'; // Apply selected style
+                }
+
+                checkbox.addEventListener('click', function() {
+                    if (this.checked) {
+                        document.querySelectorAll('.choice-button input[type="checkbox"]').forEach(
+                            otherCheckbox => {
+                                if (otherCheckbox !== this) {
+                                    otherCheckbox.checked = false;
+                                    otherCheckbox.nextElementSibling.style.backgroundColor = '';
+                                }
+                            });
+                        this.nextElementSibling.style.backgroundColor = '#000';
+                    } else {
+                        this.nextElementSibling.style.backgroundColor = '';
+                    }
+                });
+            });
+        });
+    </script>
 
     <script>
         // JavaScript for countdown timer
