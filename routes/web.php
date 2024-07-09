@@ -15,6 +15,7 @@ use App\Http\Controllers\SubjectController;
 
 use App\Http\Controllers\ExamTeacherController;
 use App\Http\Controllers\ExamStudentController;
+use App\Http\Controllers\ExamStudentReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,9 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 
     Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
     Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+
+    Route::resource('reports', ExamStudentReportController::class);
+    // Route::get('exams/reports/{examReport}', [ExamStudentReportController::class, 'show'])->name('exams.reports.show');
 
 });
 

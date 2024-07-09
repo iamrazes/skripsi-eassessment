@@ -49,4 +49,9 @@ class Exam extends Model
     {
         return $this->hasMany(ExamStudentAnswer::class);
     }
+
+    public function examReports()
+    {
+        return $this->hasMany(ExamStudentReport::class);
+    }
 }

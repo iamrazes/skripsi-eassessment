@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -11,8 +12,9 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Choice;
 use App\Models\Answer;
-use Carbon\Carbon;
 use App\Models\ExamStudentAnswer;
+use App\Models\ExamStudentReport;
+use Carbon\Carbon;
 
 class ExamStudentController extends Controller
 {
@@ -123,5 +125,6 @@ class ExamStudentController extends Controller
         // Redirect back with a success message
         return back()->with('success', 'Answer saved successfully.');
     }
+
 
 }
