@@ -44,6 +44,8 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
     Route::resource('exams', ExamStudentController::class);
 
     Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
+    Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+
 });
 
 

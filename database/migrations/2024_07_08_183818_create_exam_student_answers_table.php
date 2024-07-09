@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('exam_student_answers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('exam_id')->constrained()->onDelete('cascade');
-            $table->unsignedBigInteger('student_id');
-            $table->foreign('student_id')->references('id')->on('data_students')->onDelete('cascade');
-            $table->foreignId('question_id')->constrained()->onDelete('cascade');
-            $table->json('selected_choices'); // Store selected choices as JSON array
+            $table->unsignedBigInteger('exam_id');
+            $table->unsignedBigInteger('student_id'); // This will reference the 'user_id' in the 'users' table
+            $table->unsignedBigInteger('question_id');
+            $table->json('selected_choices'); // Assuming selected_choices is stored as JSON
             $table->timestamps();
 
-            // Add unique constraint to ensure each student can only answer each question once
-            $table->unique(['exam_id', 'student_id', 'question_id']);
+            $table->foreign('exam_id')->references('id')->on('exams')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('users')->onDelete('cascade'); // Reference 'users' table
+            $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
         });
     }
 

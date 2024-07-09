@@ -12,6 +12,7 @@ use App\Models\Question;
 use App\Models\Choice;
 use App\Models\Answer;
 use Carbon\Carbon;
+use App\Models\ExamStudentAnswer;
 
 class ExamStudentController extends Controller
 {
@@ -56,7 +57,6 @@ class ExamStudentController extends Controller
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
 
-
     public function showQuestion($examId, $questionNumber)
     {
         // Fetch the exam by ID
@@ -76,5 +76,28 @@ class ExamStudentController extends Controller
         // Pass the exam and question to the view
         return view('student.exams.questions.show', compact('exam', 'dataStudent', 'question', 'currentQuestionIndex'));
     }
+
+    public function saveAnswer(Request $request, $examId, $questionNumber)
+    {
+        $question = Question::where('exam_id', $examId)->where('question_number', $questionNumber)->firstOrFail();
+
+        $validatedData = $request->validate([
+            'selected_choices' => 'required|array',
+        ]);
+
+        $answer = ExamStudentAnswer::updateOrCreate(
+            [
+                'exam_id' => $examId,
+                'student_id' => auth()->id(),
+                'question_id' => $question->id
+            ],
+            [
+                'selected_choices' => json_encode($validatedData['selected_choices'])
+            ]
+        );
+
+        return back()->with('success', 'Answer saved successfully.');
+    }
+
 
 }
