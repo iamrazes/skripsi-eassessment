@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\UpdateExamStatus::class,
+
     ];
 
     /**
@@ -21,8 +21,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // Schedule the exam status update command to run every minute.
-        $schedule->command('exam:update-status')->daily();
+
     }
 
     /**
