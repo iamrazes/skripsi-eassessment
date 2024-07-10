@@ -268,4 +268,35 @@ class ExamTeacherController extends Controller
         return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');
     }
 
+    public function publish($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        if ($exam->status == 'draft') {
+            $exam->status = 'published';
+            $exam->save();
+
+            return redirect()->route('teacher.exams.show', $id)->with('success', 'Exam published successfully.');
+        }
+
+        return redirect()->route('teacher.exams.show', $id)->with('error', 'Exam is not in draft status.');
+    }
+
+    /**
+     * Complete the exam.
+     */
+    public function complete($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        if ($exam->status == 'published') {
+            $exam->status = 'completed';
+            $exam->save();
+
+            return redirect()->route('teacher.exams.show', $id)->with('success', 'Exam completed successfully.');
+        }
+
+        return redirect()->route('teacher.exams.show', $id)->with('error', 'Exam is not in published status.');
+    }
+
 }

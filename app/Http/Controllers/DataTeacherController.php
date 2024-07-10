@@ -155,4 +155,5 @@ class DataTeacherController extends Controller
 
          return redirect()->route('admin.data-teachers.index')->with('success', 'Teacher deleted successfully.');
      }
+
 }

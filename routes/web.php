@@ -58,6 +58,10 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
     Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
     Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
+
+
+    Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
+    Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
 });
 
 

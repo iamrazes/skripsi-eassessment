@@ -11,14 +11,24 @@
 
             <div class="flex gap-x-2 items-center">
                 <a href="{{ route('teacher.exams.edit', $exam->id) }}"
-                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
-                        src="{{ asset('icons/ic_edit.svg') }}"></a>
-                <a href=""
-                    class="bg-green-100 hover:bg-green-200 rounded-lg p-1 px-2 font-semibold"
-                >Publish Exam</a>
-                <a href=""
-                    class="bg-orange-100 hover:bg-orange-200 rounded-lg p-1 px-2"
-                >Complete Exam</a>
+                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center">
+                    <img src="{{ asset('icons/ic_edit.svg') }}">
+                </a>
+                @if ($exam->status == 'draft')
+                    <form action="{{ route('teacher.exams.publish', $exam->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="bg-green-100 hover:bg-green-200 rounded-lg p-1 px-2 font-semibold">
+                            Publish Exam
+                        </button>
+                    </form>
+                @elseif($exam->status == 'published')
+                    <form action="{{ route('teacher.exams.complete', $exam->id) }}" method="POST">
+                        @csrf
+                        <button type="submit" class="bg-orange-100 hover:bg-orange-200 rounded-lg p-1 px-2">
+                            Complete Exam
+                        </button>
+                    </form>
+                @endif
             </div>
         </div>
         <div class="flex justify-between px-6">
