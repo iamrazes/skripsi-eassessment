@@ -16,9 +16,6 @@
                         <div class="mt-2">
                             <p class="text-sm font-medium">Details:</p>
                             <ul class="list-disc list-inside">
-                                <li>Total Questions: {{ $attendedExam->total_questions }}</li>
-                                <li>Correct Answers: {{ $attendedExam->correct_answers }}</li>
-                                <li>Incorrect Answers: {{ $attendedExam->incorrect_answers }}</li>
                             </ul>
                         </div>
                     </div>

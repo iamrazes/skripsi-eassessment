@@ -134,53 +134,55 @@ class ExamStudentController extends Controller
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
 
-        // Check if all questions have been answered
+        // Fetch all questions for the exam
         $questions = $exam->questions;
-        $answeredQuestions = ExamStudentAnswer::where('exam_id', $examId)
-                                               ->where('student_id', $user->id)
-                                               ->pluck('question_id')
-                                               ->toArray();
 
-        if (count($questions) !== count($answeredQuestions)) {
-            return back()->with('error', 'You must answer all questions before finishing the exam.');
-        }
-
-        // Calculate the score and prepare answers
+        // Initialize score variables
         $correctAnswers = 0;
+        $totalQuestions = count($questions);
         $studentAnswers = [];
         $correctAnswersData = [];
 
         foreach ($questions as $question) {
+            // Find the corresponding student answer for the question
             $studentAnswer = ExamStudentAnswer::where('exam_id', $examId)
                                               ->where('student_id', $user->id)
                                               ->where('question_id', $question->id)
                                               ->first();
 
             if ($studentAnswer) {
+                // Fetch correct choices for the question
                 $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
-                $selectedChoices = json_decode($studentAnswer->selected_choices, true);
 
-                $studentAnswers[$question->id] = $selectedChoices;
-                $correctAnswersData[$question->id] = $correctChoices;
+                // Retrieve selected choices as an array
+                $selectedChoices = explode(',', $studentAnswer->selected_choices);
 
-                if (is_array($selectedChoices) && array_diff($correctChoices, $selectedChoices) === array_diff($selectedChoices, $correctChoices)) {
+                // Compare selected and correct choices
+                if (count($correctChoices) === count($selectedChoices) &&
+                    empty(array_diff($correctChoices, $selectedChoices)) &&
+                    empty(array_diff($selectedChoices, $correctChoices))) {
                     $correctAnswers++;
                 }
+
+                // Store student's selected answers for each question
+                $studentAnswers[$question->id] = $selectedChoices;
+                // Store correct answers for each question
+                $correctAnswersData[$question->id] = $correctChoices;
             }
         }
 
-        $score = ($correctAnswers / count($questions)) * 100;
+        // Calculate the score as a percentage
+        $score = ($correctAnswers / $totalQuestions) * 100;
 
-        // Store the report
-        ExamStudentReport::updateOrCreate(
+        $report = ExamStudentReport::updateOrCreate(
             [
                 'exam_id' => $examId,
-                'student_id' => $user->id
+                'student_id' => $user->id,
             ],
             [
-                'student_answers' => json_encode($studentAnswers),
-                'correct_answers' => json_encode($correctAnswersData),
-                'score' => $score
+                'student_answers' => $studentAnswers,
+                'correct_answers' => $correctAnswersData,
+                'score' => $score,
             ]
         );
 
