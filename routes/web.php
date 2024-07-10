@@ -14,6 +14,7 @@ use App\Http\Controllers\ExamTypeController;
 use App\Http\Controllers\SubjectController;
 
 use App\Http\Controllers\ExamTeacherController;
+use App\Http\Controllers\ExamTeacherHistoryController;
 use App\Http\Controllers\ExamStudentController;
 use App\Http\Controllers\ExamStudentReportController;
 use Illuminate\Support\Facades\Route;
@@ -62,6 +63,8 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
     Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
     Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
+
+    Route::get('history', [ExamTeacherHistoryController::class, 'index'])->name('history.index');
 
     Route::get('classrooms', [ClassroomController::class, 'teacherIndex'])->name('classrooms.teacherIndex');
     Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');

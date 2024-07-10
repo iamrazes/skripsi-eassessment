@@ -73,10 +73,10 @@
                             class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Exams</span>
                     </a>
-                    <a href=""
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/exams/history*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                    <a href="{{route('teacher.history.index')}}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/history*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_assessment-history.svg') }}"
-                            class="{{ request()->is('teacher/exams/history*') ? 'filter-white' : '' }} pl-8">
+                            class="{{ request()->is('teacher/history*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Exams History</span>
                     </a>
 
