@@ -23,4 +23,18 @@ class DataStudent extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+
+    public function studentAnswers()
+    {
+        return $this->hasMany(ExamStudentAnswer::class, 'student_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($dataStudent) {
+            $dataStudent->user()->delete();
+        });
+    }
 }

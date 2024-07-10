@@ -32,20 +32,41 @@ class UserSeeder extends Seeder
             'admin_id' => 'A7854398',
         ]);
 
-        $teacher = User::create([
+        $teacher1 = User::create([
             'username' => 'teacher',
             'name' => 'Teacher',
             'email' => 'teacher@example.com',
             'password' => Hash::make('teacher'),
             'email_verified_at' => now()
         ]);
-        $teacher->syncRoles(['teacher']);
+        $teacher1->syncRoles(['teacher']);
 
-        DataTeacher::create([
-            'user_id' => 2,
-            'contact' => '0895635903620',
-            'address' => 'St. A12',
-            'teacher_id' => 'T7854398',
+        $teacher2 = User::create([
+            'username' => 'teacher2',
+            'name' => 'Teacher2',
+            'email' => 'teacher2@example.com',
+            'password' => Hash::make('teacher2'),
+            'email_verified_at' => now()
         ]);
+        $teacher2->syncRoles(['teacher']);
+
+        $student1 = User::create([
+            'username' => 'student',
+            'name' => 'Student',
+            'email' => 'student@example.com',
+            'password' => Hash::make('student'),
+            'email_verified_at' => now()
+        ]);
+        $student1->syncRoles(['student']);
+
+
+        $student2 = User::create([
+            'username' => 'student2',
+            'name' => 'Student2',
+            'email' => 'student2@example.com',
+            'password' => Hash::make('student2'),
+            'email_verified_at' => now()
+        ]);
+        $student2->syncRoles(['student']);
     }
 }

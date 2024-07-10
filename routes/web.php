@@ -2,8 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardStudentController;
-use App\Http\Controllers\DashboardTeacherController;
+
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
@@ -13,6 +12,10 @@ use App\Http\Controllers\DataStudentController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\ExamTypeController;
 use App\Http\Controllers\SubjectController;
+
+use App\Http\Controllers\ExamTeacherController;
+use App\Http\Controllers\ExamStudentController;
+use App\Http\Controllers\ExamStudentReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,27 +33,37 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 });
 
-
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
+    Route::resource('exams', ExamStudentController::class);
 
-    Route::get('/assessments', [DashboardStudentController::class, 'assessments'])->name('assessments');
-    Route::get('/results', [DashboardStudentController::class, 'results'])->name('results');
+    Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
+    Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+    Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
+
+    Route::resource('reports', ExamStudentReportController::class);
+
+
 });
+
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
+    Route::resource('exams', ExamTeacherController::class);
 
-    Route::get('/create-assessment', [DashboardTeacherController::class, 'create'])->name('create-assessment');
-    Route::get('/examine-assessment', [DashboardTeacherController::class, 'examine'])->name('examine-assessment');
-    Route::get('/review-assessment', [DashboardTeacherController::class, 'review'])->name('review-assessment');
+    Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
+    Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
+
+    Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
+    Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
 });
+
 
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);
@@ -63,11 +76,5 @@ Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')
     Route::resource('exam-types', ExamTypeController::class);
     Route::resource('subjects', SubjectController::class);
 });
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';

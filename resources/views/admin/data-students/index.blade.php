@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('title')
     <title>Student Database - {{ config('app.name') }}</title>
@@ -24,10 +24,10 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                    <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Classroom</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Gender</th>
+                    <th scope="col" class="px-6 py-3 text-left font-medium">Username</th>
                     <th scope="col" class="px-6 py-3 text-left font-medium">Student ID</th>
                     <th scope="col" class="px-6 py-3 text-end font-medium w-42">Actions</th>
                 </tr>
@@ -36,10 +36,10 @@
                 @foreach ($dataStudents as $index => $dataStudent)
                     <tr>
                         <td class="pl-6 py-4 numbering-cell"></td>
-                        <td class="px-6 py-4">{{ $dataStudent->user->username }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->user->name }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->classroom->name ?? 'N/A' }}</td>
                         <td class="px-6 py-4 capitalize">{{ $dataStudent->gender }}</td>
+                        <td class="px-6 py-4">{{ $dataStudent->user->username }}</td>
                         <td class="px-6 py-4">{{ $dataStudent->student_id }}</td>
                         <td class="px-6 py-4 flex justify-end gap-x-2">
                             <a href="{{ route('admin.data-students.show', $dataStudent->id) }}"

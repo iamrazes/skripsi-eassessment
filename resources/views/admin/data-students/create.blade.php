@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('title')
     <title>Student Database - {{ config('app.name') }}</title>
