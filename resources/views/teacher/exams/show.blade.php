@@ -9,9 +9,17 @@
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium  ">Exam Details</h1>
 
-            <a href="{{ route('teacher.exams.edit', $exam->id) }}"
-                class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
-                    src="{{ asset('icons/ic_edit.svg') }}"></a>
+            <div class="flex gap-x-2 items-center">
+                <a href="{{ route('teacher.exams.edit', $exam->id) }}"
+                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center"><img
+                        src="{{ asset('icons/ic_edit.svg') }}"></a>
+                <a href=""
+                    class="bg-green-100 hover:bg-green-200 rounded-lg p-1 px-2 font-semibold"
+                >Publish Exam</a>
+                <a href=""
+                    class="bg-orange-100 hover:bg-orange-200 rounded-lg p-1 px-2"
+                >Complete Exam</a>
+            </div>
         </div>
         <div class="flex justify-between px-6">
             <div class="flex-grow">

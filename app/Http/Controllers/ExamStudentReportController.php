@@ -19,8 +19,10 @@ class ExamStudentReportController extends Controller
     public function index()
     {
         $studentId = Auth::id(); // Get the authenticated student's ID
-        $reports = ExamStudentReport::where('student_id', $studentId)->get();
+        $attendedExams = ExamStudentReport::where('student_id', $studentId)
+                                          ->with('exam')
+                                          ->get();
 
-        return view('student.reports.index', compact('reports'));
+        return view('student.reports.index', compact('attendedExams'));
     }
 }

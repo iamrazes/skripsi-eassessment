@@ -126,5 +126,60 @@ class ExamStudentController extends Controller
         return back()->with('success', 'Answer saved successfully.');
     }
 
+    public function finishExam($examId)
+    {
+        // Fetch the exam by ID
+        $exam = Exam::findOrFail($examId);
+
+        // Get the authenticated student's ID
+        $studentId = auth()->id();
+
+        // Fetch all questions for the exam
+        $questions = Question::where('exam_id', $examId)->get();
+
+        // Initialize an array to store question IDs
+        $questionIds = [];
+
+        // Loop through each question to process answers
+        foreach ($questions as $question) {
+            // Fetch the student's answer for this question
+            $studentAnswer = ExamStudentAnswer::where([
+                'exam_id' => $examId,
+                'student_id' => $studentId,
+                'question_id' => $question->id
+            ])->first();
+
+            // If there's no answer, skip to the next question
+            if (!$studentAnswer) {
+                continue;
+            }
+
+            // Store the question ID for reference
+            $questionIds[] = $question->id;
+
+            // You may process or validate the answer further here if needed
+
+            // Example: Log the answer for debugging
+            \Log::info('Student Answer for Question ' . $question->question_number . ': ' . $studentAnswer->selected_choices);
+        }
+
+        // Calculate score or any other relevant data here
+        $score = 0; // Implement your scoring logic here if applicable
+
+        // Create a new exam report for the student
+        $examReport = ExamStudentReport::create([
+            'exam_id' => $examId,
+            'student_id' => $studentId,
+            'score' => $score,
+            // Add any other fields you want to store in the report
+        ]);
+
+        // Optional: Update the exam status to 'completed' or similar if needed
+        // $exam->status = 'completed';
+        // $exam->save();
+
+        // Redirect to the exam reports index page with a success message
+        return redirect()->route('students.reports.index')->with('success', 'Exam finished successfully.');
+    }
 
 }
