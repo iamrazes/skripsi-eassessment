@@ -62,6 +62,10 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
     Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
     Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
+
+    Route::get('classrooms', [ClassroomController::class, 'teacherIndex'])->name('classrooms.teacherIndex');
+    Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');
+
 });
 
 

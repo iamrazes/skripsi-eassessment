@@ -55,4 +55,19 @@ class ClassroomController extends Controller
 
         return redirect()->route('admin.classrooms.index')->with('success', 'Classroom updated successfully.');
     }
+
+    public function teacherIndex()
+    {
+        $classrooms = Classroom::orderBy('name')->get();
+        return view('teacher.classrooms.index', compact('classrooms'));
+    }
+
+    public function teacherShow(Classroom $classroom)
+    {
+        $classroom->load(['students.user' => function ($query) {
+            $query->orderBy('created_at', 'desc');
+        }]);
+
+        return view('teacher.classrooms.show', compact('classroom'));
+    }
 }
