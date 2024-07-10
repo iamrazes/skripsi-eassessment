@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('exam_student_reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('exam_id');
-            $table->unsignedBigInteger('student_id'); // This references the 'user_id' in the 'users' table
+            $table->unsignedBigInteger('student_id'); // This will reference the 'user_id' in the 'users' table
             $table->json('student_answers'); // Store student's answers for each question
             $table->json('correct_answers'); // Store correct answers for each question
             $table->integer('score'); // Store the score obtained by the student

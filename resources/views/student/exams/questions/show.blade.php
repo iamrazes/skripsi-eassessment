@@ -45,4 +45,15 @@
             </button>
         </div>
     </form>
+
+    <!-- Finish button -->
+    <form method="POST" action="{{ route('students.exams.finish', ['exam' => $exam->id]) }}">
+        @csrf
+        <div class="flex">
+            <button type="submit"
+                    class="bg-red-500 hover:bg-red-600 text-white rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button w-full">
+                Finish Exam
+            </button>
+        </div>
+    </form>
 @endsection

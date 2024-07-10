@@ -46,9 +46,10 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 
     Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
     Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+    Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
 
     Route::resource('reports', ExamStudentReportController::class);
-    // Route::get('exams/reports/{examReport}', [ExamStudentReportController::class, 'show'])->name('exams.reports.show');
+
 
 });
 
@@ -58,7 +59,6 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
     Route::get('exams/{exam}/questions/create', [ExamTeacherController::class, 'questionsCreate'])->name('exams.questions.create');
     Route::post('exams/{exam}/questions', [ExamTeacherController::class, 'questionsStore'])->name('exams.questions.store');
-
 
     Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
     Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');

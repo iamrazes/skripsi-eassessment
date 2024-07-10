@@ -11,9 +11,15 @@ class ExamStudentReport extends Model
 
     protected $fillable = [
         'exam_id',
-        'user_id',
-        'score',
-        'total_questions'
+        'student_id',
+        'student_answers',
+        'correct_answers',
+        'score'
+    ];
+
+    protected $casts = [
+        'student_answers' => 'array',
+        'correct_answers' => 'array',
     ];
 
     public function exam()
@@ -23,16 +29,7 @@ class ExamStudentReport extends Model
 
     public function student()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
-
-    /**
-     * Get the additional student data.
-     */
-    public function studentData()
-    {
-        return $this->hasOne(DataStudent::class, 'user_id', 'user_id');
-    }
-
 
 }

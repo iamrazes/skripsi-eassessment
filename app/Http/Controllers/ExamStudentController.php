@@ -128,57 +128,62 @@ class ExamStudentController extends Controller
 
     public function finishExam($examId)
     {
+        // Fetch the authenticated user
+        $user = Auth::user();
+
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
 
-        // Get the authenticated student's ID
-        $studentId = auth()->id();
+        // Check if all questions have been answered
+        $questions = $exam->questions;
+        $answeredQuestions = ExamStudentAnswer::where('exam_id', $examId)
+                                               ->where('student_id', $user->id)
+                                               ->pluck('question_id')
+                                               ->toArray();
 
-        // Fetch all questions for the exam
-        $questions = Question::where('exam_id', $examId)->get();
-
-        // Initialize an array to store question IDs
-        $questionIds = [];
-
-        // Loop through each question to process answers
-        foreach ($questions as $question) {
-            // Fetch the student's answer for this question
-            $studentAnswer = ExamStudentAnswer::where([
-                'exam_id' => $examId,
-                'student_id' => $studentId,
-                'question_id' => $question->id
-            ])->first();
-
-            // If there's no answer, skip to the next question
-            if (!$studentAnswer) {
-                continue;
-            }
-
-            // Store the question ID for reference
-            $questionIds[] = $question->id;
-
-            // You may process or validate the answer further here if needed
-
-            // Example: Log the answer for debugging
-            \Log::info('Student Answer for Question ' . $question->question_number . ': ' . $studentAnswer->selected_choices);
+        if (count($questions) !== count($answeredQuestions)) {
+            return back()->with('error', 'You must answer all questions before finishing the exam.');
         }
 
-        // Calculate score or any other relevant data here
-        $score = 0; // Implement your scoring logic here if applicable
+        // Calculate the score and prepare answers
+        $correctAnswers = 0;
+        $studentAnswers = [];
+        $correctAnswersData = [];
 
-        // Create a new exam report for the student
-        $examReport = ExamStudentReport::create([
-            'exam_id' => $examId,
-            'student_id' => $studentId,
-            'score' => $score,
-            // Add any other fields you want to store in the report
-        ]);
+        foreach ($questions as $question) {
+            $studentAnswer = ExamStudentAnswer::where('exam_id', $examId)
+                                              ->where('student_id', $user->id)
+                                              ->where('question_id', $question->id)
+                                              ->first();
 
-        // Optional: Update the exam status to 'completed' or similar if needed
-        // $exam->status = 'completed';
-        // $exam->save();
+            if ($studentAnswer) {
+                $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
+                $selectedChoices = json_decode($studentAnswer->selected_choices, true);
 
-        // Redirect to the exam reports index page with a success message
+                $studentAnswers[$question->id] = $selectedChoices;
+                $correctAnswersData[$question->id] = $correctChoices;
+
+                if (is_array($selectedChoices) && array_diff($correctChoices, $selectedChoices) === array_diff($selectedChoices, $correctChoices)) {
+                    $correctAnswers++;
+                }
+            }
+        }
+
+        $score = ($correctAnswers / count($questions)) * 100;
+
+        // Store the report
+        ExamStudentReport::updateOrCreate(
+            [
+                'exam_id' => $examId,
+                'student_id' => $user->id
+            ],
+            [
+                'student_answers' => json_encode($studentAnswers),
+                'correct_answers' => json_encode($correctAnswersData),
+                'score' => $score
+            ]
+        );
+
         return redirect()->route('students.reports.index')->with('success', 'Exam finished successfully.');
     }
 
