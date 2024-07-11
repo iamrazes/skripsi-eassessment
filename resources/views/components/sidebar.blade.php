@@ -55,15 +55,15 @@
             <div class="relative">
                 <button id="accordionButton4" data-target="accordionMenu4"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
-                {{ request()->is('teacher/exams*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                {{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_assessment4.svg') }}"
-                            class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }}"
+                            class="{{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
                         <span class="-mr-1 font-semibold">Assessments</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
-                        class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }}">
+                        class="{{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'filter-white' : '' }}">
                 </button>
                 <div id="accordionMenu4"
                     class="{{ request()->is('teacher/exams*') ? 'flex' : '' }} flex-col mt-4 space-y-4 bg-white w-full">

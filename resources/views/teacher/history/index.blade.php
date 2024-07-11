@@ -7,9 +7,9 @@
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0 hidden lg:block">
+    <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0">
         <div class="flex flex-col">
-            <div class="flex flex-col p-4 lg:py-6 lg:px-8">
+            <div class="flex flex-col p-4 lg:py-6 lg:px-6">
 
                 <h1 class="font-semibold text-xl flex gap-x-2"><img src="{{ asset('icons/ic_assessment-history.svg') }}"
                         alt="">Exams History</h1>
@@ -23,11 +23,11 @@
                     <thead class="bg-gray-50 ">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th class=" lg:py-3 pl-3 text-left font-medium ">Title</th>
-                            <th class=" lg:py-3 text-left font-medium line-clamp-1">Type of Exam</th>
+                            <th class=" lg:py-3 pl-3 text-left font-medium hidden lg:block">Title</th>
+                            <th class=" lg:py-3 text-left font-medium ">Type of Exam</th>
                             <th class=" lg:py-3 text-left font-medium">Subject</th>
                             <th class=" lg:py-3 text-left font-medium ">Date</th>
-                            <th class=" lg:py-3 text-left font-medium line-clamp-1">Assigned To</th>
+                            <th class=" lg:py-3 text-left font-medium ">Assigned To</th>
                             <th class=" lg:py-3 text-left font-medium">Status</th>
                             <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
@@ -37,7 +37,8 @@
                         @foreach ($exams as $exam)
                             <tr>
                                 <td class=" pl-6 text-left w-6 numbering-cell"></td>
-                                <td class=" pl-3 text-left ">{{ $exam->title }}</td>
+                                <td class=" pl-3 text-left whitespace-nowrap lg:w-max hidden lg:block">{{ $exam->title }}
+                                </td>
                                 <td class=" text-left ">{{ $exam->examType->name }}</td>
                                 <td class=" text-left ">{{ $exam->subject->name }}</td>
                                 <td class=" text-left ">{{ $exam->date->format('Y-m-d') }}</td>

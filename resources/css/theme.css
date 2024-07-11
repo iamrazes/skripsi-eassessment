@@ -2,16 +2,22 @@
 .filter-white {
     filter: brightness(0) invert(1);
 }
+
 .filter-black {
     filter: brightness(0) invert(1);
 }
+
 .filter-gray {
     filter: invert(85%) sepia(19%) saturate(192%) hue-rotate(177deg) brightness(86%) contrast(89%);
 }
+
 .filter-red {
     filter: invert(38%) sepia(100%) saturate(3301%) hue-rotate(338deg) brightness(90%) contrast(91%);
 }
 
+.filter-accent-1 {
+    filter: invert(50%) sepia(82%) saturate(1035%) hue-rotate(180deg) brightness(93%) contrast(85%);
+}
 
 .shadow-button {
     filter: drop-shadow(0 1px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));

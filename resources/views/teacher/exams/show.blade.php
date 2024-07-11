@@ -69,7 +69,7 @@
         <div class="flex flex-col">
             <div class="flex justify-between px-6 pb-4 ">
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
-                @if ($exam->status != 'published')
+                @if (!in_array($exam->status, ['published', 'completed']))
                     <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
                         class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
                 @endif
