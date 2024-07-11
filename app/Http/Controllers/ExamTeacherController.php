@@ -262,7 +262,7 @@ class ExamTeacherController extends Controller
             }
         }
 
-        $exam->status = 'published';
+        $exam->status = 'draft';
         $exam->save();
 
         return redirect()->route('teacher.exams.show', $exam->id)->with('success', 'Questions saved successfully.');

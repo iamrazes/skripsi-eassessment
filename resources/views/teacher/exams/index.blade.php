@@ -56,9 +56,9 @@
                                         <span>: {{ ucfirst($exam->status) }}</span>
                                     </div>
                                 </div>
-                                <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                                <a href="{{ route('teacher.exams.show', $exam->id) }}"
                                     class="bg-accent-1 rounded-lg text-white font-medium text-center py-2 hover:bg-gradient-to-r from-accent-1 to-accent-2">
-                                    Manage Question
+                                    Manage Exam & Question
                                 </a>
                             </div>
                         </div>

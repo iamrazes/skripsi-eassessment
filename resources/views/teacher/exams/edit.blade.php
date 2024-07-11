@@ -27,7 +27,8 @@
                     <select name="exam_type_id" id="exam_type_id" class="rounded-lg border-gray-400 mt-1">
                         @foreach ($examTypes as $examType)
                             <option value="{{ $examType->id }}"
-                                {{ old('exam_type_id', $exam->exam_type_id) == $examType->id ? 'selected' : '' }}>{{ $examType->name }}</option>
+                                {{ old('exam_type_id', $exam->exam_type_id) == $examType->id ? 'selected' : '' }}>
+                                {{ $examType->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -35,26 +36,30 @@
                     <label for="subject_id">Subject</label>
                     <select name="subject_id" id="subject_id" class="rounded-lg border-gray-400 mt-1">
                         @foreach ($subjects as $subject)
-                            <option value="{{ $subject->id }}" {{ old('subject_id', $exam->subject_id) == $subject->id ? 'selected' : '' }}>
+                            <option value="{{ $subject->id }}"
+                                {{ old('subject_id', $exam->subject_id) == $subject->id ? 'selected' : '' }}>
                                 {{ $subject->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="flex flex-col my-3">
-                    <label for="date">Date</label>
-                    <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
-                        min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
-                </div>
-                <div class="flex flex-col my-3">
-                    <label for="start_time">Start Time</label>
-                    <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
-                        value="{{ old('start_time', $exam->start_time) }}">
-                </div>
-                <div class="flex flex-col my-3">
-                    <label for="duration">Duration (in minutes)</label>
-                    <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
-                        min="1" value="{{ old('duration', $exam->duration) }}">
-                </div>
+
+                @if ($exam->status != 'published')
+                    <div class="flex flex-col my-3">
+                        <label for="date">Date</label>
+                        <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
+                            min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
+                    </div>
+                    <div class="flex flex-col my-3">
+                        <label for="start_time">Start Time</label>
+                        <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
+                            value="{{ old('start_time', $exam->start_time) }}">
+                    </div>
+                    <div class="flex flex-col my-3">
+                        <label for="duration">Duration (in minutes)</label>
+                        <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
+                            min="1" value="{{ old('duration', $exam->duration) }}">
+                    </div>
+                @endif
 
                 <div class="flex flex-col my-3">
                     <label for="classrooms">Classrooms</label>
@@ -62,7 +67,8 @@
                         @foreach ($exam->classrooms as $classroom)
                             <div class="flex items-center bg-accent-1 text-white px-3 py-1 rounded-lg">
                                 <span>{{ $classroom->name }}</span>
-                                <button type="button" class="ml-2 text-white focus:outline-none" data-value="{{ $classroom->id }}">&times;</button>
+                                <button type="button" class="ml-2 text-white focus:outline-none"
+                                    data-value="{{ $classroom->id }}">&times;</button>
                                 <input type="hidden" name="classrooms[]" value="{{ $classroom->id }}">
                             </div>
                         @endforeach
@@ -127,8 +133,10 @@
                 selectedItemsContainer.innerHTML = '';
                 selectedValues.forEach(value => {
                     const itemBox = document.createElement('div');
-                    itemBox.classList.add('flex', 'items-center', 'bg-accent-1', 'text-white', 'px-3', 'py-1', 'rounded-lg');
-                    const itemText = document.createTextNode(document.querySelector(`li[data-value="${value}"]`).getAttribute('data-text'));
+                    itemBox.classList.add('flex', 'items-center', 'bg-accent-1', 'text-white', 'px-3',
+                        'py-1', 'rounded-lg');
+                    const itemText = document.createTextNode(document.querySelector(
+                        `li[data-value="${value}"]`).getAttribute('data-text'));
                     itemBox.appendChild(itemText);
 
                     const closeButton = document.createElement('button');

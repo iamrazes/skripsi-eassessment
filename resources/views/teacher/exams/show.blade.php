@@ -5,10 +5,9 @@
 @endsection
 
 @section('content')
-    <div class="mt-4 bg-white rounded-lg py-4 shadow-button ">
+    <div class="mt-4 bg-white rounded-lg py-4 shadow-button mx-4 lg:mx-0">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium  ">Exam Details</h1>
-
             <div class="flex gap-x-2 items-center">
                 <a href="{{ route('teacher.exams.edit', $exam->id) }}"
                     class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center">
@@ -17,14 +16,18 @@
                 @if ($exam->status == 'draft')
                     <form action="{{ route('teacher.exams.publish', $exam->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="bg-green-100 hover:bg-green-200 rounded-lg p-1 px-2 font-semibold">
+                        <button type="submit"
+                            class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
+                            <img class="h-5 w-5" src="{{ asset('icons/ic_publish_exam2.svg') }}" alt="">
                             Publish Exam
                         </button>
                     </form>
                 @elseif($exam->status == 'published')
                     <form action="{{ route('teacher.exams.complete', $exam->id) }}" method="POST">
                         @csrf
-                        <button type="submit" class="bg-orange-100 hover:bg-orange-200 rounded-lg p-1 px-2">
+                        <button type="submit"
+                            class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
+                            <img class="h-5 w-5" src="{{ asset('icons/ic_complete_exam2.svg') }}" alt="">
                             Complete Exam
                         </button>
                     </form>
@@ -54,31 +57,41 @@
             </div>
         </div>
     </div>
-    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4">
+
+    @if (session('success'))
+        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            <strong class="font-bold">Success!</strong>
+            <span class="block sm:inline">{{ session('success') }}</span>
+        </div>
+    @endif
+
+    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0">
         <div class="flex flex-col">
             <div class="flex justify-between px-6 pb-4 ">
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
-                <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
-                    class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
+                @if ($exam->status != 'published')
+                    <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
+                        class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
+                @endif
+
             </div>
             <div class="overflow-x-auto">
                 <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200 ">
-                    <thead class="bg-gray-50">
-                        <tr>
+                    <thead class="bg-gray-5 ">
+                        <tr class="">
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider flex-grow">Questions
-                            </th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium tracking-wider">Answer</th>
-                            <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Options</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Questions</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Answer</th>
+                            {{-- <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Options</th> --}}
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                         @foreach ($exam->questions as $index => $question)
                             <tr class="bg-white divide-gray-200">
-                                <td class="pl-6 py-1 whitespace-nowrap numbering-cell"></td>
-                                <td class="px-6 py-1 whitespace-nowrap max-w-screen-sm overflow-hidden">
+                                <td class="pl-6 py-2 whitespace-nowrap numbering-cell w-6"></td>
+                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden">
                                     {{ $question->question_text }}</td>
-                                <td class="px-6 py-1 whitespace-nowrap max-w-screen-sm overflow-hidden">
+                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20  overflow-hidden">
                                     @if ($question->choices->contains('is_correct', true))
                                         @php
                                             $alphabet = ['a', 'b', 'c', 'd', 'e'];
@@ -92,14 +105,14 @@
                                         N/A
                                     @endif
                                 </td>
-                                <td class="pr-6 py-2 flex flex-auto justify-end ">
+                                {{-- <td class="pr-6 py-2 flex flex-auto justify-end ">
 
                                     <a href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}"
                                         class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0"><img
                                             src="{{ asset('icons/ic_edit.svg') }}">
                                     </a>
 
-                                </td>
+                                </td> --}}
                             </tr>
                         @endforeach
                     </tbody>

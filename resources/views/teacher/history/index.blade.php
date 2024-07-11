@@ -79,8 +79,6 @@
     </div>
 @endsection
 
-
-
 @section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
