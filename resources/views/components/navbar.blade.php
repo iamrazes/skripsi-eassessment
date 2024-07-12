@@ -27,6 +27,8 @@
                     Exams
                 @elseif (Route::is('teacher.history*'))
                     Exams History
+                @elseif (Route::is('admin**'))
+                    Admin Panel
                 @else
                     Other
                 @endif
