@@ -397,7 +397,7 @@
                         school and teacher. See if you have any assessment available
                         for you by clicking link above.</span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                <a href="{{route('students.exams.index')}}" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
             <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
@@ -411,7 +411,7 @@
                         database. You can check, review, or learn your old test with the given right answers.
                     </span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                <a href="{{route('students.reports.index')}}" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
             <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
@@ -424,7 +424,7 @@
                     <span class="text-sm lg:text-lg lg:w-3/4">Check your identifications, all of your data
                         stored private and secure in school database.</span>
                 </div>
-                <a href="" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                <a href="{{route('profile')}}" class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
                         src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
             </div>
             <div

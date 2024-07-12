@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Student Reports - {{ config('app.name') }}</title>
+@endsection
+
 @section('content')
     <div class="mx-4 lg:mx-0 mt-8">
         @if ($attendedExams->isEmpty())
