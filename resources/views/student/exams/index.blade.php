@@ -14,7 +14,7 @@
 
             <div class="flex flex-col">
                 @if ($exams->isEmpty())
-                    <div class="flex pt-12 pb-8 justify-center">
+                    <div class="flex pt-40 pb-36 justify-center">
                         <p>No available exams.</p>
                     </div>
                 @else
