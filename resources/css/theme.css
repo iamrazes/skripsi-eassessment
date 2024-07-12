@@ -15,6 +15,10 @@
     filter: invert(38%) sepia(100%) saturate(3301%) hue-rotate(338deg) brightness(90%) contrast(91%);
 }
 
+.filter-green {
+    filter: invert(50%) sepia(100%) saturate(2000%) hue-rotate(90deg) brightness(95%) contrast(85%);
+}
+
 .filter-accent-1 {
     filter: invert(50%) sepia(82%) saturate(1035%) hue-rotate(180deg) brightness(93%) contrast(85%);
 }
