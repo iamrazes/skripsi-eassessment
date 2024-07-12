@@ -14,13 +14,32 @@
                         aria-current="page">Dashboard</li>
                 </ol>
             </div>
-            <h6 class="mb-0 font-bold capitalize hidden lg:block">Dashboard</h6>
+            <h6 class="mb-0 font-bold capitalize hidden lg:block">
+                @if (Route::is('dashboard'))
+                    Dashboard
+                @elseif (Route::is('profile'))
+                    Profile
+                @elseif (Route::is('students.exams.index'))
+                    Exams
+                @elseif (Route::is('students.reports.index'))
+                    Reports
+                @elseif (Route::is('teacher.exams*'))
+                    Exams
+                @elseif (Route::is('teacher.history*'))
+                    Exams History
+                @else
+                    Other
+                @endif
+            </h6>
+
+
         </div>
     </nav>
 
     <nav class="flex gap-x-6">
 
-        <a href="{{route('profile')}}" class="font-bold text-accent-1 line-clamp-1 hover:text-accent-2 transition ease-in-out uppercase">{{ auth()->user()->name }}</a>
+        <a href="{{ route('profile') }}"
+            class="font-bold text-accent-1 line-clamp-1 hover:text-accent-2 transition ease-in-out uppercase">{{ auth()->user()->name }}</a>
 
         {{-- <a>
             <img src="{{ asset('icons/ic_notification.svg') }}" class="filter-gray" alt="">
@@ -29,8 +48,10 @@
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <a href="{{ route('logout') }}" onclick="event.preventDefault();
-            this.closest('form').submit();" class="">
-                <img src="{{ asset('icons/ic_exit.svg') }}" alt="Logout" class="transition duration-300 ease-in-out  transform hover:scale-110">
+            this.closest('form').submit();"
+                class="">
+                <img src="{{ asset('icons/ic_exit.svg') }}" alt="Logout"
+                    class="transition duration-300 ease-in-out  transform hover:scale-110">
             </a>
         </form>
         <!-- close buttton -->
