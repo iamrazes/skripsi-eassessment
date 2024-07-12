@@ -98,70 +98,71 @@
 @section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-    const dropdownButton = document.getElementById('dropdownButton');
-    const dropdown = document.getElementById('dropdown');
-    const dropdownOptions = document.getElementById('dropdownOptions');
-    const selectedItemsContainer = document.getElementById('selectedItems');
-    let selectedValues = new Set();
+            const dropdownButton = document.getElementById('dropdownButton');
+            const dropdown = document.getElementById('dropdown');
+            const dropdownOptions = document.getElementById('dropdownOptions');
+            const selectedItemsContainer = document.getElementById('selectedItems');
+            let selectedValues = new Set();
 
-    dropdownButton.addEventListener('click', function(e) {
-        e.stopPropagation(); // Prevent the click event from bubbling up to the document
-        dropdown.classList.toggle('hidden');
-    });
-
-    dropdownOptions.addEventListener('click', function(e) {
-        if (e.target.tagName === 'LI') {
-            const value = e.target.getAttribute('data-value');
-            const text = e.target.getAttribute('data-text');
-            if (!selectedValues.has(value)) {
-                selectedValues.add(value);
-                updateSelectedItems();
-            }
-        }
-    });
-
-    function updateSelectedItems() {
-        selectedItemsContainer.innerHTML = '';
-        selectedValues.forEach(value => {
-            const itemBox = document.createElement('div');
-            itemBox.classList.add('flex', 'items-center', 'bg-accent-1', 'text-white', 'px-3', 'py-1', 'rounded-lg');
-            const itemText = document.createTextNode(document.querySelector(`li[data-value="${value}"]`).getAttribute('data-text'));
-            itemBox.appendChild(itemText);
-
-            const closeButton = document.createElement('button');
-            closeButton.classList.add('ml-2', 'text-white', 'focus:outline-none');
-            closeButton.innerHTML = '&times;';
-            closeButton.addEventListener('click', function() {
-                selectedValues.delete(value);
-                updateSelectedItems();
+            dropdownButton.addEventListener('click', function(e) {
+                e.stopPropagation(); // Prevent the click event from bubbling up to the document
+                dropdown.classList.toggle('hidden');
             });
 
-            itemBox.appendChild(closeButton);
-            selectedItemsContainer.appendChild(itemBox);
+            dropdownOptions.addEventListener('click', function(e) {
+                if (e.target.tagName === 'LI') {
+                    const value = e.target.getAttribute('data-value');
+                    const text = e.target.getAttribute('data-text');
+                    if (!selectedValues.has(value)) {
+                        selectedValues.add(value);
+                        updateSelectedItems();
+                    }
+                }
+            });
 
-            // Add hidden input to form for each selected value
-            const hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'classrooms[]';
-            hiddenInput.value = value;
-            selectedItemsContainer.appendChild(hiddenInput);
+            function updateSelectedItems() {
+                selectedItemsContainer.innerHTML = '';
+                selectedValues.forEach(value => {
+                    const itemBox = document.createElement('div');
+                    itemBox.classList.add('flex', 'items-center', 'bg-accent-1', 'text-white', 'px-3',
+                        'py-1', 'rounded-lg');
+                    const itemText = document.createTextNode(document.querySelector(
+                        `li[data-value="${value}"]`).getAttribute('data-text'));
+                    itemBox.appendChild(itemText);
+
+                    const closeButton = document.createElement('button');
+                    closeButton.classList.add('ml-2', 'text-white', 'focus:outline-none');
+                    closeButton.innerHTML = '&times;';
+                    closeButton.addEventListener('click', function() {
+                        selectedValues.delete(value);
+                        updateSelectedItems();
+                    });
+
+                    itemBox.appendChild(closeButton);
+                    selectedItemsContainer.appendChild(itemBox);
+
+                    // Add hidden input to form for each selected value
+                    const hiddenInput = document.createElement('input');
+                    hiddenInput.type = 'hidden';
+                    hiddenInput.name = 'classrooms[]';
+                    hiddenInput.value = value;
+                    selectedItemsContainer.appendChild(hiddenInput);
+                });
+            }
+
+            // Prevent dropdown from closing when clicking inside
+            dropdown.addEventListener('click', function(e) {
+                dropdown.classList.add('hidden');
+
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdownButton.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.add('hidden');
+                }
+            });
+
         });
-    }
-
-    // Prevent dropdown from closing when clicking inside
-    dropdown.addEventListener('click', function(e) {
-        dropdown.classList.add('hidden');
-
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!dropdownButton.contains(e.target) && !dropdown.contains(e.target)) {
-            dropdown.classList.add('hidden');
-        }
-    });
-
-});
-
     </script>
 @endsection

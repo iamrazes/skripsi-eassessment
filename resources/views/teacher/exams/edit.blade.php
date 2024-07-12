@@ -43,23 +43,21 @@
                     </select>
                 </div>
 
-                @if (!in_array($exam->status, ['published', 'completed']))
-                    <div class="flex flex-col my-3">
-                        <label for="date">Date</label>
-                        <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
-                            min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
-                    </div>
-                    <div class="flex flex-col my-3">
-                        <label for="start_time">Start Time</label>
-                        <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
-                            value="{{ old('start_time', $exam->start_time) }}">
-                    </div>
-                    <div class="flex flex-col my-3">
-                        <label for="duration">Duration (in minutes)</label>
-                        <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
-                            min="1" value="{{ old('duration', $exam->duration) }}">
-                    </div>
-                @endif
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
+                        min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
+                </div>
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="start_time">Start Time</label>
+                    <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
+                        value="{{ old('start_time', $exam->start_time) }}">
+                </div>
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="duration">Duration (in minutes)</label>
+                    <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
+                        min="1" value="{{ old('duration', $exam->duration) }}">
+                </div>
 
                 <div class="flex flex-col my-3">
                     <label for="classrooms">Classrooms</label>
@@ -111,7 +109,7 @@
             const dropdown = document.getElementById('dropdown');
             const dropdownOptions = document.getElementById('dropdownOptions');
             const selectedItemsContainer = document.getElementById('selectedItems');
-            let selectedValues = new Set(@json($exam->classrooms->pluck('id')));
+            let selectedValues = new Set();
 
             dropdownButton.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent the click event from bubbling up to the document
@@ -159,6 +157,12 @@
                 });
             }
 
+            // Prevent dropdown from closing when clicking inside
+            dropdown.addEventListener('click', function(e) {
+                dropdown.classList.add('hidden');
+
+            });
+
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!dropdownButton.contains(e.target) && !dropdown.contains(e.target)) {
@@ -166,12 +170,6 @@
                 }
             });
 
-            // Prevent dropdown from closing when clicking inside
-            dropdown.addEventListener('click', function(e) {
-                e.stopPropagation();
-            });
-
-            updateSelectedItems(); // Initialize the selected items on page load
         });
     </script>
 @endsection

@@ -178,8 +178,8 @@ class ExamTeacherController extends Controller
 
         // Sync classrooms with the exam
         $exam->classrooms()->sync($validatedData['classrooms']);
+        return redirect()->route('teacher.exams.show', ['exam' => $exam->id])->with('success', 'Exam updated successfully.');
 
-        return redirect()->route('teacher.exams.index')->with('success', 'Exam updated successfully.');
     }
 
     /**
@@ -206,7 +206,7 @@ class ExamTeacherController extends Controller
         // Delete the exam and associated questions
         $exam->delete();
 
-        return redirect()->route('teacher.exams.index')->with('success', 'Exam deleted successfully.');
+        return redirect()->route('teacher.history.index')->with('success', 'Exam deleted successfully.');
     }
 
     // public function questionsIndex(Exam $exam)
