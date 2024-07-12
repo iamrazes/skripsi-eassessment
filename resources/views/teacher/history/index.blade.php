@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @if (session('success')) --}}
+    @if (session('success'))
         <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong class="font-bold">Success!</strong>
             <span class="block sm:inline">{{ session('success') }}</span>
+            <button></button>
         </div>
-    {{-- @endif --}}
+    @endif
     <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0 h-screen">
         <div class="flex flex-col">
             <div class="flex flex-col p-4 lg:py-6 lg:px-6">
@@ -53,7 +54,7 @@
                                         class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0">
                                         <img src="{{ asset('icons/ic_views.svg') }}">
                                     </a>
-                                    <a href="{{ route('teacher.exams.edit', $exam->id) }}"
+                                    <a href="{{ route('teacher.history.edit', $exam->id) }}"
                                         class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0">
                                         <img src="{{ asset('icons/ic_edit.svg') }}">
                                     </a>

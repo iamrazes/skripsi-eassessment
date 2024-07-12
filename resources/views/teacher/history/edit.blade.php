@@ -19,9 +19,9 @@
     <div class="mt-8 bg-white rounded-lg shadow-button py-6 px-8">
         <h1 class="font-semibold text-lg">Edit Exam</h1>
         <div class="my-4">
-            <form action="{{ route('teacher.exams.update', $exam->id) }}" method="POST">
+            <form action="{{ route('teacher.history.update', $exam->id) }}" method="PATCH">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
                 <div class="flex flex-col my-3">
                     <label for="exam_type_id">Exam Type</label>
                     <select name="exam_type_id" id="exam_type_id" class="rounded-lg border-gray-400 mt-1">
@@ -43,25 +43,23 @@
                     </select>
                 </div>
 
-                @if (!in_array($exam->status, ['published', 'completed']))
-                    <div class="flex flex-col my-3">
-                        <label for="date">Date</label>
-                        <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
-                            min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
-                    </div>
-                    <div class="flex flex-col my-3">
-                        <label for="start_time">Start Time</label>
-                        <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
-                            value="{{ old('start_time', $exam->start_time) }}">
-                    </div>
-                    <div class="flex flex-col my-3">
-                        <label for="duration">Duration (in minutes)</label>
-                        <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
-                            min="1" value="{{ old('duration', $exam->duration) }}">
-                    </div>
-                @endif
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="date">Date</label>
+                    <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
+                        min="{{ now()->toDateString() }}" value="{{ old('date', $exam->date->format('Y-m-d')) }}">
+                </div>
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="start_time">Start Time</label>
+                    <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
+                        value="{{ old('start_time', $exam->start_time) }}">
+                </div>
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
+                    <label for="duration">Duration (in minutes)</label>
+                    <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
+                        min="1" value="{{ old('duration', $exam->duration) }}">
+                </div>
 
-                {{-- <div class="flex flex-col my-3">
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
                     <label for="classrooms">Classrooms</label>
                     <div id="selectedItems" class="flex flex-wrap gap-2">
                         @foreach ($exam->classrooms as $classroom)
@@ -73,7 +71,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="relative">
+                    <div class="relative @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
                         <div id="dropdownButton"
                             class="block w-full px-4 py-2 bg-white border border-gray-400 rounded-lg cursor-pointer mt-1">
                             Select classrooms
@@ -90,7 +88,7 @@
                             </ul>
                         </div>
                     </div>
-                </div> --}}
+                </div>
 
                 <div class="flex flex-col my-3">
                     <label for="description">Description</label>

@@ -79,7 +79,7 @@ class ExamTeacherHistoryController extends Controller
         // Sync classrooms with the exam
         $exam->classrooms()->sync($validatedData['classrooms']);
 
-        return redirect()->route('teacher.exams.index')->with('success', 'Exam updated successfully.');
+        return redirect()->route('teacher.history.index')->with('success', 'Exam updated successfully.');
     }
 
 }
