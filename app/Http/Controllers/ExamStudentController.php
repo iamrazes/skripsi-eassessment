@@ -51,10 +51,10 @@ class ExamStudentController extends Controller
         $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
 
         // Log the times for debugging
-        \Log::info('Exam Start Time: ' . $examStartTime);
-        \Log::info('Exam End Time: ' . $examEndTime);
-        \Log::info('Current Time: ' . $currentTime);
-        \Log::info('Is Exam Available: ' . $isExamAvailable);
+        // \Log::info('Exam Start Time: ' . $examStartTime);
+        // \Log::info('Exam End Time: ' . $examEndTime);
+        // \Log::info('Current Time: ' . $currentTime);
+        // \Log::info('Is Exam Available: ' . $isExamAvailable);
 
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
@@ -186,7 +186,14 @@ class ExamStudentController extends Controller
             ]
         );
 
-        return redirect()->route('students.reports.index')->with('success', 'Exam finished successfully.');
+        return redirect()->route('students.exams.end', ['exam' => $examId])->with('success', 'Exam finished successfully.');
+    }
+
+    public function end($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        return view('student.exams.end', compact('exam'));
     }
 
 }

@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="flex gap-x-4">
-                            <div class=" flex border-r-2 text-xs lg:text-base pr-4 gap-x-2 lg:gap-x-6">
+                            <div class=" flex text-xs lg:text-base pr-4 gap-x-2 lg:gap-x-6">
                                 <div class="flex flex-col">
                                     <span>Day: {{ $attendedExam->exam->date->format('l') }}</span>
                                     <span>Date: {{ $attendedExam->exam->date->format('d-m-Y') }}</span>
@@ -33,7 +33,7 @@
                                     <span>Question: {{ $attendedExam->exam->total_questions }}</span>
                                 </div>
                             </div>
-                            <div class="flex flex-col text-center border-r-2 pr-4">
+                            <div class="flex flex-col text-center w-20 lg:w-40 border-x-2">
                                 <span class="text-sm lg:text-base">Score</span>
                                 <span class="text-2xl lg:text-4xl font-semibold">{{ $attendedExam->score }}</span>
                             </div>
