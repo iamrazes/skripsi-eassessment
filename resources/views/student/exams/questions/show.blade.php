@@ -17,7 +17,7 @@
                 </div>
                 <span>Multiple Choices</span>
             </div>
-            <div class="flex flex-col bg-slate-100 min-h-72 rounded-lg p-4 items-center overflow-hidden">
+            <div class="flex flex-col bg-slate-100 min-h-80 rounded-lg p-4 items-center overflow-hidden">
                 <p class="whitespace-pre-line w-full lg:text-lg">{{ $question->question_text }}</p>
                 @if ($question->image_path)
                     <img src="{{ Storage::url($question->image_path) }}" class="max-h-96 max-w-fit my-4" alt="">
