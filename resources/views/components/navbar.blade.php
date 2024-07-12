@@ -21,13 +21,13 @@
                     Profile
                 @elseif (Route::is('students.exams.index'))
                     Exams
-                @elseif (Route::is('students.reports.index'))
+                @elseif (Route::is('students.reports*'))
                     Reports
                 @elseif (Route::is('teacher.exams*'))
                     Exams
                 @elseif (Route::is('teacher.history*'))
                     Exams History
-                @elseif (Route::is('admin**'))
+                @elseif (Route::is('admin*'))
                     Admin Panel
                 @else
                     Other
