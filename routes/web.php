@@ -52,7 +52,6 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
     Route::resource('reports', ExamStudentReportController::class);
 });
 
-
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::resource('exams', ExamTeacherController::class);
 
@@ -69,7 +68,6 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
     Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');
 
 });
-
 
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);

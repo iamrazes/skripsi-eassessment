@@ -378,7 +378,7 @@
         <!-- Student Dashboard -->
         <div class="rounded-xl border-2 border-accent-1 p-5 bg-white lg:mt-8 mt-4 shadow-button mx-4 lg:mx-0">
             <div class="flex flex-col items-center justify-center text-center gap-y-2.5">
-                <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+                <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
                     class="w-28 h-28 mt-1" alt="">
                 <h1 class="font-bold text-accent-1 uppercase text-2xl">{{ auth()->user()->name }}</h1>
                 <span>{{ $dataStudent->student_id }}</span>
