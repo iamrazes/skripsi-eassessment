@@ -38,6 +38,7 @@
         </div>
 
         <input type="hidden" name="current_question" value="{{ $currentQuestionIndex }}">
+        <input type="hidden" name="action" id="action" value="save">
 
         <!-- Save button -->
         <div class="flex mt-6 gap-x-8">
@@ -54,10 +55,11 @@
             </button>
 
             @if ($currentQuestionIndex < count($exam->questions) - 1)
-                <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex + 1]->question_number]) }}"
-                   class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
+                <button type="submit"
+                        onclick="document.getElementById('action').value='save_next'"
+                        class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
                     Save & Next
-                </a>
+                </button>
             @endif
         </div>
     </form>
@@ -73,3 +75,4 @@
         </div>
     </form>
 @endsection
+

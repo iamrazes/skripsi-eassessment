@@ -122,6 +122,25 @@ class ExamStudentController extends Controller
             ]
         );
 
+
+        // Determine the current question index
+        $exam = Exam::with('questions')->findOrFail($examId);
+        $currentQuestionIndex = $exam->questions->search(function ($q) use ($question) {
+            return $q->id == $question->id;
+        });
+
+        // Check if the action is "save_next"
+        if ($request->input('action') == 'save_next') {
+            $nextQuestionIndex = $currentQuestionIndex + 1;
+            if ($nextQuestionIndex < count($exam->questions)) {
+                // Redirect to the next question
+                return redirect()->route('students.exams.show-question', [
+                    'exam' => $examId,
+                    'question' => $exam->questions[$nextQuestionIndex]->question_number
+                ]);
+            }
+        }
+
         // Redirect back with a success message
         return back()->with('success', 'Answer saved successfully.');
     }
