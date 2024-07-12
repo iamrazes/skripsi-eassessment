@@ -43,6 +43,12 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Username:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ $user->username }}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-1">
                     <span class="font-semibold">Email:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ $dataStudent->user->email }}</span>
