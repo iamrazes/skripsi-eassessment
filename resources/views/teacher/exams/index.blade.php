@@ -19,9 +19,9 @@
                 <a href="{{ route('teacher.exams.create') }}"
                     class="bg-accent-1 rounded-lg py-2 px-4 gap-x-3 lg:w-56 text-start font-medium text-white flex hover:bg-gradient-to-r from-accent-1 to-accent-2"><img
                         src="{{ asset('icons/ic_assessment.svg') }}" class="filter-white">Create New Exam</a>
-                <a href="{{ route('teacher.history.index') }}"
+                {{-- <a href="{{ route('teacher.history.index') }}"
                     class="bg-white rounded-lg py-2 px-4 gap-x-3 lg:w-56 text-start font-medium text-accent-1 flex hover:bg-gray-100"><img
-                        src="{{ asset('icons/ic_assessment0.svg') }}" class="filter-accent-1">View Exams History</a>
+                        src="{{ asset('icons/ic_assessment0.svg') }}" class="filter-accent-1">View Exams History</a> --}}
             </div>
         </div>
     </div>

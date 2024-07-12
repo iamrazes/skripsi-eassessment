@@ -7,7 +7,7 @@
             <span class="block sm:inline">{{ session('success') }}</span>
         </div>
     @endif
-    <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0">
+    <div class="mt-8 bg-white shadow-button rounded-lg mx-4 lg:mx-0 h-screen">
         <div class="flex flex-col">
             <div class="flex flex-col p-4 lg:py-6 lg:px-6">
 
@@ -23,11 +23,10 @@
                     <thead class="bg-gray-50 ">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th class=" lg:py-3 pl-3 text-left font-medium hidden lg:block">Title</th>
-                            <th class=" lg:py-3 text-left font-medium ">Type of Exam</th>
+                            <th class=" lg:py-3 pl-3 text-left font-medium">Type of Exam</th>
                             <th class=" lg:py-3 text-left font-medium">Subject</th>
-                            <th class=" lg:py-3 text-left font-medium ">Date</th>
-                            <th class=" lg:py-3 text-left font-medium ">Assigned To</th>
+                            <th class=" lg:py-3 text-left font-medium">Date</th>
+                            <th class=" lg:py-3 text-left font-medium">Assigned To</th>
                             <th class=" lg:py-3 text-left font-medium">Status</th>
                             <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
@@ -36,10 +35,8 @@
 
                         @foreach ($exams as $exam)
                             <tr>
-                                <td class=" pl-6 text-left w-6 numbering-cell"></td>
-                                <td class=" pl-3 text-left whitespace-nowrap lg:w-max hidden lg:block">{{ $exam->title }}
-                                </td>
-                                <td class=" text-left ">{{ $exam->examType->name }}</td>
+                                <td class=" pl-6 py-3 text-left w-6 numbering-cell"></td>
+                                <td class=" pl-3 text-left ">{{ $exam->examType->name }}</td>
                                 <td class=" text-left ">{{ $exam->subject->name }}</td>
                                 <td class=" text-left ">{{ $exam->date->format('Y-m-d') }}</td>
                                 <td class="  text-left ">
@@ -50,7 +47,7 @@
                                     @endforeach
                                 </td>
                                 <td class=" text-left capitalize">{{ $exam->status }}</td>
-                                <td class="pr-6 py-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
+                                <td class="pr-6 pt-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
                                     <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST"
                                         id="deleteExam" class="shrink-0">
                                         @csrf
@@ -59,7 +56,7 @@
                                             class=" bg-red-200 hover:bg-red-300 rounded-lg p-1 items-center"><img
                                                 src="{{ asset('icons/ic_delete.svg') }}"></button>
                                     </form>
-                                    <a href="{{ route('teacher.exams.show', $exam->id) }}"
+                                    <a href="{{ route('teacher.history.show', $exam->id) }}"
                                         class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0"><img
                                             src="{{ asset('icons/ic_views.svg') }}"></a>
                                     <a href="{{ route('teacher.exams.edit', $exam->id) }}"

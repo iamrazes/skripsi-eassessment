@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Exam;
+use App\Models\ExamType;
+use App\Models\Question;
+use App\Models\Choice;
+use App\Models\Subject;
+use App\Models\Classroom;
 
 class ExamTeacherHistoryController extends Controller
 {
@@ -26,5 +32,11 @@ class ExamTeacherHistoryController extends Controller
                     ->get();
 
         return view('teacher.history.index', compact('exams', 'draftExams', 'publishedExams'));
+    }
+
+    public function show(Exam $exam)
+    {
+        return view('teacher.history.show', compact('exam'));
+
     }
 }

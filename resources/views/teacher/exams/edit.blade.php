@@ -43,7 +43,7 @@
                     </select>
                 </div>
 
-                @if ($exam->status != 'published')
+                @if (!in_array($exam->status, ['published', 'completed']))
                     <div class="flex flex-col my-3">
                         <label for="date">Date</label>
                         <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"

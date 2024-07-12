@@ -50,8 +50,6 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
     Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
 
     Route::resource('reports', ExamStudentReportController::class);
-
-
 });
 
 
@@ -65,6 +63,7 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
     Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
 
     Route::get('history', [ExamTeacherHistoryController::class, 'index'])->name('history.index');
+    Route::get('history/exam/{exam}', [ExamTeacherHistoryController::class, 'show'])->name('history.show');
 
     Route::get('classrooms', [ClassroomController::class, 'teacherIndex'])->name('classrooms.teacherIndex');
     Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');
