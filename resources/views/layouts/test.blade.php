@@ -52,6 +52,20 @@
             background-color: #000;
             /* Change background color when checked */
         }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            margin-top: 20px;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
     </style>
 
 </head>

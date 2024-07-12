@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <div class="mx-4 lg:mx-0 mt-8">
         @if ($attendedExams->isEmpty())
             <p class="text-gray-600 text-4xl text-center lg:py-80">You haven't attended any exams yet.</p>
