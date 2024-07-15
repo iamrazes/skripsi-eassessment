@@ -7,44 +7,22 @@
 @section('content')
     <div class="mt-4 bg-white rounded-lg py-4 shadow-button mx-4 lg:mx-0">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
-            <h1 class="text-xl font-medium  ">Exam Details</h1>
+            <h1 class="text-xl font-medium">Exam Details</h1>
             <div class="flex gap-x-2 items-center">
-                {{-- <a href="{{ route('teacher.exams.edit', $exam->id) }}"
-                    class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center">
-                    <img src="{{ asset('icons/ic_edit.svg') }}">
-                </a>
-                @if ($exam->status == 'draft')
-                    <form action="{{ route('teacher.exams.publish', $exam->id) }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
-                            <img class="h-5 w-5" src="{{ asset('icons/ic_publish_exam2.svg') }}" alt="">
-                            Publish Exam
-                        </button>
-                    </form>
-                @elseif($exam->status == 'published')
-                    <form action="{{ route('teacher.exams.complete', $exam->id) }}" method="POST">
-                        @csrf
-                        <button type="submit"
-                            class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
-                            <img class="h-5 w-5" src="{{ asset('icons/ic_complete_exam2.svg') }}" alt="">
-                            Complete Exam
-                        </button>
-                    </form>
-                @endif --}}
+                {{-- Buttons for managing exam status can go here --}}
             </div>
         </div>
         <div class="flex justify-between px-6">
             <div class="flex-grow">
                 <h5 class="mb-2">{{ $exam->title }}</h5>
                 <div class="grid lg:grid-cols-3 row-span-4">
-                    <p class=""><strong>Exam Type</strong> : {{ $exam->examType->name }}</p>
-                    <p class=""><strong>Subject</strong> : {{ $exam->subject->name }}</p>
-                    <p class=""><strong>Date</strong> : {{ $exam->date->format('Y-m-d') }}</p>
-                    <p class=""><strong>Start Time</strong> : {{ $exam->start_time }}</p>
-                    <p class=""><strong>Duration</strong> : {{ $exam->duration }} minutes</p>
-                    <p class=""><strong>Total Questions</strong> : {{ $exam->total_questions }}</p>
-                    <p class=""><strong>Classrooms</strong> :
+                    <p><strong>Exam Type</strong> : {{ $exam->examType->name }}</p>
+                    <p><strong>Subject</strong> : {{ $exam->subject->name }}</p>
+                    <p><strong>Date</strong> : {{ $exam->date->format('Y-m-d') }}</p>
+                    <p><strong>Start Time</strong> : {{ $exam->start_time }}</p>
+                    <p><strong>Duration</strong> : {{ $exam->duration }} minutes</p>
+                    <p><strong>Total Questions</strong> : {{ $exam->total_questions }}</p>
+                    <p><strong>Classrooms</strong> :
                         @foreach ($exam->classrooms as $classroom)
                             {{ $classroom->name }}@if (!$loop->last)
                                 ,
@@ -52,37 +30,31 @@
                         @endforeach
                     </p>
                     <p class="capitalize"><strong>Status</strong> : {{ $exam->status }}</p>
-                    <p class=""><strong>Description</strong> : {{ $exam->description }}</p>
+                    <p><strong>Description</strong> : {{ $exam->description }}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    @if (session('success'))
-        <div class="mt-8 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-            <strong class="font-bold">Success!</strong>
-            <span class="block sm:inline">{{ session('success') }}</span>
-        </div>
-    @endif
+    <div class="flex w-full gap-4 mt-8 mx-4 lg:mx-0">
+        <button id="questionnaireButton" class="px-4 py-3 rounded-lg font-semibold">Questionnaire</button>
+        <button id="studentAnswerButton" class="px-4 py-3 rounded-lg font-semibold">Student Answer</button>
+    </div>
 
-    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0">
+    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0" id="questions">
         <div class="flex flex-col">
-            <div class="flex justify-between px-6 pb-4 ">
+            <div class="flex justify-between px-6 pb-4">
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
-                {{-- @if (!in_array($exam->status, ['published', 'completed']))
-                    <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
-                        class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
-                @endif --}}
-
+                {{-- Manage Question button can go here --}}
             </div>
             <div class="overflow-x-auto">
-                <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200 ">
-                    <thead class="bg-gray-5 ">
-                        <tr class="">
+                <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
+                    <thead class="bg-gray-5">
+                        <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Questions</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Answer</th>
-                            {{-- <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Options</th> --}}
+                            {{-- Options column can go here --}}
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -91,7 +63,7 @@
                                 <td class="pl-6 py-2 whitespace-nowrap numbering-cell w-6"></td>
                                 <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden">
                                     {{ $question->question_text }}</td>
-                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20  overflow-hidden">
+                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden">
                                     @if ($question->choices->contains('is_correct', true))
                                         @php
                                             $alphabet = ['a', 'b', 'c', 'd', 'e'];
@@ -105,16 +77,49 @@
                                         N/A
                                     @endif
                                 </td>
-                                {{-- <td class="pr-6 py-2 flex flex-auto justify-end ">
-
-                                    <a href="{{ route('teacher.exams.questions.create', [$exam->id, $question->id]) }}"
-                                        class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0"><img
-                                            src="{{ asset('icons/ic_edit.svg') }}">
-                                    </a>
-
-                                </td> --}}
+                                {{-- Edit button can go here --}}
                             </tr>
                         @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- Pagination buttons -->
+            <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1">
+                <!-- Pagination buttons will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0 hidden" id="studentAnswers">
+        <div class="flex flex-col">
+            <div class="flex justify-between px-6 pb-4">
+                <h1 class="font-semibold text-lg">Student Answers</h1>
+            </div>
+            <div class="overflow-x-auto">
+                <table id="answersTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
+                    <thead class="bg-gray-5">
+                        <tr>
+                            <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium w-32">ID</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Score</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+
+                            <tr class="bg-white divide-gray-200">
+                                <td class="pl-6 py-2 whitespace-nowrap numbering-cell w-6"></td>
+                                <td class="pl-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
+                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
+                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
+                                <td
+                                    class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden text-end text-sm">
+                                    <a href="" class="text-accent-1 font-semibold hover:text-blue-300">Check
+                                        Answer</a>
+                                </td>
+                            </tr>
+
                     </tbody>
                 </table>
             </div>
@@ -129,6 +134,58 @@
 @section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Pagination script
+            const itemsPerPage = 20;
+            let currentPage = 1;
+
+            const table = document.getElementById('answersTable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+            function renderTable(page) {
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+                rows.forEach((row, index) => {
+                    const numberingCell = row.querySelector('.numbering-cell');
+                    if (index >= start && index < end) {
+                        row.style.display = '';
+                        numberingCell.textContent = (index + 1) + ".";
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            function createPagination() {
+                const paginationContainer = document.getElementById('pagination');
+                paginationContainer.innerHTML = '';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.classList.add('px-4', 'py-2', 'rounded-lg', 'font-semibold', 'mx-1');
+                    if (i === currentPage) {
+                        button.classList.add('bg-accent-1', 'text-white');
+                    } else {
+                        button.classList.add('bg-white', 'border', 'border-accent-1');
+                    }
+                    button.addEventListener('click', () => {
+                        currentPage = i;
+                        renderTable(currentPage);
+                        createPagination();
+                    });
+                    paginationContainer.appendChild(button);
+                }
+            }
+
+            renderTable(currentPage);
+            createPagination();
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pagination script
             const itemsPerPage = 20;
             let currentPage = 1;
 
@@ -150,39 +207,67 @@
                 });
             }
 
-            function renderPaginationButtons() {
+            function createPagination() {
                 const paginationContainer = document.getElementById('pagination');
                 paginationContainer.innerHTML = '';
 
                 for (let i = 1; i <= totalPages; i++) {
                     const button = document.createElement('button');
-                    button.className =
-                        `pagination-button ${i === currentPage ? 'bg-accent-1' : 'bg-accent-3'} w-8 h-8 rounded text-white font-semibold`;
-                    button.innerText = i;
+                    button.textContent = i;
+                    button.classList.add('px-4', 'py-2', 'rounded-lg', 'font-semibold', 'mx-1');
+                    if (i === currentPage) {
+                        button.classList.add('bg-accent-1', 'text-white');
+                    } else {
+                        button.classList.add('bg-white', 'border', 'border-accent-1');
+                    }
                     button.addEventListener('click', () => {
                         currentPage = i;
                         renderTable(currentPage);
-                        updatePaginationButtons();
+                        createPagination();
                     });
                     paginationContainer.appendChild(button);
                 }
             }
 
-            function updatePaginationButtons() {
-                const paginationButtons = document.querySelectorAll('.pagination-button');
-                paginationButtons.forEach(button => {
-                    if (parseInt(button.innerText) === currentPage) {
-                        button.classList.remove('bg-accent-3');
-                        button.classList.add('bg-accent-1');
-                    } else {
-                        button.classList.remove('bg-accent-1');
-                        button.classList.add('bg-accent-3');
-                    }
-                });
+            renderTable(currentPage);
+            createPagination();
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const questionnaireButton = document.getElementById('questionnaireButton');
+            const studentAnswerButton = document.getElementById('studentAnswerButton');
+            const questionsDiv = document.getElementById('questions');
+            const studentAnswersDiv = document.getElementById('studentAnswers');
+
+            // Function to show the questionnaire table and hide the student answers table
+            function showQuestionnaire() {
+                questionsDiv.classList.remove('hidden');
+                studentAnswersDiv.classList.add('hidden');
+                questionnaireButton.classList.add('bg-accent-1', 'text-white');
+                questionnaireButton.classList.remove('bg-gray-300', 'text-black');
+                studentAnswerButton.classList.remove('bg-accent-1', 'text-white');
+                studentAnswerButton.classList.add('bg-gray-300', 'text-black');
             }
 
-            renderTable(currentPage);
-            renderPaginationButtons();
+            // Function to show the student answers table and hide the questionnaire table
+            function showStudentAnswers() {
+                studentAnswersDiv.classList.remove('hidden');
+                questionsDiv.classList.add('hidden');
+                studentAnswerButton.classList.add('bg-accent-1', 'text-white');
+                studentAnswerButton.classList.remove('bg-gray-300', 'text-black');
+                questionnaireButton.classList.remove('bg-accent-1', 'text-white');
+                questionnaireButton.classList.add('bg-gray-300', 'text-black');
+            }
+
+            // Add event listeners to the buttons
+            questionnaireButton.addEventListener('click', showQuestionnaire);
+            studentAnswerButton.addEventListener('click', showStudentAnswers);
+
+            // Default to showing the questionnaire
+            showQuestionnaire();
+
         });
     </script>
 @endsection
