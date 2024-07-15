@@ -36,9 +36,9 @@
         </div>
     </div>
 
-    <div class="flex w-full gap-4 mt-8 mx-4 lg:mx-0">
-        <button id="questionnaireButton" class="px-4 py-3 rounded-lg font-semibold">Questionnaire</button>
-        <button id="studentAnswerButton" class="px-4 py-3 rounded-lg font-semibold">Student Answer</button>
+    <div class="flex gap-4 mt-4 -mb-4 mx-4 lg:mx-0">
+        <button id="questionnaireButton" class="px-3 py-2 shadow-sm rounded-lg font-semibold text-sm w-full lg:w-max">Questionnaire</button>
+        <button id="studentAnswerButton" class="px-3 py-2 shadow-sm rounded-lg font-semibold text-sm w-full lg:w-max">Student Answer</button>
     </div>
 
     <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0" id="questions">
@@ -102,29 +102,38 @@
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium w-32">ID</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Name</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Classroom</th>
                             <th scope="col" class="px-6 py-3 text-left font-medium">Score</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium"></th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Options</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-
+                        @foreach ($studentReports as $index => $report)
                             <tr class="bg-white divide-gray-200">
                                 <td class="pl-6 py-2 whitespace-nowrap numbering-cell w-6"></td>
-                                <td class="pl-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
-                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
-                                <td class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden"></td>
-                                <td
-                                    class="px-6 py-2 whitespace-nowrap lg:max-w-screen-sm max-w-20 overflow-hidden text-end text-sm">
-                                    <a href="" class="text-accent-1 font-semibold hover:text-blue-300">Check
-                                        Answer</a>
+                                <td class="px-6 py-2 whitespace-nowrap">
+                                    {{ $report->student->dataStudent->student_id }}
+                                </td>
+                                <td class="px-6 py-2 whitespace-nowrap">
+                                    {{ $report->student->name }}
+                                </td>
+                                <td class="px-6 py-2 whitespace-nowrap w-10">
+                                    {{ $report->student->dataStudent->classroom->name }}
+                                </td>
+                                <td class="px-6 py-2 whitespace-nowrap w-10">
+                                    {{ $report->score }}
+                                </td>
+                                <td class="px-6 py-2 whitespace-nowrap text-end w-20">
+                                    <a href="{{ route('teacher.history.answer', ['exam' => $exam->id, 'id' => $report->student->id]) }}"
+                                        class="text-blue-500 hover:underline">View Answer Details</a>
                                 </td>
                             </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>
             <!-- Pagination buttons -->
-            <div id="pagination" class="flex items-center mt-4 justify-center gap-x-1">
+            <div id="pagination2" class="flex items-center mt-4 justify-center gap-x-1">
                 <!-- Pagination buttons will be dynamically inserted here -->
             </div>
         </div>
@@ -157,7 +166,7 @@
             }
 
             function createPagination() {
-                const paginationContainer = document.getElementById('pagination');
+                const paginationContainer = document.getElementById('pagination2');
                 paginationContainer.innerHTML = '';
 
                 for (let i = 1; i <= totalPages; i++) {
@@ -246,9 +255,9 @@
                 questionsDiv.classList.remove('hidden');
                 studentAnswersDiv.classList.add('hidden');
                 questionnaireButton.classList.add('bg-accent-1', 'text-white');
-                questionnaireButton.classList.remove('bg-gray-300', 'text-black');
+                questionnaireButton.classList.remove('bg-gray-300', 'text-gray-700');
                 studentAnswerButton.classList.remove('bg-accent-1', 'text-white');
-                studentAnswerButton.classList.add('bg-gray-300', 'text-black');
+                studentAnswerButton.classList.add('bg-gray-300', 'text-gray-700');
             }
 
             // Function to show the student answers table and hide the questionnaire table
@@ -256,9 +265,9 @@
                 studentAnswersDiv.classList.remove('hidden');
                 questionsDiv.classList.add('hidden');
                 studentAnswerButton.classList.add('bg-accent-1', 'text-white');
-                studentAnswerButton.classList.remove('bg-gray-300', 'text-black');
+                studentAnswerButton.classList.remove('bg-gray-300', 'text-gray-700');
                 questionnaireButton.classList.remove('bg-accent-1', 'text-white');
-                questionnaireButton.classList.add('bg-gray-300', 'text-black');
+                questionnaireButton.classList.add('bg-gray-300', 'text-gray-700');
             }
 
             // Add event listeners to the buttons

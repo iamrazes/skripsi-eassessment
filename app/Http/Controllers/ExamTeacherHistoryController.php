@@ -10,6 +10,10 @@ use App\Models\Question;
 use App\Models\Choice;
 use App\Models\Subject;
 use App\Models\Classroom;
+use App\Models\User;
+use App\Models\DataStudent;
+use App\Models\ExamStudentReport;
+use App\Models\ExamStudenAnswer;
 
 class ExamTeacherHistoryController extends Controller
 {
@@ -36,7 +40,11 @@ class ExamTeacherHistoryController extends Controller
 
     public function show(Exam $exam)
     {
-        return view('teacher.history.show', compact('exam'));
+        $studentReports = ExamStudentReport::where('exam_id', $exam->id)
+        ->with('student', 'student.dataStudent', )
+        ->get();
+
+        return view('teacher.history.show', compact('exam', 'studentReports'));
 
     }
 
@@ -82,4 +90,14 @@ class ExamTeacherHistoryController extends Controller
         return redirect()->route('teacher.history.index')->with('success', 'Exam updated successfully.');
     }
 
+    public function answer(Exam $exam, $id)
+    {
+        // Fetch the student report for the specific student
+        $studentReport = ExamStudentReport::where('exam_id', $exam->id)
+                                          ->where('student_id', $id)
+                                          ->firstOrFail(); // Adjust as per your logic
+
+        // Load the view with necessary data
+        return view('teacher.history.answer', compact('exam', 'studentReport'));
+    }
 }

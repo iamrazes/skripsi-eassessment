@@ -67,6 +67,7 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
     Route::get('history/exam/{exam}', [ExamTeacherHistoryController::class, 'show'])->name('history.show');
     Route::get('history/exam/{exam}/edit', [ExamTeacherHistoryController::class, 'edit'])->name('history.edit');
     Route::get('history/exam/{exam}/update', [ExamTeacherHistoryController::class, 'update'])->name('history.update');
+    Route::get('history/exam/{exam}/answer/{id}', [ExamTeacherHistoryController::class, 'answer'])->name('history.answer');
 
     Route::get('classrooms', [ClassroomController::class, 'teacherIndex'])->name('classrooms.teacherIndex');
     Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');
