@@ -92,8 +92,10 @@ class ExamStudentController extends Controller
         }
 
         // Pass the exam, question, current question index, student data, and selected choices to the view
-        return view('student.exams.questions.show', compact('exam', 'question', 'currentQuestionIndex', 'dataStudent', 'selectedChoices'));
+        return view('student.exams.questions.show', compact('exam', 'question', 'currentQuestionIndex', 'dataStudent', 'selectedChoices'))
+               ->with('studentId', $user->id); // Pass the studentId to the view
     }
+
 
     public function saveAnswer(Request $request, $examId, $questionNumber)
     {
@@ -143,6 +145,15 @@ class ExamStudentController extends Controller
 
         // Redirect back with a success message
         return back()->with('success', 'Answer saved successfully.');
+    }
+
+
+    public static function isQuestionAnswered($examId, $studentId, $questionId)
+    {
+        return self::where('exam_id', $examId)
+            ->where('student_id', $studentId)
+            ->where('question_id', $questionId)
+            ->exists();
     }
 
     public function finishExam($examId)

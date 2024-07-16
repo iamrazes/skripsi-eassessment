@@ -75,15 +75,23 @@
     </form>
 
     <!-- Finish button -->
-    <form method="POST" action="{{ route('students.exams.finish', ['exam' => $exam->id]) }}">
-        @csrf
-        <div class="flex">
-            <button type="submit"
-                class="bg-red-500 hover:bg-red-600 text-white rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button w-full">
-                Finish Exam
-            </button>
-        </div>
-    </form>
+    @php
+        $allQuestionsAnswered = $exam->questions->every(function ($question) use ($exam, $studentId) {
+            return \App\Models\ExamStudentAnswer::isQuestionAnswered($exam->id, $studentId, $question->id);
+        });
+    @endphp
+
+    @if ($allQuestionsAnswered)
+        <form method="POST" action="{{ route('students.exams.finish', ['exam' => $exam->id]) }}">
+            @csrf
+            <div class="flex mt-4">
+                <button type="submit"
+                    class="bg-red-500 hover:bg-red-600 text-white rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button w-full">
+                    Finish Exam
+                </button>
+            </div>
+        </form>
+    @endif
 @endsection
 
 @section('script')
