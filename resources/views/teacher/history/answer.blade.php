@@ -13,7 +13,7 @@
                 <span>Classroom: {{$studentReport->student->datastudent->classroom->name}}</span>
                 <span>Email: {{$studentReport->student->email}}</span>
                 <span>Gender: <span class="capitalize">{{$studentReport->student->datastudent->gender}}</span></span>
-
+                <span>Score: {{$studentReport->score}}</span>
             </div>
         </div>
     </div>
@@ -21,7 +21,7 @@
     <div class="mx-4 lg:mx-0 mt-4 lg:mt-8 bg-white rounded-lg shadow-button">
         <div class="flex flex-col">
             <div class="border-b px-4 py-3">
-                <h1 class="font-semibold">Questionnaire: {{ $studentReport->exam->title }}</h1>
+                <h1 class="flex justify-between">Questionnaire: <span>{{ $studentReport->exam->title }}</span></h1>
             </div>
             <div class="py-4">
                 @foreach ($exam->questions as $index => $question)
