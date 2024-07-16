@@ -37,10 +37,12 @@ class ExamStudentReportController extends Controller
                                            ->where('student_id', $studentId)
                                            ->get();
 
+        // Convert selected_choices from string to array
         $studentAnswers->each(function ($answer) {
             $answer->selected_choices = explode(',', $answer->selected_choices);
         });
 
         return view('student.reports.show', compact('exam', 'studentReport', 'studentAnswers'));
     }
+
 }
