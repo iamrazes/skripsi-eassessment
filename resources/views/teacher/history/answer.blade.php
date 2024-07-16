@@ -7,10 +7,18 @@
                 <h1 class="font-semibold">Answer: {{ $studentReport->student->name }}</h1>
                 <h1 class="">Class: {{ $studentReport->student->datastudent->classroom->name }}</h1>
             </div>
+            <div class="grid grid-cols-2 px-4 py-3">
+                <span>Name: {{$studentReport->student->name}}</span>
+                <span>Student ID: {{$studentReport->student->datastudent->student_id}}</span>
+                <span>Classroom: {{$studentReport->student->datastudent->classroom->name}}</span>
+                <span>Email: {{$studentReport->student->email}}</span>
+                <span>Gender: <span class="capitalize">{{$studentReport->student->datastudent->gender}}</span></span>
+
+            </div>
         </div>
     </div>
 
-    <div class="mx-4 lg:mx-0 lg:mt-8 bg-white rounded-lg shadow-button">
+    <div class="mx-4 lg:mx-0 mt-4 lg:mt-8 bg-white rounded-lg shadow-button">
         <div class="flex flex-col">
             <div class="border-b px-4 py-3">
                 <h1 class="font-semibold">Questionnaire: {{ $studentReport->exam->title }}</h1>
@@ -31,7 +39,7 @@
                             <div class="flex flex-col gap-y-2">
                                 <div class="flex justify-between">
                                     <p class="text-xs">Multiple Choices:</p>
-                                    <p class="text-xs">Correct Choices:</p>
+                                    <p class="text-xs">Answer Key:</p>
                                 </div>
                                 <div class="flex flex-col gap-y-1">
                                     @foreach ($question->choices as $choiceIndex => $choice)
@@ -40,7 +48,7 @@
                                             <p class="rounded-lg h-max w-full px-2 items-center flex">
                                                 {{ $choice->choice_text }}</p>
                                             <input type="radio" value="{{ $choice->id }}"
-                                                class="h-8 min-w-8 flex "
+                                                class="w-8 h-8 flex "
                                                 {{ in_array($choice->id, $selectedChoice) ? 'checked' : '' }}
                                                 disabled>
                                         </div>
