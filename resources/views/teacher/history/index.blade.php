@@ -26,6 +26,8 @@
                             <th class="lg:py-3 pl-3 text-left font-medium">Exam</th>
                             <th class="lg:py-3 text-left font-medium">Subject</th>
                             <th class="lg:py-3 text-left font-medium">Date</th>
+                            <th class="lg:py-3 text-left font-medium">Question</th>
+                            <th class="lg:py-3 text-left font-medium">Duration</th>
                             <th class="lg:py-3 text-left font-medium">Classroom</th>
                             <th class="lg:py-3 text-left font-medium">Status</th>
                             <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
@@ -38,6 +40,8 @@
                                 <td class="pl-3 text-left">{{ $exam->examType->name }}</td>
                                 <td class="text-left">{{ $exam->subject->name }}</td>
                                 <td class="text-left">{{ $exam->date->format('Y-m-d') }}</td>
+                                <td class="text-left">{{ $exam->total_questions }}</td>
+                                <td class="text-left">{{ $exam->duration }} m</td>
                                 <td class="text-left">
                                     @foreach ($exam->classrooms as $classroom)
                                         {{ $classroom->name }} @if (!$loop->last), @endif
