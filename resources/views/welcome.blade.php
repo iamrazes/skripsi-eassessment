@@ -16,10 +16,8 @@
 
 <body class="bg-[#BAE2FF] text-textColor antialiased flex items-center justify-center min-h-screen">
     <div class="relative flex items-center justify-center">
-        <!-- Main content with section 1 and section 2 -->
         <div class="flex rounded-xl overflow-hidden mb-8 relative z-10 shadow">
             @auth
-                <!-- Show Dashboard button if user is logged in -->
                 <div class="bg-white  flex flex-col px-20 py-28">
                     <div class="flex flex-col mb-2 items-center">
                         <img src="{{ asset('icons/logo_eassessment.svg') }}" style="width: 150px; height: 150px;"
