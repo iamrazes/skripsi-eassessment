@@ -13,7 +13,7 @@ use App\Models\Classroom;
 use App\Models\User;
 use App\Models\DataStudent;
 use App\Models\ExamStudentReport;
-use App\Models\ExamStudenAnswer;
+use App\Models\ExamStudentAnswer;
 
 class ExamTeacherHistoryController extends Controller
 {
@@ -90,14 +90,26 @@ class ExamTeacherHistoryController extends Controller
         return redirect()->route('teacher.history.index')->with('success', 'Exam updated successfully.');
     }
 
+
     public function answer(Exam $exam, $id)
     {
         // Fetch the student report for the specific student
         $studentReport = ExamStudentReport::where('exam_id', $exam->id)
                                           ->where('student_id', $id)
-                                          ->firstOrFail(); // Adjust as per your logic
+                                          ->firstOrFail();
+
+        // Fetch the student answers
+        $studentAnswers = ExamStudentAnswer::where('exam_id', $exam->id)
+                                           ->where('student_id', $id)
+                                           ->get();
+
+        // Convert selected_choices from string to array
+        $studentAnswers->each(function ($answer) {
+            $answer->selected_choices = explode(',', $answer->selected_choices);
+        });
 
         // Load the view with necessary data
-        return view('teacher.history.answer', compact('exam', 'studentReport'));
+        return view('teacher.history.answer', compact('exam', 'studentReport', 'studentAnswers'));
     }
+
 }

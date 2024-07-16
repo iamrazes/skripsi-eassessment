@@ -125,7 +125,7 @@
                                 </td>
                                 <td class="px-6 py-2 whitespace-nowrap text-end w-20">
                                     <a href="{{ route('teacher.history.answer', ['exam' => $exam->id, 'id' => $report->student->id]) }}"
-                                        class="text-blue-500 hover:underline">View Answer Details</a>
+                                        class="text-blue-500 hover:underline">Answer Details</a>
                                 </td>
                             </tr>
                         @endforeach

@@ -23,10 +23,10 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th class="lg:py-3 pl-3 text-left font-medium">Type of Exam</th>
+                            <th class="lg:py-3 pl-3 text-left font-medium">Exam</th>
                             <th class="lg:py-3 text-left font-medium">Subject</th>
                             <th class="lg:py-3 text-left font-medium">Date</th>
-                            <th class="lg:py-3 text-left font-medium">Assigned To</th>
+                            <th class="lg:py-3 text-left font-medium">Classroom</th>
                             <th class="lg:py-3 text-left font-medium">Status</th>
                             <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
@@ -46,17 +46,17 @@
                                 <td class="text-left capitalize">{{ $exam->status }}</td>
                                 <td class="pr-6 pt-2 flex flex-auto justify-end lg:gap-x-2 gap-x-1">
                                     <button type="button"
-                                        class="bg-red-200 hover:bg-red-300 rounded-lg p-1 items-center delete-button"
+                                        class="bg-red-200 hover:bg-red-300 rounded-lg p-1 items-center shrink-0 grow-0 delete-button"
                                         data-exam-id="{{ $exam->id }}">
                                         <img src="{{ asset('icons/ic_delete.svg') }}">
                                     </button>
-                                    <a href="{{ route('teacher.history.show', $exam->id) }}"
-                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0">
-                                        <img src="{{ asset('icons/ic_views.svg') }}">
-                                    </a>
                                     <a href="{{ route('teacher.history.edit', $exam->id) }}"
                                         class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center shrink-0 grow-0">
                                         <img src="{{ asset('icons/ic_edit.svg') }}">
+                                    </a>
+                                    <a href="{{ route('teacher.history.show', $exam->id) }}"
+                                        class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0 flex gap-x-1 font-bold lg:px-2">
+                                        <img src="{{ asset('icons/ic_views.svg') }}"><span class="hidden lg:block">More Details</span>
                                     </a>
                                     <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" class="hidden delete-form">
                                         @csrf
