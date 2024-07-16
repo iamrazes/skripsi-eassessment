@@ -45,8 +45,7 @@
         <input type="hidden" name="action" id="action" value="save">
         <input type="hidden" name="scroll_position" id="scroll_position" value="">
 
-        <!-- Save button -->
-        <div class="flex mt-6 gap-x-8">
+        <div class="flex mt-6 gap-x-4">
             @if ($currentQuestionIndex > 0)
                 <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex - 1]->question_number]) }}"
                     class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
@@ -64,6 +63,13 @@
                     class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
                     Save & Next
                 </button>
+            @endif
+
+            @if ($currentQuestionIndex < count($exam->questions) - 1)
+                <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex + 1]->question_number]) }}"
+                    class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
+                    Next
+                </a>
             @endif
         </div>
     </form>
