@@ -35,7 +35,7 @@
                                 </div>
                             </div>
                             <div class="flex flex-col gap-y-2 text-xs lg:text-base text-start">
-                                <a href=""
+                                <a href="{{ route('students.reports.show', ['exam' => $attendedExam->exam->id]) }}"
                                     class="bg-accent-1 rounded text-white px-2 py-1 flex gap-x-1.5 whitespace-nowrap overflow-clip hover:bg-gradient-to-r from-accent-1 to-accent-2 pr-10"><img
                                         src="{{ asset('icons/ic_magnifier.svg') }}" class="w-4 lg:w-5 filter-white">Review
                                     Exam</a>
