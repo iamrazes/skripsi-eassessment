@@ -8,7 +8,7 @@ class="flex justify-between bg-gradient-to-r from-accent-1 to-accent-2 lg:pt-8 p
 </div>
 <div class="flex flex-col text-end">
     <span class="flex items-center place-content-end gap-x-2">
-        <span id="countdown" class="lg:text-4xl text-2xl gap-x-2">Calculating...</span>
+        <span id="countdown" class="lg:text-4xl text-2xl gap-x-2"></span>
         <img src="{{ asset('icons/ic_timer.svg') }}" alt="" class="h-8 lg:h-12">
     </span>
     <h2 class="font-semibold">Duration: {{ $exam->duration }} minutes</h2>
