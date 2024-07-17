@@ -45,7 +45,7 @@
         <div class="flex flex-col">
             <div class="flex justify-between px-6 pb-4">
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
-                {{-- Manage Question button can go here --}}
+                <a class="text-accent-1 hover:underline" href="{{route('teacher.history.question', ['exam' => $exam->id])}}">View Question Details</a>
             </div>
             <div class="overflow-x-auto">
                 <table id="resultsTable" class="min-w-full divide-y divide-gray-200 border-b border-gray-200">

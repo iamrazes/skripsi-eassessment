@@ -112,4 +112,17 @@ class ExamTeacherHistoryController extends Controller
         return view('teacher.history.answer', compact('exam', 'studentReport', 'studentAnswers'));
     }
 
+    public function question(Exam $exam)
+    {
+        // Load questions and their choices
+        $exam->load('questions.choices');
+
+        // Fetch correct choices for each question
+        foreach ($exam->questions as $question) {
+            $question->correct_choice = $question->choices->where('is_correct', true)->first();
+        }
+
+        return view('teacher.history.question', compact('exam'));
+    }
+
 }
