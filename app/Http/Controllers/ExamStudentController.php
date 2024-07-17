@@ -36,6 +36,32 @@ class ExamStudentController extends Controller
         return view('student.exams.index', compact('exams'));
     }
 
+    // public function show($id)
+    // {
+    //     $exam = Exam::findOrFail($id);
+
+    //     // Concatenate the date and start time correctly
+    //     $examStartTime = Carbon::createFromFormat('Y-m-d H:i:s', $exam->date->format('Y-m-d') . ' ' . $exam->start_time, 'Asia/Jakarta');
+    //     $examEndTime = $examStartTime->copy()->addMinutes($exam->duration);
+
+    //     // Get the current time in the same time zone
+    //     $currentTime = Carbon::now('Asia/Jakarta');
+
+    //     // Check if the exam is within the available time frame
+    //     $isWithinTimeFrame = $currentTime->between($examStartTime, $examEndTime);
+
+    //     // Check if the student has attended the exam
+    //     $user = Auth::user();
+    //     $hasAttended = ExamStudentAnswer::where('exam_id', $exam->id)
+    //                                     ->where('student_id', $user->id)
+    //                                     ->exists();
+
+    //     // Determine if the exam is available
+    //     $isExamAvailable = !$hasAttended && $isWithinTimeFrame;
+
+    //     return view('student.exams.show', compact('exam', 'isExamAvailable'));
+    // }
+
     public function show($id)
     {
         $exam = Exam::findOrFail($id);
@@ -47,23 +73,8 @@ class ExamStudentController extends Controller
         // Get the current time in the same time zone
         $currentTime = Carbon::now('Asia/Jakarta');
 
-        // Check if the exam is within the available time frame
-        $isWithinTimeFrame = $currentTime->between($examStartTime, $examEndTime);
-
-        // Check if the student has attended the exam
-        $user = Auth::user();
-        $hasAttended = ExamStudentAnswer::where('exam_id', $exam->id)
-                                        ->where('student_id', $user->id)
-                                        ->exists();
-
         // Determine if the exam is available
-        $isExamAvailable = !$hasAttended && $isWithinTimeFrame;
-
-        // Log the times for debugging
-        // \Log::info('Exam Start Time: ' . $examStartTime);
-        // \Log::info('Exam End Time: ' . $examEndTime);
-        // \Log::info('Current Time: ' . $currentTime);
-        // \Log::info('Is Exam Available: ' . $isExamAvailable);
+        $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
 
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
