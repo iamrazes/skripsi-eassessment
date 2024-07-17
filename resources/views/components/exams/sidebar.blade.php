@@ -26,18 +26,16 @@
                 // Determine the class based on the question state
                 $buttonClass = '';
                 if ($currentQuestionIndex === $index) {
-                    $buttonClass = 'bg-white border-4 border-accent-1';
-                } elseif ($isMarked) {
-                    $buttonClass = $isAnswered ? 'bg-cyan-300' : 'bg-yellow-400';
+                    $buttonClass = 'bg-white border-4 border-accent-1 hover:bg-gray-100';
                 } elseif ($isAnswered) {
                     $buttonClass = 'bg-accent-1 text-white hover:bg-blue-300';
                 } else {
-                    $buttonClass = 'bg-white';
+                    $buttonClass = 'bg-white hover:bg-gray-100';
                 }
             @endphp
 
             <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $question->question_number]) }}"
-                class="question-nav shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 flex justify-center items-center font-semibold text-2xl lg:text-xl border hover:bg-gray-100 {{ $buttonClass }}">
+                class="question-nav shadow-md rounded-xl lg:w-12 lg:h-12 w-full h-16 flex justify-center items-center font-semibold text-2xl lg:text-xl border {{ $buttonClass }}">
                 {{ $index + 1 }}
             </a>
         @endforeach
@@ -53,11 +51,11 @@
         <span class="flex gap-x-2 px-4">
             <div class="w-5 h-5 rounded-md bg-white border-accent-1 border-2 shadow"></div>Currently Seeing
         </span>
-        <span class="flex gap-x-2 px-4">
+        {{-- <span class="flex gap-x-2 px-4">
             <div class="w-5 h-5 rounded-md bg-yellow-400 shadow"></div>Marked (Not Answered)
         </span>
         <span class="flex gap-x-2 px-4">
             <div class="w-5 h-5 rounded-md bg-cyan-300 shadow"></div>Marked (Answered)
-        </span>
+        </span> --}}
     </div>
 </div>
