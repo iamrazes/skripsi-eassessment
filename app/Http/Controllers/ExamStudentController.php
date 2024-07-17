@@ -84,6 +84,14 @@ class ExamStudentController extends Controller
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
 
+        // Calculate end time
+        $endTime = Carbon::parse($exam->start_time)->addMinutes($exam->duration);
+
+        // Check if exam status is not published or time is over
+        if ($exam->status !== 'published' || Carbon::now()->gt($endTime)) {
+            return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
+        }
+
         // Fetch the logged-in user's data
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
@@ -123,6 +131,13 @@ class ExamStudentController extends Controller
         $question = Question::where('exam_id', $examId)
                             ->where('question_number', $questionNumber)
                             ->firstOrFail();
+        // Calculate end time
+        $endTime = Carbon::parse($exam->start_time)->addMinutes($exam->duration);
+
+        // Check if exam status is not published or time is over
+        if ($exam->status !== 'published' || Carbon::now()->gt($endTime)) {
+            return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
+        }
 
         try {
 
@@ -245,6 +260,8 @@ class ExamStudentController extends Controller
 
         return redirect()->route('students.exams.end', ['exam' => $examId])->with('success', 'Exam finished successfully.');
     }
+
+
 
     public function end($id)
     {
