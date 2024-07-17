@@ -1,9 +1,13 @@
 @extends('layouts.test')
 
 @section('content')
-    <div id="notification" class="notification">
-        {{ session('success') }}
-    </div>
+<div id="success-notification" class="notification success" style="display:none;">
+    {{ session('success') }}
+</div>
+
+<div id="error-notification" class="notification error" style="display:none;">
+    {{ session('error') }}
+</div>
 
     <form method="POST"
         action="{{ route('students.exams.save-answer', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex]->question_number]) }}">
@@ -43,7 +47,7 @@
 
         <input type="hidden" name="current_question" value="{{ $currentQuestionIndex }}">
         <input type="hidden" name="action" id="action" value="save">
-        <input type="hidden" name="scroll_position" id="scroll_position" value="">
+        {{-- <input type="hidden" name="scroll_position" id="scroll_position" value=""> --}}
 
         <div class="flex mt-6 gap-x-4">
             @if ($currentQuestionIndex > 0)
@@ -65,12 +69,12 @@
                 </button>
             @endif
 
-            @if ($currentQuestionIndex < count($exam->questions) - 1)
+            {{-- @if ($currentQuestionIndex < count($exam->questions) - 1)
                 <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex + 1]->question_number]) }}"
                     class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
                     Next
                 </a>
-            @endif
+            @endif --}}
         </div>
     </form>
 
@@ -99,45 +103,59 @@
 @endsection
 
 @section('script')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Show notification if success message is present
-            @if (session('success'))
-                const notification = document.getElementById('notification');
-                notification.style.display = 'block';
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                }, 3000);
-            @endif
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show success notification if success message is present
+        @if (session('success'))
+            const successNotification = document.getElementById('success-notification');
+            successNotification.style.display = 'block';
+            setTimeout(() => {
+                successNotification.style.display = 'none';
+            }, 3000);
+        @endif
 
-            // Keep the scroll position after form submission
-            if (window.history.scrollRestoration) {
-                window.history.scrollRestoration = 'manual';
-            }
-            window.scrollTo(0, {{ session('scroll_position', '0') }});
+        // Show error notification if error message is present
+        @if (session('error'))
+            const errorNotification = document.getElementById('error-notification');
+            errorNotification.style.display = 'block';
+            setTimeout(() => {
+                errorNotification.style.display = 'none';
+            }, 3000);
+        @endif
+    });
+</script>
 
-            // Save scroll position on form submit
-            document.querySelectorAll('form').forEach(form => {
-                form.addEventListener('submit', () => {
-                    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                    localStorage.setItem('scrollPosition', scrollPosition);
-                });
-            });
 
-            const savedPosition = localStorage.getItem('scrollPosition');
-            if (savedPosition) {
-                window.scrollTo(0, parseInt(savedPosition));
-                localStorage.removeItem('scrollPosition');
-            }
-        });
-    </script>
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.querySelector('form');
+{{-- <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Keep the scroll position after form submission
+        if (window.history.scrollRestoration) {
+            window.history.scrollRestoration = 'manual';
+        }
+        window.scrollTo(0, {{ session('scroll_position', '0') }});
+
+        // Save scroll position on form submit
+        document.querySelectorAll('form').forEach(form => {
             form.addEventListener('submit', () => {
                 const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                document.getElementById('scroll_position').value = scrollPosition;
+                localStorage.setItem('scrollPosition', scrollPosition);
             });
         });
-    </script> --}}
+
+        const savedPosition = localStorage.getItem('scrollPosition');
+        if (savedPosition) {
+            window.scrollTo(0, parseInt(savedPosition));
+            localStorage.removeItem('scrollPosition');
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', () => {
+            const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            document.getElementById('scroll_position').value = scrollPosition;
+        });
+    });
+</script> --}}
 @endsection

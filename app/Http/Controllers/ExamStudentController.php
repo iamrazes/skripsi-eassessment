@@ -124,47 +124,54 @@ class ExamStudentController extends Controller
                             ->where('question_number', $questionNumber)
                             ->firstOrFail();
 
-        // Validate the request data
-        $validatedData = $request->validate([
-            'selected_choices' => 'required|array',
-        ]);
+        try {
 
-        // Convert array of choices to comma-separated string
-        $selectedChoices = implode(',', $validatedData['selected_choices']);
+            // Validate the request data
+            $validatedData = $request->validate([
+                'selected_choices' => 'required|array',
+            ]);
 
-        // Update or create the student's answer for this question
-        $answer = ExamStudentAnswer::updateOrCreate(
-            [
-                'exam_id' => $examId,
-                'student_id' => auth()->id(),
-                'question_id' => $question->id
-            ],
-            [
-                'selected_choices' => $selectedChoices
-            ]
-        );
+            // Convert array of choices to comma-separated string
+            $selectedChoices = implode(',', $validatedData['selected_choices']);
 
+            // Update or create the student's answer for this question
+            $answer = ExamStudentAnswer::updateOrCreate(
+                [
+                    'exam_id' => $examId,
+                    'student_id' => auth()->id(),
+                    'question_id' => $question->id
+                ],
+                [
+                    'selected_choices' => $selectedChoices
+                ]
+            );
 
-        // Determine the current question index
-        $exam = Exam::with('questions')->findOrFail($examId);
-        $currentQuestionIndex = $exam->questions->search(function ($q) use ($question) {
-            return $q->id == $question->id;
-        });
+            // Determine the current question index
+            $exam = Exam::with('questions')->findOrFail($examId);
+            $currentQuestionIndex = $exam->questions->search(function ($q) use ($question) {
+                return $q->id == $question->id;
+            });
 
-        // Check if the action is "save_next"
-        if ($request->input('action') == 'save_next') {
-            $nextQuestionIndex = $currentQuestionIndex + 1;
-            if ($nextQuestionIndex < count($exam->questions)) {
-                // Redirect to the next question
-                return redirect()->route('students.exams.show-question', [
-                    'exam' => $examId,
-                    'question' => $exam->questions[$nextQuestionIndex]->question_number
-                ]);
+            // Check if the action is "save_next"
+            if ($request->input('action') == 'save_next') {
+                $nextQuestionIndex = $currentQuestionIndex + 1;
+                if ($nextQuestionIndex < count($exam->questions)) {
+                    // Redirect to the next question
+                    return redirect()->route('students.exams.show-question', [
+                        'exam' => $examId,
+                        'question' => $exam->questions[$nextQuestionIndex]->question_number
+                    ]);
+                }
             }
-        }
 
-        // Redirect back with a success message
-        return back()->with('success', 'Answer saved successfully.');
+            // Redirect back with a success message
+            return back()->with('success', 'Answer saved successfully.');
+
+
+        } catch (\Exception $e) {
+            // Redirect back with an error message
+            return back()->with('error', 'An error occurred while saving your answer. Please try again.');
+        }
     }
 
 
