@@ -82,7 +82,7 @@
         </div>
 
         <!-- Sidebar navigation -->
-        <x-exams.sidebar :exam="$exam" :data-student="$dataStudent" :current-question-index="$currentQuestionIndex" />
+        @yield('sidebar')
 
 
     </div>

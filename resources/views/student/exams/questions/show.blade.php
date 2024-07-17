@@ -94,6 +94,10 @@
     @endif
 @endsection
 
+@section('sidebar')
+    <x-exams.sidebar :exam="$exam" :data-student="$dataStudent" :current-question-index="$currentQuestionIndex" />
+@endsection
+
 @section('script')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -127,7 +131,7 @@
             }
         });
     </script>
-    <script>
+    {{-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const form = document.querySelector('form');
             form.addEventListener('submit', () => {
@@ -135,5 +139,5 @@
                 document.getElementById('scroll_position').value = scrollPosition;
             });
         });
-    </script>
+    </script> --}}
 @endsection
