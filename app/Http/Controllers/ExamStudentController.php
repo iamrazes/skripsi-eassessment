@@ -47,8 +47,17 @@ class ExamStudentController extends Controller
         // Get the current time in the same time zone
         $currentTime = Carbon::now('Asia/Jakarta');
 
+        // Check if the exam is within the available time frame
+        $isWithinTimeFrame = $currentTime->between($examStartTime, $examEndTime);
+
+        // Check if the student has attended the exam
+        $user = Auth::user();
+        $hasAttended = ExamStudentAnswer::where('exam_id', $exam->id)
+                                        ->where('student_id', $user->id)
+                                        ->exists();
+
         // Determine if the exam is available
-        $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
+        $isExamAvailable = !$hasAttended && $isWithinTimeFrame;
 
         // Log the times for debugging
         // \Log::info('Exam Start Time: ' . $examStartTime);
