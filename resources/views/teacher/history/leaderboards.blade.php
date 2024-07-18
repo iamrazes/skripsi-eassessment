@@ -22,9 +22,9 @@
         </div>
 
 
-        <table class="min-w-full bg-white mt-4 rounded-b-lg">
+        <table class="min-w-full bg-white mt-4 rounded-b-lg mb-4">
             <thead>
-                <tr class="text-left bg-gray-100">
+                <tr class="text-left bg-gray-100 font-normal">
                     <th class="py-2 w-20 px-2">Rank</th>
                     <th class="py-2">Student Name</th>
                     <th class="py-2 text-end px-2">Classroom</th>
