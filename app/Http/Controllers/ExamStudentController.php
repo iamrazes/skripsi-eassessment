@@ -218,9 +218,10 @@ class ExamStudentController extends Controller
                                               ->where('question_id', $question->id)
                                               ->first();
 
+            // Fetch correct choices for the question
+            $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
+
             if ($studentAnswer) {
-                // Fetch correct choices for the question
-                $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
 
                 // Retrieve selected choices as an array
                 $selectedChoices = explode(',', $studentAnswer->selected_choices);
@@ -234,9 +235,13 @@ class ExamStudentController extends Controller
 
                 // Store student's selected answers for each question
                 $studentAnswers[$question->id] = $selectedChoices;
-                // Store correct answers for each question
-                $correctAnswersData[$question->id] = $correctChoices;
+            } else {
+                // If the student didn't answer the question, mark it as unanswered
+                $studentAnswers[$question->id] = [];
             }
+
+            // Store correct answers for each question
+            $correctAnswersData[$question->id] = $correctChoices;
         }
 
         // Calculate the score as a percentage
@@ -256,7 +261,6 @@ class ExamStudentController extends Controller
 
         return redirect()->route('students.exams.end', ['exam' => $examId])->with('success', 'Exam finished successfully.');
     }
-
 
 
     public function end($id)

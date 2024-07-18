@@ -96,6 +96,10 @@
             </div>
         </form>
     @endif
+
+    <form id="finishExamForm" action="{{ route('students.exams.finish', ['exam' => $exam->id]) }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 @endsection
 
 @section('sidebar')
@@ -124,8 +128,6 @@
         @endif
     });
 </script>
-
-
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Keep the scroll position after form submission

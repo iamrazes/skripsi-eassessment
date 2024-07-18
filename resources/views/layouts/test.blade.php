@@ -120,6 +120,31 @@
     </script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var duration = {{ $exam->duration }} * 60; // duration in seconds
+            var endTime = new Date().getTime() + duration * 1000;
+
+            function updateTimer() {
+                var now = new Date().getTime();
+                var distance = endTime - now;
+
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown').innerHTML = "EXPIRED";
+                    document.getElementById('finishExamForm').submit();
+                }
+            }
+
+            var timerInterval = setInterval(updateTimer, 1000);
+        });
+    </script>
+
+    <script>
         // JavaScript for countdown timer
         function formatDuration(durationInMinutes) {
             var hours = Math.floor(durationInMinutes / 60);
