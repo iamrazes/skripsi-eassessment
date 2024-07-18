@@ -18,6 +18,11 @@
                             <p class="text-xs">Question:</p>
                             <div class="w-full rounded-lg border-1 bg-white min-h-40 mb-4 mt-2">
                                 {{ $question->question_text }}
+
+                                @if ($question->image_path)
+                                    <img src="{{ Storage::url($question->image_path) }}" class="max-h-96 max-w-fit my-4"
+                                        alt="">
+                                @endif
                             </div>
                             <div class="flex flex-col gap-y-2">
                                 <div class="flex justify-between">
