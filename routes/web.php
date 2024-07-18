@@ -17,6 +17,9 @@ use App\Http\Controllers\ExamTeacherController;
 use App\Http\Controllers\ExamTeacherHistoryController;
 use App\Http\Controllers\ExamStudentController;
 use App\Http\Controllers\ExamStudentReportController;
+
+use App\Models\Exam;
+use App\Http\Middleware\CheckExamStatus;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,12 +48,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('students.')->group(function () {
     Route::resource('exams', ExamStudentController::class);
 
-    Route::middleware('check.exam.status')->group(function () {
-        Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
-        Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
-        Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
-        Route::get('exams/{exam}/end', [ExamStudentController::class, 'end'])->name('exams.end');
-    });
+    Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
+    Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+
+    Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
+    Route::get('exams/{exam}/end', [ExamStudentController::class, 'end'])->name('exams.end');
 
     Route::get('reports', [ExamStudentReportController::class, 'index'])->name('reports.index');
     Route::get('reports/{exam}', [ExamStudentReportController::class, 'show'])->name('reports.show');
