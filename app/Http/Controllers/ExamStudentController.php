@@ -131,13 +131,6 @@ class ExamStudentController extends Controller
         $question = Question::where('exam_id', $examId)
                             ->where('question_number', $questionNumber)
                             ->firstOrFail();
-        // Calculate end time
-        $endTime = Carbon::parse($exam->start_time)->addMinutes($exam->duration);
-
-        // Check if exam status is not published or time is over
-        if ($exam->status !== 'published' || Carbon::now()->gt($endTime)) {
-            return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
-        }
 
         try {
 
