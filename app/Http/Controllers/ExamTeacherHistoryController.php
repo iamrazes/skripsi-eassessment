@@ -125,4 +125,32 @@ class ExamTeacherHistoryController extends Controller
         return view('teacher.history.question', compact('exam'));
     }
 
+    public function leaderboards($examId, Request $request)
+    {
+        // Fetch the exam by ID
+        $exam = Exam::findOrFail($examId);
+
+        // Fetch the classroom filter from the request
+        $classroomId = $request->input('classroom_id');
+
+        // Fetch all classrooms
+        $classrooms = Classroom::all();
+
+        // Fetch the student reports for the exam
+        $query = ExamStudentReport::where('exam_id', $examId);
+
+        // Filter by classroom if specified
+        if ($classroomId) {
+            $query->whereHas('student.datastudent.classroom', function ($q) use ($classroomId) {
+                $q->where('id', $classroomId);
+            });
+        }
+
+        // Get the top 11 student reports, ordered by score descending
+        $studentReports = $query->with('student.datastudent.classroom')->orderBy('score', 'desc')->take(11)->get();
+
+        return view('teacher.history.leaderboards', compact('exam', 'studentReports', 'classrooms', 'classroomId'));
+    }
+
+
 }

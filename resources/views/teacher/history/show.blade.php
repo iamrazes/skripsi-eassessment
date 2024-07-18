@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="mt-4 bg-white rounded-lg py-4 shadow-button mx-4 lg:mx-0">
+    <div class="mt-8 bg-white rounded-lg py-4 shadow-button mx-4 lg:mx-0">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
             <h1 class="text-xl font-medium">Exam Details</h1>
             <div class="flex gap-x-2 items-center">
@@ -36,9 +36,14 @@
         </div>
     </div>
 
-    <div class="flex gap-4 mt-4 -mb-4 mx-4 lg:mx-0">
+    <div class="flex gap-4 mt-4 -mb-4 mx-4 lg:mx-0 justify-between">
+        <div class="flex flex-grow lg:w-max gap-x-4">
         <button id="questionnaireButton" class="px-3 py-2 shadow-sm rounded-lg font-semibold text-sm w-full lg:w-max">Questionnaire</button>
         <button id="studentAnswerButton" class="px-3 py-2 shadow-sm rounded-lg font-semibold text-sm w-full lg:w-max">Student Answer</button>
+        </div>
+        <div class="flex lg:w-max w-1/3">
+        <a href="{{route('teacher.history.leaderboards', ['exam' => $exam->id])}}" class="px-3 py-2 shadow-sm rounded-lg font-semibold text-sm bg-yellow-400 text-white hover:bg-yellow-300 w-full lg:w-max justify-center items-center flex gap-x-2 lg:justify-self-end"><img src="{{asset('icons/ic_leaderboards.svg')}}" class="w-5 h-5">Leaderboards</a>
+        </div>
     </div>
 
     <div class="mt-8 bg-white shadow-button rounded-lg pb-8 pt-4 mx-4 lg:mx-0" id="questions">
