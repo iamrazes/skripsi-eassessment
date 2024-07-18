@@ -84,9 +84,6 @@ class ExamStudentController extends Controller
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
 
-        // Calculate end time
-        $endTime = Carbon::parse($exam->start_time)->addMinutes($exam->duration);
-
         // Check if exam status is not published or time is over
         if ($exam->status !== 'published' ) {
             return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
@@ -134,10 +131,6 @@ class ExamStudentController extends Controller
 
         $exam = Exam::findOrFail($examId);
 
-        // Calculate end time
-        $endTime = Carbon::parse($exam->start_time)->addMinutes($exam->duration);
-
-        // Check if exam status is not published or time is over
         if ($exam->status !== 'published' ) {
             return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
         }
