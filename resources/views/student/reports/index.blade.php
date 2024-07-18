@@ -21,7 +21,7 @@
                                 <span class="text-lg">{{ $attendedExam->exam->subject->name }}</span>
                             </div>
                         </div>
-                        <div class="flex gap-x-4">
+                        <div class="flex gap-x-4 ">
                             <div class=" flex text-xs lg:text-base pr-4 gap-x-2 lg:gap-x-6">
                                 <div class="flex flex-col">
                                     <span>Day: {{ $attendedExam->exam->date->format('l') }}</span>
@@ -30,12 +30,12 @@
                                 <div class="flex flex-col">
                                     <span>Hour:
                                         {{ \Carbon\Carbon::parse($attendedExam->exam->start_time)->format('H:i') }}</span>
-                                    <span>Duration: {{ $attendedExam->exam->duration }} minutes</span>
+                                    <span class="flex gap-x-1">Duration: <span class="min-w-10">{{ $attendedExam->exam->duration }}</span></span>
                                     <span>Question: {{ $attendedExam->exam->total_questions }}</span>
                                 </div>
                             </div>
                             <!-- options -->
-                            <div class="flex flex-col gap-y-2 text-xs lg:text-base text-start">
+                            <div class="flex flex-col gap-y-2 text-xs lg:text-base text-start flex-grow">
                                 <a href="{{ route('students.reports.show', ['exam' => $attendedExam->exam->id]) }}"
                                     class="bg-accent-1 rounded text-white px-2 py-1 flex gap-x-1.5 whitespace-nowrap overflow-clip hover:bg-gradient-to-r from-accent-1 to-accent-2 pr-10"><img
                                         src="{{ asset('icons/ic_magnifier.svg') }}" class="w-4 lg:w-5 filter-white">Review
