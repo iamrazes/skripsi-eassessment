@@ -89,6 +89,16 @@ class ExamStudentController extends Controller
             return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
         }
 
+        // Check if the student has already completed the exam
+        $user = Auth::user();
+        $report = ExamStudentReport::where('exam_id', $examId)
+                                ->where('student_id', $user->id)
+                                ->first();
+
+        if ($report) {
+            return redirect()->route('students.exams.index', ['exam' => $examId])->with('error', 'You have already completed this exam.');
+        }
+
         // Fetch the logged-in user's data
         $user = Auth::user();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
