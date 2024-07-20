@@ -74,6 +74,7 @@
                 </div>
             </div>
         </div>
+
         <div class="flex lg:flex-row flex-col-reverse mt-4 lg:mt-8 gap-y-4 lg:gap-x-8 mx-4 lg:mx-0">
             <div
                 class="flex  flex-col gap-y-2 bg-gradient-to-r from-accent-1 to-accent-2 p-6 rounded-lg shadow-button text-white">
@@ -121,6 +122,7 @@
             </div>
 
         </div>
+
         <div class="flex flex-col lg:flex-row mt-4 lg:mt-8 lg:gap-x-8 gap-y-4">
             <div class="flex flex-col flex-grow bg-white rounded-lg shadow-button mx-4 lg:mx-0">
                 <div class="flex justify-between pt-6 pb-2 px-6">
@@ -130,12 +132,10 @@
                             <img src="{{ asset('icons/ic_active_teachers.svg') }}" class="w-6 h-6">
                             <h1 class="font-bold">Active Teacher</h1>
                         </span>
-                        <span class="flex items-center text-sm gap-x-1 mt-1">
-                            Total {{ $totalTeachers }} Active Teacher</span>
                     </div>
-                    <a href="#">
-                        <img src="{{ asset('icons/ic_dots.svg') }}" class="h-4" alt="">
-                    </a>
+
+                    <span class="flex items-center text-sm gap-x-1 mt-1">
+                        Total {{ $totalTeachers }} Active Teacher</span>
                 </div>
                 <div class="overflow-x-auto pb-2 rounded-b-lg">
                     <table class="min-w-full divide-y divide-gray-200">
