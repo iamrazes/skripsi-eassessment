@@ -36,10 +36,10 @@ class DashboardController extends Controller
                     ->take(5)
                     ->get();
 
-        $dataTeachers = DataTeacher::all();
+        $dataTeachers = DataTeacher::take(5)->get();
         $users = User::whereHas('roles', function ($query) {
             $query->where('name', 'teacher');
-        })->get();
+                    })->get();
 
         $now = Carbon::now();
         $daysInMonth = $now->daysInMonth;
