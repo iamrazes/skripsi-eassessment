@@ -19,7 +19,7 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
-                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="line-clamp-1">Report
+                            src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
@@ -68,7 +68,7 @@
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
-                            class="line-clamp-1">Report
+                            class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
@@ -194,69 +194,69 @@
         <!-- Admin Dashboard -->
         <div class="grid grid-cols-2 lg:grid-cols-4 mx-4 mt-4 lg:mx-0 lg:mt-8 gap-4 lg:gap-x-8">
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
-                <div class="flex justify-between p-6">
+                <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md">Total Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Total Students</span>
                         <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
-                            class="line-clamp-1">Report
+                            class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
-                <div class="flex justify-between p-6">
+                <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_male_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md">Male Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Male Students</span>
                         <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
-                            class="line-clamp-1">Report
+                            class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
-                <div class="flex justify-between p-6">
+                <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_female_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md">Female Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Female Students</span>
                         <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
-                            class="line-clamp-1">Report
+                            class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
-                <div class="flex justify-between p-6">
+                <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_total_teachers.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md">Total Teachers</span>
+                        <span class="text-md lg:whitespace-nowrap">Total Teachers</span>
                         <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
                 <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
-                            class="line-clamp-1">Report
+                            class="whitespace-nowrap">Report
                             a
                             problem</span></a>
                 </div>
@@ -265,7 +265,15 @@
 
         <div class="flex lg:gap-8">
 
-            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
+            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button mx-4 lg:mx-0 shrink-0">
+                <h1 class="border-b px-5 py-2">Subjects</h1>
+                <div class="flex flex-wrap gap-3 text-white p-4">
+                    @foreach ($subjects as $subject)
+                        <button class="bg-accent-1 hover:bg-accent-2 p-2 rounded-xl">{{ $subject->name }}</button>
+                    @endforeach
+                </div>
+            </div>
+            <div class="lg:mt-8 mt-4 w-full bg-white rounded-lg shadow-button mx-4 lg:mx-0">
                 <h1 class="border-b px-5 py-2">Subjects</h1>
                 <div class="flex flex-wrap gap-3 text-white p-4 ">
                     @foreach ($subjects as $subject)
@@ -273,27 +281,12 @@
                     @endforeach
                 </div>
             </div>
-            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
-                <h1 class="border-b px-5 py-2">Subjects</h1>
-                <div class="flex flex-wrap gap-3 text-white p-4 ">
-                    @foreach ($subjects as $subject)
-                        <button class="bg-accent-1 hover:bg-accent-2 p-2 rounded-xl">{{ $subject->name }}</button>
-                    @endforeach
-                </div>
-            </div>
-            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
-                <h1 class="border-b px-5 py-2">Subjects</h1>
-                <div class="flex flex-wrap gap-3 text-white p-4 ">
-                    @foreach ($subjects as $subject)
-                        <button class="bg-accent-1 hover:bg-accent-2 p-2 rounded-xl">{{ $subject->name }}</button>
-                    @endforeach
-                </div>
-            </div>
+
         </div>
         <div class="flex lg:gap-8">
             <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
                 <h1 class="border-b px-5 py-2">Classrooms</h1>
-                <div class="grid grid-cols-3 gap-4 p-4">
+                <div class="grid grid-cols-3 gap-4 p-4 select-none">
                     @foreach ($classrooms as $index => $classroom)
                         <div class="p-4 rounded-xl {{ $index % 2 == 0 ? 'bg-gray-50' : 'bg-gray-100' }}">
                             Class {{ $classroom->name }}
@@ -309,7 +302,7 @@
                 </h1>
 
                 <div class="p-4">
-                    <div class="grid grid-cols-7 gap-2 text-center">
+                    <div class="grid grid-cols-7 gap-2 text-center select-none">
                         <!-- Days of the week -->
                         @foreach (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $day)
                             <div class="font-bold">{{ $day }}</div>
