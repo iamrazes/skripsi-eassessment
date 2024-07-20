@@ -9,7 +9,11 @@ use App\Models\DataTeacher;
 use App\Models\DataAdmin;
 use App\Models\DataStudent;
 use App\Models\Classroom;
+use App\Models\Subject;
+use App\Models\Exam;
+use App\Models\ExamType;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -24,9 +28,27 @@ class DashboardController extends Controller
         $femaleStudents = $this->getGenderCount('Female');
         $totalTeachers = $this->getTotalTeachers();
         $dataStudent = DataStudent::where('user_id', $user->id)->first();
+        $subjects = Subject::all();
+        $classrooms = Classroom::all();
+
+        $exams = Exam::with(['examType', 'subject'])
+                    ->orderBy('created_at', 'desc')
+                    ->take(5)
+                    ->get();
+
+        $dataTeachers = DataTeacher::all();
+        $users = User::whereHas('roles', function ($query) {
+            $query->where('name', 'teacher');
+        })->get();
+
+        $now = Carbon::now();
+        $daysInMonth = $now->daysInMonth;
+        $firstDayOfMonth = $now->copy()->startOfMonth()->dayOfWeek;
+        $currentDay = $now->day;
+
 
         // Return dashboard view with statistics data
-        return view('dashboard', compact('totalStudents', 'maleStudents', 'femaleStudents', 'totalTeachers', 'dataStudent'));
+        return view('dashboard', compact('totalStudents', 'maleStudents', 'femaleStudents', 'totalTeachers', 'dataStudent', 'subjects', 'classrooms', 'now', 'daysInMonth', 'firstDayOfMonth', 'currentDay', 'exams', 'dataTeachers'));
     }
     private function getTotalStudents()
     {
