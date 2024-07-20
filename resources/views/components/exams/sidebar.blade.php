@@ -1,7 +1,7 @@
 <div class="flex flex-col bg-white shadow-button rounded-lg min-h-screen lg:max-w-[400px] mt-8 lg:mt-0 shrink-0 flex-grow-0">
     <div class="border-b">
         <div class="flex py-6 px-8 gap-x-4">
-            <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+            <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
                 class="lg:w-20 lg:h-20 w-32 h-32" alt="">
             <div class="flex flex-col py-2 overflow-x-hidden flex-grow">
                 <span class="font-semibold lg:max-w-52 uppercase">{{ auth()->user()->name }}</span>
