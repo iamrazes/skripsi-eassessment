@@ -36,6 +36,32 @@ class ExamStudentController extends Controller
         return view('student.exams.index', compact('exams'));
     }
 
+    // public function show($id)
+    // {
+    //     $exam = Exam::findOrFail($id);
+
+    //     // Concatenate the date and start time correctly
+    //     $examStartTime = Carbon::createFromFormat('Y-m-d H:i:s', $exam->date->format('Y-m-d') . ' ' . $exam->start_time, 'Asia/Jakarta');
+    //     $examEndTime = $examStartTime->copy()->addMinutes($exam->duration);
+
+    //     // Get the current time in the same time zone
+    //     $currentTime = Carbon::now('Asia/Jakarta');
+
+    //     // Check if the exam is within the available time frame
+    //     $isWithinTimeFrame = $currentTime->between($examStartTime, $examEndTime);
+
+    //     // Check if the student has attended the exam
+    //     $user = Auth::user();
+    //     $hasAttended = ExamStudentAnswer::where('exam_id', $exam->id)
+    //                                     ->where('student_id', $user->id)
+    //                                     ->exists();
+
+    //     // Determine if the exam is available
+    //     $isExamAvailable = !$hasAttended && $isWithinTimeFrame;
+
+    //     return view('student.exams.show', compact('exam', 'isExamAvailable'));
+    // }
+
     public function show($id)
     {
         $exam = Exam::findOrFail($id);
@@ -50,12 +76,6 @@ class ExamStudentController extends Controller
         // Determine if the exam is available
         $isExamAvailable = $currentTime->between($examStartTime, $examEndTime);
 
-        // Log the times for debugging
-        \Log::info('Exam Start Time: ' . $examStartTime);
-        \Log::info('Exam End Time: ' . $examEndTime);
-        \Log::info('Current Time: ' . $currentTime);
-        \Log::info('Is Exam Available: ' . $isExamAvailable);
-
         return view('student.exams.show', compact('exam', 'isExamAvailable'));
     }
 
@@ -63,6 +83,21 @@ class ExamStudentController extends Controller
     {
         // Fetch the exam by ID
         $exam = Exam::findOrFail($examId);
+
+        // Check if exam status is not published or time is over
+        if ($exam->status !== 'published' ) {
+            return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
+        }
+
+        // Check if the student has already completed the exam
+        $user = Auth::user();
+        $report = ExamStudentReport::where('exam_id', $examId)
+                                ->where('student_id', $user->id)
+                                ->first();
+
+        if ($report) {
+            return redirect()->route('students.exams.index', ['exam' => $examId])->with('error', 'You have already completed this exam.');
+        }
 
         // Fetch the logged-in user's data
         $user = Auth::user();
@@ -92,8 +127,10 @@ class ExamStudentController extends Controller
         }
 
         // Pass the exam, question, current question index, student data, and selected choices to the view
-        return view('student.exams.questions.show', compact('exam', 'question', 'currentQuestionIndex', 'dataStudent', 'selectedChoices'));
+        return view('student.exams.questions.show', compact('exam', 'question', 'currentQuestionIndex', 'dataStudent', 'selectedChoices'))
+               ->with('studentId', $user->id); // Pass the studentId to the view
     }
+
 
     public function saveAnswer(Request $request, $examId, $questionNumber)
     {
@@ -102,28 +139,69 @@ class ExamStudentController extends Controller
                             ->where('question_number', $questionNumber)
                             ->firstOrFail();
 
-        // Validate the request data
-        $validatedData = $request->validate([
-            'selected_choices' => 'required|array',
-        ]);
+        $exam = Exam::findOrFail($examId);
 
-        // Convert array of choices to comma-separated string
-        $selectedChoices = implode(',', $validatedData['selected_choices']);
+        if ($exam->status !== 'published' ) {
+            return redirect()->route('students.exams.index')->with('error', 'You cannot access this exam.');
+        }
 
-        // Update or create the student's answer for this question
-        $answer = ExamStudentAnswer::updateOrCreate(
-            [
-                'exam_id' => $examId,
-                'student_id' => auth()->id(),
-                'question_id' => $question->id
-            ],
-            [
-                'selected_choices' => $selectedChoices
-            ]
-        );
+        try {
 
-        // Redirect back with a success message
-        return back()->with('success', 'Answer saved successfully.');
+            // Validate the request data
+            $validatedData = $request->validate([
+                'selected_choices' => 'required|array',
+            ]);
+
+            // Convert array of choices to comma-separated string
+            $selectedChoices = implode(',', $validatedData['selected_choices']);
+
+            // Update or create the student's answer for this question
+            $answer = ExamStudentAnswer::updateOrCreate(
+                [
+                    'exam_id' => $examId,
+                    'student_id' => auth()->id(),
+                    'question_id' => $question->id
+                ],
+                [
+                    'selected_choices' => $selectedChoices
+                ]
+            );
+
+            // Determine the current question index
+            $exam = Exam::with('questions')->findOrFail($examId);
+            $currentQuestionIndex = $exam->questions->search(function ($q) use ($question) {
+                return $q->id == $question->id;
+            });
+
+            // Check if the action is "save_next"
+            if ($request->input('action') == 'save_next') {
+                $nextQuestionIndex = $currentQuestionIndex + 1;
+                if ($nextQuestionIndex < count($exam->questions)) {
+                    // Redirect to the next question
+                    return redirect()->route('students.exams.show-question', [
+                        'exam' => $examId,
+                        'question' => $exam->questions[$nextQuestionIndex]->question_number
+                    ]);
+                }
+            }
+
+            // Redirect back with a success message
+            return back()->with('success', 'Answer saved successfully.');
+
+
+        } catch (\Exception $e) {
+            // Redirect back with an error message
+            return back()->with('error', 'An error occurred while saving your answer. Please try again.');
+        }
+    }
+
+
+    public static function isQuestionAnswered($examId, $studentId, $questionId)
+    {
+        return self::where('exam_id', $examId)
+            ->where('student_id', $studentId)
+            ->where('question_id', $questionId)
+            ->exists();
     }
 
     public function finishExam($examId)
@@ -150,9 +228,10 @@ class ExamStudentController extends Controller
                                               ->where('question_id', $question->id)
                                               ->first();
 
+            // Fetch correct choices for the question
+            $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
+
             if ($studentAnswer) {
-                // Fetch correct choices for the question
-                $correctChoices = $question->choices()->where('is_correct', true)->pluck('id')->toArray();
 
                 // Retrieve selected choices as an array
                 $selectedChoices = explode(',', $studentAnswer->selected_choices);
@@ -166,9 +245,13 @@ class ExamStudentController extends Controller
 
                 // Store student's selected answers for each question
                 $studentAnswers[$question->id] = $selectedChoices;
-                // Store correct answers for each question
-                $correctAnswersData[$question->id] = $correctChoices;
+            } else {
+                // If the student didn't answer the question, mark it as unanswered
+                $studentAnswers[$question->id] = [];
             }
+
+            // Store correct answers for each question
+            $correctAnswersData[$question->id] = $correctChoices;
         }
 
         // Calculate the score as a percentage
@@ -186,7 +269,15 @@ class ExamStudentController extends Controller
             ]
         );
 
-        return redirect()->route('students.reports.index')->with('success', 'Exam finished successfully.');
+        return redirect()->route('students.exams.end', ['exam' => $examId])->with('success', 'Exam finished successfully.');
+    }
+
+
+    public function end($id)
+    {
+        $exam = Exam::findOrFail($id);
+
+        return view('student.exams.end', compact('exam'));
     }
 
 }

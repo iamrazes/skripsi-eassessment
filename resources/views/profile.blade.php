@@ -13,7 +13,7 @@
                     class="flex flex-col items-center gap-x-8 z-0 justify-center lg:justify-start mx-4 lg:mx-16">
                     <div
                         class="w-40 h-40 border-4 border-white rounded-full overflow-hidden shadow-button flex-shrink-0 lg:-ml-0">
-                        <img src="{{ asset($dataStudent->gender == 'Male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+                        <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
                             class="w-full h-full" alt="Student Image">
                     </div>
                     <div class="flex flex-col text-white pt-3 items-center">
@@ -40,6 +40,12 @@
                     <span class="font-semibold">Student ID:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ $dataStudent->student_id }}</span>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <span class="font-semibold">Username:</span>
+                    <div class="bg-gray-100 rounded-lg py-2 px-3">
+                        <span>{{ $user->username }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">

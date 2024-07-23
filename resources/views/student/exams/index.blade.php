@@ -6,6 +6,12 @@
 
 @section('content')
 
+    @if (session('error'))
+        <div id="error-notification" class="notification bg-red-500 text-white p-3 rounded shadow">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="mt-4 lg:mt-8 mx-4 lg:mx-0 flex flex-col bg-white rounded-lg shadow-button">
         <div class="pt-4 pb-4 lg:pb-6">
 
@@ -14,7 +20,7 @@
 
             <div class="flex flex-col">
                 @if ($exams->isEmpty())
-                    <div class="flex pt-12 pb-8 justify-center">
+                    <div class="flex pt-40 pb-36 justify-center">
                         <p>No available exams.</p>
                     </div>
                 @else
@@ -45,17 +51,40 @@
                                             <span>{{ $exam->duration }} Minutes</span></label>
                                         <label class="flex justify-between">Date:
                                             <span class="text-end">{{ $exam->date->format('d/m/Y') }}<br>
-                                                ( {{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }} )
+                                                ({{ \Carbon\Carbon::parse($exam->start_time)->format('H:i') }})
                                             </span></label>
                                     </div>
                                     <a href="{{ route('students.exams.show', $exam->id) }}"
                                         class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 rounded-3xl text-white font-semibold text-center mt-1 lg:mt-3 py-2 mx-2 lg:mx-2 ">Proceed</a>
                                 </div>
-                            </div >
-                            @endforeach
-                        @endif
-                    </div>
+                            </div>
+                        @endforeach
+                @endif
             </div>
         </div>
     </div>
+    </div>
+@endsection
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show success notification if success message is present
+            @if (session('success'))
+                const successNotification = document.getElementById('success-notification');
+                successNotification.style.display = 'block';
+                setTimeout(() => {
+                    successNotification.style.display = 'none';
+                }, 3000);
+            @endif
+
+            // Show error notification if error message is present
+            @if (session('error'))
+                const errorNotification = document.getElementById('error-notification');
+                errorNotification.style.display = 'block';
+                setTimeout(() => {
+                    errorNotification.style.display = 'none';
+                }, 3000);
+            @endif
+        });
+    </script>
 @endsection

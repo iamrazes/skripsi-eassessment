@@ -55,15 +55,15 @@
             <div class="relative">
                 <button id="accordionButton4" data-target="accordionMenu4"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
-                {{ request()->is('teacher/exams*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
+                {{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : 'bg-white' }}">
                     <div class="flex space-x-4">
                         <img src="{{ asset('icons/ic_assessment4.svg') }}"
-                            class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }}"
+                            class="{{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'filter-white' : '' }}"
                             style="width: 21px; height: 21px;">
                         <span class="-mr-1 font-semibold">Assessments</span>
                     </div>
                     <img src="{{ asset('icons/ic_down.svg') }}"
-                        class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }}">
+                        class="{{ request()->is('teacher/exams*') || request()->is('teacher/history*') ? 'filter-white' : '' }}">
                 </button>
                 <div id="accordionMenu4"
                     class="{{ request()->is('teacher/exams*') ? 'flex' : '' }} flex-col mt-4 space-y-4 bg-white w-full">
@@ -73,20 +73,20 @@
                             class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Exams</span>
                     </a>
-                    <a href=""
-                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/exams/history*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+                    <a href="{{route('teacher.history.index')}}"
+                        class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/history*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_assessment-history.svg') }}"
-                            class="{{ request()->is('teacher/exams/history*') ? 'filter-white' : '' }} pl-8">
+                            class="{{ request()->is('teacher/history*') ? 'filter-white' : '' }} pl-8">
                         <span class="-mr-1 font-semibold">Exams History</span>
                     </a>
 
                 </div>
             </div>
 
-            <a href=""
-                class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/classroom') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
+            <a href="{{ route('teacher.classrooms.teacherIndex') }}"
+                class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/classrooms') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_classroom2.svg') }}"
-                    class="{{ request()->is('teacher/classroom') ? 'filter-white' : '' }}">
+                    class="{{ request()->is('teacher/classrooms') ? 'filter-white' : '' }}">
                 <span class="-mr-1 font-semibold">Classroom</span>
             </a>
         @endif

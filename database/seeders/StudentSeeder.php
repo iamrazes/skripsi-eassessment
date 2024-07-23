@@ -18,7 +18,7 @@ class StudentSeeder extends Seeder
 
         DataStudent::create([
             'user_id' => 4,
-            'gender' => 'Male',
+            'gender' => 'male',
             'birthdate' => '2000-01-01',
             'student_id' => 'S12345',
             'classroom_id' => 1,
@@ -26,7 +26,7 @@ class StudentSeeder extends Seeder
 
         DataStudent::create([
             'user_id' => 5,
-            'gender' => 'Female',
+            'gender' => 'female',
             'birthdate' => '2000-01-01',
             'student_id' => 'S12346',
             'classroom_id' => 4,

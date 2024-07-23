@@ -14,8 +14,12 @@ use App\Http\Controllers\ExamTypeController;
 use App\Http\Controllers\SubjectController;
 
 use App\Http\Controllers\ExamTeacherController;
+use App\Http\Controllers\ExamTeacherHistoryController;
 use App\Http\Controllers\ExamStudentController;
 use App\Http\Controllers\ExamStudentReportController;
+
+use App\Models\Exam;
+use App\Http\Middleware\CheckExamStatus;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,13 +50,13 @@ Route::middleware(['auth', 'can:student-access'])->prefix('students')->name('stu
 
     Route::get('exams/{exam}/question/{question}', [ExamStudentController::class, 'showQuestion'])->name('exams.show-question');
     Route::post('exams/{exam}/question/{question}/save', [ExamStudentController::class, 'saveAnswer'])->name('exams.save-answer');
+
     Route::post('exams/{exam}/finish', [ExamStudentController::class, 'finishExam'])->name('exams.finish');
+    Route::get('exams/{exam}/end', [ExamStudentController::class, 'end'])->name('exams.end');
 
-    Route::resource('reports', ExamStudentReportController::class);
-
-
+    Route::get('reports', [ExamStudentReportController::class, 'index'])->name('reports.index');
+    Route::get('reports/{exam}', [ExamStudentReportController::class, 'show'])->name('reports.show');
 });
-
 
 Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teacher.')->group(function () {
     Route::resource('exams', ExamTeacherController::class);
@@ -62,8 +66,19 @@ Route::middleware(['auth', 'can:teacher-access'])->prefix('teacher')->name('teac
 
     Route::post('exams/{exam}/publish', [ExamTeacherController::class, 'publish'])->name('exams.publish');
     Route::post('exams/{exam}/complete', [ExamTeacherController::class, 'complete'])->name('exams.complete');
-});
 
+    Route::get('history', [ExamTeacherHistoryController::class, 'index'])->name('history.index');
+    Route::get('history/exam/{exam}', [ExamTeacherHistoryController::class, 'show'])->name('history.show');
+    Route::get('history/exam/{exam}/edit', [ExamTeacherHistoryController::class, 'edit'])->name('history.edit');
+    Route::get('history/exam/{exam}/update', [ExamTeacherHistoryController::class, 'update'])->name('history.update');
+    Route::get('history/exam/{exam}/answer/{id}', [ExamTeacherHistoryController::class, 'answer'])->name('history.answer');
+    Route::get('history/exam/{exam}/question', [ExamTeacherHistoryController::class, 'question'])->name('history.question');
+    Route::get('history/exam/{exam}/leaderboards', [ExamTeacherHistoryController::class, 'leaderboards'])->name('history.leaderboards');
+
+    Route::get('classrooms', [ClassroomController::class, 'teacherIndex'])->name('classrooms.teacherIndex');
+    Route::get('classrooms/{classroom}', [ClassroomController::class, 'teacherShow'])->name('classrooms.teacherShow');
+
+});
 
 Route::middleware(['auth', 'can:admin-access'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('users', UserController::class);

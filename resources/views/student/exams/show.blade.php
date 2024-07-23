@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.bridge')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>{{ $exam->title }} - {{ config('app.name') }}</title>
-
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    <link rel="icon" href="{{ asset('icons/logo.svg') }}">
-</head>
-
-<body class="bg-[#F5F7F8] text-textColor antialiased flex flex-col">
+@section('content')
+    <div id="notification" class="notification">
+        {{ session('success') }}
+    </div>
     <div class="container justify-center items-center mx-auto mt-8 lg:mt-20">
         <div class="bg-white rounded-3xl border-2 border-accent-1 shadow-button mx-4 my-4 p-4 pt-10 pb-20">
             <div class="justify-center flex filter-red">
@@ -42,6 +32,12 @@
                 <p class="flex justify-between"><span>Duration:</span> {{ $exam->duration }} minutes</p>
             </div>
             <div class="text-center mt-3 flex flex-col lg:w-1/2 lg:mx-auto">
+
+                <div id="notification" class="notification">
+                    {{ session('success') }}
+                </div>
+
+
                 @if ($isExamAvailable)
                     <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => 1]) }}"
                         class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 py-2 my-2 text-white font-semibold rounded-3xl">
@@ -52,6 +48,7 @@
                     <a class="bg-gray-100 py-2 my-2 text-gray-400 rounded-3xl">Unavailable</a>
                     <p class="text-sm lg:text-base">*The link will be available when the time is down</p>
                 @endif
+
             </div>
         </div>
         <div class="flex mx-4 ">
@@ -59,6 +56,18 @@
                     src="{{ asset('icons/ic_left2.svg') }}" alt="">Go Back</a>
         </div>
     </div>
-</body>
-
-</html>
+@endsection
+@section('script')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show notification if success message is present
+            @if (session('success'))
+                const notification = document.getElementById('notification');
+                notification.style.display = 'block';
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            @endif
+        });
+    </script>
+@endsection

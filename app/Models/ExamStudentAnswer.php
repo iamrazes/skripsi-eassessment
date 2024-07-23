@@ -34,4 +34,11 @@ class ExamStudentAnswer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+    public static function isQuestionAnswered($examId, $studentId, $questionId)
+    {
+        return self::where('exam_id', $examId)
+            ->where('student_id', $studentId)
+            ->where('question_id', $questionId)
+            ->exists();
+    }
 }

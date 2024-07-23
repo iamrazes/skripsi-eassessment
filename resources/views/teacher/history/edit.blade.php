@@ -19,9 +19,9 @@
     <div class="mt-8 bg-white rounded-lg shadow-button py-6 px-8">
         <h1 class="font-semibold text-lg">Edit Exam</h1>
         <div class="my-4">
-            <form action="{{ route('teacher.exams.update', $exam->id) }}" method="POST">
+            <form action="{{ route('teacher.history.update', $exam->id) }}" method="PATCH">
                 @csrf
-                @method('PUT')
+                @method('PATCH')
                 <div class="flex flex-col my-3">
                     <label for="exam_type_id">Exam Type</label>
                     <select name="exam_type_id" id="exam_type_id" class="rounded-lg border-gray-400 mt-1">
@@ -59,7 +59,7 @@
                         min="1" value="{{ old('duration', $exam->duration) }}">
                 </div>
 
-                <div class="flex flex-col my-3">
+                <div class="flex flex-col my-3 @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
                     <label for="classrooms">Classrooms</label>
                     <div id="selectedItems" class="flex flex-wrap gap-2">
                         @foreach ($exam->classrooms as $classroom)
@@ -71,7 +71,7 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="relative">
+                    <div class="relative @if (in_array($exam->status, ['published', 'completed'])) hidden @endif">
                         <div id="dropdownButton"
                             class="block w-full px-4 py-2 bg-white border border-gray-400 rounded-lg cursor-pointer mt-1">
                             Select classrooms
@@ -109,7 +109,7 @@
             const dropdown = document.getElementById('dropdown');
             const dropdownOptions = document.getElementById('dropdownOptions');
             const selectedItemsContainer = document.getElementById('selectedItems');
-            let selectedValues = new Set();
+            let selectedValues = new Set(@json($exam->classrooms->pluck('id')));
 
             dropdownButton.addEventListener('click', function(e) {
                 e.stopPropagation(); // Prevent the click event from bubbling up to the document
@@ -157,12 +157,6 @@
                 });
             }
 
-            // Prevent dropdown from closing when clicking inside
-            dropdown.addEventListener('click', function(e) {
-                dropdown.classList.add('hidden');
-
-            });
-
             // Close dropdown when clicking outside
             document.addEventListener('click', function(e) {
                 if (!dropdownButton.contains(e.target) && !dropdown.contains(e.target)) {
@@ -170,6 +164,12 @@
                 }
             });
 
+            // Prevent dropdown from closing when clicking inside
+            dropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            updateSelectedItems(); // Initialize the selected items on page load
         });
     </script>
 @endsection

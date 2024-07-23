@@ -52,6 +52,20 @@
             background-color: #000;
             /* Change background color when checked */
         }
+
+        .notification {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 50%;
+            margin-top: 20px;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            z-index: 1000;
+            border-radius: 5px;
+        }
     </style>
 
 </head>
@@ -68,7 +82,7 @@
         </div>
 
         <!-- Sidebar navigation -->
-        <x-exams.sidebar :exam="$exam" :data-student="$dataStudent" :current-question-index="$currentQuestionIndex" />
+        @yield('sidebar')
 
 
     </div>
@@ -102,6 +116,31 @@
                     }
                 });
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var duration = {{ $exam->duration }} * 60; // duration in seconds
+            var endTime = new Date().getTime() + duration * 1000;
+
+            function updateTimer() {
+                var now = new Date().getTime();
+                var distance = endTime - now;
+
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = minutes + "m " + seconds + "s ";
+
+                if (distance < 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown').innerHTML = "EXPIRED";
+                    document.getElementById('finishExamForm').submit();
+                }
+            }
+
+            var timerInterval = setInterval(updateTimer, 1000);
         });
     </script>
 
