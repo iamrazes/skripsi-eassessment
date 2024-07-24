@@ -263,9 +263,8 @@
             </div>
         </div>
 
-        <div class="flex lg:gap-8">
-
-            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button mx-4 lg:mx-0 shrink-0">
+        <div class="flex flex-col lg:flex-row lg:gap-8  mx-4 lg:mx-0">
+            <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button shrink-0">
                 <h1 class="border-b px-5 py-2">Subjects</h1>
                 <div class="flex flex-wrap gap-3 text-white p-4">
                     @foreach ($subjects as $subject)
@@ -273,7 +272,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="lg:mt-8 mt-4 w-full bg-white rounded-lg shadow-button mx-4 lg:mx-0">
+            <div class="lg:mt-8 mt-4 w-full bg-white rounded-lg shadow-button">
                 <h1 class="border-b px-5 py-2">Subjects</h1>
                 <div class="flex flex-wrap gap-3 text-white p-4 ">
                     @foreach ($subjects as $subject)
@@ -283,8 +282,9 @@
             </div>
 
         </div>
-        <div class="flex lg:gap-8">
-            <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
+
+        <div class="flex flex-col lg:gap-8 lg:flex-row  mx-4 lg:mx-0">
+            <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button">
                 <h1 class="border-b px-5 py-2">Classrooms</h1>
                 <div class="grid grid-cols-3 gap-4 p-4 select-none">
                     @foreach ($classrooms as $index => $classroom)
@@ -295,7 +295,7 @@
                 </div>
             </div>
 
-            <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button mx-4 lg:mx-0">
+            <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button">
                 <h1 class="border-b px-5 py-2 flex justify-between">
                     <span>Calendar</span>
                     <span id="Calendar"></span>
