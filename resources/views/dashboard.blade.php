@@ -7,7 +7,7 @@
 @section('content')
     @if (auth()->user()->hasPermissionTo('admin-access'))
         <!-- Admin Dashboard -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 mt-8 gap-4 lg:gap-x-8 mx-4 lg:mx-0">
+        <div class="grid grid-cols-2 lg:grid-cols-4 mt-4 lg:mt-8 gap-4 lg:gap-x-8 mx-4 lg:mx-0">
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6">
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
