@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <div class="flex bg-white flex-col rounded-lg shadow-button mt-8">
+    <div class="flex bg-white flex-col rounded-lg shadow-button mt-4 lg:mt-8 mx-4 lg:mx-0">
 
         <h1 class="font-semibold px-6 pt-4 text-lg">Classrooms</h1>
 
@@ -27,7 +27,7 @@
                             <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
                                 <a href="{{ route('teacher.classrooms.teacherShow', $classroom->id) }}"
                                     class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center flex px-2 gap-x-1"><img
-                                        src="{{ asset('icons/ic_views.svg') }}">View Class Member</a>
+                                        src="{{ asset('icons/ic_views.svg') }}"><span class="text-xs lg:text-base">View Class Member</span></a>
                             </td>
                         </tr>
                     @endforeach
