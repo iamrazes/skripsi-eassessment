@@ -44,8 +44,7 @@ class DataTeacherController extends Controller
         'password' => 'required|string|confirmed',
         'contact' => 'nullable|string',
         'address' => 'nullable|string',
-        'nuptk' => 'nullable|string',
-        'nip' => 'nullable|string',
+        'teacher_id' => 'nullable|string',
     ]);
 
     // Create the user
@@ -64,8 +63,7 @@ class DataTeacherController extends Controller
         'user_id' => $user->id,
         'contact' => $request->contact,
         'address' => $request->address,
-        'nuptk' => $request->nuptk,
-        'nip' => $request->nip,
+        'teacher_id' => $request->teacher_id,
     ]);
 
     // Redirect back with success message
