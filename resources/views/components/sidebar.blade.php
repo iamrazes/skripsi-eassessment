@@ -30,27 +30,27 @@
         <a href="{{ route('profile') }}"
             class="px-4 py-3 flex items-center space-x-4 rounded-lg shadow-button group bg-white hover:bg-[#ecf7ff] transition ease-in-out {{ request()->routeIs('profile') ? 'text-white bg-gradient-to-r from-accent-1 to-accent-2' : '' }}">
             <img src="{{ asset($profileIcon) }}" class="{{ request()->routeIs('profile') ? 'filter-white' : '' }}">
-            <span class="-mr-1 font-semibold">My Profile</span>
+            <span class="-mr-1 font-semibold">Profil</span>
         </a>
 
         @if (auth()->user()->hasPermissionTo('student-access'))
-            <div class="font-bold pt-3">STUDENT SECTION</div>
+            <div class="font-bold pt-3">RUANGAN MURID</div>
             <a href="{{ route('students.exams.index') }}"
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('students/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_assessment3.svg') }}"
                     class="{{ request()->is('students/exams*') ? 'filter-white' : '' }}">
-                <span class="-mr-1 font-semibold">Exams</span>
+                <span class="-mr-1 font-semibold">Ujian</span>
             </a>
             <a href="{{ route('students.reports.index') }}"
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('students/reports*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_assessment-history.svg') }}"
                     class="{{ request()->is('students/reports*') ? 'filter-white' : '' }}">
-                <span class="-mr-1 font-semibold">Reports</span>
+                <span class="-mr-1 font-semibold">Laporan</span>
             </a>
         @endif
 
         @if (auth()->user()->hasPermissionTo('teacher-access'))
-            <div class="font-bold pt-3">TEACHER SECTION</div>
+            <div class="font-bold pt-3">RUANG GURU</div>
 
             <div class="relative">
                 <button id="accordionButton4" data-target="accordionMenu4"
@@ -71,13 +71,13 @@
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/exams*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_assessment3.svg') }}"
                             class="{{ request()->is('teacher/exams*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Exams</span>
+                        <span class="-mr-1 font-semibold">Ujian</span>
                     </a>
                     <a href="{{route('teacher.history.index')}}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/history*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_assessment-history.svg') }}"
                             class="{{ request()->is('teacher/history*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Exams History</span>
+                        <span class="-mr-1 font-semibold">Riwayat Ujian</span>
                     </a>
 
                 </div>
@@ -87,12 +87,12 @@
                 class="flex space-x-4 px-4 py-3 items-center {{ request()->is('teacher/classrooms*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                 <img src="{{ asset('icons/ic_classroom2.svg') }}"
                     class="{{ request()->is('teacher/classrooms*') ? 'filter-white' : '' }}">
-                <span class="-mr-1 font-semibold">Classroom</span>
+                <span class="-mr-1 font-semibold">Kelas</span>
             </a>
         @endif
 
         @if (auth()->user()->hasPermissionTo('admin-access'))
-            <div class="font-bold pt-3">ADMIN SECTION</div>
+            <div class="font-bold pt-3">RUANG ADMIN</div>
             <div class="relative">
                 <button id="accordionButton1" data-target="accordionMenu1"
                     class="w-full px-4 py-3 flex justify-between items-center space-x-4 rounded-lg shadow-button group hover:bg-[#ecf7ff] transition ease-in-out
@@ -153,19 +153,19 @@
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-teachers*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_teacher.svg') }}"
                             class="{{ request()->is('admin/data-teachers*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Teacher</span>
+                        <span class="-mr-1 font-semibold">Guru</span>
                     </a>
                     <a href="{{ route('admin.data-students.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/data-students*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_student.svg') }}"
                             class="{{ request()->is('admin/data-students*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Student</span>
+                        <span class="-mr-1 font-semibold">Murid</span>
                     </a>
                     <a href="{{ route('admin.classrooms.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/classrooms*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_classroom.svg') }}"
                             class="{{ request()->is('admin/classrooms*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Classroom</span>
+                        <span class="-mr-1 font-semibold">Kelas</span>
                     </a>
                 </div>
             </div>
@@ -189,13 +189,13 @@
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/exam-types*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_typeofexam.svg') }}"
                             class="{{ request()->is('admin/exam-types*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Type of Exam</span>
+                        <span class="-mr-1 font-semibold">Jenis Ujian</span>
                     </a>
                     <a href="{{ route('admin.subjects.index') }}"
                         class="flex space-x-4 px-4 py-3 items-center {{ request()->is('admin/subjects*') ? 'bg-gradient-to-r from-accent-1 to-accent-2 text-white' : 'bg-white' }} hover:bg-[#ecf7ff] transition ease-in-out rounded-lg shadow-button">
                         <img src="{{ asset('icons/ic_subjects.svg') }}"
                             class="{{ request()->is('admin/subjects*') ? 'filter-white' : '' }} pl-8">
-                        <span class="-mr-1 font-semibold">Subjects</span>
+                        <span class="-mr-1 font-semibold">Mata Pelajaran</span>
                     </a>
                 </div>
             </div>

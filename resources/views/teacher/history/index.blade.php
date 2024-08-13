@@ -13,9 +13,9 @@
             <div class="flex flex-col p-4 lg:py-6 lg:px-6">
                 <h1 class="font-semibold text-xl flex gap-x-2">
                     <img src="{{ asset('icons/ic_assessment-history.svg') }}" alt="">
-                    Exams History
+                    Riwayat Ujian
                 </h1>
-                <p class="text-xs lg:text-sm mt-1 lg:w-1/2">These are your exams history including drafts, published and completed. Click view button to see the details.</p>
+                <p class="text-xs lg:text-sm mt-1 lg:w-1/2">Ini adalah riwayat ujian Anda termasuk draf, yang diterbitkan, dan yang telah diselesaikan. Klik tombol lihat untuk melihat detailnya.</p>
             </div>
 
             <div class="">
@@ -23,12 +23,12 @@
                     <thead class="bg-gray-50">
                         <tr>
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th class="lg:py-3 pl-3 text-left font-medium">Exam</th>
-                            <th class="lg:py-3 text-left font-medium">Subject</th>
-                            <th class="lg:py-3 text-left font-medium">Date</th>
-                            <th class="lg:py-3 text-left font-medium">Question</th>
-                            <th class="lg:py-3 text-left font-medium">Duration</th>
-                            <th class="lg:py-3 text-left font-medium">Classroom</th>
+                            <th class="lg:py-3 pl-3 text-left font-medium">Jenis</th>
+                            <th class="lg:py-3 text-left font-medium">Mapel</th>
+                            <th class="lg:py-3 text-left font-medium">Tanggal</th>
+                            <th class="lg:py-3 text-left font-medium">Soal</th>
+                            <th class="lg:py-3 text-left font-medium">Durasi</th>
+                            <th class="lg:py-3 text-left font-medium">Kelas</th>
                             <th class="lg:py-3 text-left font-medium">Status</th>
                             <th class="pr-6 lg:py-3 text-right font-medium w-42">Actions</th>
                         </tr>
@@ -60,7 +60,7 @@
                                     </a>
                                     <a href="{{ route('teacher.history.show', $exam->id) }}"
                                         class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center shrink-0 grow-0 flex gap-x-1 font-bold lg:px-2">
-                                        <img src="{{ asset('icons/ic_views.svg') }}"><span class="hidden lg:block">More Details</span>
+                                        <img src="{{ asset('icons/ic_views.svg') }}"><span class="hidden lg:block">Details</span>
                                     </a>
                                     <form action="{{ route('teacher.exams.destroy', $exam->id) }}" method="POST" class="hidden delete-form">
                                         @csrf

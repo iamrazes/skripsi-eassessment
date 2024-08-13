@@ -185,7 +185,7 @@
 @extends('layouts.app')
 
 @section('title')
-    <title>Manage Questions - {{ $exam->title }}</title>
+    <title>Form Soal - {{ $exam->title }}</title>
 @endsection
 
 @section('content')
@@ -209,7 +209,7 @@
         <div class="flex flex-col">
             <div class="flex justify-between mb-2 border-b pb-6 px-8">
                 <div class="flex flex-col">
-                    <h1 class="font-semibold text-xl">Manage Questions</h1>
+                    <h1 class="font-semibold text-xl">Form Soal</h1>
                     <span class="text-sm">{{ $exam->title }}</span>
                 </div>
             </div>

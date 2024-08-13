@@ -42,7 +42,7 @@
                     <div class="flex pb-6 border-b mx-8 mb-6">
                         <div class="w-10 mr-4 text-xl">{{ $index + 1 }}.</div>
                         <div class="flex flex-col w-full">
-                            <p class="text-xs">Question:</p>
+                            <p class="text-xs">Pertanyaan:</p>
                             <div class="w-full rounded-lg border-1 bg-white min-h-40 mb-4 mt-2">
                                 {{ $question->question_text }}
 
@@ -53,8 +53,8 @@
                             </div>
                             <div class="flex flex-col gap-y-2">
                                 <div class="flex justify-between">
-                                    <p class="text-xs">Multiple Choices:</p>
-                                    <p class="text-xs">Answer Key:</p>
+                                    <p class="text-xs">Pilihan Ganda:</p>
+                                    <p class="text-xs">Kunci Jawaban:</p>
                                 </div>
                                 <div class="flex flex-col gap-y-2">
                                     @foreach ($question->choices as $choiceIndex => $choice)
@@ -71,7 +71,7 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="text-xs mt-2">Student's Answer:</div>
+                            <div class="text-xs mt-2">Jawaban Anda:</div>
                             <div class="flex items-center py-2 mt-2 border
                                 @if (empty($selectedChoice))
                                     border-red-600

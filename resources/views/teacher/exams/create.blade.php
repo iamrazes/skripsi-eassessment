@@ -17,12 +17,12 @@
         </div>
     @endif
     <div class="mt-8 bg-white rounded-lg shadow-button py-6 px-8">
-        <h1 class="font-semibold text-lg">Create Exam</h1>
+        <h1 class="font-semibold text-lg">Membuat Ujian</h1>
         <div class=" my-4">
             <form action="{{ route('teacher.exams.store') }}" method="POST">
                 @csrf
                 <div class="flex flex-col my-3">
-                    <label for="exam_type_id">Exam Type</label>
+                    <label for="exam_type_id">Jenis Ujian</label>
                     <select name="exam_type_id" id="exam_type_id" class="rounded-lg border-gray-400 mt-1">
                         @foreach ($examTypes as $examType)
                             <option value="{{ $examType->id }}"
@@ -31,7 +31,7 @@
                     </select>
                 </div>
                 <div class="flex flex-col my-3">
-                    <label for="subject_id">Subject</label>
+                    <label for="subject_id">Mata Pelajaran</label>
                     <select name="subject_id" id="subject_id" class="rounded-lg border-gray-400 mt-1">
                         @foreach ($subjects as $subject)
                             <option value="{{ $subject->id }}" {{ old('subject_id') == $subject->id ? 'selected' : '' }}>
@@ -40,33 +40,33 @@
                     </select>
                 </div>
                 <div class="flex flex-col my-3">
-                    <label for="date">Date</label>
+                    <label for="date">Tanggal Ujian</label>
                     <input type="date" name="date" id="date" class="rounded-lg border-gray-400 mt-1"
                         min="{{ now()->toDateString() }}" value="{{ old('date') }}">
                 </div>
                 <div class="flex flex-col my-3">
-                    <label for="start_time">Start Time</label>
+                    <label for="start_time">Waktu Mulai</label>
                     <input type="time" name="start_time" id="start_time" class="rounded-lg border-gray-400 mt-1"
                         value="{{ old('start_time') }}">
                 </div>
                 <div class="flex flex-col my-3">
-                    <label for="duration">Duration (in minutes)</label>
+                    <label for="duration">Durasi (in minutes)</label>
                     <input type="number" name="duration" id="duration" class="rounded-lg border-gray-400 mt-1"
                         min="1" value="{{ old('duration') }}">
                 </div>
                 <div class="flex flex-col my-3">
-                    <label for="total_questions">Total Questions</label>
+                    <label for="total_questions">Jumlah Soal</label>
                     <input type="number" name="total_questions" id="total_questions"
                         class="rounded-lg border-gray-400 mt-1" min="1" max="100"
                         value="{{ old('total_questions') }}">
                 </div>
 
                 <div class="flex flex-col my-3">
-                    <label for="classrooms">Classrooms</label>
+                    <label for="classrooms">Kelas</label>
                     <div class="relative">
                         <div id="dropdownButton"
                             class="block w-full px-4 py-2 bg-white border border-gray-400 rounded-lg cursor-pointer mt-1">
-                            Select classrooms
+                            Pilih Kelas
                         </div>
                         <div id="dropdown"
                             class="hidden absolute z-10 w-full mt-1 bg-white border border-gray-400 rounded-lg shadow-lg">
@@ -84,12 +84,11 @@
                 </div>
 
                 <div class="flex flex-col my-3">
-                    <label for="description">Description</label>
+                    <label for="description">Deskripsi</label>
                     <textarea name="description" id="description" class="rounded-lg border-gray-400 mt-1 h-40">{{ old('description') }}</textarea>
                 </div>
                 <button type="submit"
-                    class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 text-white py-2 px-4 flex w-full text-center justify-center font-semibold rounded-lg text-lg mt-4">Create
-                    Exam</button>
+                    class="bg-accent-1 hover:bg-gradient-to-r from-accent-1 to-accent-2 text-white py-2 px-4 flex w-full text-center justify-center font-semibold rounded-lg text-lg mt-4">Buat Ujian</button>
             </form>
         </div>
     </div>

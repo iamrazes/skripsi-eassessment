@@ -43,13 +43,13 @@
     <div class="flex-grow"></div>
     <div class="flex flex-col gap-y-2 place-content-end border-t py-4 align-middle">
         <span class="flex gap-x-2 px-4">
-            <div class="w-5 h-5 rounded-md bg-white border shadow"></div>Not Answered
+            <div class="w-5 h-5 rounded-md bg-white border shadow"></div>Belum Dijawab
         </span>
         <span class="flex gap-x-2 px-4">
-            <div class="w-5 h-5 rounded-md bg-accent-1 shadow"></div>Answered
+            <div class="w-5 h-5 rounded-md bg-accent-1 shadow"></div>Dijawab
         </span>
         <span class="flex gap-x-2 px-4">
-            <div class="w-5 h-5 rounded-md bg-white border-accent-1 border-2 shadow"></div>Currently Seeing
+            <div class="w-5 h-5 rounded-md bg-white border-accent-1 border-2 shadow"></div>Sedang Dilihat
         </span>
         {{-- <span class="flex gap-x-2 px-4">
             <div class="w-5 h-5 rounded-md bg-yellow-400 shadow"></div>Marked (Not Answered)

@@ -19,7 +19,7 @@
                 <div class="flex items-center justify-center rounded-full border border-accent-2 h-10 w-10">
                     <span class="font-semibold">{{ $currentQuestionIndex + 1 }}</span>
                 </div>
-                <span>Multiple Choices</span>
+                <span>Pilihan Ganda</span>
             </div>
             <div class="flex flex-col bg-slate-100 min-h-80 rounded-lg p-4 items-center overflow-hidden">
                 <p class="whitespace-pre-line w-full lg:text-lg">{{ $question->question_text }}</p>
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Display answer choices -->
-            <span class="text-gray-400 text-sm">Select your answer on the options below:</span>
+            <span class="text-gray-400 text-sm">Pilih salah satu jawaban anda:</span>
             <div class="flex flex-col gap-4 pb-4">
                 @foreach ($question->choices as $choiceIndex => $choice)
                     <div class="flex align-middle items-center">
@@ -53,19 +53,19 @@
             @if ($currentQuestionIndex > 0)
                 <a href="{{ route('students.exams.show-question', ['exam' => $exam->id, 'question' => $exam->questions[$currentQuestionIndex - 1]->question_number]) }}"
                     class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
-                    Previous
+                    Kembali
                 </a>
             @endif
 
             <button type="submit"
                 class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
-                Save
+                Simpan
             </button>
 
             @if ($currentQuestionIndex < count($exam->questions) - 1)
                 <button type="submit" onclick="document.getElementById('action').value='save_next'"
                     class="bg-white hover:bg-gray-100 w-full rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button border">
-                    Save & Next
+                    Simpan & Berikutnya
                 </button>
             @endif
 
@@ -91,7 +91,7 @@
             <div class="flex mt-4">
                 <button type="submit"
                     class="bg-red-500 hover:bg-red-600 text-white rounded-xl lg:px-6 lg:py-4 py-2 px-2 flex justify-center items-center shadow-button w-full">
-                    Finish Exam
+                    Selesaikan Ujian
                 </button>
             </div>
         </form>
