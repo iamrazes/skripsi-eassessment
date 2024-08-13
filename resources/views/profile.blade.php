@@ -31,13 +31,13 @@
             <div class="font-semibold text-lg pb-6 border-b"><span class="px-6">Profile Information</span></div>
             <div class="flex flex-col py-6 gap-y-4 px-6">
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">Full Name:</span>
+                    <span class="font-semibold">Nama Lengkap:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ $dataStudent->user->name }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">Student ID:</span>
+                    <span class="font-semibold">ID Siswa:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ $dataStudent->student_id }}</span>
                     </div>
@@ -55,13 +55,13 @@
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">Gender:</span>
+                    <span class="font-semibold">Jenis Kelamin:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ ucfirst($dataStudent->gender) }}</span>
                     </div>
                 </div>
                 <div class="flex flex-col gap-y-1">
-                    <span class="font-semibold">Classroom:</span>
+                    <span class="font-semibold">Kelas:</span>
                     <div class="bg-gray-100 rounded-lg py-2 px-3">
                         <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
                     </div>
@@ -97,7 +97,7 @@
                     <h1 class=" font-semibold pb-4 border-b"><span class="px-4 xl:px-8 xl:text-xl text-lg">Profile
                             Information</span></h1>
                     <div class="flex flex-col justify-between px-4 xl:px-8">
-                        <span class="font-semibold">Full Name:</span>
+                        <span class="font-semibold">Nama:</span>
                         <span>{{ $dataTeacher->user->name }}</span>
                     </div>
                     <div class="flex flex-col justify-between px-4 xl:px-8">
@@ -105,11 +105,11 @@
                         <span>{{ $dataTeacher->user->email }}</span>
                     </div>
                     <div class="flex flex-col justify-between px-4 xl:px-8">
-                        <span class="font-semibold">Contact:</span>
+                        <span class="font-semibold">Kontal:</span>
                         <span>{{ $dataTeacher->contact }}</span>
                     </div>
                     <div class="flex flex-col justify-between px-4 xl:px-8">
-                        <span class="font-semibold">Address:</span>
+                        <span class="font-semibold">Alamat:</span>
                         <span>{{ $dataTeacher->address }}</span>
                     </div>
                     <div class="flex flex-col justify-between px-4 xl:px-8">
@@ -121,11 +121,9 @@
             <div class="rounded-2xl shadow-button bg-white w-full py-4 lg:py-8 hidden lg:block">
                 <div class="flex flex-col">
                     <div class="pb-4">
-                        <h1 class="text-xl font-semibold px-4 lg:px-8">Recent Assessment</h1>
+                        <h1 class="text-xl font-semibold px-4 lg:px-8">Ujian Terbaru</h1>
                         <span class="flex text-center text-xs gap-x-1 text-textColorDisabled mt-2 px-4 lg:px-8"><img
-                                src="{{ asset('icons/ic_docs2.svg') }}" class="w-3" alt="">Showing your 10
-                            recent
-                            test</span>
+                                src="{{ asset('icons/ic_docs2.svg') }}" class="w-3" alt="">Menampilkan 10 ujian terbaru</span>
                     </div>
                     <div class="overflow-x-auto ">
                         <table class="min-w-full divide-y divide-gray-200 border-b border-gray-200">
@@ -133,15 +131,15 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
-                                        Date Created
+                                        Tanggal
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
-                                        Type
+                                        Jenis
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
-                                        Subject
+                                        Mapel
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium  uppercase tracking-wider">
@@ -163,7 +161,7 @@
                                         <td scope="col" class="pr-6 py-3 text-right ">
                                             <a
                                                 href="{{ route('teacher.exams.show', $exam->id) }}"
-                                                class="font-medium text-accent-1 hover:text-accent-2">Review</a>
+                                                class="font-medium text-accent-1 hover:text-accent-2">Ulasan</a>
                                                 </td>
                                     </tr>
                                 @endforeach

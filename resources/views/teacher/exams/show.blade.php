@@ -7,7 +7,7 @@
 @section('content')
     <div class="mt-4 bg-white rounded-lg py-4 shadow-button mx-4 lg:mx-0">
         <div class="flex justify-between border-b pb-2 px-6 mb-4">
-            <h1 class="text-xl font-medium  ">Exam Details</h1>
+            <h1 class="text-xl font-medium  ">Detail Ujian</h1>
             <div class="flex gap-x-2 items-center">
                 <a href="{{ route('teacher.exams.edit', $exam->id) }}"
                     class="bg-blue-100 hover:bg-blue-200 rounded-lg p-1 items-center">
@@ -19,7 +19,7 @@
                         <button type="submit"
                             class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
                             <img class="h-5 w-5" src="{{ asset('icons/ic_publish_exam2.svg') }}" alt="">
-                            Publish Exam
+                            Publikasi
                         </button>
                     </form>
                 @elseif($exam->status == 'published')
@@ -28,7 +28,7 @@
                         <button type="submit"
                             class="bg-blue-100 hover:bg-blue-200 flex items-center gap-x-1 text-accent-1 rounded-lg p-1 px-2 font-medium">
                             <img class="h-5 w-5" src="{{ asset('icons/ic_complete_exam2.svg') }}" alt="">
-                            Complete Exam
+                            Selesai
                         </button>
                     </form>
                 @endif
@@ -38,13 +38,13 @@
             <div class="flex-grow">
                 <h5 class="mb-2">{{ $exam->title }}</h5>
                 <div class="grid lg:grid-cols-3 row-span-4">
-                    <p class=""><strong>Exam Type</strong> : {{ $exam->examType->name }}</p>
-                    <p class=""><strong>Subject</strong> : {{ $exam->subject->name }}</p>
-                    <p class=""><strong>Date</strong> : {{ $exam->date->format('Y-m-d') }}</p>
-                    <p class=""><strong>Start Time</strong> : {{ $exam->start_time }}</p>
-                    <p class=""><strong>Duration</strong> : {{ $exam->duration }} minutes</p>
-                    <p class=""><strong>Total Questions</strong> : {{ $exam->total_questions }}</p>
-                    <p class=""><strong>Classrooms</strong> :
+                    <p class=""><strong>Jenis Ujian</strong> : {{ $exam->examType->name }}</p>
+                    <p class=""><strong>Mata Pelajaran</strong> : {{ $exam->subject->name }}</p>
+                    <p class=""><strong>Tanggal</strong> : {{ $exam->date->format('Y-m-d') }}</p>
+                    <p class=""><strong>Jadwal Ujian</strong> : {{ $exam->start_time }}</p>
+                    <p class=""><strong>Durasi</strong> : {{ $exam->duration }} minutes</p>
+                    <p class=""><strong>Total Soal</strong> : {{ $exam->total_questions }}</p>
+                    <p class=""><strong>Kelas</strong> :
                         @foreach ($exam->classrooms as $classroom)
                             {{ $classroom->name }}@if (!$loop->last)
                                 ,
@@ -52,7 +52,7 @@
                         @endforeach
                     </p>
                     <p class="capitalize"><strong>Status</strong> : {{ $exam->status }}</p>
-                    <p class=""><strong>Description</strong> : {{ $exam->description }}</p>
+                    <p class=""><strong>Deskripsi</strong> : {{ $exam->description }}</p>
                 </div>
             </div>
         </div>
@@ -71,7 +71,7 @@
                 <h1 class="font-semibold text-lg">Questionnaire</h1>
                 @if (!in_array($exam->status, ['published', 'completed']))
                     <a href="{{ route('teacher.exams.questions.create', $exam->id) }}"
-                        class="text-md text-accent-1 hover:text-blue-700">Manage Question</a>
+                        class="text-md text-accent-1 hover:text-blue-700">Atur Soal</a>
                 @endif
 
             </div>
@@ -80,8 +80,8 @@
                     <thead class="bg-gray-5 ">
                         <tr class="">
                             <th scope="col" class="pl-6 py-3 text-left font-medium w-6">No.</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Questions</th>
-                            <th scope="col" class="px-6 py-3 text-left font-medium">Answer</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Soal</th>
+                            <th scope="col" class="px-6 py-3 text-left font-medium">Jawaban</th>
                             {{-- <th scope="col" class="px-6 py-3 text-end font-medium tracking-wider">Options</th> --}}
                         </tr>
                     </thead>

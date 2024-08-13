@@ -13,65 +13,65 @@
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Jumlah Students</span>
                         <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6">
                     <img src="{{ asset('icons/ic_male_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Male Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Murid Laki-laki</span>
                         <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6">
                     <img src="{{ asset('icons/ic_female_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Female Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Murid Perempuan</span>
                         <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6">
                     <img src="{{ asset('icons/ic_total_teachers.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-xs">Total Teachers</span>
+                        <span class="text-md lg:whitespace-nowrap">Jumlah Guru</span>
                         <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
                             class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
@@ -79,21 +79,20 @@
             <div
                 class="flex  flex-col gap-y-2 bg-gradient-to-r from-accent-1 to-accent-2 p-6 rounded-lg shadow-button text-white">
                 <img src="{{ asset('icons/ic_docs.svg') }}" class="w-24" alt="">
-                <h1 class="font-semibold text-2xl">Documentations</h1>
-                <span>Learn properly on how to use e-assessment website, step-by-step, <br>
-                    and tips. Understand the basics to implemented on your assessment <br>and classes. </span>
+                <h1 class="font-semibold text-2xl">Selamat Datang</h1>
+                <span>E-Assessment dapat menyelenggarakan ujian dengan aman dan nyaman. Buatlah sistem ujian sekolah anda dengan menggunakan E-Assessment.</span>
 
-                <a href="" class="flex gap-x-1 mt-1 items-center text-end font-semibold">
+                {{-- <a href="" class="flex gap-x-1 mt-1 items-center text-end font-semibold">
                     <img src="{{ asset('icons/ic_more.svg') }}" class="h-5" alt="">
                     <span class="text-sm">Click Here</span>
-                </a>
+                </a> --}}
             </div>
 
             <div class="w-full bg-white rounded-lg shadow-button">
                 <h1 class="border-b px-5 py-4 flex justify-between">
                     <div class="flex gap-x-2">
                         <img src="{{ asset('icons/ic_calendar.svg') }}" alt="">
-                        <span class="font-bold">Calendar</span>
+                        <span class="font-bold">Kalender</span>
                     </div>
                     <span class="font-bold" id="Calendar"></span>
                 </h1>
@@ -101,7 +100,7 @@
                 <div class="p-4">
                     <div class="grid grid-cols-7 gap-2 text-center">
                         <!-- Days of the week -->
-                        @foreach (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $day)
+                        @foreach (['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] as $day)
                             <div class="font-bold">{{ $day }}</div>
                         @endforeach
 
@@ -130,12 +129,12 @@
                         <!-- table title -->
                         <span class="flex gap-x-2">
                             <img src="{{ asset('icons/ic_active_teachers.svg') }}" class="w-6 h-6">
-                            <h1 class="font-bold">Active Teacher</h1>
+                            <h1 class="font-bold">Guru Aktif</h1>
                         </span>
                     </div>
 
                     <span class="flex items-center text-sm gap-x-1 mt-1">
-                        Total {{ $totalTeachers }} Active Teacher</span>
+                        Jumlah {{ $totalTeachers }} Guru Aktif</span>
                 </div>
                 <div class="overflow-x-auto pb-2 rounded-b-lg">
                     <table class="min-w-full divide-y divide-gray-200">
@@ -143,7 +142,7 @@
                             <tr>
                                 <th scope="col"
                                     class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
-                                    Name
+                                    Nama
                                 </th>
 
                             </tr>
@@ -198,74 +197,74 @@
                     <img src="{{ asset('icons/ic_total_students.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md lg:whitespace-nowrap">Total Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Jumlah Students</span>
                         <h1 class="font-bold text-2xl">{{ $totalStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
                             class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_male_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md lg:whitespace-nowrap">Male Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Murid Laki-laki</span>
                         <h1 class="font-bold text-2xl">{{ $maleStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
                             class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_female_student.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md lg:whitespace-nowrap">Female Students</span>
+                        <span class="text-md lg:whitespace-nowrap">Murid Perempuan</span>
                         <h1 class="font-bold text-2xl">{{ $femaleStudents }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
                             class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
             <div class="flex flex-col bg-white shadow-button rounded-lg  ">
                 <div class="flex justify-between p-6 overflow-hidden">
                     <img src="{{ asset('icons/ic_total_teachers.svg') }}" class="w-16" alt="">
                     <div class="flex-grow w-24"></div>
                     <div class="flex flex-col text-end">
-                        <span class="text-md lg:whitespace-nowrap">Total Teachers</span>
+                        <span class="text-md lg:whitespace-nowrap">Jumlah Guru</span>
                         <h1 class="font-bold text-2xl">{{ $totalTeachers }}</h1>
                     </div>
                 </div>
-                <div class="border-t px-6 py-3">
+                {{-- <div class="border-t px-6 py-3">
                     <a href="#" class="flex gap-x-1 text-xs text-textColorDisabled"><img
                             src="{{ asset('icons/ic_small_report.svg') }}" alt=""> <span
                             class="whitespace-nowrap">Report
                             a
                             problem</span></a>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <div class="flex flex-col lg:flex-row lg:gap-8  mx-4 lg:mx-0">
             <div class="lg:mt-8 mt-4 lg:w-1/3 bg-white rounded-lg shadow-button shrink-0">
-                <h1 class="border-b px-5 py-2">Subjects</h1>
+                <h1 class="border-b px-5 py-2">Mata Pelajaran</h1>
                 <div class="flex flex-wrap gap-3 text-white p-4">
                     @foreach ($subjects as $subject)
                         <button class="bg-accent-1 hover:bg-accent-2 p-2 rounded-xl">{{ $subject->name }}</button>
@@ -273,7 +272,7 @@
                 </div>
             </div>
             <div class="lg:mt-8 mt-4 w-full bg-white rounded-lg shadow-button">
-                <h1 class="border-b px-5 py-2">Subjects</h1>
+                <h1 class="border-b px-5 py-2">Mata Pelajaran</h1>
                 <div class="flex flex-wrap gap-3 text-white p-4 ">
                     @foreach ($subjects as $subject)
                         <button class="bg-accent-1 hover:bg-accent-2 p-2 rounded-xl">{{ $subject->name }}</button>
@@ -285,7 +284,7 @@
 
         <div class="flex flex-col lg:gap-8 lg:flex-row  mx-4 lg:mx-0">
             <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button">
-                <h1 class="border-b px-5 py-2">Classrooms</h1>
+                <h1 class="border-b px-5 py-2">Kelas</h1>
                 <div class="grid grid-cols-3 gap-4 p-4 select-none">
                     @foreach ($classrooms as $index => $classroom)
                         <div class="p-4 rounded-xl {{ $index % 2 == 0 ? 'bg-gray-50' : 'bg-gray-100' }}">
@@ -297,14 +296,14 @@
 
             <div class="lg:mt-8 mt-4 w-full lg:w-1/2 bg-white rounded-lg shadow-button">
                 <h1 class="border-b px-5 py-2 flex justify-between">
-                    <span>Calendar</span>
+                    <span>Kalender</span>
                     <span id="Calendar"></span>
                 </h1>
 
                 <div class="p-4">
                     <div class="grid grid-cols-7 gap-2 text-center select-none">
                         <!-- Days of the week -->
-                        @foreach (['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] as $day)
+                        @foreach (['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'] as $day)
                             <div class="font-bold">{{ $day }}</div>
                         @endforeach
 
@@ -327,78 +326,74 @@
     @endif
 
     @if (auth()->user()->hasPermissionTo('student-access'))
-        <!-- Student Dashboard -->
-        <div class="rounded-xl border-2 border-accent-1 p-5 bg-white lg:mt-8 mt-4 shadow-button mx-4 lg:mx-0">
-            <div class="flex flex-col items-center justify-center text-center gap-y-2.5">
-                <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
-                    class="w-28 h-28 mt-1" alt="">
-                <h1 class="font-bold text-accent-1 uppercase text-2xl">{{ auth()->user()->name }}</h1>
-                <span>{{ $dataStudent->student_id }}</span>
-                <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
-            </div>
+    <!-- Dashboard Siswa -->
+    <div class="rounded-xl border-2 border-accent-1 p-5 bg-white lg:mt-8 mt-4 shadow-button mx-4 lg:mx-0">
+        <div class="flex flex-col items-center justify-center text-center gap-y-2.5">
+            <img src="{{ asset($dataStudent->gender == 'male' ? 'images/img_dashboard_maleStudent.png' : 'images/img_dashboard_femaleStudent.png') }}"
+                class="w-28 h-28 mt-1" alt="">
+            <h1 class="font-bold text-accent-1 uppercase text-2xl">{{ auth()->user()->name }}</h1>
+            <span>{{ $dataStudent->student_id }}</span>
+            <span>{{ $dataStudent->classroom->name ?? 'N/A' }}</span>
         </div>
-        <div class="grid lg:grid-cols-2 gap-y-4 lg:gap-y-8 my-8 gap-x-8 mx-4 lg:mx-0">
-            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
-                <div class="flex flex-col gap-y-2">
-                    <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
-                            alt="">
-                        <h1 class="text-accent-1 text-3xl font-semibold">Exams</h1>
-                    </div>
-                    <span class="text-sm lg:text-lg lg:w-3/4">Online Assessment curated and created by your
-                        school and teacher. See if you have any assessment available
-                        for you by clicking link above.</span>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-y-4 lg:gap-y-8 my-8 gap-x-8 mx-4 lg:mx-0">
+        <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-y-2">
+                <div class="flex lg:flex-col gap-x-3">
+                    <img src="{{ asset('icons/ic_big_assessments.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
+                        alt="">
+                    <h1 class="text-accent-1 text-3xl font-semibold">Ujian</h1>
                 </div>
-                <a href="{{ route('students.exams.index') }}"
-                    class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
-                        src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
+                <span class="text-sm lg:text-lg lg:w-3/4">Penilaian online yang disusun dan dibuat oleh sekolah dan guru Anda. Lihat apakah ada penilaian yang tersedia
+                    untuk Anda dengan mengklik tautan di atas.</span>
             </div>
-            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
-                <div class="flex flex-col gap-y-2">
-                    <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_results.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
-                            alt="">
-                        <h1 class="text-accent-1 text-3xl font-semibold">Reports</h1>
-                    </div>
-                    <span class="text-sm lg:text-lg lg:w-3/4">All of your assessment are recorded within our
-                        database. You can check, review, or learn your old test with the given right answers.
-                    </span>
-                </div>
-                <a href="{{ route('students.reports.index') }}"
-                    class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
-                        src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
-            </div>
-            <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
-                <div class="flex flex-col gap-y-2">
-                    <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_profile.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
-                            alt="">
-                        <h1 class="text-accent-1 text-3xl font-semibold">My Profile</h1>
-                    </div>
-                    <span class="text-sm lg:text-lg lg:w-3/4">Check your identifications, all of your data
-                        stored private and secure in school database.</span>
-                </div>
-                <a href="{{ route('profile') }}"
-                    class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
-                        src="{{ asset('icons/ic_more2.svg') }}" alt=""> Click Here</a>
-            </div>
-            <div
-                class="bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
-                <div class="flex flex-col gap-y-2">
-                    <div class="flex lg:flex-col gap-x-3">
-                        <img src="{{ asset('icons/ic_big_docs.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
-                            alt="">
-                        <h1 class="text-white  text-3xl font-semibold">Documentations</h1>
-                    </div>
-                    <span class="text-sm lg:text-lg lg:w-3/4">Learn properly on how to use e-assessment
-                        website, the basics and rules. Understand it to avoid mistake and error.</span>
-                </div>
-                <a href="" class="flex gap-x-1 place-content-end text-white font-semibold mt-2"><img
-                        src="{{ asset('icons/ic_more.svg') }}" alt=""> Click Here</a>
-            </div>
-            <!-- Repeat the same structure for other cards -->
+            <a href="{{ route('students.exams.index') }}"
+                class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                    src="{{ asset('icons/ic_more2.svg') }}" alt=""> Klik di Sini</a>
         </div>
-    @endif
+        <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-y-2">
+                <div class="flex lg:flex-col gap-x-3">
+                    <img src="{{ asset('icons/ic_big_results.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
+                        alt="">
+                    <h1 class="text-accent-1 text-3xl font-semibold">Laporan</h1>
+                </div>
+                <span class="text-sm lg:text-lg lg:w-3/4">Semua penilaian Anda tercatat dalam basis data kami. Anda dapat memeriksa, meninjau, atau mempelajari tes lama Anda dengan jawaban yang benar diberikan.</span>
+            </div>
+            <a href="{{ route('students.reports.index') }}"
+                class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                    src="{{ asset('icons/ic_more2.svg') }}" alt=""> Klik di Sini</a>
+        </div>
+        <div class="bg-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-y-2">
+                <div class="flex lg:flex-col gap-x-3">
+                    <img src="{{ asset('icons/ic_big_profile.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
+                        alt="">
+                    <h1 class="text-accent-1 text-3xl font-semibold">Profil Saya</h1>
+                </div>
+                <span class="text-sm lg:text-lg lg:w-3/4">Periksa identitas Anda, semua data Anda disimpan secara pribadi dan aman dalam basis data sekolah.</span>
+            </div>
+            <a href="{{ route('profile') }}"
+                class="flex gap-x-1 place-content-end text-accent-1 font-semibold mt-2"><img
+                    src="{{ asset('icons/ic_more2.svg') }}" alt=""> Klik di Sini</a>
+        </div>
+        <div
+            class="bg-gradient-to-r from-accent-1 to-accent-2 text-white rounded-md shadow-button p-4 lg:p-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-y-2">
+                <div class="flex lg:flex-col gap-x-3">
+                    <img src="{{ asset('icons/ic_big_docs.svg') }}" class="lg:w-20 mb-2 lg:h-20 w-10 h-10"
+                        alt="">
+                    <h1 class="text-white  text-3xl font-semibold">Selamat Datang</h1>
+                </div>
+                <span class="text-sm lg:text-lg lg:w-3/4">Pelajari dengan benar cara menggunakan situs web e-assessment, dasar-dasarnya dan aturan-aturannya. Pahami agar terhindar dari kesalahan dan masalah.</span>
+            </div>
+            <a href="" class="flex gap-x-1 place-content-end text-white font-semibold mt-2"><img
+                    {{-- src="{{ asset('icons/ic_more.svg') }}" alt=""> Klik di Sini</a> --}}
+        </div>
+        <!-- Ulangi struktur yang sama untuk kartu lainnya -->
+    </div>
+@endif
+
 @endsection
 
 @section('script')

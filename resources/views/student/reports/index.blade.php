@@ -24,14 +24,14 @@
                         <div class="flex gap-x-4 ">
                             <div class=" flex text-xs lg:text-base pr-4 gap-x-2 lg:gap-x-6">
                                 <div class="flex flex-col">
-                                    <span>Day: {{ $attendedExam->exam->date->format('l') }}</span>
-                                    <span>Date: {{ $attendedExam->exam->date->format('d-m-Y') }}</span>
+                                    <span>Hari: {{ \Carbon\Carbon::parse($attendedExam->exam->date)->locale('id')->translatedFormat('l') }}</span>
+                                    <span>Tanggal: {{ $attendedExam->exam->date->format('d-m-Y') }}</span>
                                 </div>
                                 <div class="flex flex-col">
-                                    <span>Hour:
+                                    <span>Jadwal:
                                         {{ \Carbon\Carbon::parse($attendedExam->exam->start_time)->format('H:i') }}</span>
-                                    <span class="flex gap-x-1">Duration: <span class="min-w-10">{{ $attendedExam->exam->duration }}</span></span>
-                                    <span>Question: {{ $attendedExam->exam->total_questions }}</span>
+                                    <span class="flex gap-x-1">Waktu: <span class="min-w-10">{{ $attendedExam->exam->duration }}</span></span>
+                                    <span>Soal: {{ $attendedExam->exam->total_questions }}</span>
                                 </div>
                             </div>
                             <!-- options -->
@@ -39,11 +39,10 @@
                                 <a href="{{ route('students.reports.show', ['exam' => $attendedExam->exam->id]) }}"
                                     class="bg-accent-1 rounded text-white px-2 py-1 flex gap-x-1.5 whitespace-nowrap overflow-clip hover:bg-gradient-to-r from-accent-1 to-accent-2 pr-10"><img
                                         src="{{ asset('icons/ic_magnifier.svg') }}" class="w-4 lg:w-5 filter-white">Review
-                                    Exam</a>
+                                    Ujian</a>
                                 <button data-score="{{ $attendedExam->score }}"
                                     class="scoreButton bg-gray-500 rounded text-white px-2 py-1 flex gap-x-1.5 whitespace-nowrap overflow-clip items-center hover:bg-gradient-to-r from-gray-500 to-gray-400"><img
-                                        src="{{ asset('icons/ic_alert.svg') }}" class="w-4 lg:w-5 filter-white">Check
-                                    Score</button>
+                                        src="{{ asset('icons/ic_alert.svg') }}" class="w-4 lg:w-5 filter-white">Periksa Nilai</button>
                             </div>
                         </div>
                     </div>

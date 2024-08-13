@@ -13,8 +13,8 @@
                 <thead class="bg-gray-50">
                     <tr>
                         <th scope="col" class="lg:px-6 px-3 py-3 text-left font-medium">No</th>
-                        <th scope="col" class="lg:px-6 px-3 py-3 text-left font-medium">Name</th>
-                        <th scope="col" class="px-6 py-3 text-end font-medium">Student ID</th>
+                        <th scope="col" class="lg:px-6 px-3 py-3 text-left font-medium">Nama</th>
+                        <th scope="col" class="px-6 py-3 text-end font-medium">ID Siswa</th>
                         {{-- <th scope="col" class="px-6 py-3 text-left font-medium">Username</th> --}}
                         {{-- <th scope="col" class="px-6 py-3 text-right font-medium ">Options</th> --}}
                         <!-- Add more columns as needed -->

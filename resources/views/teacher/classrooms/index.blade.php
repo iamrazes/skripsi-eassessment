@@ -27,7 +27,7 @@
                             <td class="px-6 py-4 flex gap-x-2 justify-end items-center">
                                 <a href="{{ route('teacher.classrooms.teacherShow', $classroom->id) }}"
                                     class="bg-gray-300 hover:bg-gray-400 rounded-lg p-1 items-center flex px-2 gap-x-1"><img
-                                        src="{{ asset('icons/ic_views.svg') }}"><span class="text-xs lg:text-base">View Class Member</span></a>
+                                        src="{{ asset('icons/ic_views.svg') }}"><span class="text-xs lg:text-base">Periksa Anggota</span></a>
                             </td>
                         </tr>
                     @endforeach
